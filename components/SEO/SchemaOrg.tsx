@@ -3,10 +3,10 @@ export const generateSchemaMarkup = () => {
     const schemaData = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      '@id': 'https://najlepszy-trening.pl',
+      '@id': 'https://najlepszytrening.pl',
       name: 'Najlepszy Trening - Ireneusz Maruszewski',
       description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy.',
-      url: 'https://najlepszy-trening.pl',
+      url: 'https://najlepszytrening.pl',
       telephone: '+48 737730868',
       address: {
         '@type': 'Dabrowskiego 207/225 Fit Fabric',

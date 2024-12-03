@@ -42,7 +42,7 @@ export const generateDefaultMetadata = (
     openGraph: {
       type: 'website',
       locale: 'pl_PL',
-      url: 'https://najlepszy-trening.pl',
+      url: 'https://najlepszytrening.pl',
       title: baseTitle,
       description: baseDescription,
       siteName: 'Najlepszy Trening',

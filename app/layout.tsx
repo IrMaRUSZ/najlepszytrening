@@ -8,7 +8,7 @@ import { generateSchemaMarkup } from '../components/SEO/SchemaOrg'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://najlepszy-trening.pl'),
+  metadataBase: new URL('https://najlepszytrening.pl'),
   title: {
     default: 'Trener Personalny Łódź | Najlepszy Trening',
     template: '%s | Najlepszy Trening'
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
-    url: 'https://najlepszy-trening.pl',
+    url: 'https://najlepszytrening.pl',
     title: 'Trener Personalny Łódź | Najlepszy Trening',
     description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy, skuteczne podejście.',
     siteName: 'Najlepszy Trening',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     google: 'jfOKWAUcWmDB0Tpqtm0txBQ2PKwNXZKUpcYwxHhKX8g',
   },
   alternates: {
-    canonical: 'https://najlepszy-trening.pl'
+    canonical: 'https://najlepszytrening.pl'
   }
 }
 

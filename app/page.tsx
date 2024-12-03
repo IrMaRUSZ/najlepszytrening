@@ -44,10 +44,10 @@ export default function Home() {
             <span className={styles.arrow}>→</span>
           </a>
           <div className={styles.socialLinks}>
-            <a href="https://instagram.com/najlepszy_trening" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+            <a href="https://instagram.com/trener_ireneusz" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <Instagram size={24} />
             </a>
-            <a href="https://youtube.com/@najlepszy_trening" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+            <a href="https://youtube.com/@trener_ireneusz" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <Youtube size={24} />
             </a>
           </div>

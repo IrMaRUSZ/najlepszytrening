@@ -16,7 +16,7 @@ export const generatePageMetadata = ({
   imageUrl,
 }: PageMetadataProps): Metadata => {
   const baseMetadata = generateDefaultMetadata(title, description)
-  const url = `https://najlepszy-trening.pl${path}`
+  const url = `https://najlepszytrening.pl${path}`
   
   return {
     ...baseMetadata,

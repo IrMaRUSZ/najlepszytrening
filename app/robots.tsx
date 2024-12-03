@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://najlepszy-trening.pl/sitemap.xml',
+    sitemap: 'https://najlepszytrening.pl/sitemap.xml',
   }
 }
