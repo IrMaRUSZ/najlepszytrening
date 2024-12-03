@@ -1,0 +1,589 @@
+/* styles/trener-personalny-lodz.module.css */
+
+.trainingSection {
+    width: 100%;
+    padding: 6rem 0;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5 1rem;
+  }
+  
+  .header {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+  
+  .title {
+    margin-top: 10rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #fff 0%, #e2e2e2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .subtitle {
+    color: #9ca3af;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+  
+  .mainGrid {
+    display: grid;
+    gap: 3rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .mainGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .imageWrapper {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 2/4;
+  }
+  
+  @media (min-width: 1024px) {
+    .imageWrapper {
+      aspect-ratio: auto;
+      height: 600px;
+    }
+  }
+  
+  .mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  }
+  
+  .cardGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    background-color: rgba(23, 23, 23, 0.9);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid #27272a;
+    transition: all 300ms;
+  }
+  
+  .card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .cardHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .iconWrapper {
+    padding: 0.75rem;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 0.75rem;
+  }
+  
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #3b82f6;
+  }
+  
+  .cardContent {
+    flex: 1;
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  
+  .cardText {
+    color: #9ca3af;
+    line-height: 1.75;
+  }
+  
+  .testimonialSection {
+    margin-top: 4rem;
+    background-color: rgba(23, 23, 23, 0.5);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+  
+  .testimonialGrid {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .testimonialGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .testimonialCard {
+    background-color: rgba(23, 23, 23, 0.5);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+  }
+  
+  .testimonialText {
+    color: #d1d5db;
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonialAuthor {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  
+  .ctaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: background-color 300ms;
+  }
+  
+  .ctaButton:hover {
+    background-color: #2563eb;
+  }
+
+  .testimonialSection h2 {
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+  
+  .testimonialGrid {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .testimonialGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .testimonialCard {
+    background-color: rgba(23, 23, 23, 0.8);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .testimonialCard:hover {
+    transform: scale(1.02);
+  }
+  /* styles/trener-personalny-lodz.module.css */
+
+/* Poprzednie style pozostają bez zmian... */
+
+/* Timeline styles */
+.exampleTraining {
+    margin-top: 6rem;
+    padding: 2rem 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #fff;
+  }
+  
+  .timelineContainer {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+  
+  .timelineContainer::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #3b82f6;
+  }
+  
+  @media (min-width: 768px) {
+    .timelineContainer::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .timelineItem {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .timelineItem {
+      padding-left: 0;
+      width: 50%;
+    }
+  
+    .timelineItem:nth-child(even) {
+      margin-left: 50%;
+      padding-left: 3rem;
+    }
+  
+    .timelineItem:nth-child(odd) {
+      padding-right: 3rem;
+      text-align: right;
+    }
+  }
+  
+  .timelineDot {
+    position: absolute;
+    left: 1.25rem;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #3b82f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .timelineDot {
+      left: auto;
+      right: -1.5rem;
+    }
+  
+    .timelineItem:nth-child(even) .timelineDot {
+      right: auto;
+      left: -1.5rem;
+    }
+  }
+  
+  .timelineIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #fff;
+  }
+  
+  .timelineContent {
+    background: rgba(23, 23, 23, 0.9);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #27272a;
+  }
+  
+  .timelineContent h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .timelineContent p {
+    color: #9ca3af;
+    line-height: 1.75;
+  }
+  
+  /* FAQ styles */
+  .faqSection {
+    margin-top: 6rem;
+    padding: 2rem 0;
+  }
+  
+  .faqGrid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .faqItem {
+    background: rgba(23, 23, 23, 0.9);
+    border: 1px solid #27272a;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 300ms;
+  }
+  
+  .faqItem:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+  
+  .faqQuestion {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .faqQuestion h3 {
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+  
+  .faqIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #3b82f6;
+    transition: transform 300ms;
+  }
+  
+  .faqIconOpen {
+    transform: rotate(180deg);
+  }
+  
+  .faqAnswer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 300ms ease-in-out;
+  }
+  
+  .faqAnswerOpen {
+    max-height: 500px;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+  
+  .faqAnswer p {
+    color: #9ca3af;
+    line-height: 1.75;
+  }
+  
+  /* CTA Container */
+  .ctaContainer {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  /* styles/trener-personalny-lodz.module.css */
+
+/* Animacja dla głównego nagłówka */
+.title {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.subtitle {
+  animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+/* Animacja dla kart */
+.card {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+
+/* Animacja dla timeline */
+.timelineItem {
+  animation: fadeInLeft 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.timelineItem:nth-child(1) { animation-delay: 0.2s; }
+.timelineItem:nth-child(2) { animation-delay: 0.4s; }
+.timelineItem:nth-child(3) { animation-delay: 0.6s; }
+.timelineItem:nth-child(4) { animation-delay: 0.8s; }
+
+/* FAQ animacja */
+.faqItem {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.faqItem:nth-child(1) { animation-delay: 0.1s; }
+.faqItem:nth-child(2) { animation-delay: 0.2s; }
+.faqItem:nth-child(3) { animation-delay: 0.3s; }
+.faqItem:nth-child(4) { animation-delay: 0.4s; }
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Hover efekty */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.faqItem {
+  transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+  transform: translateX(5px);
+}
+
+/* Smooth FAQ animation */
+.faqAnswer {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Icon rotation */
+.faqIcon {
+  transition: transform 0.3s ease;
+}
+
+.faqIconOpen {
+  transform: rotate(180deg);
+}
+
+/* Image hover effect */
+.imageWrapper {
+  transition: transform 0.3s ease;
+}
+
+.imageWrapper:hover {
+  transform: scale(1.02);
+}
+
+/* CTA button animation */
+.ctaButton {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+.ctaButton:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+  );
+  transition: 0.5s;
+}
+
+.ctaButton:hover:before {
+  left: 100%;
+}
+
+/* Timeline dot pulse animation */
+.timelineDot {
+  position: relative;
+}
+
+.timelineDot:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+      opacity: 0.5;
+  }
+  70% {
+      transform: scale(1.1);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 0;
+  }
+}

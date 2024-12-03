@@ -1,0 +1,425 @@
+.section {
+    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+    padding: 8rem 2rem;
+    color: #ffffff;
+    overflow: hidden;
+  }
+  
+  .sectionTitle {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4rem;
+    background: linear-gradient(135deg, #ffffff 0%, #fca311 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Transformacje */
+  .transformationContainer {
+    max-width: 1200px;
+    margin: 0 auto 8rem;
+    padding: 0 1rem;
+  }
+  
+  .transformationSlider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  .transformationSliderTrack {
+    display: flex;
+    transition: transform 0.3s ease-out;
+    width: 100%;
+  }
+  
+  .transformationSlide {
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .transformationStory {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .imageWrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    border: 2px solid rgba(252, 163, 17, 0.2);
+    transition: border-color 0.3s ease;
+  }
+  
+  .imageWrapper:hover {
+    border-color: rgba(252, 163, 17, 0.5);
+  }
+  
+  .transformationImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .imageWrapper:hover .transformationImage {
+    transform: scale(1.05);
+  }
+  
+  .imageLabel {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    color: #fca311;
+  }
+  
+  /* Opinie */
+  .testimonialsContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .testimonialSlider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  .testimonialSliderTrack {
+    display: flex;
+    transition: transform 0.3s ease-out;
+    width: 100%;
+  }
+  
+  .testimonialSlide {
+    flex: 0 0 100%;
+    padding: 0 1rem;
+  }
+  
+  .testimonialCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(252, 163, 17, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .quoteIcon {
+    color: #fca311;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .testimonialImageWrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem;
+    border: 2px solid #fca311;
+  }
+  
+  .testimonialImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .testimonialContent {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+  }
+  
+  .testimonialAuthor {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+  }
+  
+  .testimonialAuthor h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  
+  .testimonialAuthor p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+  }
+  
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin: 1rem 0;
+  }
+  
+  .star {
+    color: #fca311;
+    fill: #fca311;
+  }
+  
+  .verificationLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fca311;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .verificationLink:hover {
+    opacity: 0.8;
+  }
+  
+  .linkIcon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Nawigacja */
+  .transformationDots,
+  .testimonialDots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .activeDot {
+    background: #fca311;
+    transform: scale(1.2);
+  }
+  
+/* Media Queries kontynuacja */
+@media (max-width: 768px) {
+    .transformationContainer {
+      margin-bottom: 4rem;
+    }
+  
+    .transformationSlide {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      padding: 0 0.5rem;
+    }
+  
+    .imageLabel {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+    }
+  
+    .transformationStory {
+      font-size: 1rem;
+      padding: 0;
+      margin-top: 1.5rem;
+    }
+  
+    .testimonialCard {
+      padding: 1.5rem;
+    }
+  
+    .testimonialContent {
+      font-size: 1rem;
+    }
+  
+    .testimonialImageWrapper {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+  
+    .quoteIcon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .transformationSlide {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .imageWrapper {
+      aspect-ratio: 4/5;
+    }
+  
+    .testimonialCard {
+      padding: 1rem;
+    }
+  
+    .testimonialContent {
+      font-size: 0.9rem;
+    }
+  
+    .testimonialAuthor h4 {
+      font-size: 1rem;
+    }
+  
+    .testimonialAuthor p {
+      font-size: 0.8rem;
+    }
+  
+    .verificationLink {
+      font-size: 0.8rem;
+    }
+  
+    .testimonialImageWrapper {
+      width: 50px;
+      height: 50px;
+    }
+  
+    .sectionTitle {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .dot {
+      width: 6px;
+      height: 6px;
+    }
+  
+    .section {
+      padding: 3rem 0.5rem;
+    }
+  }
+  
+  /* Animacje */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Dodatkowe klasy pomocnicze */
+  .hidden {
+    display: none;
+  }
+  
+  .visible {
+    display: block;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Style dla przycisków dostępności */
+  .srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Ulepszenia dotykowe */
+  @media (hover: none) {
+    .imageWrapper:hover .transformationImage {
+      transform: none;
+    }
+  
+    .imageWrapper:hover {
+      border-color: rgba(252, 163, 17, 0.2);
+    }
+  
+    .verificationLink:active {
+      opacity: 0.6;
+    }
+  }
+  
+  /* Style dla focus */
+  .dot:focus,
+  .verificationLink:focus {
+    outline: 2px solid #fca311;
+    outline-offset: 2px;
+  }
+  
+  /* Optymalizacje wydajności */
+  .transformationSliderTrack,
+  .testimonialSliderTrack {
+    will-change: transform;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Dodaj te style do istniejącego pliku CSS */
+
+.expandableText {
+    position: relative;
+    width: 100%;
+  }
+  
+  .expandButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fca311;
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .expandButton:hover {
+    opacity: 0.8;
+    gap: 0.75rem;
+  }
+  
+  .testimonialContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .testimonialContent p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .expandButton {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }

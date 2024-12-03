@@ -1,0 +1,315 @@
+.section {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, #000 0%, #111 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .title {
+    margin-top: 5rem;
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #fff 0%, #e2e2e2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-size: 1.125rem;
+    color: #9ca3af;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  
+  .appShowcase {
+    display: grid;
+    gap: 4rem;
+    margin-bottom: 6rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .appShowcase {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+    }
+  }
+  
+  .appDemo {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .appImage {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .appDemo:hover .appImage {
+    transform: scale(1.02);
+  }
+  
+  .appFeatures {
+    color: white;
+  }
+  
+  .appFeatures h3 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #fff 0%, #e2e2e2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .featuresList {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .feature {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .feature:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .featureIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #3b82f6;
+    flex-shrink: 0;
+  }
+  
+  .feature h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+  
+  .feature p {
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+  
+  .howItWorks {
+    margin: 8rem 0;
+    text-align: center;
+  }
+  
+  .howItWorks h3 {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    color: white;
+  }
+  
+  .steps {
+    display: grid;
+    gap: 2rem;
+    counter-reset: step;
+  }
+  
+  @media (min-width: 768px) {
+    .steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .steps {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .step {
+    position: relative;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .step:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .stepNumber {
+    width: 3rem;
+    height: 3rem;
+    background: #3b82f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .step h4 {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .step p {
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+  
+  .systemFeatures {
+    margin: 8rem 0;
+  }
+  
+  .systemFeatures h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: white;
+  }
+  
+  .featuresGrid {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .featuresGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .featureCard {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .featureCard:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .cardIcon {
+    width: 3rem;
+    height: 3rem;
+    color: #3b82f6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .featureCard h4 {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .featureCard p {
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+  
+  .cta {
+    text-align: center;
+    max-width: 600px;
+    margin: 8rem auto 0;
+  }
+  
+  .cta h3 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta p {
+    color: #9ca3af;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .ctaButton:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(59, 130, 246, 0.5);
+  }
+  
+  /* Animacje */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .feature, .step, .featureCard {
+    animation: fadeUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .feature:nth-child(1) { animation-delay: 0.1s; }
+  .feature:nth-child(2) { animation-delay: 0.2s; }
+  .feature:nth-child(3) { animation-delay: 0.3s; }
+  
+  /* Gradienty i efekty głębi */
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+  }

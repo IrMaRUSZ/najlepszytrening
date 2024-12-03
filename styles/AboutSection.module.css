@@ -1,0 +1,205 @@
+.aboutSection {
+    padding: 6rem 2rem;
+    background: #1a1a1a;
+  }
+  
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+  }
+  
+  .imageWrapper {
+    flex: 1;
+    position: relative;
+  }
+  
+  .image {
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .textContent {
+    flex: 1.5;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+  
+  .description {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    color: #e5e5e5;
+  }
+  
+  .approach {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    color: #e5e5e5;
+  }
+  
+  .keyPoints {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .keyPoint {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .keyPoint:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+  }
+  
+  .iconWrapper {
+    color: #3b82f6;
+    margin-bottom: 1rem;
+  }
+  
+  .pointTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+  
+  .pointDescription {
+    color: #e5e5e5;
+    line-height: 1.6;
+  }
+  
+  .motivation {
+    padding: 2rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 1rem;
+    border-left: 4px solid #3b82f6;
+    margin-bottom: 3rem;
+  }
+  
+  .motivation p {
+    color: #e5e5e5;
+    line-height: 1.75;
+    font-size: 1.125rem;
+  }
+  
+  .ctaSection {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .ctaButtonPrimary, .ctaButtonSecondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex: 1;
+  }
+  
+  .ctaButtonPrimary {
+    background: #3b82f6;
+    color: white;
+  }
+  
+  .ctaButtonPrimary:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  
+  .ctaButtonSecondary {
+    background: transparent;
+    border: 2px solid #3b82f6;
+    color: #3b82f6;
+  }
+  
+  .ctaButtonSecondary:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+  }
+  
+  /* Animacje */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animateUp {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animateLeft {
+    animation: slideLeft 0.8s ease-out forwards;
+  }
+  
+  .keyPoint {
+    opacity: 0;
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  @media (max-width: 1024px) {
+    .content {
+      flex-direction: column;
+    }
+  
+    .imageWrapper {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  
+    .keyPoints {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .aboutSection {
+      padding: 4rem 1rem;
+    }
+  
+    .title {
+      font-size: 2rem;
+    }
+  
+    .ctaSection {
+      flex-direction: column;
+    }
+  }
