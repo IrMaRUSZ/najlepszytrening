@@ -13,6 +13,9 @@ export const generateDefaultMetadata = (
     description: description || baseDescription,
     keywords: [
       'trener personalny łódź',
+      'trener personalny łódź Dabrowa',
+      'trener personalny łódź Widzew',
+      'trener personalny łódź Chojny',
       'trening personalny',
       'treningi indywidualne łódź',
       'trener fitness łódź',
@@ -20,7 +23,8 @@ export const generateDefaultMetadata = (
       'najlepszy trening',
       'treningi online',
       'plan treningowy',
-      'trening siłowy łódź'
+      'trening siłowy łódź',
+      'Dieta'
     ].join(', '),
     authors: [{ name: 'Ireneusz Maruszewski' }],
     creator: 'Ireneusz Maruszewski',
@@ -44,7 +48,7 @@ export const generateDefaultMetadata = (
       siteName: 'Najlepszy Trening',
       images: [
         {
-          url: '/images/og-image.jpg',
+          url: '/images/Maruszewski.webp',
           width: 1200,
           height: 630,
           alt: 'Ireneusz Maruszewski - Trener Personalny Łódź',
@@ -55,7 +59,7 @@ export const generateDefaultMetadata = (
       card: 'summary_large_image',
       title: baseTitle,
       description: baseDescription,
-      images: ['/images/og-image.jpg'],
+      images: ['/images/Maruszewski.webp'],
     },
   }
 }
