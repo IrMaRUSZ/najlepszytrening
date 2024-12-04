@@ -11,6 +11,15 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  redirects: async () => {
+    return [
+      {
+        source: '/wspolpraca',
+        destination: '/',
+        permanent: true, // 301 przekierowanie
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
