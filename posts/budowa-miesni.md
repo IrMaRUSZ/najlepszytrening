@@ -48,13 +48,13 @@ Do efektywnej budowy masy mięśniowej potrzebujesz:
 - Dodać odpowiednią nadwyżkę (300-500 kcal)
 - Określić właściwe proporcje makroskładników
 
-Możesz skorzystać z naszego [kalkulatora](/tools/diet), który:
+Możesz skorzystać z naszego [kalkulatora](/narzedzia/Kalkulator-zapotrzebowania-kalorycznego), który:
 - Wyliczy Twoje podstawowe zapotrzebowanie
 - Określi optymalną nadwyżkę kaloryczną
 - Zaproponuje proporcje makroskładników
 - Uwzględni Twój poziom aktywności
 
-👉 [Przejdź do kalkulatora kalorii i makroskładników](/tools/diet)
+👉 [Przejdź do kalkulatora kalorii i makroskładników](/narzedzia/Kalkulator-zapotrzebowania-kalorycznego)
 
 ## Zasady treningu
 
@@ -148,4 +148,4 @@ Skorzystaj z naszej pomocy w Łodzi! Jako doświadczeni trenerzy personalni pomo
 - Nauczyć prawidłowej techniki
 - Osiągnąć Twoje cele
 
-📞 [Umów się na trening personalny w Łodzi](/contact) i rozpocznij swoją transformację pod okiem profesjonalistów!
+📞 [Umów się na trening personalny w Łodzi](/kontakt) i rozpocznij swoją transformację pod okiem profesjonalistów!

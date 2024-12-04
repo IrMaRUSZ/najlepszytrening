@@ -45,7 +45,7 @@ PPM (kobiety) = 655 + (9,6 × masa ciała) + (1,8 × wzrost) - (4,7 × wiek) PPM
 
 Zsumuj PPM z aktywnością, aby uzyskać całkowite zapotrzebowanie kaloryczne (TDEE).
 
-Lub skorzystaj z naszego [kalkulatora kalorii](/tools), który zrobi to za Ciebie.
+Lub skorzystaj z naszego [kalkulatora kalorii](/narzedzia/Kalkulator-zapotrzebowania-kalorycznego), który zrobi to za Ciebie.
 
 ## Sposoby liczenia kalorii
 
@@ -69,5 +69,5 @@ Najlepiej połączyć te metody, aby uzyskać precyzyjne wyniki.
 
 ## Podsumowanie
 
-Liczenie kalorii nie musi być trudne ani czasochłonne. Dzięki odpowiednim narzędziom i nawykom możesz z łatwością kontrolować swoją dietę i osiągnąć wymarzone efekty. Zacznij już dziś od naszego [kalkulatora dietetycznego](/tools) i poczuj różnicę!
+Liczenie kalorii nie musi być trudne ani czasochłonne. Dzięki odpowiednim narzędziom i nawykom możesz z łatwością kontrolować swoją dietę i osiągnąć wymarzone efekty. Zacznij już dziś od naszego [kalkulatora dietetycznego](/narzedzia/Kalkulator-zapotrzebowania-kalorycznego) i poczuj różnicę!
 

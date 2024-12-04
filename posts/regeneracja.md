@@ -128,6 +128,6 @@ Potrzebujesz profesjonalnego wsparcia w Łodzi? Nasi trenerzy personalni pomogą
 - Zarządzać stresem i energią
 - Osiągnąć maksymalne efekty
 
-👉 [Skontaktuj się z trenerem personalnym w Łodzi](/contact) i zadbaj o właściwą regenerację!
+👉 [Skontaktuj się z trenerem personalnym w Łodzi](/kontakt) i zadbaj o właściwą regenerację!
 
 *Wszystkie informacje są przeznaczone dla osób zdrowych. W przypadku problemów ze snem lub przewlekłego stresu, skonsultuj się z lekarzem.

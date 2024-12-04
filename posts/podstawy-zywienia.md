@@ -34,7 +34,7 @@ Przykłady:
 - **Jaś** - spożywa 1800 kcal, prowadzi siedzący tryb życia, ale tyje. Mimo różnych diet, nie traci wagi, bo nie liczy kalorii.
 - **Gosia** - spożywa 2900 kcal, jest aktywna, ale zjada mniej niż potrzebuje, więc traci na wadze mimo dużych posiłków.
 
-👉 [**Skorzystaj z naszego kalkulatora**](/tools): Przed rozpoczęciem kontroli kalorii, wylicz swoją podstawową i całkowitą przemianę materii!
+👉 [**Skorzystaj z naszego kalkulatora**](/narzedzia): Przed rozpoczęciem kontroli kalorii, wylicz swoją podstawową i całkowitą przemianę materii!
 
 ---
 
@@ -79,7 +79,6 @@ Nie ma jednej idealnej liczby posiłków. Najlepiej dostosować ich liczbę (2-5
 
 Suplementy mogą wspierać zdrowie, ale zrównoważona dieta dostarcza większości potrzebnych składników. Wybieraj suplementy ostrożnie i stosuj tylko w uzasadnionych przypadkach, np. przy niedoborach.
 
-➡️ **Polecane suplementy** znajdziesz w naszym artykule: [Top 5 suplementów diety](https://najlepszytrening.pl/top-5-suplementow-diety/).
 
 ---
 

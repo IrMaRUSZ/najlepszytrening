@@ -53,13 +53,13 @@ PPM (kobiety) = 655 + (9,6 × masa ciała) + (1,8 × wzrost) - (4,7 × wiek)
 PPM (mężczyźni) = 66 + (13,7 × masa ciała) + (5 × wzrost) - (6,8 × wiek)
 ```
 
-Jednak znacznie łatwiej jest skorzystać z naszego [kalkulatora dietetycznego](/tools/diet). Narzędzie automatycznie:
+Jednak znacznie łatwiej jest skorzystać z naszego [kalkulatora dietetycznego](/narzedzia/Kalkulator-zapotrzebowania-kalorycznego). Narzędzie automatycznie:
 - Wyliczy Twoje zapotrzebowanie kaloryczne
 - Zaproponuje optymalne proporcje makroskładników
 - Pokaże wartości dla różnych celów (redukcja, masa, utrzymanie)
 - Uwzględni Twój poziom aktywności fizycznej
 
-👉 [Przejdź do kalkulatora kalorii i makroskładników](/tools/diet)
+👉 [Przejdź do kalkulatora kalorii i makroskładników](/narzedzia/Kalkulator-zapotrzebowania-kalorycznego)
 
 ## Nawyki zywieniowe
 
@@ -140,4 +140,4 @@ Pamiętaj, że skuteczne odchudzanie to maraton, nie sprint. Kluczem jest:
 - Cierpliwość i konsekwencja
 - Monitorowanie postępów
 
-Oblicz swoje zapotrzebowanie kaloryczne za pomocą naszego [kalkulatora](/tools/diet) i rozpocznij swoją transformację już dziś!
+Oblicz swoje zapotrzebowanie kaloryczne za pomocą naszego [kalkulatora](/narzedzia/Kalkulator-zapotrzebowania-kalorycznego) i rozpocznij swoją transformację już dziś!
