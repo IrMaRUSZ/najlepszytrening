@@ -19,11 +19,6 @@ const nextConfig = {
         permanent: true, // 301 przekierowanie
       },
       {
-        source: '/wspolpraca-online',
-        destination: '/Wspolpraca-online',
-        permanent: true, // 301 przekierowanie
-      },
-      {
         source: '/Wspolpraca',
         destination: '/',
         permanent: true, // 301 przekierowanie

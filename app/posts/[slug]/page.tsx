@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return {
     title: `${post.title} | Blog Trenera Personalnego Łódź`,
-    description: post.excerpt || `${post.title} - przeczytaj artykuł na blogu Antidotum Studio. Profesjonalne porady treningowe i dietetyczne.`,
+    description: post.excerpt || `${post.title} - przeczytaj artykuł na blogu Najelepszytrening. Profesjonalne porady treningowe i dietetyczne.`,
     openGraph: {
       title: post.title,
       description: post.excerpt,

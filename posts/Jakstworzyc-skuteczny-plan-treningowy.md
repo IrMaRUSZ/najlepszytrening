@@ -5,7 +5,7 @@ image: '/blog/Plantreningowy-schemat ćwiczeń.webp'
 metaDescription: 'Kompleksowy poradnik o tworzeniu skutecznego planu treningowego. Naucz się jak prawidłowo planować treningi i osiągać swoje cele na siłowni.'
 imageAlt: 'Plan treningowy - schemat ćwiczeń'
 date: '2024-12-07'
-readingTime: 10
+readingTime: 20
 categories: ['Trening', 'Siłownia']
 ---
 

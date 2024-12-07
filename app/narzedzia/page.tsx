@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calculator, Scale, Dumbbell } from 'lucide-react';
+import { Calculator, Scale, Dumbbell, WeightIcon} from 'lucide-react';
 import Diet from '../../components/calculators/Kalkulator-zapotrzebowania-kalorycznego';
 import BodyFat from '../../components/calculators/bodyfat';
 import OneRepMax from '../../components/calculators/onerepmax';
+import BMI from '../../components/calculators/bmi';
 import styles from '../../styles/narzedzia.module.css';
 
 const ToolsPage = () => {
@@ -28,6 +29,12 @@ const ToolsPage = () => {
       name: 'Kalkulator 1RM',
       icon: Dumbbell,
       description: 'Oblicz swoje maksymalne obciążenie'
+    },
+    {
+      id: 'bmi',
+      name: 'Kalkulator BMI',
+      icon: WeightIcon,
+      description: 'Oblicz swoje BMI'
     }
   ];
 
@@ -39,6 +46,8 @@ const ToolsPage = () => {
         return <BodyFat />;
       case 'onerepmax':
         return <OneRepMax />;
+      case 'bmi':
+        return <BMI />;
       default:
         return null;
     }
