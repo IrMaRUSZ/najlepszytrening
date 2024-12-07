@@ -1,0 +1,40 @@
+/* app/prywatnosc/Privacy.module.css */
+.container {
+    @apply min-h-screen bg-dark text-light;
+  }
+  
+  .content {
+    @apply max-w-4xl mx-auto px-4 py-8 md:py-16;
+  }
+  
+  .title {
+    @apply text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400;
+  }
+  
+  .lastUpdate {
+    @apply text-sm text-gray-400 mb-8 text-center;
+  }
+  
+  .section {
+    @apply mb-12 bg-dark/50 rounded-lg p-6 backdrop-blur-sm border border-gray-800;
+  }
+  
+  .sectionTitle {
+    @apply text-2xl font-semibold mb-6 text-blue-400;
+  }
+  
+  .paragraph {
+    @apply mb-6 leading-relaxed text-gray-300;
+  }
+  
+  .list {
+    @apply list-disc pl-6 mb-6 space-y-3 text-gray-300;
+  }
+  
+  .listItem {
+    @apply leading-relaxed;
+  }
+  
+  .email {
+    @apply text-blue-400 hover:text-blue-300 transition-colors;
+  }

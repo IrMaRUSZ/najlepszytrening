@@ -1,11 +1,13 @@
-// app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
 import { generateSchemaMarkup } from '../components/SEO/SchemaOrg'
+import GoogleAnalytics from '../components/SEO/GoogleAnalytics'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://najlepszytrening.pl'),
@@ -80,6 +82,7 @@ export default function RootLayout({
         {generateSchemaMarkup()}
       </head>
       <body className={inter.className}>
+        <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
         <Navbar />
         {children}
       </body>
