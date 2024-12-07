@@ -18,6 +18,21 @@ const nextConfig = {
         destination: '/',
         permanent: true, // 301 przekierowanie
       },
+      {
+        source: '/tools/diet',
+        destination: '/narzedzia',
+        permanent: true, // 301 przekierowanie
+      },
+      {
+        source: '/contact',
+        destination: '/kontakt',
+        permanent: true, // 301 przekierowanie
+      },
+      {
+        source: '/top-5-suplementow-diety',
+        destination: '/posts/top-5-suplementow-diety',
+        permanent: true, // 301 przekierowanie
+      },
     ]
   },
 }

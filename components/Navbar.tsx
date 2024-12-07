@@ -35,7 +35,7 @@ export default function Navbar() {
           <div className={styles.mobileMenu}>
             <Link href="/o-mnie" onClick={() => setIsOpen(false)}>O mnie</Link>
             <Link href="/trener-personalny-lodz" onClick={() => setIsOpen(false)}>Trener</Link>
-            <Link href="/treningi-online" onClick={() => setIsOpen(false)}>Online</Link>
+            <Link href="/Wspolpraca-online" onClick={() => setIsOpen(false)}>Online</Link>
             <Link href="/kontakt" onClick={() => setIsOpen(false)}>Kontakt</Link>
             <Link href="/blog" onClick={() => setIsOpen(false)}>Blog</Link>
             <Link href="/narzedzia" onClick={() => setIsOpen(false)}>Narzędzia</Link>

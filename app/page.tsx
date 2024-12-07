@@ -14,7 +14,7 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={styles.imageContainer}> 
           <Image
-            src="/images/Maruszewski.webp"
+            src="/images/Maruszewskibt.webp"
             alt="Ireneusz Maruszewski - Trener Personalny Łódź"
             width={600}
             height={800}
