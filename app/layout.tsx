@@ -12,22 +12,51 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 export const metadata: Metadata = {
   metadataBase: new URL('https://najlepszytrening.pl'),
   title: {
-    default: 'Trener Personalny Łódź | Najlepszy Trening',
-    template: '%s | Najlepszy Trening'
+    default: 'Trener Personalny Łódź Widzew, Dąbrowa | FitFabric | Treningi i Fizjoterapia',
+    template: '%s | Najlepszy Trening w Łodzi'
   },
-  description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy, skuteczne podejście. Transformacje sylwetki, treningi siłowe i funkcjonalne.',
+  description: 'Trener personalny i fizjoterapeuta w FitFabric Łódź. Treningi na Widzewie, Dąbrowie, Chojnach i w Centrum. Kompleksowa opieka: treningi personalne, fizjoterapia, plany dietetyczne. 10+ lat doświadczenia. Pierwsza konsultacja gratis!',
   keywords: [
-    'trener personalny łódź',
-    'trening personalny',
+    // Lokalizacje
+    'trener personalny łódź widzew',
+    'trener personalny łódź dąbrowa',
+    'trener personalny łódź chojny',
+    'trener personalny łódź centrum',
+    'trener fitfabric łódź',
+    'trening personalny widzew',
+    'trening personalny dąbrowa',
+    'treningi personalne chojny',
+    // Siłownie
+    'fitfabric trener personalny',
+    'fitfabric widzew treningi',
+    'fitfabric dąbrowa',
+    // Podstawowe usługi z lokalizacjami
+    'fizjoterapeuta łódź widzew',
+    'fizjoterapeuta łódź dąbrowa',
+    'fizjoterapeuta fitfabric',
+    'doradca żywieniowy łódź widzew',
+    'rehabilitacja sportowa łódź widzew',
+    'rehabilitacja sportowa łódź dąbrowa',
+    // Ogólne usługi
+    'transformacje sylwetki łódź',
+    'treningi personalne',
     'treningi indywidualne łódź',
-    'trener fitness łódź',
-    'Ireneusz Maruszewski',
-    'najlepszy trening',
-    'treningi online',
-    'plan treningowy',
-    'trening siłowy łódź'
+    'Ireneusz Maruszewski trener',
+    'Ireneusz Maruszewski fizjoterapeuta',
+    'rehabilitacja po urazach',
+    'plany żywieniowe łódź',
+    'dietetyk sportowy łódź',
+    'treningi online z trenerem',
+    'indywidualny plan treningowy',
+    'trening siłowy dla początkujących',
+    'redukcja tkanki tłuszczowej',
+    'budowanie masy mięśniowej',
+    'trening funkcjonalny łódź'
   ],
-  authors: [{ name: 'Ireneusz Maruszewski' }],
+  authors: [{ 
+    name: 'Ireneusz Maruszewski',
+    url: 'https://najlepszytrening.pl/o-mnie'
+  }],
   creator: 'Ireneusz Maruszewski',
   robots: {
     index: true,
@@ -44,20 +73,20 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pl_PL',
     url: 'https://najlepszytrening.pl',
-    title: 'Trener Personalny Łódź | Najlepszy Trening',
-    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy, skuteczne podejście.',
+    title: 'Trener Personalny Łódź (Widzew, Dąbrowa) | FitFabric | Transformacje i Rehabilitacja',
+    description: 'Szukasz trenera w Łodzi? Treningi w FitFabric na Widzewie i Dąbrowie. ✓ Trening personalny ✓ Fizjoterapia ✓ Plany żywieniowe ✓ 10+ lat doświadczenia ✓ Pierwsza konsultacja gratis! Dojazd do klienta w całej Łodzi.',
     siteName: 'Najlepszy Trening',
     images: [{
       url: '/images/Maruszewski.webp',
       width: 1200,
       height: 630,
-      alt: 'Ireneusz Maruszewski - Trener Personalny Łódź'
+      alt: 'Ireneusz Maruszewski - Trener Personalny i Fizjoterapeuta w Łodzi - FitFabric'
     }]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Trener Personalny Łódź | Najlepszy Trening',
-    description: 'Najlepszy trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy, skuteczne podejście.',
+    title: 'Trener Personalny Łódź - FitFabric (Widzew, Dąbrowa) | Treningi i Rehabilitacja',
+    description: 'Treningi personalne w FitFabric Łódź (Widzew, Dąbrowa). Fizjoterapia, plany treningowe i dietetyczne. Pierwsza konsultacja gratis!',
     images: ['/images/Maruszewski.webp'],
   },
   verification: {

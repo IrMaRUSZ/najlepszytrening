@@ -14,6 +14,11 @@ const nextConfig = {
   redirects: async () => {
     return [
       {
+        source: '/dieta',
+        destination: '/posts/dieta',
+        permanent: true, // 301 przekierowanie
+      },
+      {
         source: '/wspolpraca-online',
         destination: '/Wspolpraca-online',
         permanent: true, // 301 przekierowanie
