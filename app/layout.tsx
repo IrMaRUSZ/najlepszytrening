@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Trener Personalny Łódź | Najlepszy Trening',
-    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy, skuteczne podejście.',
+    description: 'Najlepszy trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy, skuteczne podejście.',
     images: ['/images/Maruszewski.webp'],
   },
   verification: {
