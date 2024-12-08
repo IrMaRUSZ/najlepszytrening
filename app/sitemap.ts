@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/wspolpraca-online`,
+      url: `${baseUrl}/Wspolpraca-online`,
       lastModified: new Date().toISOString(),
       changeFrequency: 'monthly' as ChangeFrequency,
       priority: 0.8,
