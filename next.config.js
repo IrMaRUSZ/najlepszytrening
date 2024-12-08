@@ -83,6 +83,11 @@ const nextConfig = {
         destination: 'posts/jadlospis-dla-sportowcow-jakie-produkty-powinny-znalezc-sie-na-talerzu',
         permanent: true, // 301 przekierowanie
       },
+      {
+        source: '/cwiczenia-na-plaski-brzuch-i-szczuple-uda-nie-daj-sobie-wcisnac-sciemy/',
+        destination: 'posts/cwiczenia-na-plaski-brzuch-i-szczuple-uda-nie-daj-sobie-wcisnac-sciemy/',
+        permanent: true, // 301 przekierowanie
+      },
     ]
   },
 }
