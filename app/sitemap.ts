@@ -1,19 +1,11 @@
 import { MetadataRoute } from 'next'
+import { getAllPosts } from '../lib/posts'
 
 type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 
-async function getAllPosts() {
-  // Tu implementujesz logikę pobierania postów
-  return [
-    { slug: 'pierwszy-post', lastModified: '2024-12-08' },
-    { slug: 'drugi-post', lastModified: '2024-12-08' },
-    // itd.
-  ]
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://najlepszytrening.pl'
-
+  
   const posts = await getAllPosts()
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -87,7 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogPosts: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/posts/${post.slug}`,
-    lastModified: new Date(post.lastModified).toISOString(),
+    lastModified: post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
     changeFrequency: 'monthly' as ChangeFrequency,
     priority: 0.7,
   }))

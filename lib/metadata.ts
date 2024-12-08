@@ -4,8 +4,8 @@ export const siteMetadata = {
     author: 'Ireneusz Maruszewski',
     city: 'Łódź',
     email: 'kontakt@najlepszytrening.pl',
-    phone: '+48 XXX XXX XXX',
-    address: 'Pełny adres w Łodzi'
+    phone: '+48 737 730 868',
+    address: 'Dąbrowskiego 207/225 Łódź'
   }
   
   export const createMetadata = (title: string, description: string) => ({
