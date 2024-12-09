@@ -16,6 +16,26 @@ export const metadata: Metadata = {
     template: '%s | Najlepszy Trening w Łodzi'
   },
   description: 'Trener personalny i fizjoterapeuta w FitFabric Łódź. Treningi na Widzewie, Dąbrowie, Chojnach i w Centrum. Kompleksowa opieka: treningi personalne, fizjoterapia, plany dietetyczne. 10+ lat doświadczenia. Pierwsza konsultacja gratis!',
+  icons: {
+    icon: [
+      { url: '/icon/favicon.ico' },
+      { url: '/icon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icon/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/icon/apple-touch-icon.png' }
+    ],
+    other: [
+      {
+        rel: 'android-chrome-192x192',
+        url: '/icon/android-chrome-192x192.png',
+      },
+      {
+        rel: 'android-chrome-512x512',
+        url: '/icon/android-chrome-512x512.png',
+      }
+    ]
+  },
   keywords: [
     // Lokalizacje
     'trener personalny łódź widzew',
