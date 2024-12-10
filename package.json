@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-     "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -15,7 +15,7 @@
     "next": "15.0.3",
     "nodemailer": "^6.9.16",
     "react": "^18.2.0",
-    "react-dom":"^18.2.0",
+    "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
     "remark-gfm": "^4.0.0"
   },

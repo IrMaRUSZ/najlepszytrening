@@ -88,11 +88,27 @@ const nextConfig = {
         destination: 'posts/cwiczenia-na-plaski-brzuch-i-szczuple-uda-nie-daj-sobie-wcisnac-sciemy/',
         permanent: true, // 301 przekierowanie
       },
-            {
+      {
         source: '/najlepsze-cwiczenia-na-klatke-piersiowa',
         destination: '/posts/najlepsze-cwiczenia-na-klatke-piersiowa',
         permanent: true, // 301 przekierowanie
       },
+      {
+        source: '/jak-trenowac-silowo-w-domu-bez-sprzetu',
+        destination: '/posts/jak-trenowac-silowo-w-domu-bez-sprzetu',
+        permanent: true, // 301 przekierowanie
+      },
+      {
+        source: '/trening-z-gumami-dla-mezczyzn',
+        destination: '/posts/trening-z-gumami-w-domu',
+        permanent: true, // 301 przekierowanie
+      },
+      {
+        source: '/trening-z-gumami-dla-kobiet',
+        destination: '/posts/trening-z-gumami-w-domu',
+        permanent: true, // 301 przekierowanie
+      },
+      
     ]
   },
 }
