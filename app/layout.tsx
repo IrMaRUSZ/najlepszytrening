@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://najlepszytrening.pl'),
+  metadataBase: new URL('https://www.najlepszytrening.pl'),
   title: {
     default: 'Trener Personalny Łódź Widzew, Dąbrowa | FitFabric | Treningi i Fizjoterapia',
     template: '%s | Najlepszy Trening w Łodzi'
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ 
     name: 'Ireneusz Maruszewski',
-    url: 'https://najlepszytrening.pl/o-mnie'
+    url: 'https://www.najlepszytrening.pl/o-mnie'
   }],
   creator: 'Ireneusz Maruszewski',
   robots: {
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
-    url: 'https://najlepszytrening.pl',
+    url: 'https://www.najlepszytrening.pl',
     title: 'Trener Personalny Łódź (Widzew, Dąbrowa) | FitFabric | Transformacje i Rehabilitacja',
     description: 'Szukasz trenera w Łodzi? Treningi w FitFabric na Widzewie i Dąbrowie. ✓ Trening personalny ✓ Fizjoterapia ✓ Plany żywieniowe ✓ 10+ lat doświadczenia ✓ Pierwsza konsultacja gratis! Dojazd do klienta w całej Łodzi.',
     siteName: 'Najlepszy Trening',
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     google: 'jfOKWAUcWmDB0Tpqtm0txBQ2PKwNXZKUpcYwxHhKX8g',
   },
   alternates: {
-    canonical: 'https://najlepszytrening.pl'
+    canonical: 'https://www.najlepszytrening.pl'
   }
 }
 

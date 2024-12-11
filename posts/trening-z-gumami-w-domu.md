@@ -1,5 +1,5 @@
 ---
-title: 'Kompletny trening z gumami - Plan treningowy na 2024'
+title: 'Kompletny trening z gumami - Plan treningowy na 2025'
 excerpt: 'Skuteczny plan treningowy z gumami oporowymi stworzony z myślą o treningu w domu. Zero wymówek, maksimum efektów.'
 image: '/blog/trening-z-gumami.webp'
 metaDescription: 'Odkryj skuteczny plan treningowy z gumami oporowymi. Trenuj efektywnie w domu, oszczędzaj czas i pieniądze, osiągaj realne efekty bez siłowni.'
