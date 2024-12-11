@@ -14,6 +14,17 @@ const nextConfig = {
   redirects: async () => {
     return [
       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'najlepszytrening.pl',
+          },
+        ],
+        permanent: true,
+        destination: 'https://www.najlepszytrening.pl/:path*',
+      },
+      {
         source: '/dieta',
         destination: '/posts/dieta',
         permanent: true, // 301 przekierowanie

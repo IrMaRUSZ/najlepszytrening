@@ -12,10 +12,10 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.najlepszytrening.pl'),
   title: {
-    default: 'Trener Personalny Łódź Widzew, Dąbrowa | FitFabric | Treningi i Fizjoterapia',
+    default: 'Trener Łódź Widzew, Dąbrowa | FitFabric | Fizjoterapia',
     template: '%s | Najlepszy Trening w Łodzi'
   },
-  description: 'Trener personalny i fizjoterapeuta w FitFabric Łódź. Treningi na Widzewie, Dąbrowie, Chojnach i w Centrum. Kompleksowa opieka: treningi personalne, fizjoterapia, plany dietetyczne. 10+ lat doświadczenia. Pierwsza konsultacja gratis!',
+  description: 'Transformacja Twojej sylwetki w Łodzi - profesjonalne treningi personalne i fizjoterapia w FitFabric (Widzew, Dąbrowa). Zacznij od darmowej konsultacji!',
   icons: {
     icon: [
       { url: '/icon/favicon.ico' },
