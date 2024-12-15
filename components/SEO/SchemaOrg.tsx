@@ -1,67 +1,8 @@
+// components/SEO/SchemaOrg.tsx
 import React from 'react';
 
-interface Rating {
-  '@type': 'Rating';
-  ratingValue: string;
-  bestRating: string;
-}
-
-interface Review {
-  '@type': 'Review';
-  reviewRating: Rating;
-  author: {
-    '@type': 'Person';
-    name: string;
-  };
-}
-
-interface AggregateRating {
-  '@type': 'AggregateRating';
-  ratingValue: string;
-  reviewCount: string;
-  bestRating: string;
-  worstRating: string;
-}
-
-interface SchemaData {
-  '@context': 'https://schema.org';
-  '@type': 'LocalBusiness';
-  '@id': string;
-  name: string;
-  description: string;
-  url: string;
-  telephone: string;
-  address: {
-    '@type': 'PostalAddress';
-    streetAddress: string;
-    addressLocality: string;
-    addressRegion: string;
-    postalCode: string;
-    addressCountry: string;
-  };
-  geo: {
-    '@type': 'GeoCoordinates';
-    latitude: number;
-    longitude: number;
-  };
-  image: {
-    '@type': 'ImageObject';
-    url: string;
-  };
-  priceRange: string;
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification';
-    dayOfWeek: string[];
-    opens: string;
-    closes: string;
-  };
-  sameAs: string[];
-  review: Review;
-  aggregateRating: AggregateRating;
-}
-
-export const generateSchemaMarkup = (): JSX.Element => {
-  const schemaData: SchemaData = {
+export const generateSchemaMarkup = () => {
+  const businessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': 'https://www.najlepszytrening.pl',
@@ -81,16 +22,24 @@ export const generateSchemaMarkup = (): JSX.Element => {
       '@type': 'GeoCoordinates',
       latitude: 51.7349044,
       longitude: 19.5163388
-    },
+    },      
     image: {
       '@type': 'ImageObject',
-      url: 'https://www.najlepszytrening.pl/images/Maruszewski.webp'
+      url: 'https://www.najlepszytrening.pl/images/Maruszewski.webp',
+      width: '1200',
+      height: '630',
+      caption: 'Ireneusz Maruszewski - Trener Personalny i Fizjoterapeuta w Łodzi'
     },
     priceRange: '$$',
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: [
-        'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+        'Monday', 
+        'Tuesday', 
+        'Wednesday', 
+        'Thursday', 
+        'Friday', 
+        'Saturday'
       ],
       opens: '07:00',
       closes: '21:00'
@@ -99,31 +48,75 @@ export const generateSchemaMarkup = (): JSX.Element => {
       'https://instagram.com/trener_ireneusz',
       'https://youtube.com/@trener_ireneusz'
     ],
-    review: {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5'
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Zweryfikowane opinie Google'
-      }
-    },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5',
       reviewCount: '48',
       bestRating: '5',
       worstRating: '1'
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Usługi treningowe',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          name: 'Trening personalny',
+          description: 'Indywidualny trening pod okiem profesjonalnego trenera',
+          price: '150.00',
+          priceCurrency: 'PLN',
+          availability: 'https://schema.org/InStock'
+        },
+        {
+          '@type': 'Offer',
+          name: 'Fizjoterapia',
+          description: 'Profesjonalna fizjoterapia i rehabilitacja',
+          price: '150.00',
+          priceCurrency: 'PLN',
+          availability: 'https://schema.org/InStock'
+        },
+        {
+          '@type': 'Offer',
+          name: 'Plany treningowe online',
+          description: 'Spersonalizowane plany treningowe z prowadzeniem online',
+          price: '250.00',
+          priceCurrency: 'PLN',
+          availability: 'https://schema.org/InStock'
+        }
+      ]
+    }
+  };
+
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://www.najlepszytrening.pl#person',
+    name: 'Ireneusz Maruszewski',
+    jobTitle: ['Trener Personalny', 'Fizjoterapeuta'],
+    description: 'Certyfikowany trener personalny i fizjoterapeuta z wieloletnim doświadczeniem w Łodzi',
+    image: 'https://www.najlepszytrening.pl/images/Maruszewski.webp',
+    url: 'https://www.najlepszytrening.pl',
+    sameAs: [
+      'https://instagram.com/trener_ireneusz',
+      'https://youtube.com/@trener_ireneusz'
+    ],
+    worksFor: {
+      '@id': 'https://www.najlepszytrening.pl'
     }
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+    </>
   );
 };
+
+export default generateSchemaMarkup;

@@ -124,9 +124,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <head>
-        {generateSchemaMarkup()}
-      </head>
       <body className={inter.className}>
         <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
         <Navbar />
