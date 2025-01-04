@@ -1,0 +1,324 @@
+/* styles/Grywalizacja.module.css */
+.container {
+    margin-top:5%;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    padding: 20px;
+  }
+  
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    color: #f4a431;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  /* Nawigacja */
+  .tabsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  
+  .tab {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f4a431;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .tabActive {
+    box-shadow: 0 4px 12px rgba(244, 164, 49, 0.3);
+  }
+  
+  .tabInactive {
+    opacity: 0.8;
+    background-color: rgba(244, 164, 49, 0.8);
+  }
+  
+  .tabInactive:hover {
+    opacity: 1;
+  }
+  
+  /* Karty drużyn */
+  .teamsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+  
+  .teamCard {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .teamHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 16px;
+  }
+  
+  .teamName {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .teamPoints {
+    font-size: 18px;
+    font-weight: 500;
+    color: #f4a431;
+  }
+  
+  .membersList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .memberItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+  }
+  
+  .memberName {
+    color: #333;
+  }
+  
+  .memberPoints {
+    color: #666;
+    font-weight: 500;
+  }
+  
+  /* Biała karta zawartości */
+  .contentCard {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tabela rankingowa */
+  .individualTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 16px;
+  }
+  
+  .tableHeader {
+    background-color: #4162e5;
+    color: white;
+  }
+  
+  .tableHeaderCell {
+    padding: 16px 24px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .tableHeaderCell:first-child {
+    border-top-left-radius: 8px;
+  }
+  
+  .tableHeaderCell:last-child {
+    border-top-right-radius: 8px;
+  }
+  
+  .tableRow {
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .tableRow:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .tableCell {
+    padding: 16px 24px;
+    font-size: 15px;
+    color: #333;
+  }
+  
+  /* Medal w rankingu */
+  .medalGold {
+    color: #FFD700;
+  }
+  
+  .medalSilver {
+    color: #C0C0C0;
+  }
+  
+  .medalBronze {
+    color: #CD7F32;
+  }
+  
+  /* Style dla zasad */
+  .rulesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .ruleSection {
+    margin-bottom: 24px;
+  }
+  
+  .ruleSectionTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .ruleList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .ruleItem {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.5;
+    padding-left: 24px;
+    position: relative;
+  }
+  
+  .ruleItem::before {
+    content: "•";
+    color: #f4a431;
+    position: absolute;
+    left: 8px;
+  }
+  
+  /* Style dla nagród */
+  .prizesList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .prizeItem {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+  }
+  
+  .prizeItem:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .prizeIcon.gold {
+    color: #FFD700;
+  }
+  
+  .prizeIcon.silver {
+    color: #C0C0C0;
+  }
+  
+  .prizeIcon.bronze {
+    color: #CD7F32;
+  }
+  
+  .prizeIcon.other {
+    color: #4162e5;
+  }
+  
+  .prizeText {
+    margin-left: 16px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .charityBox {
+    margin-top: 32px;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    border-left: 4px solid #f4a431;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .charityBox h3 {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .charityBox p {
+    color: #666;
+    font-size: 16px;
+  }
+  
+  /* Responsywność */
+  @media (max-width: 1200px) {
+    .teamsGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .teamsGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .tabsContainer {
+      flex-wrap: wrap;
+    }
+  
+    .tab {
+      width: calc(50% - 8px);
+      justify-content: center;
+    }
+  
+    .contentCard {
+      padding: 20px;
+    }
+  
+    .tableHeaderCell,
+    .tableCell {
+      padding: 12px 16px;
+    }
+  }
+  
+  /* Animacje */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
