@@ -19,18 +19,18 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Rafał G", points: 0 },
-    { name: "Ada L", points: 50 },
-    { name: "Monika Z", points: 0 },
-    { name: "Kasia W", points: 0 },
-    { name: "Julia S", points: 30 },
+    { name: "Rafał G", points: 35 },
+    { name: "Ada L", points: 80 }, // 50 previous + 30 new
+    { name: "Monika Z", points: 30 },
+    { name: "Kasia W", points: 50 },
+    { name: "Julia S", points: 55 }, // 30 previous + 25 new
     { name: "Michał P", points: 0 },
-    { name: "Dawid L", points: 0 },
-    { name: "Przemek F", points: 0 },
+    { name: "Dawid L", points: 35 },
+    { name: "Przemek F", points: 20 },
     { name: "Noemi W", points: 0 },
-    { name: "Marek S", points: 0 },
-    { name: "Trener Ireneusz", points: 0 },
-    { name: "Kacper M", points: 0 },
+    { name: "Marek S", points: 50 },
+    { name: "Trener Ireneusz", points: 25 },
+    { name: "Kacper M", points: 50 },
     { name: "Dominika K", points: 0 }
   ].sort((a, b) => b.points - a.points);
 
@@ -38,33 +38,33 @@ const GamificationPage = () => {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Ada L", points: 50 },
-        { name: "Monika Z", points: 0 },
-        { name: "Marek S", points: 0 }
+        { name: "Ada L", points: 80 },
+        { name: "Monika Z", points: 30 },
+        { name: "Marek S", points: 50 }
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Kasia W", points: 0 },
-        { name: "Julia S", points: 30 },
+        { name: "Kasia W", points: 50 },
+        { name: "Julia S", points: 55 },
         { name: "Michał P", points: 0 }
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Dawid L", points: 0 },
-        { name: "Przemek F", points: 0 },
+        { name: "Dawid L", points: 35 },
+        { name: "Przemek F", points: 20 },
         { name: "Noemi W", points: 0 },
-        { name: "Rafał G", points: 0 }
+        { name: "Rafał G", points: 35 }
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Trener Ireneusz", points: 0 },
-        { name: "Kacper M", points: 0 },
+        { name: "Trener Ireneusz", points: 25 },
+        { name: "Kacper M", points: 50 },
         { name: "Dominika K", points: 0 }
       ]
     }
