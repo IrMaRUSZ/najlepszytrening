@@ -22,7 +22,7 @@ const GamificationPage = () => {
     { name: "Rafał G", points: 35 },
     { name: "Ada L", points: 80 }, // 50 previous + 30 new
     { name: "Monika Z", points: 30 },
-    { name: "Kasia W", points: 50 },
+    { name: "Kasia W", points: 130 },
     { name: "Julia S", points: 55 }, // 30 previous + 25 new
     { name: "Michał P", points: 0 },
     { name: "Dawid L", points: 35 },
@@ -46,7 +46,7 @@ const GamificationPage = () => {
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Kasia W", points: 50 },
+        { name: "Kasia W", points: 130 },
         { name: "Julia S", points: 55 },
         { name: "Michał P", points: 0 }
       ]
