@@ -19,53 +19,53 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Rafał G", points: 60 },
-    { name: "Ada L", points: 70 },
+    { name: "Rafał G", points: 95 },
+    { name: "Ada L", points: 90 },
     { name: "Monika Z", points: 40 },
-    { name: "Kasia W", points: 270 },
-    { name: "Julia S", points: 55 },
-    { name: "Michał P", points: 0 },
-    { name: "Dawid L", points: 65 },
-    { name: "Przemek F", points: 20 },
-    { name: "Noemi W", points: 85 },
-    { name: "Marek S", points: 100 },
-    { name: "Trener Ireneusz", points: 45 },
-    { name: "Kacper M", points: 95 },
-    { name: "Dominika K", points: 0 }
+    { name: "Kasia W", points: 400 },
+    { name: "Julia S", points: 85 },
+    { name: "Michał P", points: 40 },
+    { name: "Dawid L", points: 95 },
+    { name: "Przemek F", points: 40 },
+    { name: "Noemi W", points: 125 },
+    { name: "Marek S", points: 160 },
+    { name: "Trener Ireneusz", points: 85 },
+    { name: "Kacper M", points: 155 },
+    { name: "Dominika K", points: 40 }
   ].sort((a, b) => b.points - a.points);
 
   const teams: Teams = {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Ada L", points: 70 },
-        { name: "Monika Z", points: 40 },
-        { name: "Marek S", points: 100 }
+        { name: "Ada L", points: 90 },
+        { name: "Kasia W", points: 400 },  // Zmiana za Marka S
+        { name: "Monika Z", points: 40 }
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Kasia W", points: 270 },
-        { name: "Julia S", points: 55 },
-        { name: "Michał P", points: 0 }
+        { name: "Marek S", points: 160 },  // Zmiana za Kasię W
+        { name: "Julia S", points: 85 },
+        { name: "Michał P", points: 40 }
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Dawid L", points: 65 },
-        { name: "Przemek F", points: 20 },
-        { name: "Noemi W", points: 85 },
-        { name: "Rafał G", points: 60 }
+        { name: "Kacper M", points: 155 }, // Dodany do wyrównania
+        { name: "Dawid L", points: 95 },
+        { name: "Noemi W", points: 125 },
+        { name: "Rafał G", points: 95 }
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Trener Ireneusz", points: 45 },
-        { name: "Kacper M", points: 95 },
-        { name: "Dominika K", points: 0 }
+        { name: "Trener Ireneusz", points: 85 },
+        { name: "Przemek F", points: 40 }, // Przeniesiony dla wyrównania
+        { name: "Dominika K", points: 40 }
       ]
     }
   };
