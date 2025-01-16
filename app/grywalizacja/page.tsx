@@ -6,6 +6,7 @@ import styles from '../../styles/Grywalizacja.module.css';
 interface TeamMember {
   name: string;
   points: number;
+  weeklyPoints: number;
 }
 
 interface Team {
@@ -18,63 +19,69 @@ interface Teams {
 }
 
 const GamificationPage = () => {
+  // Lista wszystkich uczestników z całkowitymi punktami
   const allParticipants: TeamMember[] = [
-    { name: "Rafał G", points: 185 },
-    { name: "Ada L", points: 260 },
-    { name: "Monika Z", points: 140 },
-    { name: "Kasia W", points: 610 },
-    { name: "Julia S", points: 115 },
-    { name: "Michał P", points: 40 },
-    { name: "Dawid L", points: 165 },
-    { name: "Przemek F", points: 40 },
-    { name: "Noemi W", points: 260 },
-    { name: "Marek S", points: 240 },
-    { name: "Trener Ireneusz", points: 140 },
-    { name: "Kacper M", points: 245 },
-    { name: "Dominika K", points: 85 }
+    { name: "Kasia W", points: 610, weeklyPoints: 120 },    // 490 + 20 + 100 bonus
+    { name: "Ada L", points: 260, weeklyPoints: 120 },      // 140 + 120
+    { name: "Noemi W", points: 260, weeklyPoints: 60 },     // 200 + 60
+    { name: "Kacper M", points: 245, weeklyPoints: 50 },    // 195 + 50
+    { name: "Marek S", points: 240, weeklyPoints: 40 },     // 200 + 40
+    { name: "Julia S", points: 215, weeklyPoints: 130 },    // 85 + 30 + 100 bonus
+    { name: "Rafał G", points: 185, weeklyPoints: 60 },     // 125 + 60
+    { name: "Dawid L", points: 165, weeklyPoints: 40 },     // 125 + 40
+    { name: "Trener Ireneusz", points: 140, weeklyPoints: 35 }, // 105 + 35
+    { name: "Monika Z", points: 140, weeklyPoints: 0 },     // 40 + 0
+    { name: "Michał P", points: 140, weeklyPoints: 100 },   // 40 + 0 + 100 bonus
+    { name: "Dominika K", points: 85, weeklyPoints: 30 },   // 55 + 30
+    { name: "Przemek F", points: 40, weeklyPoints: 0 }      // 40 + 0
   ].sort((a, b) => b.points - a.points);
 
+  // Podział na drużyny z punktami tygodniowymi
   const teams: Teams = {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Noemi W", points: 60 },      // Lider z innej drużyny
-        { name: "Julia S", points: 130 },
-        { name: "Dominika K", points: 30 }
+        { name: "Ada L", points: 260, weeklyPoints: 120 },
+        { name: "Julia S", points: 215, weeklyPoints: 130 },
+        { name: "Dominika K", points: 85, weeklyPoints: 30 }
       ]
     },
     team2: {
-      name: "Drużyna Niebieska",
+      name: "Drużyna Niebieska (Zwycięzcy poprzedniego tygodnia)",
       members: [
-        { name: "Kasia W", points: 120 },      // Poprzedni lider zostaje
-        { name: "Dawid L", points: 40 },
-        { name: "Przemek F", points: 0 }
+        { name: "Kasia W", points: 610, weeklyPoints: 120 },
+        { name: "Dawid L", points: 165, weeklyPoints: 40 },
+        { name: "Przemek F", points: 40, weeklyPoints: 0 }
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Ada L", points: 120 },        // Nowy lider
-        { name: "Rafał G", points: 60 },
-        { name: "Monika Z", points: 0 },
-        { name: "Michał P", points: 100 }
+        { name: "Noemi W", points: 260, weeklyPoints: 60 },
+        { name: "Rafał G", points: 185, weeklyPoints: 60 },
+        { name: "Monika Z", points: 140, weeklyPoints: 0 },
+        { name: "Michał P", points: 140, weeklyPoints: 100 }
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Kacper M", points: 50 },     // Lider z innej drużyny
-        { name: "Marek S", points: 40 },
-        { name: "Trener Ireneusz", points: 35 }
+        { name: "Kacper M", points: 245, weeklyPoints: 50 },
+        { name: "Marek S", points: 240, weeklyPoints: 40 },
+        { name: "Trener Ireneusz", points: 140, weeklyPoints: 35 }
       ]
     }
   };
 
   const [activeTab, setActiveTab] = useState<'teams' | 'individual' | 'rules' | 'prizes'>('teams');
 
-  const calculateTeamPoints = (members: TeamMember[]): string => {
-    const totalPoints = members.reduce((sum: number, member: TeamMember) => sum + member.points, 0);
-    return (totalPoints / members.length).toFixed(1);
+  const calculateTeamPoints = (members: TeamMember[]): { total: string, weekly: string } => {
+    const totalPoints = members.reduce((sum, member) => sum + member.points, 0);
+    const weeklyPoints = members.reduce((sum, member) => sum + member.weeklyPoints, 0);
+    return {
+      total: (totalPoints / members.length).toFixed(1),
+      weekly: (weeklyPoints / members.length).toFixed(1)
+    };
   };
 
   const getMedalColor = (index: number): string => {
@@ -127,15 +134,23 @@ const GamificationPage = () => {
               <div key={index} className={styles.teamCard}>
                 <div className={styles.teamHeader}>
                   <h3 className={styles.teamName}>{team.name}</h3>
-                  <span className={styles.teamPoints}>
-                    {calculateTeamPoints(team.members)} pkt
-                  </span>
+                  <div className={styles.teamPoints}>
+                    <div>Całkowita średnia: {calculateTeamPoints(team.members).total} pkt</div>
+                    <div className={styles.weeklyPoints}>
+                      Średnia tygodnia: {calculateTeamPoints(team.members).weekly} pkt
+                    </div>
+                  </div>
                 </div>
                 <ul className={styles.membersList}>
                   {team.members.map((member, mIndex) => (
                     <li key={mIndex} className={styles.memberItem}>
                       <span className={styles.memberName}>{member.name}</span>
-                      <span className={styles.memberPoints}>{member.points} pkt</span>
+                      <div className={styles.memberPointsContainer}>
+                        <div className={styles.memberPoints}>{member.points} pkt</div>
+                        <div className={styles.memberWeeklyPoints}>
+                          +{member.weeklyPoints} pkt w tym tygodniu
+                        </div>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -155,6 +170,7 @@ const GamificationPage = () => {
                     <th className={styles.tableHeaderCell}>Pozycja</th>
                     <th className={styles.tableHeaderCell}>Uczestnik</th>
                     <th className={styles.tableHeaderCell}>Punkty</th>
+                    <th className={styles.tableHeaderCell}>Ten tydzień</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -162,9 +178,11 @@ const GamificationPage = () => {
                     <tr key={index} className={styles.tableRow}>
                       <td className={styles.tableCell}>
                         {index <= 2 && <Medal className={getMedalColor(index)} size={20} />}
+                        {index + 1}
                       </td>
                       <td className={styles.tableCell}>{participant.name}</td>
                       <td className={styles.tableCell}>{participant.points} pkt</td>
+                      <td className={styles.tableCell}>+{participant.weeklyPoints} pkt</td>
                     </tr>
                   ))}
                 </tbody>
@@ -208,7 +226,7 @@ const GamificationPage = () => {
                 <h3 className={styles.ruleSectionTitle}>Zasady Drużynowe</h3>
                 <ul className={styles.ruleList}>
                   <li className={styles.ruleItem}>Lider drużyny po każdym tygodniu trafia do innej drużyny za najsłabszego uczestnika</li>
-                  <li className={styles.ruleItem}>Wygrywa drużyna z najlepszym wspólczynnikiem punktów na członka</li>
+                  <li className={styles.ruleItem}>Wygrywa drużyna z najlepszym wspólczynnikiem punktów na członka + 300 puntków</li>
                 </ul>
               </div>
             </div>
