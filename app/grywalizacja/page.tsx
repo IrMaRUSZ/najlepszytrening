@@ -38,34 +38,34 @@ const GamificationPage = () => {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Noemi W", points: 260 },      // Lider z innej drużyny
-        { name: "Julia S", points: 115 },
-        { name: "Dominika K", points: 85 }
+        { name: "Noemi W", points: 60 },      // Lider z innej drużyny
+        { name: "Julia S", points: 130 },
+        { name: "Dominika K", points: 30 }
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Kasia W", points: 610 },      // Poprzedni lider zostaje
-        { name: "Dawid L", points: 165 },
-        { name: "Przemek F", points: 40 }
+        { name: "Kasia W", points: 120 },      // Poprzedni lider zostaje
+        { name: "Dawid L", points: 40 },
+        { name: "Przemek F", points: 0 }
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Ada L", points: 260 },        // Nowy lider
-        { name: "Rafał G", points: 185 },
-        { name: "Monika Z", points: 140 },
-        { name: "Michał P", points: 40 }
+        { name: "Ada L", points: 120 },        // Nowy lider
+        { name: "Rafał G", points: 60 },
+        { name: "Monika Z", points: 0 },
+        { name: "Michał P", points: 100 }
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Kacper M", points: 245 },     // Lider z innej drużyny
-        { name: "Marek S", points: 240 },
-        { name: "Trener Ireneusz", points: 140 }
+        { name: "Kacper M", points: 50 },     // Lider z innej drużyny
+        { name: "Marek S", points: 40 },
+        { name: "Trener Ireneusz", points: 35 }
       ]
     }
   };
