@@ -19,56 +19,58 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Rafał G", points: 185 },
-    { name: "Ada L", points: 260 },
-    { name: "Monika Z", points: 140 },
-    { name: "Kasia W", points: 610 },
-    { name: "Julia S", points: 115 },
-    { name: "Michał P", points: 40 },
-    { name: "Dawid L", points: 165 },
-    { name: "Przemek F", points: 40 },
-    { name: "Noemi W", points: 260 },
-    { name: "Marek S", points: 240 },
-    { name: "Trener Ireneusz", points: 140 },
-    { name: "Kacper M", points: 245 },
-    { name: "Dominika K", points: 85 }
+    { name: "Katarzyna W", points: 1240 }, // +100 bonus
+    { name: "Rafał G", points: 655 },
+    { name: "Marek S", points: 605 },
+    { name: "Julia S", points: 545 },
+    { name: "Kacper M", points: 525 },
+    { name: "Noemi W", points: 515 },
+    { name: "Ada L", points: 355 },
+    { name: "Przemek F", points: 240 }, // +100 bonus
+    { name: "Dawid L", points: 230 },  // +100 bonus
+    { name: "Trener Ireneusz", points: 165 },
+    { name: "Dominika K", points: 164 },
+    { name: "Michał P", points: 140 },
+    { name: "Monika Z", points: 40 }
   ].sort((a, b) => b.points - a.points);
+
 
   const teams: Teams = {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Julia S", points: 130 },
-        { name: "Noemi W", points: 60 },      // Lider z innej drużyny
-        { name: "Dominika K", points: 30 }
+        { name: "Rafał G", points: 100 },      // Nowy lider
+        { name: "Ada L", points: 0 },
+        { name: "Dominika K", points: 0 }
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Kasia W", points: 120 },      // Poprzedni lider zostaje
-        { name: "Dawid L", points: 40 },
-        { name: "Przemek F", points: 0 }
+        { name: "Katarzyna W", points: 100 }, // Zostaje jako zwycięzca
+        { name: "Przemek F", points: 100 },
+        { name: "Monika Z", points: 0 }       // Wymiana za najsłabszego
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Ada L", points: 120 },
-        { name: "Michał P", points: 100 },        // Nowy lider
-        { name: "Rafał G", points: 60 },
-        { name: "Monika Z", points: 0 },
+        { name: "Marek S", points: 0 },      // Nowy lider
+        { name: "Noemi W", points: 0 },
+        { name: "Michał P", points: 0 },
+        { name: "Dawid L", points: 100 }
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Kacper M", points: 50 },     // Lider z innej drużyny
-        { name: "Marek S", points: 40 },
-        { name: "Trener Ireneusz", points: 35 }
+        { name: "Julia S", points: 0 },      // Nowy lider
+        { name: "Kacper M", points: 0 },
+        { name: "Trener Ireneusz", points: 0 }
       ]
     }
   };
+
 
   const [activeTab, setActiveTab] = useState<'teams' | 'individual' | 'rules' | 'prizes'>('teams');
 
