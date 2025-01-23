@@ -19,17 +19,17 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Katarzyna W", points: 1240 }, // +100 bonus
-    { name: "Rafał G", points: 655 },
+    { name: "Katarzyna W", points: 1240 },
+    { name: "Rafał G", points: 685 },
     { name: "Marek S", points: 605 },
-    { name: "Julia S", points: 545 },
-    { name: "Kacper M", points: 525 },
+    { name: "Julia S", points: 575 },
+    { name: "Kacper M", points: 555 },
     { name: "Noemi W", points: 515 },
     { name: "Ada L", points: 355 },
-    { name: "Przemek F", points: 240 }, // +100 bonus
-    { name: "Dawid L", points: 230 },  // +100 bonus
-    { name: "Trener Ireneusz", points: 165 },
+    { name: "Trener Ireneusz", points: 255 },
     { name: "Dominika K", points: 164 },
+    { name: "Dawid L", points: 145 },
+    { name: "Przemek F", points: 140 },
     { name: "Michał P", points: 140 },
     { name: "Monika Z", points: 40 }
   ].sort((a, b) => b.points - a.points);
@@ -39,7 +39,7 @@ const GamificationPage = () => {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Rafał G", points: 100 },      // Nowy lider
+        { name: "Rafał G", points: 130 },      // 30 + 100 bonus
         { name: "Ada L", points: 0 },
         { name: "Dominika K", points: 0 }
       ]
@@ -47,26 +47,26 @@ const GamificationPage = () => {
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Katarzyna W", points: 100 }, // Zostaje jako zwycięzca
-        { name: "Przemek F", points: 100 },
-        { name: "Monika Z", points: 0 }       // Wymiana za najsłabszego
+        { name: "Katarzyna W", points: 200 },  // 100 przyrost
+        { name: "Przemek F", points: 100 },    // 0 + 100 bonus
+        { name: "Monika Z", points: 0 }
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Marek S", points: 0 },      // Nowy lider
+        { name: "Marek S", points: 0 },
         { name: "Noemi W", points: 0 },
         { name: "Michał P", points: 0 },
-        { name: "Dawid L", points: 100 }
+        { name: "Dawid L", points: 115 }      // 15 + 100 bonus
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Julia S", points: 0 },      // Nowy lider
-        { name: "Kacper M", points: 0 },
-        { name: "Trener Ireneusz", points: 0 }
+        { name: "Julia S", points: 30 },
+        { name: "Kacper M", points: 30 },
+        { name: "Trener Ireneusz", points: 90 }
       ]
     }
   };
