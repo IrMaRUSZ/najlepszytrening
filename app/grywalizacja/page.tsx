@@ -6,6 +6,7 @@ import styles from '../../styles/Grywalizacja.module.css';
 interface TeamMember {
   name: string;
   points: number;
+  rank?: 'UCZESTNIK' | 'GRACZ' | 'ELITA';
 }
 
 interface Team {
@@ -34,12 +35,11 @@ const GamificationPage = () => {
     { name: "Monika Z", points: 40 }
   ].sort((a, b) => b.points - a.points);
 
-
   const teams: Teams = {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Rafał G", points: 130 },      // 30 + 100 bonus
+        { name: "Rafał G", points: 130 },
         { name: "Ada L", points: 0 },
         { name: "Dominika K", points: 0 }
       ]
@@ -47,8 +47,8 @@ const GamificationPage = () => {
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Katarzyna W", points: 200 },  // 100 przyrost
-        { name: "Przemek F", points: 100 },    // 0 + 100 bonus
+        { name: "Katarzyna W", points: 200 },
+        { name: "Przemek F", points: 100 },
         { name: "Monika Z", points: 0 }
       ]
     },
@@ -58,7 +58,7 @@ const GamificationPage = () => {
         { name: "Marek S", points: 0 },
         { name: "Noemi W", points: 0 },
         { name: "Michał P", points: 0 },
-        { name: "Dawid L", points: 115 }      // 15 + 100 bonus
+        { name: "Dawid L", points: 115 }
       ]
     },
     team4: {
@@ -71,8 +71,22 @@ const GamificationPage = () => {
     }
   };
 
-
   const [activeTab, setActiveTab] = useState<'teams' | 'individual' | 'rules' | 'prizes'>('teams');
+
+  const calculateRank = (points: number): 'UCZESTNIK' | 'GRACZ' | 'ELITA' => {
+    if (points >= 1500) return 'ELITA';
+    if (points >= 501) return 'GRACZ';
+    return 'UCZESTNIK';
+  };
+
+  const getMultiplier = (rank: 'UCZESTNIK' | 'GRACZ' | 'ELITA'): number => {
+    switch (rank) {
+      case 'ELITA': return 0.5;
+      case 'GRACZ': return 0.7;
+      case 'UCZESTNIK': return 1.2;
+      default: return 1;
+    }
+  };
 
   const calculateTeamPoints = (members: TeamMember[]): string => {
     const totalPoints = members.reduce((sum: number, member: TeamMember) => sum + member.points, 0);
@@ -84,9 +98,7 @@ const GamificationPage = () => {
     if (index === 1) return styles.medalSilver;
     if (index === 2) return styles.medalBronze;
     return '';
-  };
-
-  return (
+  };return (
     <div className={styles.container}>
       <div className={styles.content}>
         <h1 className={styles.title}>Grywalizacja Zimowa 2025</h1>
@@ -122,7 +134,6 @@ const GamificationPage = () => {
           </button>
         </div>
 
-        {/* Teams View */}
         {activeTab === 'teams' && (
           <div className={styles.teamsGrid}>
             {Object.values(teams).map((team, index) => (
@@ -146,7 +157,6 @@ const GamificationPage = () => {
           </div>
         )}
 
-        {/* Individual Ranking View */}
         {activeTab === 'individual' && (
           <div className={styles.contentCard}>
             <h2 className={styles.sectionTitle}>Ranking Indywidualny</h2>
@@ -157,6 +167,8 @@ const GamificationPage = () => {
                     <th className={styles.tableHeaderCell}>Pozycja</th>
                     <th className={styles.tableHeaderCell}>Uczestnik</th>
                     <th className={styles.tableHeaderCell}>Punkty</th>
+                    <th className={styles.tableHeaderCell}>Ranga</th>
+                    <th className={styles.tableHeaderCell}>Mnożnik</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -167,6 +179,8 @@ const GamificationPage = () => {
                       </td>
                       <td className={styles.tableCell}>{participant.name}</td>
                       <td className={styles.tableCell}>{participant.points} pkt</td>
+                      <td className={styles.tableCell}>{calculateRank(participant.points)}</td>
+                      <td className={styles.tableCell}>x{getMultiplier(calculateRank(participant.points))}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -175,49 +189,132 @@ const GamificationPage = () => {
           </div>
         )}
 
-        {/* Rules View */}
-        {activeTab === 'rules' && (
-          <div className={styles.contentCard}>
-            <h2 className={styles.sectionTitle}>System Punktacji</h2>
-            
-            <div className={styles.rulesContainer}>
-              <div className={styles.ruleSection}>
-                <h3 className={styles.ruleSectionTitle}>Punktacja Podstawowa</h3>
-                <ul className={styles.ruleList}>
-                  <li className={styles.ruleItem}>Uzupełnienie dziennej tabeli: 5 pkt</li>
-                  <li className={styles.ruleItem}>Sen 7-9 godzin: 5 pkt</li>
-                  <li className={styles.ruleItem}>Utrzymanie dziennej aktywności: 5 pkt za każdą</li>
-                  <li className={styles.ruleItem}>Trening: 10 pkt (max 4 treningi/tydzień)</li>
-                  <li className={styles.ruleItem}>Każde dodatkowe 5000 kroków: 10 pkt</li>
-                  <li className={styles.ruleItem}>Każdy przebiegnięty kilometr: 10 pkt</li>
-                </ul>
-              </div>
-              
-              <div className={styles.ruleSection}>
-                <h3 className={styles.ruleSectionTitle}>Punktacja Dodatkowa</h3>
-                <ul className={styles.ruleList}>
-                  <li className={styles.ruleItem}>Realizacja celu tygodniowego: 15 pkt</li>
-                  <li className={styles.ruleItem}>Wygranie tygodnia: 50 pkt</li>
-                  <li className={styles.ruleItem}>Uzupełnienie tabeli przez cały miesiąc: 40 pkt</li>
-                  <li className={styles.ruleItem}>Pobicie rekordu: 30 pkt (wymagane nagranie)</li>
-                  <li className={styles.ruleItem}>Post treningowy w social media: 10 pkt</li>
-                  <li className={styles.ruleItem}>Kreatywne zdjęcie treningowe: 50 pkt</li>
-                  <li className={styles.ruleItem}>Zrealizowanie głównego celu: 150 pkt</li>
-                </ul>
-              </div>
-
-              <div className={styles.ruleSection}>
-                <h3 className={styles.ruleSectionTitle}>Zasady Drużynowe</h3>
-                <ul className={styles.ruleList}>
-                  <li className={styles.ruleItem}>Lider drużyny po każdym tygodniu trafia do innej drużyny za najsłabszego uczestnika</li>
-                  <li className={styles.ruleItem}>Wygrywa drużyna z najlepszym wspólczynnikiem punktów na członka</li>
-                </ul>
-              </div>
-            </div>
+{activeTab === 'rules' && (
+  <div className={styles.contentCard}>
+    <h2 className={styles.sectionTitle}>System Zasad i Punktacji</h2>
+    
+    <div className={styles.rulesContainer}>
+      {/* RANGI */}
+      <div className={styles.ruleSection}>
+        <h3 className={styles.ruleSectionTitle}>System Rang</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className={styles.teamCard}>
+            <h4 className={styles.teamName}>UCZESTNIK</h4>
+            <p className="text-gray-600 mb-4">0-500 punktów</p>
+            <ul className={styles.ruleList}>
+              <li className={styles.ruleItem}>Mnożnik x1.2 za aktywności</li>
+              <li className={styles.ruleItem}>Podstawowe uczestnictwo w wydarzeniach</li>
+              <li className={styles.ruleItem}>Zbieranie punktów</li>
+            </ul>
           </div>
-        )}
+          
+          <div className={styles.teamCard}>
+            <h4 className={styles.teamName}>GRACZ</h4>
+            <p className="text-gray-600 mb-4">501-1499 punktów</p>
+            <ul className={styles.ruleList}>
+              <li className={styles.ruleItem}>Mnożnik x0.7 za aktywności</li>
+              <li className={styles.ruleItem}>Rozszerzone uczestnictwo</li>
+              <li className={styles.ruleItem}>Możliwość tworzenia własnych wyzwań</li>
+            </ul>
+          </div>
+          
+          <div className={styles.teamCard}>
+            <h4 className={styles.teamName}>ELITA</h4>
+            <p className="text-gray-600 mb-4">1500+ punktów</p>
+            <ul className={styles.ruleList}>
+              <li className={styles.ruleItem}>Mnożnik x0.5 za aktywności</li>
+              <li className={styles.ruleItem}>Głosowanie nad zmianami w systemie</li>
+              <li className={styles.ruleItem}>Proponowanie nowych wydarzeń</li>
+              <li className={styles.ruleItem}>Udział w radzie decyzyjnej</li>
+              <li className={styles.ruleItem}>Wpływ na kierunek rozwoju gry</li>
+              <li className={styles.ruleItem}>Specjalne odznaki i wyróżnienia</li>
+              <li className={styles.ruleItem}>Możliwość wyzwania innego gracza na pojedynek</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        {/* Prizes View */}
+      {/* PUNKTACJA PODSTAWOWA */}
+      <div className={styles.ruleSection}>
+        <h3 className={styles.ruleSectionTitle}>Punktacja Podstawowa</h3>
+        <div className={styles.teamCard}>
+          <ul className={styles.ruleList}>
+            <li className={styles.ruleItem}>Uzupełnienie dziennej tabeli: 5 pkt</li>
+            <li className={styles.ruleItem}>Sen 7-9 godzin: 5 pkt</li>
+            <li className={styles.ruleItem}>Utrzymanie dziennej aktywności: 5 pkt (za każdą aktywność)</li>
+            <li className={styles.ruleItem}>Trening: 10 pkt (max 4 treningi/tydzień)</li>
+            <li className={styles.ruleItem}>Każde dodatkowe 5000 kroków: 10 pkt</li>
+            <li className={styles.ruleItem}>Każdy przebiegnięty kilometr: 10 pkt</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* PUNKTACJA DODATKOWA */}
+      <div className={styles.ruleSection}>
+        <h3 className={styles.ruleSectionTitle}>Punktacja Dodatkowa</h3>
+        <div className={styles.teamCard}>
+          <ul className={styles.ruleList}>
+            <li className={styles.ruleItem}>Realizacja celu tygodniowego: 15 pkt</li>
+            <li className={styles.ruleItem}>Wygranie tygodnia: 50 pkt</li>
+            <li className={styles.ruleItem}>Uzupełnienie tabeli przez cały miesiąc: 40 pkt</li>
+            <li className={styles.ruleItem}>Pobicie rekordu: 30 pkt (wymagane nagranie)</li>
+            <li className={styles.ruleItem}>Post treningowy w social media: 10 pkt</li>
+            <li className={styles.ruleItem}>Kreatywne zdjęcie treningowe: 50 pkt</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* PROGI */}
+      <div className={styles.ruleSection}>
+        <h3 className={styles.ruleSectionTitle}>System Progów</h3>
+        <div className={styles.teamCard}>
+          <ul className={styles.ruleList}>
+            <li className={styles.ruleItem}>Tydzień 5: Min. 300 punktów</li>
+            <li className={styles.ruleItem}>Tydzień 6: Min. 400 punktów</li>
+            <li className={styles.ruleItem}>Tydzień 7: Min. 500 punktów</li>
+            <li className={styles.ruleItem}>Tydzień 8: Min. 600 punktów</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* KONSEKWENCJE */}
+      <div className={styles.ruleSection}>
+        <h3 className={styles.ruleSectionTitle}>Konsekwencje</h3>
+        <div className={styles.teamCard}>
+          <ul className={styles.ruleList}>
+            <li className={styles.ruleItem}>Brak wymaganej liczby punktów = wykluczenie</li>
+            <li className={styles.ruleItem}>Zakaz udziału w następnej edycji</li>
+            <li className={styles.ruleItem}>Utrata wszystkich przywilejów</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* ZASADY DRUŻYNOWE */}
+      <div className={styles.ruleSection}>
+        <h3 className={styles.ruleSectionTitle}>Zasady Drużynowe</h3>
+        <div className={styles.teamCard}>
+          <ul className={styles.ruleList}>
+            <li className={styles.ruleItem}>Lider drużyny po każdym tygodniu trafia do innej drużyny za najsłabszego uczestnika</li>
+            <li className={styles.ruleItem}>Wygrywa drużyna z najlepszym współczynnikiem punktów na członka</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* WAŻNE INFORMACJE */}
+      <div className={styles.ruleSection}>
+        <h3 className={styles.ruleSectionTitle}>Ważne Informacje</h3>
+        <div className={styles.teamCard}>
+          <ul className={styles.ruleList}>
+            <li className={styles.ruleItem}>Punkty są naliczane według mnożnika rangi</li>
+            <li className={styles.ruleItem}>Aktywność jest monitorowana</li>
+            <li className={styles.ruleItem}>Ranga Elity daje realny wpływ na rozwój gry</li>
+            <li className={styles.ruleItem}>System zapewnia balans między doświadczonymi a nowymi uczestnikami</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
         {activeTab === 'prizes' && (
           <div className={styles.contentCard}>
             <h2 className={styles.sectionTitle}>Nagrody</h2>
