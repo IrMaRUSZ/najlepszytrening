@@ -1,0 +1,80 @@
+
+.container {
+    @apply max-w-3xl mx-auto px-4 pt-16;
+  }
+.header {
+  @apply text-center mb-8;
+}
+
+.title {
+  @apply text-4xl font-bold text-white mb-2;
+}
+
+.subtitle {
+  @apply text-xl text-gray-300;
+}
+
+.inputSection {
+  @apply mb-8 p-6 bg-gray-800 rounded-lg shadow-lg border border-gray-700;
+}
+
+.inputLabel {
+  @apply block text-lg font-medium mb-2 text-white;
+}
+
+.input {
+  @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white;
+}
+
+.button {
+  @apply w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 
+         transition duration-200 font-medium text-lg mt-4;
+}
+
+.weekCard {
+  @apply bg-gray-800 rounded-lg shadow-lg border border-gray-700 p-6 mb-6;
+}
+
+.weekHeader {
+  @apply flex items-center justify-between mb-4 pb-3 border-b border-gray-700;
+}
+
+.weekTitle {
+  @apply text-xl font-bold text-white;
+}
+
+.deloadBadge {
+  @apply ml-3 text-sm font-normal text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full;
+}
+
+.trainingDay {
+  @apply mb-6 last:mb-0;
+}
+
+.dayTitle {
+  @apply font-medium mb-3 text-lg text-white;
+}
+
+.exerciseCard {
+  @apply bg-gray-700/40 rounded-lg p-4 mb-3 last:mb-0 hover:bg-gray-700/50 transition-colors duration-150;
+}
+
+.exerciseHeader {
+  @apply flex justify-between items-center flex-wrap gap-2;
+}
+
+.exerciseName {
+  @apply font-medium text-white text-base;
+}
+
+.exerciseDetails {
+  @apply font-mono text-sm space-x-3 text-gray-300;
+}
+
+.exerciseParam {
+  @apply inline-block px-2 py-0.5 rounded bg-gray-700/50;
+}
+
+.plateBreakdown {
+  @apply text-sm text-gray-400 mt-2 pl-4 border-l-2 border-gray-600;
+}

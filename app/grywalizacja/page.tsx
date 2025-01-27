@@ -29,7 +29,7 @@ const GamificationPage = () => {
     { name: "Ada L", points: 355 }, // 355 + 0
     { name: "Trener Ireneusz", points: 645 }, // 255 + 290
     { name: "Dominika K", points: 164 }, // 164 + 0
-    { name: "Dawid L", points: 475 }, // 145 + 330
+    { name: "Dawid L", points: 541 }, // 145 + 330
     { name: "Przemek F", points: 140 }, // 140 + 0
     { name: "Michał P", points: 140 }, // 140 + 0
     { name: "Monika Z", points: 40 } // 40 + 0
