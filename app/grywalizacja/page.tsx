@@ -20,53 +20,45 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Katarzyna W", points: 1453.5 }, // 1240 + 213.5
-    { name: "Rafał G", points: 923 }, // 685 + 238
-    { name: "Marek S", points: 619 }, // 605 + 14
-    { name: "Julia S", points: 727.5 }, // 575 + 52.5
-    { name: "Kacper M", points: 928 }, // 555 + 273
-    { name: "Noemi W", points: 575 }, // 515 + 60
-    { name: "Ada L", points: 355 }, // 355 + 0
-    { name: "Trener Ireneusz", points: 645 }, // 255 + 290
-    { name: "Dominika K", points: 164 }, // 164 + 0
-    { name: "Dawid L", points: 541 }, // 145 + 330
-    { name: "Przemek F", points: 140 }, // 140 + 0
-    { name: "Michał P", points: 140 }, // 140 + 0
-    { name: "Monika Z", points: 40 } // 40 + 0
+    { name: "Katarzyna W", points: 1646 }, 
+    { name: "Rafał G", points: 1217 }, 
+    { name: "Marek S", points: 1277 },
+    { name: "Julia S", points: 879 }, 
+    { name: "Kacper M", points: 1198 }, 
+    { name: "Noemi W", points: 575 }, 
+    { name: "Ada L", points: 491 },
+    { name: "Trener Ireneusz", points: 876 },
+    { name: "Dawid L", points: 811 },
   ].sort((a, b) => b.points - a.points);
 
   const teams: Teams = {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Rafał G", points: 0 }, // 130 + 238
-        { name: "Ada L", points: 0 },
-        { name: "Monika Z", points: 0 }
+        { name: "Rafał G", points: 294 }, // 130 + 238
+        { name: "Ada L", points: 126 },
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Katarzyna W", points: 0 }, // 200 + 213.5
-        { name: "Przemek F", points: 0 },
-        { name: "Dominika K", points: 0 }
+        { name: "Katarzyna W", points: 192 }, // 200 + 213.5
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Dawid L", points: 0 }, // 0 + 14
-        { name: "Trener Ireneusz", points: 100 }, // 0 + 60
+        { name: "Dawid L", points: 270 }, // 0 + 14
+        { name: "Trener Ireneusz", points: 321 }, // 0 + 60
         { name: "Noemi W", points: 0 },
-        { name: "Michał P", points: 0 } // 115 + 330
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Kacper M", points: 100 }, // 30 + 52.5
-        { name: "Julia S", points: 100 }, // 30 + 273
-        { name: "Marek S", points: 0 } // 90 + 290
+        { name: "Kacper M", points: 370 }, // 30 + 52.5
+        { name: "Julia S", points: 251 }, // 30 + 273
+        { name: "Marek S", points: 329 } // 90 + 290
       ]
     }
   };
