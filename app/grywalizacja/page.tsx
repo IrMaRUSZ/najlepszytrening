@@ -20,45 +20,45 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Katarzyna W", points: 1646 }, 
-    { name: "Rafał G", points: 1217 }, 
-    { name: "Marek S", points: 1277 },
-    { name: "Julia S", points: 879 }, 
-    { name: "Kacper M", points: 1198 }, 
+    { name: "Katarzyna W", points: 1889 }, 
+    { name: "Marek S", points: 1773 },
+    { name: "Kacper M", points: 1517 }, 
+    { name: "Rafał G", points: 1340 }, 
+    { name: "Julia S", points: 1058 }, 
+    { name: "Trener Ireneusz", points: 967 },
+    { name: "Dawid L", points: 874 }, 
+    { name: "Ada L", points: 593 },
     { name: "Noemi W", points: 575 }, 
-    { name: "Ada L", points: 491 },
-    { name: "Trener Ireneusz", points: 876 },
-    { name: "Dawid L", points: 811 },
   ].sort((a, b) => b.points - a.points);
 
   const teams: Teams = {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Rafał G", points: 294 }, // 130 + 238
-        { name: "Ada L", points: 126 },
+        { name: "Katarzyna W", points: 0 },
+        { name: "Dawid L", points: 0 },
+        { name: "Noemi W", points: 0 },
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Katarzyna W", points: 192 }, // 200 + 213.5
+        { name: "Marek S", points: 100 },
+        { name: "Julia S", points: 100 },
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Dawid L", points: 270 }, // 0 + 14
-        { name: "Trener Ireneusz", points: 321 }, // 0 + 60
-        { name: "Noemi W", points: 0 },
+        { name: "Kacper M", points: 100 },
+        { name: "Ada L", points: 0 },
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Kacper M", points: 370 }, // 30 + 52.5
-        { name: "Julia S", points: 251 }, // 30 + 273
-        { name: "Marek S", points: 329 } // 90 + 290
+        { name: "Rafał G", points: 0 },
+        { name: "Trener Ireneusz", points: 0 },
       ]
     }
   };
