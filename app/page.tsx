@@ -6,6 +6,8 @@ import { TrustBuildingSection } from '../components/Home/TrustBuildingSection';
 import InitialHook from '../components/Home/InitialHook';
 import StepSection from '../components/Home/StepsSection';
 import BlogPage from './blog/page'
+import CookiePopup from '../components/CookiePopup';
+
 
 
 export default function Home() {
@@ -59,6 +61,7 @@ export default function Home() {
       <section className={styles.blogSection}>
   <BlogPage />
 </section>
+<CookiePopup />
     </main>
   )
 }
