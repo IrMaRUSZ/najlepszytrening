@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '../components/Navbar'
 import GoogleAnalytics from '../components/SEO/GoogleAnalytics'
 import Script from 'next/script'
+import CookiePopup from '@/components/CookiePopup'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -135,12 +136,31 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <Script id="google-consent-mode" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied'
+            });
+          `}
+        </Script>
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
         <Navbar />
+        <CookiePopup />
         {children}
       </body>
     </html>
-  )
+  );
 }

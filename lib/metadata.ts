@@ -3,7 +3,7 @@
       siteUrl: 'https://najlepszytrening.pl',
       author: 'Ireneusz Maruszewski',
       city: 'Łódź',
-      email: 'kontakt@najlepszytrening.pl',
+      email: 'maruszewskiirek@gmail.pl',
       phone: '+48 737 730 868',
       address: 'Dąbrowskiego 207/225 Łódź'
     }

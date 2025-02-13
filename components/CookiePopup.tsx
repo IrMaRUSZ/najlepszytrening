@@ -1,43 +1,48 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/CookiePopup.module.css';
 
 const CookiePopup = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const hasAcceptedCookies = localStorage.getItem('cookieConsent');
-    if (!hasAcceptedCookies) {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
       setIsVisible(true);
     }
   }, []);
 
-  const acceptCookies = () => {
-    localStorage.setItem('cookieConsent', 'true');
+  const handleAccept = () => {
+    localStorage.setItem('cookieConsent', 'granted');
     setIsVisible(false);
+
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'analytics_storage': 'granted',
+      });
+    }
   };
 
-  const rejectCookies = () => {
+  const handleReject = () => {
+    localStorage.setItem('cookieConsent', 'denied');
     setIsVisible(false);
+
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('consent', 'update', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+      });
+    }
   };
 
   if (!isVisible) return null;
 
   return (
     <div className={styles.cookiePopup}>
-      <div className={styles.cookieContent}>
-        <p className={styles.cookieText}>
-          Pomóż nam ulepszyć i dostosować Twoje doświadczenie.
-          Korzystamy z plików cookies, aby zapewnić pełną funkcjonalność naszej witryny,
-          dostosować jej obsługę, przeprowadzać analizy i wyświetlać spersonalizowane reklamy.
-          Zapoznaj się z naszą <a href="/prywatnosc" className={styles.privacyLink}>polityką prywatności</a>.
-        </p>
-        <div className={styles.buttonContainer}>
-          <button onClick={acceptCookies} className={styles.acceptButton}>Zaakceptuj wszystkie pliki cookie</button>
-          <button onClick={rejectCookies} className={styles.rejectButton}>Odrzuć wszystkie</button>
-        </div>
-        <a href="/cookie-settings" className={styles.settingsLink}>Ustawienia plików cookie</a>
-      </div>
+      <p>Ta strona używa plików cookie do analizy ruchu i reklam. Czy zgadzasz się na ich używanie?</p>
+      <button onClick={handleAccept} className={styles.acceptButton}>Akceptuję</button>
+      <button onClick={handleReject} className={styles.rejectButton}>Odrzucam</button>
     </div>
   );
 };
