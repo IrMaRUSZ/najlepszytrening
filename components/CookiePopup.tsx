@@ -1,6 +1,14 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import styles from '../styles/CookiePopup.module.css';
+
+// Rozszerzamy obiekt Window, aby TypeScript nie zgłaszał błędu
+declare global {
+  interface Window {
+    handleCookieConsent?: (isAccepted: boolean) => void;
+  }
+}
 
 const CookiePopup = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -8,31 +16,16 @@ const CookiePopup = () => {
   useEffect(() => {
     const consent = localStorage.getItem('cookieConsent');
     if (!consent) {
-      setIsVisible(true);
+      setTimeout(() => setIsVisible(true), 1000);
     }
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'granted');
+  const handleConsent = (isAccepted: boolean) => {
+    localStorage.setItem('cookieConsent', isAccepted ? 'granted' : 'denied');
     setIsVisible(false);
 
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'analytics_storage': 'granted',
-      });
-    }
-  };
-
-  const handleReject = () => {
-    localStorage.setItem('cookieConsent', 'denied');
-    setIsVisible(false);
-
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied',
-      });
+    if (window.handleCookieConsent) {
+      window.handleCookieConsent(isAccepted);
     }
   };
 
@@ -40,9 +33,16 @@ const CookiePopup = () => {
 
   return (
     <div className={styles.cookiePopup}>
-      <p>Ta strona używa plików cookie do analizy ruchu i reklam. Czy zgadzasz się na ich używanie?</p>
-      <button onClick={handleAccept} className={styles.acceptButton}>Akceptuję</button>
-      <button onClick={handleReject} className={styles.rejectButton}>Odrzucam</button>
+      <p>
+        Ta strona używa plików cookie do analizy ruchu i personalizacji treści. 
+        Możesz zaakceptować lub odrzucić ich użycie.
+      </p>
+      <button onClick={() => handleConsent(true)} className={styles.acceptButton}>
+        Akceptuję
+      </button>
+      <button onClick={() => handleConsent(false)} className={styles.rejectButton}>
+        Odrzucam
+      </button>
     </div>
   );
 };

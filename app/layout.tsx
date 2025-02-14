@@ -7,7 +7,6 @@ import Script from 'next/script'
 import CookiePopup from '@/components/CookiePopup'
 
 const inter = Inter({ subsets: ['latin'] })
-
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 
 // Schema.org JSON-LD
@@ -116,7 +115,7 @@ const personSchema = {
 
 export const metadata: Metadata = {
   // ... reszta metadanych pozostaje bez zmian
-}
+};
 
 export default function RootLayout({
   children,
@@ -126,16 +125,11 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <head>
-        <Script
-          id="schema-business"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-        <Script
-          id="schema-person"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        />
+        {/* Schema.org JSON-LD */}
+        <Script id="schema-business" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+        <Script id="schema-person" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+
+        {/* Google Consent Mode (ustawienie domyślnej zgody) */}
         <Script id="google-consent-mode" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -143,10 +137,23 @@ export default function RootLayout({
 
             gtag('consent', 'default', {
               'ad_storage': 'denied',
-              'analytics_storage': 'denied'
+              'analytics_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
             });
+
+            window.handleCookieConsent = function(isAccepted) {
+              gtag('consent', 'update', {
+                'ad_storage': isAccepted ? 'granted' : 'denied',
+                'analytics_storage': isAccepted ? 'granted' : 'denied',
+                'ad_user_data': isAccepted ? 'granted' : 'denied',
+                'ad_personalization': isAccepted ? 'granted' : 'denied'
+              });
+            };
           `}
         </Script>
+
+        {/* Google Analytics */}
         <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
