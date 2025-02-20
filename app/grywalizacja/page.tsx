@@ -20,45 +20,46 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Katarzyna W", points: 1889 }, 
-    { name: "Marek S", points: 1773 },
-    { name: "Kacper M", points: 1517 }, 
-    { name: "Rafał G", points: 1340 }, 
-    { name: "Julia S", points: 1058 }, 
-    { name: "Trener Ireneusz", points: 967 },
-    { name: "Dawid L", points: 874 }, 
-    { name: "Ada L", points: 593 },
-    { name: "Noemi W", points: 575 }, 
+    { name: "Katarzyna W", points: 2097 }, // 1889 + 208
+    { name: "Marek S", points: 1973 }, // 1773 + 150
+    { name: "Kacper M", points: 1722 }, // 1517 + 205
+    { name: "Rafał G", points: 1627 }, // 1340 + 287
+    { name: "Julia S", points: 1261 }, // 1058 + 133
+    { name: "Trener Ireneusz", points: 1188 }, // 967 + 221
+    { name: "Dawid L", points: 969 }, // 874 + 95
+    { name: "Ada L", points: 684 }, // 593 + 91
+    { name: "Noemi W", points: 575 }, // unchanged
   ].sort((a, b) => b.points - a.points);
 
   const teams: Teams = {
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Katarzyna W", points: 0 },
+        { name: "Rafał G", points: 0 },
         { name: "Dawid L", points: 0 },
-        { name: "Noemi W", points: 0 },
+        { name: "Julia S", points: 100 },
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Marek S", points: 100 },
-        { name: "Julia S", points: 100 },
+        { name: "Katarzyna W", points: 0 },
+        { name: "Trener Ireneusz", points: 0 },
+
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Kacper M", points: 100 },
-        { name: "Ada L", points: 0 },
+        { name: "Marek S", points: 100 },
+        { name: "Noemi W", points: 0 },
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
-        { name: "Rafał G", points: 0 },
-        { name: "Trener Ireneusz", points: 0 },
+        { name: "Kacper M", points: 0 },
+        { name: "Ada L", points: 0 },
       ]
     }
   };
