@@ -22,6 +22,8 @@ export default function Navbar() {
           <li><Link href="/kontakt">Kontakt</Link></li>
           <li><Link href="/blog">Blog</Link></li>
           <li><Link href="/narzedzia">Narzędzia</Link></li>
+          <li><Link href="/quiz">Quiz</Link></li>
+          <li><Link href="/grywalizacja">Grywalizacja</Link></li>
         </ul>
 
         <button 
@@ -39,6 +41,8 @@ export default function Navbar() {
             <Link href="/kontakt" onClick={() => setIsOpen(false)}>Kontakt</Link>
             <Link href="/blog" onClick={() => setIsOpen(false)}>Blog</Link>
             <Link href="/narzedzia" onClick={() => setIsOpen(false)}>Narzędzia</Link>
+            <Link href="/quiz">Quiz</Link>
+            <Link href="/grywalizacja">Grywalizacja</Link>
           </div>
         )}
       </div>

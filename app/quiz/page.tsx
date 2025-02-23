@@ -1,112 +1,101 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// Ścieżka pliku: /app/quiz/page.tsx
+import React, { useState, useEffect } from 'react';
 import { Check, X, Award } from 'lucide-react';
 import styles from '../../styles/quiz.module.css';
+import { PytanieQuizu } from '../../types/quiz';
 
-interface QuizQuestion {
-  question: string;
-  options: string[];
-  correct: number;
-  explanation: string;
-}
+export default function QuizPage() {
+  const [wybranaOdpowiedz, setWybranaOdpowiedz] = useState<number | null>(null);
+  const [czyPoprawna, setCzyPoprawna] = useState<boolean>(false);
+  const [pokazWyjasnienie, setPokazWyjasnienie] = useState<boolean>(false);
+  const [pytanie, setPytanie] = useState<PytanieQuizu | null>(null);
+  const [ladowanie, setLadowanie] = useState(true);
+  const [blad, setBlad] = useState<string | null>(null);
 
-const QuizComponent: React.FC = () => {
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
-  const [showExplanation, setShowExplanation] = useState<boolean>(false);
+  useEffect(() => {
+    const pobierzPytanieNaDzis = async () => {
+      try {
+        const odpowiedz = await fetch('/api/quiz');
+        if (!odpowiedz.ok) {
+          throw new Error('Brak pytania na dzisiaj');
+        }
+        const dane = await odpowiedz.json();
+        setPytanie(dane);
+      } catch {
+        setBlad('Nie udało się pobrać pytania');
+      } finally {
+        setLadowanie(false);
+      }
+    };
 
-  const quizQuestion: QuizQuestion = {
-    question: 'Który makroskładnik dostarcza najwięcej energii na gram?',
-    options: ['Białko', 'Tłuszcze', 'Węglowodany', 'Błonnik'],
-    correct: 1,
-    explanation: 'Tłuszcze dostarczają 9 kcal na gram, podczas gdy białko i węglowodany po 4 kcal.'
+    pobierzPytanieNaDzis();
+  }, []);
+
+  const handleKlikniecieOdpowiedzi = (index: number) => {
+    if (!pytanie) return;
+    
+    setWybranaOdpowiedz(index);
+    setCzyPoprawna(index === pytanie.poprawnaOdpowiedz);
+    setTimeout(() => setPokazWyjasnienie(true), 800);
   };
 
-  const handleAnswerClick = (index: number): void => {
-    setSelectedAnswer(index);
-    setIsCorrect(index === quizQuestion.correct);
-    setTimeout(() => setShowExplanation(true), 800);
-  };
+  if (ladowanie) {
+    return <div className={styles.quizContainer}>Ładowanie...</div>;
+  }
 
-  // Animacja dla kontenera
-  const containerAnimation = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.4 }
-  };
-
-  // Animacja dla wyjaśnienia
-  const explanationAnimation = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.3 }
-  };
+  if (blad || !pytanie) {
+    return (
+      <div className={styles.quizContainer}>
+        <div className={styles.quizCard}>
+          <p className={styles.error}>{blad || 'Brak pytania na dziś'}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.quizContainer}>
       <div className={styles.quizCard}>
-        <motion.div
-          {...containerAnimation}
-          className={styles.contentContainer}
-        >
-          <h2 className={styles.question}>
-            {quizQuestion.question}
-          </h2>
-
+        <div className={styles.contentContainer}>
+          <h2 className={styles.question}>{pytanie.pytanie}</h2>
+          
           <div className={styles.optionsContainer}>
-            {quizQuestion.options.map((option: string, index: number) => (
-              <motion.button
+            {pytanie.odpowiedzi.map((odpowiedz, index) => (
+              <button
                 key={index}
-                onClick={() => handleAnswerClick(index)}
-                disabled={selectedAnswer !== null}
+                onClick={() => handleKlikniecieOdpowiedzi(index)}
+                disabled={wybranaOdpowiedz !== null}
                 className={`${styles.optionButton} ${
-                  selectedAnswer !== null && index === quizQuestion.correct
+                  wybranaOdpowiedz !== null && index === pytanie.poprawnaOdpowiedz
                     ? styles.correct
-                    : selectedAnswer === index
+                    : wybranaOdpowiedz === index
                     ? styles.incorrect
-                    : selectedAnswer !== null
-                    ? styles.disabled
                     : ''
                 }`}
-                whileHover={selectedAnswer === null ? { scale: 1.01 } : {}}
-                whileTap={selectedAnswer === null ? { scale: 0.99 } : {}}
               >
-                <span>{option}</span>
-                {selectedAnswer !== null && index === quizQuestion.correct && (
-                  <Check className={styles.checkIcon} size={24} />
+                <span>{odpowiedz}</span>
+                {wybranaOdpowiedz !== null && index === pytanie.poprawnaOdpowiedz && (
+                  <Check className={styles.icon} />
                 )}
-                {selectedAnswer === index && index !== quizQuestion.correct && (
-                  <X className={styles.xIcon} size={24} />
+                {wybranaOdpowiedz === index && index !== pytanie.poprawnaOdpowiedz && (
+                  <X className={styles.icon} />
                 )}
-              </motion.button>
+              </button>
             ))}
           </div>
 
-          <AnimatePresence>
-            {showExplanation && (
-              <motion.div
-                {...explanationAnimation}
-              >
-                <div className={`${styles.explanationCard} ${
-                  isCorrect ? styles.correct : styles.incorrect
-                }`}>
-                  {isCorrect && (
-                    <div className={styles.awardContainer}>
-                      <Award className={styles.checkIcon} size={32} />
-                    </div>
-                  )}
-                  <p>{quizQuestion.explanation}</p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+          {pokazWyjasnienie && (
+            <div className={`${styles.explanationCard} ${
+              czyPoprawna ? styles.correct : styles.incorrect
+            }`}>
+              {czyPoprawna && <Award className={styles.icon} />}
+              <p>{pytanie.wyjasnienie}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
-};
-
-export default QuizComponent;
+}

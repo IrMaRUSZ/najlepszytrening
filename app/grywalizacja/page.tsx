@@ -31,7 +31,7 @@ const GamificationPage = () => {
     { name: "Noemi W", points: 575 }, // unchanged
   ].sort((a, b) => b.points - a.points);
 
-  const teams: Teams = {
+  const teams: Teams = {  
     team1: {
       name: "Drużyna Czerwona",
       members: [
