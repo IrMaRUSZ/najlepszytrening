@@ -12,6 +12,34 @@ const handler = NextAuth({
     strategy: "jwt",
   },
   cookies: {
+    pkceCodeVerifier: {
+      name: "next-auth.pkce.code_verifier",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+    state: {
+      name: "next-auth.state",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 900, // 15 minutes
+      },
+    },
+    nonce: {
+      name: "next-auth.nonce",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
     sessionToken: {
       name: "next-auth.session-token",
       options: {
@@ -25,19 +53,23 @@ const handler = NextAuth({
   callbacks: {
     async signIn({ account, profile }) {
       if (!account?.provider || !profile) {
-        console.error("Brak konta lub profilu!");
+        console.error("Missing account or profile!");
         return false;
       }
       return true;
     },
     async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl) ? url : baseUrl;
+      if (url.startsWith(baseUrl)) return url;
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      return baseUrl;
     },
   },
   pages: {
     signIn: "/auth/signin",
+    error: "/auth/error", // Add error page
   },
   secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV === "development",
 });
 
 export { handler as GET, handler as POST };
