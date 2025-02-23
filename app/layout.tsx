@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -5,11 +6,11 @@ import Navbar from '../components/Navbar'
 import GoogleAnalytics from '../components/SEO/GoogleAnalytics'
 import Script from 'next/script'
 import CookiePopup from '@/components/CookiePopup'
+import Providers from '../components/Providers'
 
 const inter = Inter({ subsets: ['latin'] })
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 
-// Schema.org JSON-LD
 const schemaData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -114,7 +115,8 @@ const personSchema = {
 };
 
 export const metadata: Metadata = {
-  // ... reszta metadanych pozostaje bez zmian
+  title: 'Trener Personalny Łódź | Najlepszy Trening',
+  description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy, skuteczne podejście.',
 };
 
 export default function RootLayout({
@@ -125,11 +127,9 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <head>
-        {/* Schema.org JSON-LD */}
         <Script id="schema-business" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
         <Script id="schema-person" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
 
-        {/* Google Consent Mode (ustawienie domyślnej zgody) */}
         <Script id="google-consent-mode" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -153,7 +153,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Google Analytics */}
         <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -163,10 +162,12 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={inter.className}>
-        <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
-        <Navbar />
-        <CookiePopup />
-        {children}
+        <Providers>
+          <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
+          <Navbar />
+          <CookiePopup />
+          {children}
+        </Providers>
       </body>
     </html>
   );

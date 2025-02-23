@@ -1,0 +1,57 @@
+/* app/auth/signin/signin.module.css */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #1f2937;
+  }
+  
+  .card {
+    max-width: 400px;
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .card h2 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .card p {
+    margin: 0;
+    margin-bottom: 2rem;
+    color: #666;
+  }
+  
+  .googleButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background: white;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .googleButton:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+  }
+  
+  .googleButton:active {
+    transform: translateY(0);
+  }
