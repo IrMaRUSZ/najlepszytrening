@@ -24,15 +24,15 @@ const pytaniaQuizu: PytanieQuizu[] = [
       dataPytania: "2025-02-24"
     },
     {
-      pytanie: "Jak powinien być skomponowany zbilansowany posiłek podczas odchudzania?",
+      pytanie: "Ile zaleca się spożywać dziennie warzyw?",
       odpowiedzi: [
-        "3/4 warzywa, 1/4 białko", 
-        "1/2 warzywa, 1/4 białko, 1/4 węglowodany złożone", 
-        "1/3 warzywa, 1/3 białko, 1/3 węglowodany", 
-        "1/2 białko, 1/2 węglowodany"
+        "400-500 g",
+        "600-700 g",
+        "800-1000 g",
+        "1200-1500 g"
       ],
-      poprawnaOdpowiedz: 1,
-      wyjasnienie: "Zbilansowany posiłek powinien składać się z: 1/2 talerza - warzywa, 1/4 talerza - chude białko, 1/4 talerza - węglowodany złożone.",
+      poprawnaOdpowiedz: 2,
+      wyjasnienie: "Zaleca się spożywanie około 800 g warzyw i owoców dziennie, z czego większość powinna stanowić warzywa. Jest to ilość, która dostarcza odpowiednią ilość błonnika, witamin i minerałów, wspierając zdrowy styl życia.",
       dataPytania: "2025-02-25"
     },
     {

@@ -1,6 +1,5 @@
 'use client';
 
-// Ścieżka pliku: /app/quiz/page.tsx
 import React, { useState, useEffect } from 'react';
 import { Check, X, Award } from 'lucide-react';
 import styles from '../../styles/quiz.module.css';
@@ -23,8 +22,12 @@ export default function QuizPage() {
         }
         const dane = await odpowiedz.json();
         setPytanie(dane);
-      } catch {
-        setBlad('Nie udało się pobrać pytania');
+      } catch (error) {
+        if (error instanceof Error) {
+          setBlad(error.message);
+        } else {
+          setBlad('Nie udało się pobrać pytania');
+        }
       } finally {
         setLadowanie(false);
       }
@@ -35,7 +38,7 @@ export default function QuizPage() {
 
   const handleKlikniecieOdpowiedzi = (index: number) => {
     if (!pytanie) return;
-    
+
     setWybranaOdpowiedz(index);
     setCzyPoprawna(index === pytanie.poprawnaOdpowiedz);
     setTimeout(() => setPokazWyjasnienie(true), 800);
@@ -60,7 +63,7 @@ export default function QuizPage() {
       <div className={styles.quizCard}>
         <div className={styles.contentContainer}>
           <h2 className={styles.question}>{pytanie.pytanie}</h2>
-          
+
           <div className={styles.optionsContainer}>
             {pytanie.odpowiedzi.map((odpowiedz, index) => (
               <button
@@ -74,6 +77,8 @@ export default function QuizPage() {
                     ? styles.incorrect
                     : ''
                 }`}
+                aria-label={`Odpowiedź: ${odpowiedz}`} // Dodanie aria-label
+                title={`Odpowiedź: ${odpowiedz}`}  // Alternatywnie dodanie title
               >
                 <span>{odpowiedz}</span>
                 {wybranaOdpowiedz !== null && index === pytanie.poprawnaOdpowiedz && (
@@ -87,9 +92,11 @@ export default function QuizPage() {
           </div>
 
           {pokazWyjasnienie && (
-            <div className={`${styles.explanationCard} ${
-              czyPoprawna ? styles.correct : styles.incorrect
-            }`}>
+            <div
+              className={`${styles.explanationCard} ${
+                czyPoprawna ? styles.correct : styles.incorrect
+              }`}
+            >
               {czyPoprawna && <Award className={styles.icon} />}
               <p>{pytanie.wyjasnienie}</p>
             </div>
