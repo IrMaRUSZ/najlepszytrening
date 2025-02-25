@@ -20,50 +20,49 @@ interface Teams {
 
 const GamificationPage = () => {
   const allParticipants: TeamMember[] = [
-    { name: "Katarzyna W", points: 2097 }, // 1889 + 208
-    { name: "Marek S", points: 1973 }, // 1773 + 150
-    { name: "Kacper M", points: 1722 }, // 1517 + 205
-    { name: "Rafał G", points: 1627 }, // 1340 + 287
-    { name: "Julia S", points: 1261 }, // 1058 + 133
-    { name: "Trener Ireneusz", points: 1188 }, // 967 + 221
-    { name: "Dawid L", points: 969 }, // 874 + 95
-    { name: "Ada L", points: 684 }, // 593 + 91
-    { name: "Noemi W", points: 575 }, // unchanged
+    { name: "Katarzyna W", points: 2267 }, // 2097 + 170
+    { name: "Marek S", points: 2173 }, // 1973 + 100
+    { name: "Kacper M", points: 1812 }, // 1722 + 90
+    { name: "Rafał G", points: 1690 }, // 1627 + 63
+    { name: "Julia S", points: 1359 }, // 1261 + 98
+    { name: "Trener Ireneusz", points: 1258 }, // 1188 + 70
+    { name: "Dawid L", points: 1035 }, // 969 + 66
+    { name: "Ada L", points: 768 }, // 684 + 84
+    { name: "Noemi W", points: 735 } // 575 + 60
   ].sort((a, b) => b.points - a.points);
 
   const teams: Teams = {  
     team1: {
       name: "Drużyna Czerwona",
       members: [
-        { name: "Rafał G", points: 0 },
-        { name: "Dawid L", points: 0 },
-        { name: "Julia S", points: 100 },
+        { name: "Marek S", points: 100 },
+        { name: "Ada L", points: 0 },
+        { name: "Trener Ireneusz", points: 0 },
       ]
     },
     team2: {
       name: "Drużyna Niebieska",
       members: [
-        { name: "Katarzyna W", points: 0 },
-        { name: "Trener Ireneusz", points: 0 },
+        { name: "Julia S", points: 0 },
+        { name: "Noemi W", points: 100 },
 
       ]
     },
     team3: {
       name: "Drużyna Zielona",
       members: [
-        { name: "Marek S", points: 100 },
-        { name: "Noemi W", points: 0 },
+        { name: "Katarzyna W", points: 0 },
+        { name: "Dawid L", points: 0 },
       ]
     },
     team4: {
       name: "Drużyna Żółta",
       members: [
+        { name: "Rafał G", points: 0 },
         { name: "Kacper M", points: 0 },
-        { name: "Ada L", points: 0 },
       ]
     }
   };
-
   const [activeTab, setActiveTab] = useState<'teams' | 'individual' | 'rules' | 'prizes'>('teams');
 
   const calculateRank = (points: number): 'UCZESTNIK' | 'GRACZ' | 'ELITA' => {
