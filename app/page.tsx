@@ -8,8 +8,6 @@ import StepSection from '../components/Home/StepsSection';
 import BlogPage from './blog/page'
 import CookiePopup from '../components/CookiePopup';
 
-
-
 export default function Home() {
   return (
     <main className={styles.container}>
@@ -29,20 +27,20 @@ export default function Home() {
             <span className={styles.titleSecondLine}>Maruszewski</span>
           </h1>
           <p className={styles.subtitle}>
-            Trener Personalny w Łodzi i Online
+            Profesjonalny Trener Personalny w Łodzi i Online
           </p>
           <div className={styles.badges}>
             <button className={styles.badge}>
               <MapPin size={20} />
-              Treningi w Łodzi
+              Treningi we wszystkich dzielnicach Łodzi
             </button>
             <button className={styles.badge}>
               <Globe size={20} />
-              Treningi Online
+              Treningi Online dla całej Polski
             </button>
           </div>
           <a href="https://calendly.com/maruszewskiirek" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
-            Umów Darmową Konsultację
+            Umów Darmową Konsultację w Łodzi
             <span className={styles.arrow}>→</span>
           </a>
           <div className={styles.socialLinks}>
@@ -59,9 +57,9 @@ export default function Home() {
       <TrustBuildingSection />
       <StepSection/>
       <section className={styles.blogSection}>
-  <BlogPage />
-</section>
-<CookiePopup />
+        <BlogPage />
+      </section>
+      <CookiePopup />
     </main>
   )
 }

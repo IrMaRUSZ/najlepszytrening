@@ -1,10 +1,9 @@
+// app/blog/page.tsx
 import { ArrowRight, Clock } from 'lucide-react';
 import Link from 'next/link';
-import matter from 'gray-matter';
-import fs from 'fs';
-import path from 'path';
-import styles from '../../styles/Blog.module.css';
 import Image from 'next/image';
+import { getAllPosts } from '../../lib/posts';
+import styles from '../../styles/Blog.module.css';
 
 type CategoryType = 
   'Dieta' | 
@@ -42,108 +41,171 @@ interface Post {
   title: string;
   excerpt: string;
   image: string;
-  date: string; // Zmieniamy na wymagane pole
+  date: string;
   categories: CategoryType[];
   readingTime: number;
+  isLocalContent?: boolean;
 }
 
-export default function BlogPage() {
-  const getPosts = (): Post[] => {
-    const files = fs.readdirSync(path.join(process.cwd(), 'posts'));
-    const posts = files.map((filename) => {
-      const filePath = path.join(process.cwd(), 'posts', filename);
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const { data } = matter(fileContent);
+// Generator metadanych dla strony bloga
+export async function generateMetadata() {
+  return {
+    title: "Blog Trenera Personalnego | Najlepszy Trening Łódź",
+    description: "Sprawdzone porady treningowe, dietetyczne i zdrowotne. Praktyczna wiedza od doświadczonego trenera personalnego z Łodzi.",
+    keywords: "trener personalny łódź, blog treningowy, porady treningowe, dieta, treningi w łodzi",
+    openGraph: {
+      title: "Blog Trenera Personalnego | Najlepszy Trening Łódź",
+      description: "Sprawdzone porady treningowe, dietetyczne i zdrowotne. Praktyczna wiedza od doświadczonego trenera personalnego z Łodzi.",
+      url: "https://najlepszytrening.pl/blog",
+      type: "website",
+    }
+  }
+}
 
-      return {
-        slug: filename.replace('.md', ''),
-        title: data.title,
-        excerpt: data.excerpt || '',
-        image: data.image || '',
-        date: data.date || new Date().toISOString(), // Domyślna data dla postów bez daty
-        categories: data.categories || [],
-        readingTime: data.readingTime || 5
-      };
-    });
-
-    // Sortowanie postów według daty (od najnowszych)
-    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export default async function BlogPage() {
+  const getPosts = async (): Promise<Post[]> => {
+    try {
+      const posts = await getAllPosts();
+      
+      // Priorytetyzuj treści lokalne i sortuj
+      return posts
+        .map(post => ({
+          slug: post.slug,
+          title: post.title,
+          excerpt: post.excerpt || '',
+          image: post.image || '',
+          date: post.date || new Date().toISOString(),
+          categories: post.categories as CategoryType[] || [],
+          readingTime: post.readingTime || 5,
+          isLocalContent: post.isLocalContent
+        }))
+        .sort((a, b) => {
+          // Najpierw treści lokalne
+          if (a.isLocalContent && !b.isLocalContent) return -1;
+          if (!a.isLocalContent && b.isLocalContent) return 1;
+          
+          // Potem wg daty
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+      return [];
+    }
   };
 
-  const posts = getPosts();
+  const posts = await getPosts();
+  
+  // Podział postów na lokalne (dla Łodzi) i pozostałe
+  const localPosts = posts.filter(post => post.isLocalContent);
+  const otherPosts = posts.filter(post => !post.isLocalContent);
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>
-          <span className={styles.titleHighlight}>Blog</span>
+          <span className={styles.titleHighlight}>Blog Trenera Personalnego z Łodzi</span>
         </h1>
         <p className={styles.subtitle}>
-          Najnowsze artykuły o treningu, diecie i zdrowym stylu życia
+          Najnowsze artykuły o treningu, diecie i zdrowym stylu życia dla mieszkańców Łodzi i okolic
         </p>
       </div>
-
+      
+      {/* Sekcja postów lokalnych */}
+      {localPosts.length > 0 && (
+        <div className={styles.localPostsSection}>
+          <h2 className={styles.sectionTitle}>Treści dla mieszkańców Łodzi</h2>
+          <div className={styles.grid}>
+            {localPosts.map((post) => renderPostCard(post))}
+          </div>
+        </div>
+      )}
+      
+      {/* Pozostałe posty */}
       <div className={styles.grid}>
-        {posts.map((post) => (
-          <article key={post.slug} className={styles.card}>
-            <Link href={`/posts/${post.slug}`} className={styles.imageLink}>
-              <div className={styles.imageWrapper}>
-                <Image 
-                  src={post.image}
-                  alt={post.title}
-                  width={1200}
-                  height={800}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className={styles.categories}>
-                  {post.categories.map((category: CategoryType) => (
-                    <span
-                      key={category}
-                      className={styles.category}
-                      style={{
-                        backgroundColor: CATEGORIES[category]
-                      }}
-                    >
-                      {category}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Link>
-            
-            <div className={styles.content}>
-              <div className={styles.meta}>
-                <div className={styles.readTime}>
-                  <Clock size={16} />
-                  <span>{post.readingTime} min czytania</span>
-                </div>
-                <time className={styles.date}>
-                  {new Date(post.date).toLocaleDateString('pl-PL', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </time>
-              </div>
-
-              <Link href={`/posts/${post.slug}`} className={styles.titleLink}>
-                <h2 className={styles.cardTitle}>{post.title}</h2>
-              </Link>
-
-              <p className={styles.excerpt}>{post.excerpt}</p>
-
-              <Link href={`/posts/${post.slug}`} className={styles.readMore}>
-                Czytaj więcej
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-          </article>
-        ))}
+        {otherPosts.map((post) => renderPostCard(post))}
+      </div>
+      
+      {/* Sekcja CTA */}
+      <div className={styles.ctaSection}>
+        <h2>Szukasz trenera personalnego w Łodzi?</h2>
+        <p>Zapraszam na konsultację. Razem ustalimy plan działania dopasowany do Twoich potrzeb i możliwości.</p>
+        <div className={styles.ctaButtons}>
+          <Link href="/kontakt" className={styles.primaryButton}>
+            Umów spotkanie
+            <ArrowRight size={18} />
+          </Link>
+          <Link href="/trener-personalny-lodz" className={styles.secondaryButton}>
+            Dowiedz się więcej
+          </Link>
+        </div>
       </div>
     </div>
   );
+  
+  // Funkcja pomocnicza renderująca kartę posta
+  function renderPostCard(post: Post) {
+    return (
+      <article key={post.slug} className={`${styles.card} ${post.isLocalContent ? styles.localCard : ''}`}>
+        <Link href={`/posts/${post.slug}`} className={styles.imageLink}>
+          <div className={styles.imageWrapper}>
+            <Image 
+              src={post.image}
+              alt={post.title}
+              width={1200}
+              height={800}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+              }}
+              loading="lazy"
+            />
+            <div className={styles.categories}>
+              {post.categories.map((category: CategoryType) => (
+                <span
+                  key={category}
+                  className={styles.category}
+                  style={{
+                    backgroundColor: CATEGORIES[category]
+                  }}
+                >
+                  {category}
+                </span>
+              ))}
+            </div>
+            {post.isLocalContent && (
+              <span className={styles.localBadge}>Łódź</span>
+            )}
+          </div>
+        </Link>
+        
+        <div className={styles.content}>
+          <div className={styles.meta}>
+            <div className={styles.readTime}>
+              <Clock size={16} />
+              <span>{post.readingTime} min czytania</span>
+            </div>
+            <time className={styles.date}>
+              {new Date(post.date).toLocaleDateString('pl-PL', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
+
+          <Link href={`/posts/${post.slug}`} className={styles.titleLink}>
+            <h2 className={styles.cardTitle}>{post.title}</h2>
+          </Link>
+
+          <p className={styles.excerpt}>{post.excerpt}</p>
+
+          <Link href={`/posts/${post.slug}`} className={styles.readMore}>
+            Czytaj więcej
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+      </article>
+    );
+  }
 }

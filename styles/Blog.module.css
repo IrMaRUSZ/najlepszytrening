@@ -204,3 +204,119 @@
     color: white;
     backdrop-filter: blur(4px);
   }
+
+  /* Dodaj te style do istniejącego pliku Blog.module.css */
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.localPostsSection {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba(252, 163, 17, 0.05);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(252, 163, 17, 0.1);
+}
+
+.localCard {
+  border-color: rgba(252, 163, 17, 0.3);
+  background: rgba(252, 163, 17, 0.05);
+}
+
+.localBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  background: #fca311;
+  color: #000000;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.ctaSection {
+  margin: 5rem 0 3rem;
+  padding: 3rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ctaSection h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #fca311;
+  color: #000000;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+  background: #f59f00;
+  gap: 0.75rem;
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Responsywność */
+@media (max-width: 640px) {
+  .ctaSection {
+    padding: 2rem 1rem;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+  }
+  
+  .primaryButton, .secondaryButton {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .localPostsSection {
+    padding: 1.5rem 1rem;
+  }
+}

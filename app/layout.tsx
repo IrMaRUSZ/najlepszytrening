@@ -19,9 +19,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const canonicalUrl = typeof window !== 'undefined' ? 
+    `https://najlepszytrening.pl${window.location.pathname}` : 
+    'https://najlepszytrening.pl';
   return (
     <html lang="pl">
       <head>
+        <link rel="canonical" href={canonicalUrl} />
         <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
