@@ -39,26 +39,26 @@ const ArticleSchema = ({ title, date, image, metaDescription, slug, keywords }: 
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
-    "image": image ? `https://najlepszytrening.pl${image}` : undefined,
+    "image": image ? `https://www.najlepszytrening.pl${image}` : undefined,
     "datePublished": date,
     "dateModified": date,
     "author": {
       "@type": "Person",
       "name": "Ireneusz Maruszewski",
-      "url": "https://najlepszytrening.pl/o-mnie"
+      "url": "https://www.najlepszytrening.pl/o-mnie"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Najlepszy Trening",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://najlepszytrening.pl/logo.png"
+        "url": "https://www.najlepszytrening.pl/logo.png"
       }
     },
     "description": metaDescription,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://najlepszytrening.pl/posts/${slug}`
+      "@id": `https://www.najlepszytrening.pl/posts/${slug}`
     },
     // Dodajemy keywords do schematu, jeśli istnieją
     "keywords": keywords?.join(", ") || "trener personalny łódź"

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
-    url: 'https://najlepszytrening.pl',
+    url: 'https://www.najlepszytrening.pl',
     title: 'Trener Personalny Łódź | Najlepszy Trening',
     description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne Łódź centrum, Łódź Dąbrowa, Łódź Widzew',
     siteName: 'Najlepszy Trening',
@@ -39,8 +39,8 @@ export default function RootLayout({
 }) {
 
   const canonicalUrl = typeof window !== 'undefined' ? 
-    `https://najlepszytrening.pl${window.location.pathname}` : 
-    'https://najlepszytrening.pl';
+    `https://www.najlepszytrening.pl${window.location.pathname}` : 
+    'https://www.najlepszytrening.pl';
   return (
     <html lang="pl">
       <head>
