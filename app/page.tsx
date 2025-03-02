@@ -27,16 +27,16 @@ export default function Home() {
             <span className={styles.titleSecondLine}>Maruszewski</span>
           </h1>
           <p className={styles.subtitle}>
-            Profesjonalny Trener Personalny w Łodzi i Online
+            Trener personaly Łódź
           </p>
           <div className={styles.badges}>
             <button className={styles.badge}>
               <MapPin size={20} />
-              Treningi we wszystkich dzielnicach Łodzi
+              Trening personaly Łódź Dąbrowa
             </button>
             <button className={styles.badge}>
               <Globe size={20} />
-              Treningi Online dla całej Polski
+              Trener online
             </button>
           </div>
           <a href="https://calendly.com/maruszewskiirek" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
@@ -47,7 +47,7 @@ export default function Home() {
             <a href="https://instagram.com/trener_ireneusz" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <Instagram size={24} />
             </a>
-            <a href="https://youtube.com/@trener_ireneusz" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+            <a href="https://youtube.com/@najlepszytrening" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <Youtube size={24} />
             </a>
           </div>
