@@ -1,11 +1,11 @@
   export const siteMetadata = {
       companyName: 'Najlepszy Trening',
-      siteUrl: 'https://najlepszytrening.pl',
+      siteUrl: 'https://www.najlepszytrening.pl',
       author: 'Ireneusz Maruszewski',
       city: 'Łódź',
       email: 'maruszewskiirek@gmail.pl',
       phone: '+48 737 730 868',
-      address: 'Dąbrowskiego 207/225 Łódź'
+      address: 'Gojawiczyńskiej 26, 93-253 Łódź'
     }
     
     export const createMetadata = (title: string, description: string) => ({

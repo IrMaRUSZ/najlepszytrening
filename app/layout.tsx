@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     locale: 'pl_PL',
     url: 'https://najlepszytrening.pl',
     title: 'Trener Personalny Łódź | Najlepszy Trening',
-    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne we wszystkich dzielnicach Łodzi.',
+    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne Łódź centrum, Łódź Dąbrowa, Łódź Widzew',
     siteName: 'Najlepszy Trening',
     images: [
       {

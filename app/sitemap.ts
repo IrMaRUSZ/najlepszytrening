@@ -4,7 +4,7 @@ import { getAllPosts } from '../lib/posts'
 type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://najlepszytrening.pl'
+  const baseUrl = 'https://www.najlepszytrening.pl'
   
   const posts = await getAllPosts()
 
