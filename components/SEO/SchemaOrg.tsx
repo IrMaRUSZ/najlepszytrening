@@ -7,15 +7,15 @@ export const generateSchemaMarkup = () => {
     '@type': 'LocalBusiness',
     '@id': 'https://www.najlepszytrening.pl',
     name: 'Najlepszy Trening - Ireneusz Maruszewski',
-    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne, indywidualny plan treningowy.',
+    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne we wszystkich dzielnicach (Widzew, Bałuty, Polesie, Górna, Śródmieście). Pierwszy krok jest najtrudniejszy - rozumiem Twoje obawy, bo sam kiedyś zaczynałem.',
     url: 'https://www.najlepszytrening.pl',
     telephone: '+48 737730868',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Dąbrowskiego 207/225',
+      streetAddress: 'Gojawiczyńskiej 26',
       addressLocality: 'Łódź',
       addressRegion: 'łódzkie',
-      postalCode: '93-231',
+      postalCode: '93-253',
       addressCountry: 'PL'
     },
     geo: {
@@ -25,10 +25,10 @@ export const generateSchemaMarkup = () => {
     },      
     image: {
       '@type': 'ImageObject',
-      url: 'https://www.najlepszytrening.pl/images/Maruszewski.webp',
+      url: 'https://www.najlepszytrening.pl/images/Maruszewskibt.webp',
       width: '1200',
       height: '630',
-      caption: 'Ireneusz Maruszewski - Trener Personalny i Fizjoterapeuta w Łodzi'
+      caption: 'Ireneusz Maruszewski - Trener Personalny Łódź'
     },
     priceRange: '$$',
     openingHoursSpecification: {
@@ -46,8 +46,10 @@ export const generateSchemaMarkup = () => {
     },
     sameAs: [
       'https://instagram.com/trener_ireneusz',
-      'https://youtube.com/@trener_ireneusz'
+      'https://youtube.com/@trener_ireneusz',
+      'https://facebook.com/TrenerIreneusz'
     ],
+    keywords: "trener personalny łódź, trening personalny łódź, treningi indywidualne łódź, trener personalny łódź widzew, trener personalny łódź bałuty, plan treningowy łódź",
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5',
@@ -61,30 +63,58 @@ export const generateSchemaMarkup = () => {
       itemListElement: [
         {
           '@type': 'Offer',
-          name: 'Trening personalny',
-          description: 'Indywidualny trening pod okiem profesjonalnego trenera',
+          name: 'Trening personalny w Łodzi',
+          description: 'Treningi personalne w centrum i wszystkich dzielnicach Łodzi. Zero oceniania, plan skrojony na miarę, zawsze jestem obok podczas treningu.',
           price: '150.00',
           priceCurrency: 'PLN',
           availability: 'https://schema.org/InStock'
         },
         {
           '@type': 'Offer',
-          name: 'Fizjoterapia',
-          description: 'Profesjonalna fizjoterapia i rehabilitacja',
-          price: '150.00',
-          priceCurrency: 'PLN',
-          availability: 'https://schema.org/InStock'
-        },
-        {
-          '@type': 'Offer',
-          name: 'Plany treningowe online',
-          description: 'Spersonalizowane plany treningowe z prowadzeniem online',
+          name: 'Współpraca online',
+          description: 'Trenuj z profesjonalnym wsparciem, gdziekolwiek jesteś. Instruktaże video, monitorowanie postępów, stały kontakt.',
           price: '250.00',
           priceCurrency: 'PLN',
           availability: 'https://schema.org/InStock'
+        },
+        {
+          '@type': 'Offer',
+          name: 'Plan treningowy 100kg w 10 tygodni',
+          description: '10-tygodniowy program progresji w wyciskaniu leżąc. Systematyczne zwiększanie obciążeń z odpowiednimi przerwami między treningami.',
+          availability: 'https://schema.org/InStock'
         }
       ]
-    }
+    },
+    review: [
+      {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5'
+        },
+        author: {
+          '@type': 'Person',
+          name: 'Basia'
+        },
+        datePublished: '2024-11-25',
+        reviewBody: 'Z Irkiem współpracuję już od 9 miesięcy. Trafiłam do niego z polecenia, 4 miesięce po rekonstrukcji więzadła krzyżowego przedniego, szukając pomocy w bezpiecznym odbudowaniu mięśni.'
+      },
+      {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5'
+        },
+        author: {
+          '@type': 'Person',
+          name: 'Rafał'
+        },
+        datePublished: '2024-08-05',
+        reviewBody: 'Bardzo polecam współpracę z Irkiem, zgłosiłem się do niego mając 2 cele: wrócić do sprawności po operacji wiązadeł oraz aby schudnąć. Dieta + plan treningowy pozwoliły osiągnąć jedno i drugie.'
+      }
+    ]
   };
 
   const personSchema = {
@@ -93,15 +123,28 @@ export const generateSchemaMarkup = () => {
     '@id': 'https://www.najlepszytrening.pl#person',
     name: 'Ireneusz Maruszewski',
     jobTitle: ['Trener Personalny', 'Fizjoterapeuta'],
-    description: 'Certyfikowany trener personalny i fizjoterapeuta z wieloletnim doświadczeniem w Łodzi',
-    image: 'https://www.najlepszytrening.pl/images/Maruszewski.webp',
+    description: 'Trener personalny w Łodzi, który rozumie Twoje obawy. Sam kiedyś zaczynałem i wiem, jak przytłaczająca może być siłownia na początku. Dlatego skupiam się przede wszystkim na tym, żebyś czuł się pewnie i bezpiecznie podczas każdego treningu.',
+    image: 'https://www.najlepszytrening.pl/images/Maruszewskibt.webp',
     url: 'https://www.najlepszytrening.pl',
     sameAs: [
       'https://instagram.com/trener_ireneusz',
-      'https://youtube.com/@trener_ireneusz'
+      'https://youtube.com/@trener_ireneusz',
+      'https://facebook.com/TrenerIreneusz'
     ],
     worksFor: {
       '@id': 'https://www.najlepszytrening.pl'
+    },
+    location: {
+      '@type': 'Place',
+      name: 'Łódź, Polska',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Gojawiczyńskiej 26',
+        addressLocality: 'Łódź',
+        addressRegion: 'łódzkie',
+        postalCode: '93-253',
+        addressCountry: 'PL'
+      }
     }
   };
 
