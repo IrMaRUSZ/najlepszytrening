@@ -14,7 +14,7 @@ const pytaniaQuizu: PytanieQuizu[] = [
   {
     pytanie: "Jakie mogą być skutki niedostatecznej ilości snu dla sportowca?",
     odpowiedzi: ["Poprawa wyników treningowych", "Zwiększone ryzyko urazu", "Przyśpieszenie budowy masy mięśniowej", "Lepsza kontrola apetytu"],
-    poprawnaOdpowiedz: 2,
+    poprawnaOdpowiedz: 1,
     wyjasnienie: "Niedostateczna ilość snu może prowadzić do spowolnienia budowy masy mięśniowej, zwiększonego ryzyka kontuzji oraz gorszej regeneracji.",
     dataPytania: "2025-03-02"
   },
