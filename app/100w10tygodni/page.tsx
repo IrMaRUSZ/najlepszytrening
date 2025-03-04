@@ -18,6 +18,9 @@ export const metadata: Metadata = {
         alt: "Darmowy plan treningowy na wyciskanie leżąc - Najlepszy Trening Łódź"
       }
     ]
+  },
+  alternates: {
+    canonical: 'https://www.najlepszytrening.pl/100w10tygodni'
   }
 };
 
