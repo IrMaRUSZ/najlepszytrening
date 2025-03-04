@@ -19,9 +19,6 @@ export const metadata: Metadata = {
       }
     ]
   },
-  alternates: {
-    canonical: 'https://www.najlepszytrening.pl/100w10tygodni'
-  }
 };
 
 export default function TrainerPage() {
