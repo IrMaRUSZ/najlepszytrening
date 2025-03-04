@@ -18,7 +18,7 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'najlepszytrening.pl',
+            value: 'www.najlepszytrening.pl',
           },
         ],
         permanent: true,

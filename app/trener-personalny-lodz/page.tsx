@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Trener Personalny Łódź | Profesjonalne Treningi | Najlepszy Trening",
     description: "Profesjonalny trener personalny w Łodzi. Indywidualne plany treningowe, wsparcie dietetyczne i treningi dostosowane do Twoich celów. Pierwsze spotkanie bezpłatne!",
     url: "https://www.najlepszytrening.pl/trener-personalny-lodz",
-    type: "website",
+    type: "website",  
     images: [
       {
         url: "/images/trainer-about.webp",
@@ -18,6 +18,9 @@ export const metadata: Metadata = {
         alt: "Profesjonalny Trener Personalny Łódź - Najlepszy Trening"
       }
     ]
+  },
+  alternates: {
+    canonical: 'https://www.najlepszytrening.pl/100w10tygodni'
   }
 };
 
