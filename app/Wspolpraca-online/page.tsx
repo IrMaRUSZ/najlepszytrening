@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Współpraca Online | Najlepszy Trening Łódź",
     description: "Trenuj z profesjonalnym wsparciem, gdziekolwiek jesteś. Spersonalizowany plan treningowy, stały kontakt z trenerem i monitorowanie postępów.",
-    url: "https://www.najlepszytrening.pl/wspolpraca-online",
+    url: "https://www.najlepszytrening.pl/Wspolpraca-online",
     type: "website",
     images: [
       {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     ]
   },
   alternates: {
-    canonical: 'https://www.najlepszytrening.pl/wspolpraca-online'
+    canonical: 'https://www.najlepszytrening.pl/Wspolpraca-online'
   }
 };
 
