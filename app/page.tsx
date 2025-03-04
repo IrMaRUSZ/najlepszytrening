@@ -7,7 +7,20 @@ import InitialHook from '../components/Home/InitialHook';
 import StepSection from '../components/Home/StepsSection';
 import BlogPage from './blog/page'
 import CookiePopup from '../components/CookiePopup';
+import { Metadata } from 'next';
 
+
+export const metadata: Metadata = {
+  title: 'Trener Personalny Łódź',
+  description: 'Chcesz schudnąć, zbudować mięśnie lub po prostu czuć się lepiej w swoim ciele? Pomogę Ci to osiągnąć! Jako trener personalny w Łodzi dopasuję trening do Twoich potrzeb i stylu życia.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Trener Personalny Łódź | Najlepszy Trening',
+    description: 'Chcesz schudnąć, zbudować mięśnie lub po prostu czuć się lepiej w swoim ciele? Pomogę Ci to osiągnąć!',
+  },
+};
 export default function Home() {
   return (
     <main className={styles.container}>

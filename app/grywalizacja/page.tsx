@@ -3,6 +3,29 @@ import React, { useState } from 'react';
 import { Trophy, Users, Target, Gift, Medal } from 'lucide-react';
 import styles from '../../styles/Grywalizacja.module.css';
 
+
+export async function generateMetadata() {
+  return {
+    title: "Kontakt | Najlepszy Trening Łódź",
+    description: "Skontaktuj się z profesjonalnym trenerem personalnym z Łodzi. Umów trening personalny, konsultację dietetyczną lub zadaj pytanie dotyczące treningów.",
+    keywords: "kontakt trener personalny, trener łódź kontakt, umów trening personalny, konsultacja trenerska łódź",
+    openGraph: {
+      title: "Kontakt | Najlepszy Trening Łódź",
+      description: "Skontaktuj się z profesjonalnym trenerem personalnym z Łodzi. Umów trening personalny, konsultację dietetyczną lub zadaj pytanie dotyczące treningów.",
+      url: "https://www.najlepszytrening.pl/kontakt",
+      type: "website",
+      images: [
+        {
+          url: "/images/kontakt.webp",
+          width: 1200,
+          height: 630,
+          alt: "Kontakt - Najlepszy Trening Łódź"
+        }
+      ]
+    }
+  }
+}
+
 interface TeamMember {
   name: string;
   points: number;

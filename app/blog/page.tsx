@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { getAllPosts } from '../../lib/posts';
 import styles from '../../styles/Blog.module.css';
 
+
 type CategoryType = 
   'Dieta' | 
   'Trening' | 
@@ -56,12 +57,19 @@ export async function generateMetadata() {
     openGraph: {
       title: "Blog Trenera Personalnego | Najlepszy Trening Łódź",
       description: "Sprawdzone porady treningowe, dietetyczne i zdrowotne. Praktyczna wiedza od doświadczonego trenera personalnego z Łodzi.",
-      url: "https://najlepszytrening.pl/blog",
+      url: "https://www.najlepszytrening.pl/blog",
       type: "website",
+      images: [
+        {
+          url: "/images/blog.webp",
+          width: 1200,
+          height: 630,
+          alt: "Najlepszy Trening Łódź - Blog Trenera Personalnego"
+        }
+      ]
     }
   }
 }
-
 export default async function BlogPage() {
   const getPosts = async (): Promise<Post[]> => {
     try {

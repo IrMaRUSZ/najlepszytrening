@@ -8,6 +8,9 @@ import OneRepMax from '../../components/calculators/onerepmax';
 import BMI from '../../components/calculators/bmi';
 import styles from '../../styles/narzedzia.module.css';
 
+
+
+
 const ToolsPage = () => {
   const [activeCalculator, setActiveCalculator] = useState('diet');
 

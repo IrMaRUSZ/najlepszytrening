@@ -3,6 +3,27 @@ import Image from 'next/image';
 import { Target, Heart, Brain, Shield, ArrowRight } from 'lucide-react';
 import styles from '../../styles//AboutSection.module.css';
 
+export async function generateMetadata() {
+  return {
+    title: "O mnie | Trener Personalny Łódź | Najlepszy Trening",
+    description: "Poznaj mnie jako profesjonalnego trenera personalnego z Łodzi. Dowiedz się o moim doświadczeniu, kwalifikacjach i podejściu do treningu personalnego.",
+    keywords: "trener personalny łódź, o trenerze, doświadczenie trenera, kwalifikacje trenerskie, kim jestem, historia trenera",
+    openGraph: {
+      title: "O mnie | Trener Personalny Łódź | Najlepszy Trening",
+      description: "Poznaj mnie jako profesjonalnego trenera personalnego z Łodzi. Dowiedz się o moim doświadczeniu, kwalifikacjach i podejściu do treningu personalnego.",
+      url: "https://www.najlepszytrening.pl/o-mnie",
+      type: "website",
+      images: [
+        {
+          url: "/images/maruszewski.web",
+          width: 1200,
+          height: 630,
+          alt: "Trener Personalny Łódź Ireneusz Maruszewski - O mnie"
+        }
+      ]
+    }
+  }
+}
 const AboutSection = () => {
   const keyPoints = [
     {

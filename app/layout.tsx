@@ -10,16 +10,21 @@ import generateSchemaMarkup from '../components/SEO/SchemaOrg'
 const inter = Inter({ subsets: ['latin'] })
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
 
+// Podstawowe metadane, które będą dziedziczone ale mogą być nadpisane
 export const metadata: Metadata = {
-  title: 'Trener Personalny Łódź | Najlepszy Trening',
-  description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne we wszystkich dzielnicach (Widzew, Bałuty, Polesie, Górna, Śródmieście). Indywidualny plan treningowy, skuteczne podejście.',
-  keywords: 'trener personalny łódź, trening personalny łódź, indywidualny trening łódź, plan treningowy łódź, siłownia łódź',
+  metadataBase: new URL('https://www.najlepszytrening.pl'),
+  title: {
+    template: '%s | Trener Personalny Łódź',
+    default: 'Trener Personalny Łódź | Najlepszy Trening'
+  },
+  description: 'Sprawdzony trener personalny w Łodzi',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
     url: 'https://www.najlepszytrening.pl',
-    title: 'Trener Personalny Łódź | Najlepszy Trening',
-    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne Łódź centrum, Łódź Dąbrowa, Łódź Widzew',
     siteName: 'Najlepszy Trening',
     images: [
       {
@@ -37,14 +42,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
-  const canonicalUrl = typeof window !== 'undefined' ? 
-    `https://www.najlepszytrening.pl${window.location.pathname}` : 
-    'https://www.najlepszytrening.pl';
   return (
     <html lang="pl">
       <head>
-        <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png" />
