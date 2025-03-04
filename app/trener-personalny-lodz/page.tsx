@@ -19,6 +19,9 @@ export const metadata: Metadata = {
       }
     ]
   },
+  alternates: {
+    canonical: 'https://www.najlepszytrening.pl/trener-personalny-lodz'
+  }
 };
 
 export default function TrainerPage() {

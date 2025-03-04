@@ -1,63 +1,47 @@
-'use client';
-
-import { useParams, notFound } from 'next/navigation';
-import Diet from '../../../components/calculators/Kalkulator-zapotrzebowania-kalorycznego';
-import BodyFat from '../../../components/calculators/bodyfat';
-import OneRepMax from '../../../components/calculators/onerepmax';
-import BMI from '../../../components/calculators/bmi';
-import styles from '../../../styles/narzedzia.module.css';
+import { Metadata } from 'next';
+import ClientCalculatorPage from './client/ClientCalculatorPage';
 
 const validCalculators = ['Kalkulator-zapotrzebowania-kalorycznego', 'bodyfat', 'onerepmax', 'bmi'];
 
-const CalculatorPage = () => {
-  const params = useParams();
+export async function generateMetadata({ params }): Promise<Metadata> {
   const calculator = params.calculator as string;
-
-  // Sprawdzamy czy ścieżka jest dokładnie taka jak oczekujemy
+  
   if (!validCalculators.includes(calculator)) {
-    notFound();
+    return {
+      title: 'Kalkulatory | Najlepszy Trening Łódź',
+      description: 'Kalkulatory treningowe',
+    };
   }
-
-  const getTitle = () => {
-    switch (calculator) {
-      case 'Kalkulator-zapotrzebowania-kalorycznego':
-        return '';
-      case 'bodyfat':
-        return '';
-      case 'onerepmax':
-        return '';
-      case 'bmi':
-        return '';
-      default:
-        return '';
-    }
+  
+  const titles = {
+    'Kalkulator-zapotrzebowania-kalorycznego': 'Kalkulator Zapotrzebowania Kalorycznego',
+    'bodyfat': 'Kalkulator Tkanki Tłuszczowej',
+    'onerepmax': 'Kalkulator Maksymalnego Ciężaru',
+    'bmi': 'Kalkulator BMI',
   };
-
-  const renderCalculator = () => {
-    switch (calculator) {
-      case 'Kalkulator-zapotrzebowania-kalorycznego':
-        return <Diet />;
-      case 'bodyfat':
-        return <BodyFat />;
-      case 'onerepmax':
-        return <OneRepMax />;
-      case 'bmi':
-        return <BMI />;
-      default:
-        return null;
-    }
+  
+  const descriptions = {
+    'Kalkulator-zapotrzebowania-kalorycznego': 'Oblicz swoje dzienne zapotrzebowanie kaloryczne',
+    'bodyfat': 'Oblicz swój procent tkanki tłuszczowej',
+    'onerepmax': 'Oblicz swój maksymalny ciężar na jedno powtórzenie',
+    'bmi': 'Oblicz swój wskaźnik masy ciała',
   };
+  
+  return {
+    title: `${titles[calculator]} | Najlepszy Trening Łódź`,
+    description: descriptions[calculator],
+    alternates: {
+      canonical: `https://www.najlepszytrening.pl/narzedzia/${calculator}`,
+    },
+  };
+}
 
-  return (
-    <div className={styles.pageContainer}>
-      <div className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>{getTitle()}</h1>
-      </div>
-      <div className={styles.calculatorWrapper}>
-        {renderCalculator()}
-      </div>
-    </div>
-  );
-};
-
-export default CalculatorPage;
+export default function Page({ params }) {
+  const { calculator } = params;
+  // Możemy obsłużyć nieprawidłowe kalkulatory bezpośrednio na serwerze
+  if (!validCalculators.includes(calculator)) {
+    // Jeśli używasz Next.js 13+, możesz użyć notFound() z next/navigation
+    return { notFound: true };
+  }
+  return <ClientCalculatorPage calculator={calculator} />;
+}
