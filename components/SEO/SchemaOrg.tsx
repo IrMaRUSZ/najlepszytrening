@@ -7,7 +7,7 @@ export const generateSchemaMarkup = () => {
     '@type': 'LocalBusiness',
     '@id': 'https://www.najlepszytrening.pl',
     name: 'Najlepszy Trening - Ireneusz Maruszewski',
-    description: 'Profesjonalny trener personalny w Łodzi. Treningi personalne we wszystkich dzielnicach (Widzew, Bałuty, Polesie, Górna, Śródmieście). Pierwszy krok jest najtrudniejszy - rozumiem Twoje obawy, bo sam kiedyś zaczynałem.',
+    description: 'Pierwszy krok jest najtrudniejszy - rozumiem Twoje obawy, bo sam kiedyś zaczynałem. Treningi Widzew, Dąbrowa, Centrum',
     url: 'https://www.najlepszytrening.pl',
     telephone: '+48 737730868',
     address: {
