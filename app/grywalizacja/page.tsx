@@ -18,6 +18,9 @@ export const metadata: Metadata = {
         alt: "Grywalizacja treningowa - Najlepszy Trening Łódź"
       }
     ]
+  },
+  alternates: {
+    canonical: 'https://www.najlepszytrening.pl/grywalizacja'
   }
 };
 

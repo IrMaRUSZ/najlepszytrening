@@ -19,6 +19,9 @@ export interface Post {
   keywords?: string[]; // Dodatkowe słowa kluczowe
   readingTime?: number;
   categories?: string[];
+  alternates?: {
+    canonical?: string;
+  } | string;
 }
 
 // Funkcja pobierająca wszystkie slugi postów

@@ -29,15 +29,22 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
+  // Generowanie kanonicznego URL na podstawie sluga
+  const canonicalUrl = `https://www.najlepszytrening.pl/posts/${resolvedParams.slug}`;
+
   return {
     title: `${post.title} | Blog Trenera Personalnego Łódź`,
-    description: post.excerpt || `${post.title} - przeczytaj artykuł na blogu Najelepszytrening. Profesjonalne porady treningowe i dietetyczne.`,
+    description: post.excerpt || `${post.title} - przeczytaj artykuł na blogu Najlepszytrening. Profesjonalne porady treningowe i dietetyczne.`,
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: 'article',
       images: [post.image],
       publishedTime: post.date,
+    },
+    // Dodanie kanonicznego URL do metadanych
+    alternates: {
+      canonical: canonicalUrl
     }
   };
 }

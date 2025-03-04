@@ -7,6 +7,7 @@ imageAlt: 'Mężczyzna wykonujący trening siłowy na siłowni pod okiem trenera
 date: '2024-11-15'
 readingTime: 8
 categories: ['Trening', 'Dieta']
+
 ---
 
 - [Wprowadzenie](#wprowadzenie)

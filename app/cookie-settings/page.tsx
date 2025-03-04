@@ -21,6 +21,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  alternates: {
+    canonical: 'https://www.najlepszytrening.pl/polityka-cookiesc'
+  }
 };
 
 export default function CookieSettingsPage() {

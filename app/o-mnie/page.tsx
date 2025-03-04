@@ -21,6 +21,9 @@ export async function generateMetadata() {
           alt: "Trener Personalny Łódź Ireneusz Maruszewski - O mnie"
         }
       ]
+    },
+    alternates: {
+      canonical: 'https://www.najlepszytrening.pl/o-mnie'
     }
   }
 }

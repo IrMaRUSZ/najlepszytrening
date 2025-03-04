@@ -1,9 +1,15 @@
-// types/quiz.ts
+// @/types/quiz.ts
+
 export interface PytanieQuizu {
-  id?: string;
   pytanie: string;
   odpowiedzi: string[];
   poprawnaOdpowiedz: number;
   wyjasnienie: string;
-  dataPytania: string;
 }
+
+export interface DziennyZestawPytan {
+  data: string;
+  pytania: PytanieQuizu[];
+}
+
+// Usunięto interfejs PytanieQuizuPelnego, ponieważ nie jest już używany

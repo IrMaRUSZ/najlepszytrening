@@ -67,6 +67,9 @@ export async function generateMetadata() {
           alt: "Najlepszy Trening Łódź - Blog Trenera Personalnego"
         }
       ]
+    },
+    alternates: {
+      canonical: 'https://www.najlepszytrening.pl/blog'
     }
   }
 }
