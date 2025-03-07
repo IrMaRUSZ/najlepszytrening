@@ -50,13 +50,6 @@ export const generateSchemaMarkup = () => {
       'https://facebook.com/TrenerIreneusz'
     ],
     keywords: "trener personalny łódź, trening personalny łódź, treningi indywidualne łódź, trener personalny łódź widzew, trener personalny łódź bałuty, plan treningowy łódź",
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      reviewCount: '48',
-      bestRating: '5',
-      worstRating: '1'
-    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Usługi treningowe',
