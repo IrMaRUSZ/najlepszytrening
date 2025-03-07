@@ -85,36 +85,6 @@ export const generateSchemaMarkup = () => {
         }
       ]
     },
-    review: [
-      {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5'
-        },
-        author: {
-          '@type': 'Person',
-          name: 'Basia'
-        },
-        datePublished: '2024-11-25',
-        reviewBody: 'Z Irkiem współpracuję już od 9 miesięcy. Trafiłam do niego z polecenia, 4 miesięce po rekonstrukcji więzadła krzyżowego przedniego, szukając pomocy w bezpiecznym odbudowaniu mięśni.'
-      },
-      {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5'
-        },
-        author: {
-          '@type': 'Person',
-          name: 'Rafał'
-        },
-        datePublished: '2024-08-05',
-        reviewBody: 'Bardzo polecam współpracę z Irkiem, zgłosiłem się do niego mając 2 cele: wrócić do sprawności po operacji wiązadeł oraz aby schudnąć. Dieta + plan treningowy pozwoliły osiągnąć jedno i drugie.'
-      }
-    ]
   };
 
   const personSchema = {

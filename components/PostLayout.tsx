@@ -34,18 +34,12 @@ interface PostLayoutProps {
 // Dodajemy użycie zmiennej keywords
 // Możemy dodać ją do komponentu ArticleSchema
 
-// Fragment components/PostLayout.tsx dotyczący schema.org
-
 const ArticleSchema = ({ title, date, image, metaDescription, slug, keywords }: Pick<PostLayoutProps, 'title' | 'date' | 'image' | 'metaDescription' | 'keywords'> & { slug: string }) => {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://www.najlepszytrening.pl/posts/${slug}`
-    },
     "headline": title,
-    "image": image ? [`https://www.najlepszytrening.pl${image}`] : undefined,
+    "image": image ? `https://www.najlepszytrening.pl${image}` : undefined,
     "datePublished": date,
     "dateModified": date,
     "author": {
@@ -58,10 +52,15 @@ const ArticleSchema = ({ title, date, image, metaDescription, slug, keywords }: 
       "name": "Najlepszy Trening",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.najlepszytrening.pl/logo.png"
+        "url": "https://www.najlepszytrening.pl"
       }
     },
     "description": metaDescription,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.najlepszytrening.pl/posts/${slug}`
+    },
+    // Dodajemy keywords do schematu, jeśli istnieją
     "keywords": keywords?.join(", ") || "trener personalny łódź"
   };
 
