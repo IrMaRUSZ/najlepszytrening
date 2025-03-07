@@ -63,9 +63,9 @@ Wybór odpowiedniego trenera to kluczowa decyzja. Na co zwrócić uwagę?
 [Dietetyka Nie Na Żarty](https://dietetykanienazarty.pl/)
 
 
-1. **Umiejętność słuchania** – Trener powinien nie tylko mówić, ale przede wszystkim słuchać Twoich potrzeb i odpowiednio na nie reagować.
+3. **Umiejętność słuchania** – Trener powinien nie tylko mówić, ale przede wszystkim słuchać Twoich potrzeb i odpowiednio na nie reagować.
 
-2. **Podejście do podopiecznych** – Zwróć uwagę, czy trener faktycznie interesuje się Twoimi postępami, czy tylko "odbębnia" godzinę treningu.
+4. **Podejście do podopiecznych** – Zwróć uwagę, czy trener faktycznie interesuje się Twoimi postępami, czy tylko "odbębnia" godzinę treningu.
 
 ## Kiedy zacząć trening z trenerem personalnym?
 
