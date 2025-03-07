@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://www.najlepszytrening.pl/polityka-cookiesc'
+    canonical: 'https://www.najlepszytrening.pl/polityka-cookies'
   }
 };
 
