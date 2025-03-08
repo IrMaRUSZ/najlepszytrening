@@ -47,7 +47,7 @@ const pytaniaQuizu: DziennyZestawPytan[] = [
     data: "2025-03-08",
     pytania: [
       {
-        pytanie: "Jaka jest główna zaleta kreatyny według artykułu?",
+        pytanie: "Jaka jest główna zaleta kreatyny?",
         odpowiedzi: ["Najlepsza cena", "Najlepiej przebadany suplement", "Łatwość stosowania", "Popularność wśród sportowców"],
         poprawnaOdpowiedz: 1,
         wyjasnienie: "Kreatyna jest opisana jako jeden z najlepiej przebadanych suplementów na świecie, co daje pewność co do jej skuteczności i bezpieczeństwa."
@@ -56,7 +56,7 @@ const pytaniaQuizu: DziennyZestawPytan[] = [
         pytanie: "Które z poniższych NIE jest korzyścią wynikającą ze stosowania kreatyny?",
         odpowiedzi: ["Wzrost siły", "Poprawa wydolności", "Wsparcie funkcji kognitywnych", "Redukcja tkanki tłuszczowej"],
         poprawnaOdpowiedz: 3,
-        wyjasnienie: "Artykuł wymienia jako korzyści ze stosowania kreatyny: wzrost siły i masy mięśniowej, poprawę wydolności oraz wsparcie funkcji kognitywnych, ale nie wspomina o redukcji tkanki tłuszczowej."
+        wyjasnienie: "Korzyści ze stosowania kreatyny: wzrost siły i masy mięśniowej, poprawę wydolności oraz wsparcie funkcji kognitywnych, ale nie wspomina o redukcji tkanki tłuszczowej."
       },
       {
         pytanie: "Dlaczego monohydrat kreatyny jest uważany za najlepszą formę?",
@@ -65,7 +65,7 @@ const pytaniaQuizu: DziennyZestawPytan[] = [
         wyjasnienie: "Monohydrat kreatyny jest uważany za najlepszą formę ze względu na najwyższą biodostępność, najlepsze przebadanie oraz najlepszą relację jakości do ceny."
       },
       {
-        pytanie: "Czy kreatyna wymaga cyklowania według artykułu?",
+        pytanie: "Czy kreatyna wymaga cyklowania?",
         odpowiedzi: ["Tak, co 2 tygodnie", "Tak, co miesiąc", "Nie wymaga cyklowania", "Tak, co 3 miesiące"],
         poprawnaOdpowiedz: 2,
         wyjasnienie: "Kreatyna nie wymaga cyklowania i może być przyjmowana codziennie w dawce 5g."
@@ -82,10 +82,10 @@ const pytaniaQuizu: DziennyZestawPytan[] = [
     data: "2025-03-09",
     pytania: [
       {
-        pytanie: "Jaką główną zaletę białka w proszku podkreśla artykuł?",
+        pytanie: "Jaką główną zaletę białka w proszku?",
         odpowiedzi: ["Niską cenę", "Wygodne źródło białka", "Lepszy smak niż białko ze źródeł naturalnych", "Szybsze efekty budowy mięśni"],
         poprawnaOdpowiedz: 1,
-        wyjasnienie: "Artykuł podkreśla, że białko w proszku jest wygodnym źródłem białka, co jest szczególnie wartościowe dla osób aktywnych fizycznie."
+        wyjasnienie: "Białko w proszku jest wygodnym źródłem białka, co jest szczególnie wartościowe dla osób aktywnych fizycznie."
       },
       {
         pytanie: "Na co zwrócić uwagę przy wyborze białka w proszku?",
@@ -103,7 +103,7 @@ const pytaniaQuizu: DziennyZestawPytan[] = [
         pytanie: "Które z poniższych NIE jest korzyścią wynikającą ze stosowania kwasów omega-3?",
         odpowiedzi: ["Wsparcie pracy mózgu", "Działanie przeciwzapalne", "Poprawa zdrowia serca", "Zwiększenie siły mięśniowej"],
         poprawnaOdpowiedz: 3,
-        wyjasnienie: "Artykuł wymienia jako korzyści ze stosowania kwasów omega-3: wsparcie pracy mózgu, działanie przeciwzapalne oraz poprawę zdrowia serca, ale nie wspomina o zwiększeniu siły mięśniowej."
+        wyjasnienie: "Korzyści ze stosowania kwasów omega-3: wsparcie pracy mózgu, działanie przeciwzapalne oraz poprawę zdrowia serca, ale nie wspomina o zwiększeniu siły mięśniowej."
       },
       {
         pytanie: "Kiedy najlepiej przyjmować suplementy omega-3?",
