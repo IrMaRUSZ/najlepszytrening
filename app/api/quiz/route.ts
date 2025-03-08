@@ -56,7 +56,7 @@ const pytaniaQuizu: DziennyZestawPytan[] = [
         pytanie: "Które z poniższych NIE jest korzyścią wynikającą ze stosowania kreatyny?",
         odpowiedzi: ["Wzrost siły", "Poprawa wydolności", "Wsparcie funkcji kognitywnych", "Redukcja tkanki tłuszczowej"],
         poprawnaOdpowiedz: 3,
-        wyjasnienie: "Korzyści ze stosowania kreatyny: wzrost siły i masy mięśniowej, poprawę wydolności oraz wsparcie funkcji kognitywnych, ale nie wspomina o redukcji tkanki tłuszczowej."
+        wyjasnienie: "Korzyści ze stosowania kreatyny: wzrost siły i masy mięśniowej, poprawę wydolności oraz wsparcie funkcji kognitywnych."
       },
       {
         pytanie: "Dlaczego monohydrat kreatyny jest uważany za najlepszą formę?",
@@ -71,7 +71,7 @@ const pytaniaQuizu: DziennyZestawPytan[] = [
         wyjasnienie: "Kreatyna nie wymaga cyklowania i może być przyjmowana codziennie w dawce 5g."
       },
       {
-        pytanie: "O jakiej porze najlepiej przyjmować kreatynę według artykułu?",
+        pytanie: "O jakiej porze najlepiej przyjmować kreatynę?",
         odpowiedzi: ["Rano na czczo", "Przed treningiem", "Po treningu", "O dowolnej porze"],
         poprawnaOdpowiedz: 3,
         wyjasnienie: "Kreatynę można przyjmować o dowolnej porze dnia, co czyni jej stosowanie bardzo wygodnym."
