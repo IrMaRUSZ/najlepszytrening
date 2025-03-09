@@ -9,7 +9,7 @@ interface DziennyZestawPytan {
 // Zmodyfikowana struktura - pytania pogrupowane po datach
 const pytaniaQuizu: DziennyZestawPytan[] = [
   {
-    data: "2025-03-14",
+    data: "2025-03-09",
     pytania: [
       {
         pytanie: "Który z produktów zawiera najwięcej kofeiny?",
