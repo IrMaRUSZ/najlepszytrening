@@ -9,64 +9,62 @@ interface DziennyZestawPytan {
 // Zmodyfikowana struktura - pytania pogrupowane po datach
 const pytaniaQuizu: DziennyZestawPytan[] = [
   {
-    data: "2025-03-09",
+    data: "2025-03-13",
     pytania: [
       {
-        pytanie: "Który z produktów zawiera najwięcej kofeiny?",
+        pytanie: "Które z tych ćwiczeń jest dobrym ćwiczeniem pod rozbudowę pośladków?",
         odpowiedzi: [
-          "Filiżanka czarnej herbaty",
-          "Filiżanka kawy rozpuszczalnej",
-          "Puszka Red Bulla",
-          "1 litr Coca-Coli",
-          "1 litr Mountain Dew"
+          "Fire hydrant",
+          "Clamshell",
+          "Przwodzenie nóg na maszynie",
+          "Kick back",
+          "Deska"
         ],
-        poprawnaOdpowiedz: 4,
-        wyjasnienie: "Mountain Dew zawiera najwięcej kofeiny - 152 mg w litrze. Dla porównania: filiżanka kawy zawiera około 57 mg, filiżanka herbaty 42 mg, puszka Red Bulla 80 mg, a litr Coca-Coli 96 mg kofeiny."
+        poprawnaOdpowiedz: 3,
+        wyjasnienie: "Fire hydrant - brak możliowśći realnego dociążenia, niestabilna pozycja. Clamshell - to samo co wcześniej. Przywodzenie nóg na maszynie obciąża przywodziciele. Deska jest slabym ćwiczenim na brzuch. Kick back to świetne, ale trudne ćwiczenie na pośladek."
       },
       {
         pytanie: "Co warto wyeliminować, aby skuteczniej schudnąć?",
         odpowiedzi: [
-          "Picie napojów zawierających kofeinę",
-          "Uwzględnianie w diecie produktów, które lubisz",
-          "Picie szklanki wody przed lub po posiłku",
-          "Jedzenie posiłków przed telewizorem"
+          "Napoje zero",
+          "Ziemniaki",
+          "Jedzenie po 18",
+          "Podjadanie zdrowych przekąsek - na przyklad orzechów"
         ],
         poprawnaOdpowiedz: 3,
-        wyjasnienie: "Jedzenie przed telewizorem powoduje rozproszenie uwagi, przez co nie skupiamy się odpowiednio na spożywanym posiłku. To może znacząco obniżyć nasze uczucie sytości i prowadzić do przejadania się."
+        wyjasnienie: "Napoje zero pomagają utrzymać sytość w ryzach, ziemniaki są super sycące i mają malo kalorii, jedzenie po 18 to mit, garść orzechow ma okolo 180 kalorii, więc jest to bomba kaloryczna"
       },
       {
-        pytanie: "Które mięśnie są najbardziej zaangażowane podczas wykonywania wznosów ramion w bok?",
+        pytanie: "Czy rolowanie zmniejsza ryzyko urazu",
         odpowiedzi: [
-          "Triceps (mięsień trójgłowy ramienia)",
-          "Biceps (mięsień dwugłowy ramienia)",
-          "Przednia część mięśnia naramiennego",
-          "Mięsień nadgrzebieniowy"
+          "Tak, większość osób zapomina jak jest ważne.",
+          "Nie, rolowanie jest przeceniane, zwykle będzie stratą czasu.",
         ],
-        poprawnaOdpowiedz: 3,
-        wyjasnienie: "Mięsień nadgrzebieniowy w pozycji początkowej ma bardzo dobrą dźwignię do generowania siły, podobnie jak boczna część mięśnia naramiennego. To one są najbardziej zaangażowane podczas wznosów ramion w bok."
+        poprawnaOdpowiedz: 1,
+        wyjasnienie: "Rolowanie może chwilowo zwiększyć zakres ruchu, ale nie zmniejsza ryzyka urazów i nie wplywa na regeneracje"
       },
-      {
-        pytanie: "Który z tych produktów ma najwięcej kalorii w jednej sztuce?",
-        odpowiedzi: [
-          "Biszkopt",
-          "Pączek",
-          "Ciastko francuskie",
-          "50 gramów orzechów"
-        ],
-        poprawnaOdpowiedz: 2,
-        wyjasnienie: "Ciastko francuskie zawiera najwięcej kalorii - około 558 kcal w jednej sztuce. Dla porównania: biszkopt ma około 10 kcal, pączek około 292 kcal, a 50 gramów orzechów około 250 kcal."
-      },
-      {
-        pytanie: "Jaki jest najlepszy czas na spożywanie posiłków po treningu?",
-        odpowiedzi: [
-          "Natychmiast po treningu",
-          "W ciągu 30-60 minut po treningu",
-          "2-3 godziny po treningu",
-          "Czas nie ma znaczenia"
-        ],
-        poprawnaOdpowiedz: 3,
-        wyjasnienie: "Dla większości osób czas spożycia posiłku po treningu nie ma kluczowego znaczenia. Ważniejsza jest ogólna podaż kalorii i makroskładników w ciągu dnia, a tzw. 'okno anaboliczne' nie ma tak istotnego wpływu na wyniki, jak wcześniej sądzono."
-      }
+        {
+          pytanie: "Który z tych produktów zawiera najwięcej białka w 100 gramach?",
+          odpowiedzi: [
+            "Pierś z kurczaka",
+            "Tofu",
+            "Jogurt naturalny",
+            "Orzechy włoskie"
+          ],
+          poprawnaOdpowiedz: 0,
+          wyjasnienie: "Pierś z kurczaka zawiera najwięcej białka – około 31 g na 100 g. Dla porównania: tofu ma około 13 g, jogurt naturalny 5 g, a orzechy włoskie około 15 g."
+        },
+        {
+          pytanie: "Która z tych aktywności spala najwięcej kalorii w ciągu godziny?",
+          odpowiedzi: [
+            "Spacer",
+            "Jazda na rowerze",
+            "Bieganie",
+            "Pływanie"
+          ],
+          poprawnaOdpowiedz: 2,
+          wyjasnienie: "Bieganie spala najwięcej kalorii – około 600-800 kcal na godzinę, w zależności od tempa. Spacer spala około 200-300 kcal, jazda na rowerze 400-700 kcal, a pływanie 500-800 kcal."
+        }
     ]
   }
 ];
