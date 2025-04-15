@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Calendar, Dumbbell, LineChart, MessageCircle } from 'lucide-react';
 import styles from '../../styles/StepsSection.module.css';
+import ContactForm from '../../components/ContactForm';
 
 const StepsSection = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -82,14 +83,9 @@ const StepsSection = () => {
                 <div className={styles.ctaSection}>
                     <h3>Gotowy na zmiany?</h3>
                     <p>Umów się na darmową konsultację i przekonaj się, że tym razem może być inaczej</p>
-                    <a 
-                        href="https://calendly.com/maruszewskiirek" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.ctaButton}
-                    >
-                        Zarezerwuj termin konsultacji
-                    </a>
+                    <div className={styles.contactSection}>
+  <ContactForm />
+</div>
                     <span className={styles.guarantee}>
                         Jeśli po konsultacji stwierdzisz, że to nie dla Ciebie - nie płacisz nic
                     </span>

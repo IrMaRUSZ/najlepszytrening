@@ -1,7 +1,8 @@
 // components/Home/AboutSection.tsx
 import Image from 'next/image';
-import { Target, Heart, Brain, Shield, ArrowRight } from 'lucide-react';
+import { Target, Heart, Brain, Shield } from 'lucide-react';
 import styles from '../../styles//AboutSection.module.css';
+import ContactForm from '@/components/ContactForm';
 
 export async function generateMetadata() {
   return {
@@ -111,11 +112,10 @@ const AboutSection = () => {
           </div>
 
           <div className={`${styles.ctaSection} ${styles.animateUp}`}>
-            <a href="https://calendly.com/maruszewskiirek" target="_blank" rel="noopener noreferrer" className={styles.ctaButtonPrimary}>
-              Umów Bezpłatną Konsultację
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </a>
-          </div>
+      </div>
+      <div className={styles.contactSection}>
+  <ContactForm />
+</div>
         </div>
       </div>
     </section>

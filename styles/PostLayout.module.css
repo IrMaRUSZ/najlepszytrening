@@ -750,3 +750,18 @@
     justify-content: center;
   }
 }
+
+.instagramContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .instagramContainer iframe {
+    width: 100%;
+    height: 440px;
+  }
+}

@@ -8,6 +8,7 @@ import StepSection from '../components/Home/StepsSection';
 import BlogPage from './blog/page'
 import CookiePopup from '../components/CookiePopup';
 import { Metadata } from 'next';
+import ContactForm from '../components/ContactForm';
 
 
 export const metadata: Metadata = {
@@ -52,10 +53,9 @@ export default function Home() {
               Trener online
             </button>
           </div>
-          <a href="https://calendly.com/maruszewskiirek" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
-            Umów Darmową Konsultację w Łodzi
-            <span className={styles.arrow}>→</span>
-          </a>
+          <div className={styles.contactSection}>
+  <ContactForm />
+</div>
           <div className={styles.socialLinks}>
             <a href="https://instagram.com/trener_ireneusz" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <Instagram size={24} />

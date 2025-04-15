@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Activity, Clock, MessageCircle, BarChart2, Shield, Video } from 'lucide-react';
 import styles from '../../../styles/OnlineTraining.module.css';
+import ContactForm from '@/components/ContactForm';
 
 const OnlineTrainingClient = () => {
   return (
@@ -130,14 +131,9 @@ const OnlineTrainingClient = () => {
             Umów się na bezpłatną konsultację. Poznamy się, omówimy Twoje cele 
             i sprawdzimy, czy trening online będzie dla Ciebie odpowiedni.
           </p>
-          <a 
-            href="https://calendly.com/maruszewskiirek" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={styles.ctaButton}
-          >
-            Umów darmową konsultację
-          </a>
+          <div className={styles.contactSection}>
+  <ContactForm /> 
+</div>
         </div>
       </div>
     </section>
