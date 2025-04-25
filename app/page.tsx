@@ -37,11 +37,10 @@ export default function Home() {
         </div>
         <div className={styles.leftContent}>
           <h1 className={styles.title}>
-            Ireneusz
-            <span className={styles.titleSecondLine}>Maruszewski</span>
+          Trener Personaly Łódź
           </h1>
           <p className={styles.subtitle}>
-            Trener personaly Łódź
+            Ireneusz Maruszewski
           </p>
           <div className={styles.badges}>
             <button className={styles.badge}>

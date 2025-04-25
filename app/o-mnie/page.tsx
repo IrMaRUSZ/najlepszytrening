@@ -6,20 +6,20 @@ import ContactForm from '@/components/ContactForm';
 
 export async function generateMetadata() {
   return {
-    title: "O mnie | Trener Personalny Łódź | Najlepszy Trening",
-    description: "Poznaj mnie jako profesjonalnego trenera personalnego z Łodzi. Dowiedz się o moim doświadczeniu, kwalifikacjach i podejściu do treningu personalnego.",
-    keywords: "trener personalny łódź, o trenerze, doświadczenie trenera, kwalifikacje trenerskie, kim jestem, historia trenera",
+    title: "Ireneusz Maruszewski - doświadczony fizjoterapeuta i trener | Najlepszy Trening",
+    description: "Poznaj doświadczenie, kwalifikacje i filozofię treningu Ireneusza Maruszewskiego. Certyfikowany fizjoterapeuta z pasją do pomagania klientom w osiąganiu najlepszych rezultatów w Łodzi.",
+    keywords: "Ireneusz Maruszewski, profil trenera, kwalifikacje fizjoterapeuty, doświadczenie trenera fitness, ekspert fitness Łódź, historia trenera, metody treningowe",
     openGraph: {
-      title: "O mnie | Trener Personalny Łódź | Najlepszy Trening",
-      description: "Poznaj mnie jako profesjonalnego trenera personalnego z Łodzi. Dowiedz się o moim doświadczeniu, kwalifikacjach i podejściu do treningu personalnego.",
+      title: "Ireneusz Maruszewski - doświadczony fizjoterapeuta i trener | Najlepszy Trening",
+      description: "Poznaj doświadczenie, kwalifikacje i filozofię treningu Ireneusza Maruszewskiego. Certyfikowany fizjoterapeuta z pasją do pomagania klientom w osiąganiu najlepszych rezultatów w Łodzi.",
       url: "https://www.najlepszytrening.pl/o-mnie",
       type: "website",
       images: [
         {
-          url: "/images/maruszewski.web",
+          url: "/images/maruszewski.webp", // Poprawiłem rozszerzenie pliku
           width: 1200,
           height: 630,
-          alt: "Trener Personalny Łódź Ireneusz Maruszewski - O mnie"
+          alt: "Ireneusz Maruszewski - ekspert fitness i fizjoterapeuta z Łodzi"
         }
       ]
     },

@@ -1,12 +1,12 @@
 ---
-title: 'Trener personalny Łódź - skuteczne treningi i profesjonalne podejście'
-excerpt: 'Szukasz doświadczonego trenera personalnego w Łodzi? Jako fizjoterapeuta z 5-letnim doświadczeniem pomogłem już klientom zrzucić łącznie ponad 500 kg. Poznaj moje indywidualne podejście do treningu.'
+title: 'Najlepszy trener personalny w Łodzi - Ireneusz Maruszewski | Najlepszytrening.pl'
+excerpt: 'Poszukujesz profesjonalnego trenera personalnego w Łodzi? Jako certyfikowany fizjoterapeuta z 5-letnim doświadczeniem pomogłem klientom osiągnąć spektakularne efekty. Sprawdź moje indywidualne podejście do treningu.'
 image: '/blog/treningpersonalny.webp'
-metaDescription: 'Ireneusz Maruszewski - doświadczony trener personalny i fizjoterapeuta z Łodzi. Oferuję indywidualne plany treningowe, wsparcie dietetyczne i rehabilitację. Ponad 28 pozytywnych opinii na Google Maps potwierdza skuteczność mojego podejścia.'
-imageAlt: 'Trener personalny Ireneusz Maruszewski podczas sesji treningowej w Łodzi'
+metaDescription: 'Ireneusz Maruszewski - certyfikowany trener personalny i fizjoterapeuta w Łodzi. Skuteczne treningi personalne, indywidualne plany, wsparcie dietetyczne i rehabilitacja. Ponad 28 pozytywnych opinii potwierdza jakość moich usług.'
+imageAlt: 'Trener personalny Ireneusz Maruszewski prowadzący profesjonalny trening personalny w Łodzi'
 date: '2025-03-03'
 readingTime: 9
-categories: ['Trening', 'Porady']
+categories: ['Trening Personalny', 'Fitness Łódź']
 ---
 
 - [Dlaczego warto trenowac ze mna?](#dlaczego-warto-trenowac-ze-mna)
