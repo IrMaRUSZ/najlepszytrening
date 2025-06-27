@@ -4,20 +4,16 @@ import styles from '../../styles/Grywalizacja.module.css';
 import IndividualRanking from './IndividualRanking';
 import TeamRankings from './TeamRankings';
 import SeasonSelector from './SeasonSelector';
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { createServerComponentClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { ProfileForRanking } from '../../types';
 
-// Definiujemy solidny, nazwany typ dla propsów, używając standardowych, generycznych definicji.
-type Props = {
-    params: { [key: string]: string | string[] | undefined };
-    searchParams: { [key: string]: string | string[] | undefined };
-};
-
-
-interface ProfileJoin {
+// Deklaracja typów przeniesiona tutaj dla przejrzystości
+interface ProfileForRanking {
     id: string;
     username: string;
+    total_points: number;
+    rank: string;
+    team: string | null;
 }
 
 function groupProfilesByTeam(profiles: ProfileForRanking[]) {
@@ -41,35 +37,14 @@ function groupProfilesByTeam(profiles: ProfileForRanking[]) {
     return finalTeams;
 }
 
-// Używamy standardowej deklaracji `export default async function` i przyjmujemy cały obiekt `props`.
-export default async function GrywalizacjaPage(props: Props) {
-    const { searchParams } = props;
+
+const GrywalizacjaPage = async ({ searchParams }: {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  params: {}; // Dodajemy komentarz, aby wyłączyć błąd lintera
+  searchParams: { [key:string]: string | string[] | undefined };
+}) => {
     const cookieStore = cookies();
-    
-    const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-            cookies: {
-                get(name: string) {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    return (cookieStore as any).get(name)?.value;
-                },
-                set(name: string, value: string, options: CookieOptions) {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    try { (cookieStore as any).set({ name, value, ...options }); } catch {
-                        // Błąd jest ignorowany
-                    }
-                },
-                remove(name: string, options: CookieOptions) {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    try { (cookieStore as any).set({ name, value: '', ...options }); } catch {
-                        // Błąd jest ignorowany
-                    }
-                },
-            },
-        }
-    );
+    const supabase = createServerComponentClient({ cookies: () => cookieStore });
     
     const selectedSeasonId = Array.isArray(searchParams.season)
         ? searchParams.season[0]
@@ -101,19 +76,13 @@ export default async function GrywalizacjaPage(props: Props) {
 
             if (error || !historicalData) throw error || new Error("Brak danych historycznych.");
 
-            profiles = historicalData.map(result => {
-                const profileData = Array.isArray(result.profiles) && result.profiles.length > 0
-                    ? result.profiles[0] as ProfileJoin
-                    : null;
-
-                return {
-                    id: profileData?.id || '',
-                    username: profileData?.username || 'Użytkownik usunięty',
-                    total_points: result.final_points,
-                    rank: result.final_rank || 'Uczestnik',
-                    team: result.team || null,
-                };
-            });
+            profiles = historicalData.map(result => ({
+                id: result.profiles!.id,
+                username: result.profiles!.username,
+                total_points: result.final_points,
+                rank: result.final_rank || 'Uczestnik',
+                team: result.team || null,
+            }));
         } else {
             pageTitle = `Ranking: ${activeSeason?.name || 'Bieżący Sezon'}`;
             const { data: currentProfiles, error } = await supabase
@@ -156,4 +125,6 @@ export default async function GrywalizacjaPage(props: Props) {
             </main>
         );
     }
-}
+};
+
+export default GrywalizacjaPage;

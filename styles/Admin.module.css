@@ -1,0 +1,256 @@
+/* Plik: app/admin/Admin.module.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+.viewSwitcher {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border);
+}
+.viewSwitcher button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 4px solid transparent;
+  transition: all 0.2s ease;
+  transform: none;
+}
+.viewSwitcher button:hover {
+  color: var(--text);
+  background: none;
+  box-shadow: none;
+}
+.viewSwitcher button.activeView {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.sidebar {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+}
+.sidebar h2, .content h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar li {
+  padding: 0.75rem;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+.sidebar li:hover { background-color: var(--background-light); }
+.sidebar li.active {
+  background-color: var(--primary);
+  color: #1f1f1f;
+  font-weight: 700;
+}
+.content p { color: var(--text-muted); }
+.section {
+  background-color: var(--background-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+.section h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+.teamAssignment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.teamAssignment label {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.teamAssignment select {
+  padding: 0.75rem;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.metricLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #383838;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+.metricLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+.adminForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: stretch;
+}
+.adminForm input {
+  flex-grow: 1;
+  min-width: 150px;
+  padding: 0.75rem;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.adminForm button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: var(--primary);
+  color: #1f1f1f;
+}
+.adminForm button:hover { background: var(--primary-hover); }
+
+.questForm {
+  display: grid;
+  gap: 1.5rem;
+}
+.questForm label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.questForm select,
+.questForm input {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.questFormButton { justify-self: end; }
+.questFormButton button {
+    background: var(--primary);
+    color: #1f1f1f;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+}
+.questFormButton button:hover { background: var(--primary-hover); }
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+.adminTable th,
+.adminTable td {
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  text-align: left;
+}
+.adminTable th { background-color: #333; }
+.adminTable button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  background: var(--error, #dc3545);
+  color: white;
+}
+.statusCompleted { color: var(--success); font-weight: bold; }
+
+/* Style dla edytora dat sezonu */
+.dateEditor {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  align-items: end;
+}
+.dateInputGroup {
+  display: flex;
+  flex-direction: column;
+}
+.dateInputGroup label {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.dateInputGroup input[type="date"] {
+  padding: 0.75rem;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  color-scheme: dark;
+}
+.saveButton {
+    background: var(--primary);
+    color: #1f1f1f;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    justify-self: start;
+}
+.saveButton:hover { background: var(--primary-hover); }
+
+@media (min-width: 768px) {
+  .layout { flex-direction: row; }
+  .sidebar {
+    flex: 1;
+    min-width: 250px;
+    border-right: 1px solid var(--border);
+    border-bottom: none;
+    padding-right: 2rem;
+    padding-bottom: 0;
+  }
+  .content { flex: 3; }
+  .dateEditor { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .saveButton { justify-self: end; }
+}
+
+@media (min-width: 1024px) {
+    .questForm {
+        grid-template-columns: repeat(4, 1fr);
+        align-items: end;
+    }
+    .questFormButton { grid-column: 4 / 5; }
+}

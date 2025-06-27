@@ -1,23 +1,39 @@
 // middleware.ts
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { NextResponse, type NextRequest } from 'next/server'
 
-
-export function middleware(request: NextRequest) {
-  // Pobierz aktualny URL
+export async function middleware(request: NextRequest) {
+  // Przekierowanie 'www'
   const url = request.nextUrl.clone()
+  const host = request.headers.get('host')
   
-  // Jeśli URL nie zaczyna się od www
-  if (!request.headers.get('host')?.startsWith('www.')) {
-    url.host = 'www.' + request.headers.get('host')
-    return NextResponse.redirect(url, 301)
+  if (host && !host.startsWith('www.') && !host.startsWith('localhost')) {
+    url.host = 'www.' + host;
+    return NextResponse.redirect(url, 301);
   }
+  
+  // Logika sesji Supabase
+  const response = NextResponse.next({
+    request: { headers: request.headers },
+  })
 
-  return NextResponse.next()
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) { return request.cookies.get(name)?.value },
+        set(name: string, value: string, options: CookieOptions) { response.cookies.set({ name, value, ...options }) },
+        remove(name: string, options: CookieOptions) { response.cookies.set({ name, value: '', ...options }) },
+      },
+    }
+  )
+
+  await supabase.auth.getSession()
+
+  return response
 }
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: [ '/((?!api|_next/static|_next/image|favicon.ico).*)' ],
 }

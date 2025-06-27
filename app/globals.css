@@ -35,6 +35,15 @@ body {
   padding: 0 2rem;
 }
 
+/* === NOWA SEKCJA - ZMIANA WProwadzona TUTAJ === */
+/* Główny kontener treści */
+main {
+  /* Dodajemy "oddech" na górze i na dole głównej treści */
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+/* ============================================== */
+
 /* Typografia */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -48,6 +57,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* Aby uniknąć podwójnego marginesu, gdy h1 jest pierwszym elementem w main */
 
 h2 {
   font-size: 2.5rem;
