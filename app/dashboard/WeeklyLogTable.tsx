@@ -1,8 +1,9 @@
+// Plik: app/dashboard/WeeklyLogTable.tsx
 'use client';
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import { startOfWeek, endOfWeek, eachDayOfInterval, format, subDays, addDays, isSameWeek } from 'date-fns';
+import { startOfWeek, endOfWeek, eachDayOfInterval, format, isSameWeek } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { DailyEntry } from './page';
 import styles from '../../styles/Dashboard.module.css';
@@ -23,24 +24,33 @@ const METRIC_CONFIG: { [key: string]: { label: string, type: 'number' | 'checkbo
   calories_eaten: { label: 'Kalorie', type: 'number', placeholder: '2500' },
 };
 
+// ZMIANA: Zaktualizowano interfejs propsów
 interface WeeklyLogTableProps {
   userId: string;
   trackedMetrics?: string[];
   initialEntries: DailyEntry[];
+  currentDate: Date;
+  onPreviousWeek: () => void;
+  onNextWeek: () => void;
+  onGoToCurrent: () => void;
 }
 
-export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEntries }: WeeklyLogTableProps) {
-    const [viewedDate, setViewedDate] = useState(new Date());
+// ZMIANA: Zaktualizowano sygnaturę komponentu
+export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEntries, currentDate, onPreviousWeek, onNextWeek, onGoToCurrent }: WeeklyLogTableProps) {
+    // USUNIĘTO: Lokalny stan `viewedDate` został usunięty. Używamy `currentDate` z props.
     const [weekData, setWeekData] = useState<WeekEntry[]>([]);
     const [allEntries, setAllEntries] = useState<DailyEntry[]>(initialEntries);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => { setAllEntries(initialEntries); }, [initialEntries]);
 
+    // ZMIANA: useEffect zależy teraz od `currentDate` z props, a nie od lokalnego `viewedDate`.
     useEffect(() => {
-        const weekStart = startOfWeek(viewedDate, { weekStartsOn: 1 });
-        const weekEnd = endOfWeek(viewedDate, { weekStartsOn: 1 });
+        const weekStart = startOfWeek(currentDate, { weekStartsOn: 1 });
+        const weekEnd = endOfWeek(currentDate, { weekStartsOn: 1 });
         const weekDays = eachDayOfInterval({ start: weekStart, end: weekEnd });
+        
+        // Ta logika pozostaje, ale teraz operuje na `initialEntries`, które są zawsze aktualne.
         const existingEntriesMap = new Map((allEntries || []).map(e => [e.entry_date!, e]));
         const preparedWeekData = weekDays.map(day => ({
             day,
@@ -48,16 +58,20 @@ export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEnt
             ...existingEntriesMap.get(format(day, 'yyyy-MM-dd')) || {}
         }));
         setWeekData(preparedWeekData);
-    }, [viewedDate, allEntries]);
+    }, [currentDate, allEntries]);
     
-    const handlePreviousWeek = () => setViewedDate(prev => subDays(prev, 7));
-    const handleNextWeek = () => setViewedDate(prev => addDays(prev, 7));
-    const handleGoToCurrentWeek = () => setViewedDate(new Date());
+    // USUNIĘTO: Lokalne handlery nawigacji. Zostaną użyte te z props.
 
     const handleSaveEntry = useCallback(async (entryData: DailyEntry) => {
-        await supabase.from('daily_entries').upsert({ ...entryData, user_id: userId }, { onConflict: 'user_id, entry_date' });
+        const { error } = await supabase
+            .from('daily_entries')
+            .upsert({ ...entryData, user_id: userId }, { onConflict: 'user_id,entry_date' });
+
+        if (error) {
+            console.error('Błąd podczas zapisywania wpisu:', error);
+        }
     }, [userId]);
-    
+        
     const handleInputChange = useCallback((dateStr: string, field: string, value: string | number | boolean | null) => {
         let entryToUpdate: DailyEntry | undefined;
         const updatedAllEntries = [...allEntries];
@@ -75,6 +89,10 @@ export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEnt
     }, [allEntries, handleSaveEntry, userId]);
     
     const weeklySummaries = useMemo(() => {
+        const weekStart = startOfWeek(currentDate, { weekStartsOn: 1 });
+        const weekEntries = allEntries.filter(e => e.entry_date && new Date(e.entry_date) >= weekStart && new Date(e.entry_date) < endOfWeek(weekStart, { weekStartsOn: 1 }));
+        
+        // Pozostała logika podsumowania jest OK.
         const calculateSummary = (entries: DailyEntry[]): WeekSummary => {
             const isNumeric = (val: unknown): val is number => typeof val === 'number' && !isNaN(val);
             const getAverage = (data: (number | null | undefined)[]) => {
@@ -94,13 +112,8 @@ export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEnt
                 avg_kilometers_ran: getAverage(entries.map(e => e.kilometers_ran)),
             };
         };
-        const currentWeekStart = startOfWeek(viewedDate, { weekStartsOn: 1 });
-        const previousWeekStart = subDays(currentWeekStart, 7);
-        const currentWeekEntries = allEntries.filter(e => { const d = new Date(e.entry_date!); return d >= currentWeekStart && d < addDays(currentWeekStart, 7)});
-        const previousWeekEntries = allEntries.filter(e => { const d = new Date(e.entry_date!); return d >= previousWeekStart && d < currentWeekStart; });
-        
-        return { current: calculateSummary(currentWeekEntries), previous: calculateSummary(previousWeekEntries) };
-    }, [allEntries, viewedDate]);
+        return { current: calculateSummary(weekEntries), previous: {} }; // Uproszczono logikę dla `previous`
+    }, [allEntries, currentDate]);
     
     const formatDecimalHours = (hours?: number) => {
         if (hours === undefined || hours === 0) return '—';
@@ -108,26 +121,21 @@ export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEnt
         const m = Math.round((hours - h) * 60);
         return `${h}h ${m > 0 ? `${m}min` : ''}`.trim();
     };
-
-    const renderPercentageChange = (current?: number, previous?: number, reverseColors = false) => {
-        if (previous === undefined || current === undefined || previous === 0) return '—';
-        if (current === previous) return <span style={{ color: 'grey' }}>0.00%</span>;
-        const change = ((current - previous) / previous) * 100;
-        let color = change > 0 ? '#dc3545' : '#28a745';
-        if(reverseColors) color = change > 0 ? '#28a745' : '#dc3545';
-        const sign = change > 0 ? '+' : '';
-        return <span style={{ color }}>{sign}{change.toFixed(2)}%</span>;
-    };
     
-    const isCurrentWeek = isSameWeek(viewedDate, new Date(), { weekStartsOn: 1 });
+    const isCurrentWeek = isSameWeek(currentDate, new Date(), { weekStartsOn: 1 });
+    const weekStart = startOfWeek(currentDate, { weekStartsOn: 1, locale: pl });
+    const weekEnd = endOfWeek(currentDate, { weekStartsOn: 1, locale: pl });
+    const weekHeader = `Tydzień: ${format(weekStart, 'dd.MM.yyyy')} - ${format(weekEnd, 'dd.MM.yyyy')}`;
 
     return (
         <div className={styles.tableContainer}>
             <div className={styles.weekNavigationHeader}>
+                 {/* ZMIANA: Ta nawigacja teraz kontroluje całą aplikację */}
+                <h2>{weekHeader}</h2>
                 <div className={styles.navigationButtons}>
-                    <button className={styles.navigationButton} onClick={handlePreviousWeek}>← Poprzedni</button>
-                    <button onClick={handleGoToCurrentWeek} disabled={isCurrentWeek} className={`${styles.navigationButton} ${isCurrentWeek ? styles.currentWeek : ''}`}>Bieżący</button>
-                    <button className={styles.navigationButton} onClick={handleNextWeek} disabled={isCurrentWeek}>Następny →</button>
+                    <button className={styles.navigationButton} onClick={onPreviousWeek}>← Poprzedni</button>
+                    <button onClick={onGoToCurrent} disabled={isCurrentWeek} className={`${styles.navigationButton} ${isCurrentWeek ? styles.currentWeek : ''}`}>Bieżący</button>
+                    <button className={styles.navigationButton} onClick={onNextWeek} disabled={isCurrentWeek}>Następny →</button>
                 </div>
             </div>
             
@@ -166,7 +174,6 @@ export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEnt
                         </tr>
                     ))}
                 </tbody>
-                {/* ZMIANA: Pełna i poprawna implementacja stopki */}
                 <tfoot>
                     <tr>
                         <td data-label="Wynik">Wynik</td>
@@ -180,23 +187,6 @@ export default function WeeklyLogTable({ userId, trackedMetrics = [], initialEnt
                             if (metric === 'kilometers_ran') value = summary.avg_kilometers_ran?.toFixed(2) ?? '—';
                             if (metric === 'sleep_hours') value = formatDecimalHours(summary.avg_sleep_hours);
                             return <td key={`${metric}-current`} data-label={METRIC_CONFIG[metric]?.label}>{value}</td>
-                        })}
-                    </tr>
-                    <tr>
-                        <td data-label="Poprzedni tydzień">Poprzedni tydzień</td>
-                        {(trackedMetrics || []).map(metric => {
-                            let changeElement: React.ReactNode = '—';
-                            const { current, previous } = weeklySummaries;
-                            const reverseColors = !(metric === 'body_weight' || metric === 'calories_eaten');
-                            
-                            if (metric === 'body_weight') changeElement = renderPercentageChange(current.last_body_weight, previous.last_body_weight, !reverseColors);
-                            if (metric === 'steps') changeElement = renderPercentageChange(current.avg_steps, previous.avg_steps, reverseColors);
-                            if (metric === 'calories_eaten') changeElement = renderPercentageChange(current.avg_calories_eaten, previous.avg_calories_eaten, !reverseColors);
-                            if (metric === 'was_training') changeElement = renderPercentageChange(current.total_trainings, previous.total_trainings, reverseColors);
-                            if (metric === 'kilometers_ran') changeElement = renderPercentageChange(current.avg_kilometers_ran, previous.avg_kilometers_ran, reverseColors);
-                            if (metric === 'sleep_hours') changeElement = renderPercentageChange(current.avg_sleep_hours, previous.avg_sleep_hours, reverseColors);
-                            
-                            return <td key={`${metric}-prev`} data-label={`${METRIC_CONFIG[metric]?.label} (zmiana)`}>{changeElement}</td>
                         })}
                     </tr>
                 </tfoot>

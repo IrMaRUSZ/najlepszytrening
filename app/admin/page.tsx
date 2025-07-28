@@ -1,4 +1,4 @@
-// Plik: app/admin/page.tsx - OSTATECZNA, KOMPLETNA WERSJA
+// Plik: app/admin/page.tsx - OSTATECZNA WERSJA NAPRAWIAJĄCA PROBLEM
 
 'use client';
 
@@ -7,24 +7,21 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '../../lib/supabaseClient';
 import styles from '../../styles/Admin.module.css';
 
-// Importujemy komponenty z dashboardu, aby móc je wyświetlić w podglądzie
+// Importy komponentów
 import WeeklyLogTable from '../dashboard/WeeklyLogTable';
 import BadgesDisplay, { Badge } from '../dashboard/BadgesDisplay';
 import HistoryCharts from '../dashboard/HistoryCharts';
-import { DailyEntry } from '../dashboard/page'; // Importujemy typ DailyEntry
+import { DailyEntry } from '../dashboard/page';
 import SeasonManager from './SeasonManager';
+import { format, subDays, addDays, startOfWeek } from 'date-fns';
 
-// --- INTERFEJSY DEFINIUJĄCE STRUKTURĘ DANYCH ---
-
+// --- INTERFEJSY ---
+// ✅ POPRAWKA: Usunięto nieistniejące pola związane z zadaniami
 interface Profile {
   id: string;
   username: string;
   tracked_metrics: string[] | null;
   team: string | null;
-  quest_type: string | null;
-  quest_target_value: number | null;
-  quest_points_reward: number | null;
-  // Dodajemy role, aby uniknąć błędów typu
   role?: 'admin' | 'user'; 
 }
 interface Challenge {
@@ -34,26 +31,19 @@ interface Challenge {
   points_reward: number;
   status: string;
 }
-// NOWY Interfejs do przechowywania danych podglądanego użytkownika
 interface ViewedUserData {
   profile: Profile;
   historicalEntries: DailyEntry[];
   awardedBadges: Badge[];
 }
 
-
-// --- STAŁE DEFINICJE ---
+// --- STAŁE ---
 const ALL_METRICS = ['body_weight', 'steps', 'was_training', 'sleep_hours', 'kilometers_ran', 'calories_eaten'];
 const METRIC_LABELS: { [key: string]: string } = {
   body_weight: 'Waga', steps: 'Kroki', was_training: 'Trening siłowy',
   sleep_hours: 'Sen', kilometers_ran: 'Bieganie', calories_eaten: 'Kalorie'
 };
 const ALL_TEAMS = ['Drużyna Czerwona', 'Drużyna Niebieska', 'Drużyna Zielona', 'Drużyna Żółta'];
-const QUEST_TYPES = [
-    { value: 'SUM_STEPS', label: 'Suma kroków w tygodniu' },
-    { value: 'SUM_KM', label: 'Suma kilometrów w tygodniu' },
-    { value: 'COUNT_TRAININGS', label: 'Liczba treningów w tygodniu' }
-];
 
 type AdminView = 'users' | 'season';
 
@@ -66,22 +56,32 @@ export default function AdminPanelPage() {
   const router = useRouter();
   const [activeView, setActiveView] = useState<AdminView>('users');
 
-  // NOWY STAN: Przechowuje dane użytkownika, którego dashboard podglądamy
   const [viewedUserDashboard, setViewedUserDashboard] = useState<ViewedUserData | null>(null);
+  const [viewedUserCurrentDate, setViewedUserCurrentDate] = useState(new Date());
 
   useEffect(() => {
     const initializeAdminPanel = async () => {
       setLoading(true);
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) { router.push('/login'); return; }
+
       const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-      if (profile?.role === 'admin') {
-        setIsAdmin(true);
-        const { data: allProfiles } = await supabase.from('profiles').select('id, username, tracked_metrics, team, quest_type, quest_target_value, quest_points_reward');
-        if (allProfiles) setProfiles(allProfiles as Profile[]);
-      } else {
+      if (profile?.role !== 'admin') {
         router.push('/dashboard');
+        return;
       }
+
+      setIsAdmin(true);
+
+      const { data: allProfiles, error: profilesError } = await supabase.rpc('get_all_profiles_for_admin');
+
+      if (profilesError) {
+        console.error("Błąd pobierania profili: ", profilesError);
+        alert("Wystąpił błąd podczas ładowania listy uczestników. Sprawdź konsolę (F12).");
+      } else if (allProfiles) {
+        setProfiles(allProfiles as Profile[]);
+      }
+
       setLoading(false);
     };
     initializeAdminPanel();
@@ -93,6 +93,7 @@ export default function AdminPanelPage() {
   }, []);
 
   const handleProfileSelect = (profile: Profile) => {
+    setViewedUserDashboard(null); // Zamykamy podgląd przy wyborze nowego usera
     setSelectedProfile(profile);
     fetchChallenges(profile.id);
   };
@@ -156,30 +157,7 @@ export default function AdminPanelPage() {
     }
     if (error) alert(`Błąd zapisu drużyny: ${error.message}`);
   };
-
-  const handleAssignQuest = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!selectedProfile) return;
-    const formData = new FormData(event.currentTarget);
-    const quest_type = formData.get('quest_type') as string;
-    const quest_target_value = Number(formData.get('quest_target_value'));
-    const quest_points_reward = Number(formData.get('quest_points_reward'));
-    if (!quest_type || isNaN(quest_target_value) || isNaN(quest_points_reward)) {
-        alert("Wypełnij wszystkie pola zadania poprawnymi danymi.");
-        return;
-    }
-    const questDataToUpdate = { quest_type, quest_target_value, quest_points_reward, quest_is_completed: false };
-    const { data, error } = await supabase.from('profiles').update(questDataToUpdate).eq('id', selectedProfile.id).select().single();
-    if (error) {
-        alert(`Błąd przypisywania zadania: ${error.message}`);
-    } else {
-        alert("Zadanie zostało pomyślnie przypisane!");
-        setSelectedProfile(data as Profile);
-        setProfiles(profiles.map(p => p.id === data.id ? (data as Profile) : p));
-    }
-  };
-
-  // --- NOWE FUNKCJE DO PODGLĄDU DASHBOARDU ---
+  
   const handleViewAsUser = async (userToView: Profile) => {
     setLoading(true);
     const [entriesResponse, badgesResponse] = await Promise.all([
@@ -187,8 +165,8 @@ export default function AdminPanelPage() {
       supabase.from('user_badges').select('badges(id, name, description, image_url)').eq('user_id', userToView.id)
     ]);
     const historicalEntries = (entriesResponse.data as DailyEntry[]) || [];
-    // ✅ NOWA, POPRAWNA LINIA:
-    const awardedBadges: Badge[] = badgesResponse.data?.map(item => item.badges).flat() || [];
+    const awardedBadges: Badge[] = badgesResponse.data ? badgesResponse.data.map(item => item.badges).flat().filter(Boolean) as Badge[] : [];
+    
     setViewedUserDashboard({
         profile: userToView,
         historicalEntries,
@@ -199,6 +177,7 @@ export default function AdminPanelPage() {
 
   const handleCloseUserView = () => {
     setViewedUserDashboard(null);
+    setViewedUserCurrentDate(new Date());
   };
 
 
@@ -232,58 +211,40 @@ export default function AdminPanelPage() {
           
           <div className={styles.content}>
             {viewedUserDashboard ? (
-              // WIDOK PODGLĄDU DASHBOARDU
               <div>
-                <button onClick={handleCloseUserView} style={{ marginBottom: '1rem', background: 'var(--background-light)', border: '1px solid var(--border)' }}>
+                <button onClick={handleCloseUserView} style={{ marginBottom: '1rem' }}>
                   ← Wróć do zarządzania
                 </button>
                 <h2 style={{ marginTop: '1rem', borderBottom: '1px solid var(--border)', paddingBottom: '1rem' }}>
-                    Podgląd dashboardu dla: {viewedUserDashboard.profile.username}
+                    Podgląd dla: {viewedUserDashboard.profile.username}
                 </h2>
                 <div style={{ paddingTop: '1rem' }}>
                   <WeeklyLogTable
                     userId={viewedUserDashboard.profile.id}
                     trackedMetrics={viewedUserDashboard.profile.tracked_metrics || []}
                     initialEntries={viewedUserDashboard.historicalEntries}
+                    currentDate={viewedUserCurrentDate}
+                    onPreviousWeek={() => setViewedUserCurrentDate(subDays(viewedUserCurrentDate, 7))}
+                    onNextWeek={() => setViewedUserCurrentDate(addDays(viewedUserCurrentDate, 7))}
+                    onGoToCurrent={() => setViewedUserCurrentDate(new Date())}
+                    key={format(startOfWeek(viewedUserCurrentDate), 'yyyy-MM-dd')}
                   />
                   <BadgesDisplay badges={viewedUserDashboard.awardedBadges} />
                   <HistoryCharts entries={viewedUserDashboard.historicalEntries} />
                 </div>
               </div>
             ) : (
-              // NORMALNY WIDOK ZARZĄDZANIA PROFILEM
               <>
-                {!selectedProfile ? <p>Wybierz uczestnika z listy, aby zarządzać jego profilem.</p> : (
+                {!selectedProfile ? <p>Wybierz uczestnika z listy.</p> : (
                   <div>
                     <h2>Zarządzanie: {selectedProfile.username}</h2>
-
                     <div className={styles.section}>
-                      <button onClick={() => handleViewAsUser(selectedProfile)} style={{width: '100%', padding: '0.8rem', background: 'var(--primary-hover)', color: 'white', fontSize: '1rem'}}>
+                      <button onClick={() => handleViewAsUser(selectedProfile)} style={{width: '100%'}}>
                         Pokaż Dashboard Użytkownika
                       </button>
                     </div>
-                    
-                    <div className={styles.section}>
-                        <h3>Przypisz Zadanie Tygodniowe</h3>
-                        <form onSubmit={handleAssignQuest} className={styles.questForm}>
-                            <div>
-                                <label htmlFor="quest-type">Typ zadania</label>
-                                <select id="quest-type" name="quest_type" defaultValue={selectedProfile.quest_type || ''}>
-                                    <option value="" disabled>-- Wybierz typ --</option>
-                                    {QUEST_TYPES.map(type => (<option key={type.value} value={type.value}>{type.label}</option>))}
-                                </select>
-                            </div>
-                            <div>
-                                <label htmlFor="quest-target">Cel (wartość)</label>
-                                <input id="quest-target" name="quest_target_value" type="number" placeholder="np. 50000" defaultValue={selectedProfile.quest_target_value || ''}/>
-                            </div>
-                             <div>
-                                <label htmlFor="quest-reward">Nagroda (punkty)</label>
-                                <input id="quest-reward" name="quest_points_reward" type="number" placeholder="np. 150" defaultValue={selectedProfile.quest_points_reward || ''}/>
-                            </div>
-                            <div className={styles.questFormButton}><button type="submit">Przypisz / Zaktualizuj Zadanie</button></div>
-                        </form>
-                    </div>
+
+                    {/* ✅ POPRAWKA: Usunięto formularz zadań, ponieważ kolumny nie istnieją */}
 
                     <div className={styles.section}>
                         <h3>Zarządzaj Drużyną</h3>
@@ -311,7 +272,7 @@ export default function AdminPanelPage() {
                     <div className={styles.section}>
                         <h3>Przyznaj Bonus Manualny</h3>
                         <form onSubmit={handleAddManualBonus} className={styles.adminForm}>
-                            <input name="title" placeholder="Tytuł bonusu (np. Rekord)" required/><input name="points" type="number" placeholder="Punkty" required/>
+                            <input name="title" placeholder="Tytuł bonusu" required/><input name="points" type="number" placeholder="Punkty" required/>
                             <button type="submit">Przyznaj</button>
                         </form>
                     </div>
@@ -322,7 +283,7 @@ export default function AdminPanelPage() {
                         <thead><tr><th>Tytuł</th><th>Typ</th><th>Punkty</th><th>Status</th><th>Akcje</th></tr></thead>
                         <tbody>
                             {challenges.map(c => (<tr key={c.id}><td>{c.title}</td><td>{c.challenge_type}</td><td>{c.points_reward}</td><td><span className={styles.statusCompleted}>{c.status}</span></td><td><button onClick={() => handleDeleteChallenge(c.id)}>Usuń</button></td></tr>))}
-                            {challenges.length === 0 && (<tr><td colSpan={5} style={{textAlign: 'center', color: 'var(--text-muted)'}}>Brak wyzwań dla tego użytkownika.</td></tr>)}
+                            {challenges.length === 0 && (<tr><td colSpan={5}>Brak wyzwań.</td></tr>)}
                         </tbody>
                       </table>
                     </div>
@@ -330,8 +291,8 @@ export default function AdminPanelPage() {
                     <div className={styles.section} style={{ borderColor: 'var(--error, #dc3545)' }}>
                         <h3 style={{ color: 'var(--error, #dc3545)' }}>Strefa Niebezpieczna</h3>
                         <div>
-                          <p style={{ margin: '0 0 0.5rem 0', color: 'var(--text-muted)' }}>Usuwa wszystkie zdobyte odznaki i odejmuje przyznane za nie punkty.</p>
-                          <button onClick={handleResetBadges} style={{ background: 'var(--error, #dc3545)', color: 'white' }}>Resetuj Odznaki Uczestnika</button>
+                          <p>Usuwa wszystkie odznaki i odejmuje punkty.</p>
+                          <button onClick={handleResetBadges} style={{ background: 'var(--error, #dc3545)' }}>Resetuj Odznaki</button>
                         </div>
                     </div>
                   </div>  

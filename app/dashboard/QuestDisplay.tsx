@@ -3,12 +3,16 @@
 
 import styles from '../../styles/Dashboard.module.css';
 
+interface QuestData {
+  quest_type: string;
+  target_value: number;
+  points_reward: number;
+  is_completed: boolean;
+  current_progress: number;
+}
+
 interface QuestDisplayProps {
-  questType: string | null;
-  targetValue: number | null;
-  pointsReward: number | null;
-  isCompleted: boolean | null;
-  currentProgress: number;
+  quest: QuestData | null | undefined;
 }
 
 const QUEST_DESCRIPTIONS: { [key: string]: (target: number) => string } = {
@@ -17,44 +21,40 @@ const QUEST_DESCRIPTIONS: { [key: string]: (target: number) => string } = {
   COUNT_TRAININGS: (target) => `Wykonaj ${target} treningów w tym tygodniu`,
 };
 
-export default function QuestDisplay({
-  questType,
-  targetValue,
-  pointsReward,
-  isCompleted,
-  currentProgress,
-}: QuestDisplayProps) {
-  
-  // Jeśli nie ma aktywnego zadania, nic nie wyświetlamy
-  if (!questType || !targetValue || !pointsReward) {
-    return null;
+export default function QuestDisplay({ quest }: QuestDisplayProps) {
+  if (!quest) {
+    return (
+        <div className={`${styles.questContainer} ${styles.empty}`}>
+            <h3>Zadanie Tygodniowe</h3>
+            <p>Brak aktywnego zadania na ten tydzień.</p>
+        </div>
+    );
   }
 
-  // Jeśli zadanie jest ukończone, wyświetlamy gratulacje
-  if (isCompleted) {
+  const { is_completed, points_reward, quest_type, target_value, current_progress } = quest;
+
+  if (is_completed) {
     return (
       <div className={`${styles.questContainer} ${styles.completed}`}>
         <h3>Zadanie Tygodniowe Ukończone!</h3>
-        <p>Gratulacje! Zdobyłeś/aś dodatkowe {pointsReward} punktów!</p>
+        <p>Gratulacje! Zdobyłeś/aś dodatkowe {points_reward} punktów!</p>
       </div>
     );
   }
 
-  const description = QUEST_DESCRIPTIONS[questType]?.(targetValue) || 'Nieznane zadanie';
-  const progressPercentage = Math.min((currentProgress / targetValue) * 100, 100);
+  const description = QUEST_DESCRIPTIONS[quest_type]?.(target_value) || 'Nieznane zadanie';
+  const progressPercentage = Math.min((current_progress / target_value) * 100, 100);
 
   return (
     <div className={styles.questContainer}>
       <h3>Twoje Zadanie Tygodniowe</h3>
       <p className={styles.questDescription}>{description}</p>
-      
       <div className={styles.progressContainer}>
         <div className={styles.progressBar} style={{ width: `${progressPercentage}%` }}></div>
       </div>
-
       <div className={styles.progressDetails}>
-        <span>Postęp: {new Intl.NumberFormat('pl-PL').format(currentProgress)} / {new Intl.NumberFormat('pl-PL').format(targetValue)}</span>
-        <span className={styles.questReward}>Nagroda: {pointsReward} pkt</span>
+        <span>Postęp: {new Intl.NumberFormat('pl-PL').format(current_progress)} / {new Intl.NumberFormat('pl-PL').format(target_value)}</span>
+        <span className={styles.questReward}>Nagroda: {points_reward} pkt</span>
       </div>
     </div>
   );
