@@ -1,260 +1,302 @@
 import { NextResponse } from 'next/server';
-import { PytanieQuizu } from '@/types/quiz';
+
+// Krok 2.B - Interfejsy
+interface PytanieQuizu {
+  pytanie: string;
+  odpowiedzi: string[];
+  poprawnaOdpowiedz: number;
+  wyjasnienie: string;
+}
 
 interface DziennyZestawPytan {
   data: string;
   pytania: PytanieQuizu[];
 }
 
-// Zmodyfikowana struktura - pytania pogrupowane po datach
-const pytaniaQuizu: DziennyZestawPytan[] = [
+// Krok 2.B - Stała pulaPytanZBloga (Wersja 2.0 - Ulepszone pytania)
+const pulaPytanZBloga: PytanieQuizu[] = [
   {
-    data: "2025-03-24",
-    pytania: [
-      {
-        pytanie: "Na co ma wpływ trening siłowy?",
-        odpowiedzi: [
-          "Na wzrost masy kości, chroni przed osteoporozą.",
-          "Wyłącznie na masę mięśniową, nie wpływa na strukturę kości.",
-          "Osłabia kości z powodu nadmiernego obciążenia, zwiększając ryzyko mikrourazów.",
-          "Powoduje zatrzymanie wapnia w organizmie, co prowadzi do kamicy nerkowej."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Trening siłowy pozytywnie wpływa na gęstość mineralną kości, stymulując ich wzrost i wzmacniając strukturę, co pomaga w profilaktyce osteoporozy."
-      },
-      {
-        pytanie: "Czy trening siłowy powoduje zaprzestanie wzrostu u młodych osób?",
-        odpowiedzi: [
-          "Nie, to mit.",
-          "Tak, powoduje przedwczesne zamknięcie chrząstek wzrostowych.",
-          "Tak, ale tylko jeśli trening jest wykonywany z ciężarami przekraczającymi 60% masy ciała.",
-          "Tak, dlatego młodzież powinna unikać treningu siłowego do ukończenia 18 roku życia."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "To mit, że trening siłowy hamuje wzrost. Badania naukowe nie potwierdzają tej tezy. Odpowiednio nadzorowany trening jest bezpieczny i korzystny dla młodych osób."
-      },
-      {
-        pytanie: "Czy masło jest dobrym źródłem tłuszczu?",
-        odpowiedzi: [
-          "Nie, bo zawiera tłuszcze nasycone, które są uważane za zwiększające ryzyko sercowo-naczyniowe.",
-          "Tak, masło jest najzdrowszym źródłem tłuszczu w diecie, bo zawiera naturalne kwasy tłuszczowe.",
-          "Tak, masło zawiera głównie zdrowe tłuszcze nienasycone i witaminy rozpuszczalne w tłuszczach.",
-          "Tak, masło nie ma żadnego wpływu na poziom cholesterolu, to mit obalony przez najnowsze badania."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Masło zawiera wysokie stężenie tłuszczów nasyconych, które w nadmiarze mogą przyczyniać się do wzrostu poziomu cholesterolu LDL i zwiększać ryzyko chorób sercowo-naczyniowych."
-      },
-      {
-        pytanie: "Czego źródłem są truskawki?",
-        odpowiedzi: [
-          "Witaminy C",
-          "Witaminy D",
-          "Witaminy B12",
-          "Wysokiej zawartości żelaza"
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Truskawki są znakomitym źródłem witaminy C."
-      },
-      {
-        pytanie: "Wybierz posiłek który najbardziej będzie sycący:",
-        odpowiedzi: [
-          "Warzywa mrożone z piersią z kurczaka i ostrymi przyprawami",
-          "Pizza z podwójnym serem i pepperoni",
-          "Pełna miska płatków śniadaniowych z mlekiem",
-          "Smoothie owocowe z dodatkiem miodu"
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Warzywa zapewniają objętość i błonnik, ostre przyprawy zwiększają uczucie sytości, a białko z kurczaka wydłuża uczucie nasycenia - to kombinacja czynników zwiększających sytość przy relatywnie niskiej kaloryczności."
-      }
-    ]
+    pytanie: "W przypadku wystąpienia niespecyficznego bólu dolnego odcinka kręgosłupa, jakie działanie jest uznawane za największy błąd?",
+    odpowiedzi: [
+      "Wykonywanie ćwiczeń wzmacniających 'core'",
+      "Całkowite zaprzestanie aktywności fizycznej i pozostanie w łóżku",
+      "Delikatne ćwiczenia rozciągające",
+      "Konsultacja z fizjoterapeutą w celu ustalenia planu działania"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Unikanie ruchu osłabia mięśnie stabilizujące kręgosłup i może prowadzić do przewlekłego bólu. Kluczowe jest utrzymanie lekkiej aktywności, aby wspierać regenerację."
   },
   {
-    data: "2025-03-25",
-    pytania: [
-      {
-        pytanie: "Czy garbienie pleców psuje plecy?",
-        odpowiedzi: [
-          "Nie, bo ciało się adaptuje do każdej pozycji, ale prawdopodobnie nie będzie to najsilniejsza pozycja.",
-          "Tak, garbienie zawsze prowadzi do nieodwracalnych uszkodzeń kręgosłupa i dyskopatii.",
-          "Tak, garbienie powoduje trwałe skrócenie mięśni klatki piersiowej, którego nie można już odwrócić po 25 roku życia.",
-          "Nie ma to żadnego znaczenia dla zdrowia pleców, pozycja ciała to wyłącznie kwestia estetyki i kultury osobistej."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Ciało potrafi adaptować się do różnych pozycji, jednak długotrwałe garbienie może prowadzić do niekorzystnych adaptacji funkcjonalnych i strukturalnych, choć nie jest to bezpośrednio 'uszkodzenie' kręgosłupa."
-      },
-      {
-        pytanie: "Wybierz aktywność, która najlepiej zredukuje stres bez negatywnych konsekwencji:",
-        odpowiedzi: [
-          "Spacer w parku",
-          "Intensywny trening HIIT - im bardziej wyczerpujący, tym lepiej zredukuje stres",
-          "Wypicie lampki wina - alkohol jest naturalnym relaksantem bez istotnych skutków ubocznych przy umiarkowanym spożyciu",
-          "Wydłużenie czasu snu o dodatkowe 3 godziny - to jedyna skuteczna metoda redukcji chronicznego stresu"
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Spacer w otoczeniu natury łączy korzyści lekkiej aktywności fizycznej, kontaktu z naturą (terapia lasem) i redukcji napięcia bez ryzyka przeciążenia organizmu czy uzależnienia."
-      },
-      {
-        pytanie: "Czy osoby na dopingu mogą mieć problemy z agresją?",
-        odpowiedzi: [
-          "Mogą mieć problemy z agresją, ale nie zawsze tak jest. Zwykle osoby, które przed wzięciem dopingu mają problem z agresją, w trakcie dopingu problem się nasila.",
-          "Doping nigdy nie powoduje agresji, to tylko mit stworzony przez media.",
-          "Każda osoba stosująca doping sportowy będzie miała zwiększony poziom agresji bez wyjątku.",
-          "Agresja po dopingu pojawia się wyłącznie u mężczyzn, kobiety są fizjologicznie odporne na ten efekt uboczny."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Niektóre substancje dopingujące, szczególnie sterydy anaboliczne, mogą nasilać agresję, jednak efekt ten zależy od indywidualnych predyspozycji, rodzaju substancji i dawkowania."
-      },
-      {
-        pytanie: "Która z tych struktur potrzebuje najwięcej czasu na adaptację do obciążenia?",
-        odpowiedzi: [
-          "Ścięgna - czasami czas adaptacji po urazie, na przykład po zerwanym więzadle właściwym rzepki, może trwać 2 lata.",
-          "Mięśnie - adaptacja mięśni jest najwolniejszym procesem, który może trwać nawet 3-4 lata po poważnym urazie.",
-          "Kości - potrzebują one zawsze więcej czasu niż ścięgna na regenerację i adaptację do nowych obciążeń.",
-          "Układ nerwowy - potrzebuje on najwięcej czasu, minimum 2-3 lata na pełną adaptację do złożonych wzorców ruchowych."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Ścięgna mają gorsze ukrwienie niż mięśnie i kości, co sprawia, że ich regeneracja i adaptacja trwa dłużej. Po poważnych urazach ścięgien proces pełnego powrotu może trwać nawet kilka lat."
-      },
-      {
-        pytanie: "Który z tych produktów wpływa na zwiększoną ilość spalonych kalorii w ciągu dnia?",
-        odpowiedzi: [
-          "Kofeina - świetna substancja, która powinna wpłynąć pozytywnie na ilość spontanicznej aktywności i redukcję łaknienia.",
-          "Zielona herbata - zawiera katechiny, które zwiększają metabolizm o 20-30% przez cały dzień.",
-          "Ostra papryka - kapsaicyna w papryce podwaja tempo spalania kalorii przez 5 godzin po spożyciu.",
-          "Grejpfrut - zawiera unikalne enzymy, które przyśpieszają spalanie tłuszczu w wątrobie o 150%."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Kofeina ma wpływ na spontaniczną aktywność fizyczną (NEAT) oraz może czasowo zmniejszać łaknienie, co pośrednio wpływa na bilans kaloryczny."
-      }
-    ]
+    pytanie: "Który z poniższych suplementów diety posiada najlepiej udowodnione działanie zarówno w kontekście zwiększania siły, jak i wspierania funkcji kognitywnych?",
+    odpowiedzi: [
+      "L-karnityna",
+      "BCAA (aminokwasy rozgałęzione)",
+      "Monohydrat kreatyny",
+      "Tribulus terrestris"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Monohydrat kreatyny jest jednym z najlepiej przebadanych suplementów. Badania potwierdzają jego skuteczność we wspomaganiu resyntezy ATP, co przekłada się na wzrost siły i wytrzymałości, a także na poprawę funkcji poznawczych."
   },
   {
-    data: "2025-03-26",
-    pytania: [
-      {
-        pytanie: "Czy czas snu ma wpływ na ilość zgubionej tkanki tłuszczowej?",
-        odpowiedzi: [
-          "Tak, jest kluczowy - osoby które śpią dłużej gubią szybciej i więcej tkanki tłuszczowej.",
-          "Nie, sen wpływa tylko na zmęczenie, ale nie na metabolizm tkanki tłuszczowej.",
-          "Tak, ale tylko jeśli śpi się dokładnie 8 godzin - każda inna długość snu hamuje odchudzanie.",
-          "Nie, badania pokazują, że krótszy sen (5-6 godzin) przyspiesza metabolizm i sprzyja odchudzaniu."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Niedobór snu powoduje zaburzenia hormonalne - wzrost kortyzolu i greliny oraz spadek leptyny, co zwiększa apetyt, szczególnie na wysoko przetworzone produkty. Dodatkowo prowadzi do insulinooporności i utrudnia regenerację mięśni, co negatywnie wpływa na skład ciała."
-      },
-      {
-        pytanie: "Które z tych ćwiczeń najlepiej rozwinie mięsień prosty brzucha?",
-        odpowiedzi: [
-          "Allachy",
-          "Skłony tułowia (popularne brzuszki)",
-          "Deska",
-          "Nożyce"
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Allachhy - świetne możliwości progresji, duże rozciągnięcie, jedno z lepszych ćwiczeń na ten mięsień"
-      },
-      {
-        pytanie: "Chcesz schudnąć, co wybierasz?",
-        odpowiedzi: [
-          "Spacer 8000 kroków dziennie oraz trening siłowy 2 razy w tygodniu.",
-          "Intensywne treningi cardio (bieganie, rower) 5 razy w tygodniu.",
-          "Ścisła dieta 1200 kcal bez zwiększania aktywności fizycznej.",
-          "Detoks sokowy przez 2 tygodnie, a następnie dieta bezglutenowa."
-        ],
-        poprawnaOdpowiedz: 0,
-        wyjasnienie: "Kombinacja regularnej aktywności o niskiej intensywności (spacery) z treningiem siłowym daje najlepsze długofalowe efekty redukcji tkanki tłuszczowej przy jednoczesnym zachowaniu masy mięśniowej. Spacery nie przeciążają organizmu, są łatwe do włączenia w codzienną rutynę, a trening siłowy zwiększa podstawową przemianę materii."
-      },
-      {
-        pytanie: "Które z poniższych twierdzeń dotyczących związku między snem a funkcjami poznawczymi jest najbardziej zgodne z obecną wiedzą naukową?",
-        odpowiedzi: [
-          "Sen wpływa głównie na pamięć krótkotrwałą, ale nie ma istotnego wpływu na zdolności rozwiązywania problemów.",
-          "Niewyspanie powoduje jedynie chwilowe obniżenie funkcji poznawczych, które można zniwelować kawą lub innymi stymulantami.",
-          "Chroniczne niewyspanie (poniżej 6 godzin na dobę) powoduje deficyty poznawcze porównywalne do lekkiego upojenia alkoholowego i zwiększa ryzyko demencji w późniejszym wieku.",
-          "Jakość snu ma minimalny wpływ na funkcje poznawcze u zdrowych dorosłych, staje się istotna dopiero po 60 roku życia."
-        ],
-        poprawnaOdpowiedz: 2,
-        wyjasnienie: "Badania wykazują, że przewlekły niedobór snu prowadzi do znaczącego pogorszenia funkcji poznawczych, w tym zdolności podejmowania decyzji, szybkości reakcji i pamięci. Długotrwałe zaburzenia snu są również czynnikiem ryzyka neurodegeneracji i demencji."
-      },
-      {
-        pytanie: "Który ze wskaźników najdokładniej określa ryzyko zdrowotne związane z nadmierną masą ciała?",
-        odpowiedzi: [
-          "Wskaźnik BMI (Body Mass Index)",
-          "Stosunek obwodu talii do obwodu bioder (WHR - Waist-Hip Ratio)",
-          "Procentowa zawartość tkanki tłuszczowej w organizmie w połączeniu z obwodem talii",
-          "Waga ciała w relacji do wzrostu"
-        ],
-        poprawnaOdpowiedz: 2,
-        wyjasnienie: "Procentowa zawartość tkanki tłuszczowej w połączeniu z obwodem talii daje najdokładniejszy obraz ryzyka metabolicznego. BMI nie uwzględnia kompozycji ciała (proporcji mięśni do tkanki tłuszczowej), a WHR, choć lepszy od BMI, nie uwzględnia całkowitej ilości tkanki tłuszczowej. Tłuszcz trzewny (mierzony pośrednio przez obwód talii) jest szczególnie niebezpieczny metabolicznie."
-      }
-    ]
+    pytanie: "Jakie jest kluczowe założenie skutecznego odchudzania bez uciekania się do restrykcyjnych diet?",
+    odpowiedzi: [
+      "Stosowanie okresowych głodówek w celu 'zresetowania' metabolizmu",
+      "Wprowadzanie małych, konsekwentnych i trwałych zmian w codziennych nawykach żywieniowych i ruchowych",
+      "Całkowite wyeliminowanie jednej grupy makroskładników, np. węglowodanów",
+      "Skupienie się wyłącznie na intensywnych treningach cardio"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Długoterminowa skuteczność w redukcji masy ciała opiera się na budowaniu trwałych nawyków, a nie na krótkotrwałych, restrykcyjnych zrywach, które często kończą się efektem jo-jo."
+  },
+  {
+    pytanie: "Co, oprócz odpowiedniej ilości snu, jest fundamentalnym elementem skutecznej regeneracji potreningowej?",
+    odpowiedzi: [
+      "Codzienne sesje w saunie",
+      "Picie napojów energetycznych w ciągu dnia",
+      "Efektywne zarządzanie stresem i poziomem energii w ciągu dnia",
+      "Stosowanie zimnych kąpieli bezpośrednio po każdym treningu"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Regeneracja to złożony proces. Wysoki poziom chronicznego stresu (kortyzol) może hamować procesy naprawcze w organizmie, nawet przy odpowiedniej ilości snu."
+  },
+  {
+    pytanie: "Która forma aktywności fizycznej najefektywniej przyczynia się do zwiększenia tzw. NEAT (spontanicznej aktywności fizycznej niezwiązanej z treningiem)?",
+    odpowiedzi: [
+      "Dwugodzinny, intensywny trening siłowy raz w tygodniu",
+      "Codzienne, krótkie sesje interwałowe (HIIT)",
+      "Regularne spacery, wybieranie schodów zamiast windy i ogólna ruchliwość w ciągu dnia",
+      "Uczestnictwo w maratonie raz w roku"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "NEAT to suma kalorii spalanych na wszystkie czynności poza zaplanowanym treningiem. Regularna, codzienna aktywność o niskiej intensywności ma największy wpływ na jego wysoki poziom."
+  },
+  {
+    pytanie: "Jaki jest optymalny i najczęściej rekomendowany sposób dawkowania monohydratu kreatyny w celu utrzymania jej stałego, podwyższonego poziomu w mięśniach?",
+    odpowiedzi: [
+      "Tylko w dni treningowe, 20g przed treningiem",
+      "Cyklicznie: 4 tygodnie stosowania, 4 tygodnie przerwy",
+      "Codziennie, w dawce około 3-5 gramów, bez konieczności robienia przerw",
+      "W formie 'ładowania' – 30g dziennie przez pierwszy miesiąc"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Stała, codzienna suplementacja dawką 3-5g jest wystarczająca do wysycenia mięśni kreatyną i utrzymania tego stanu. Cykle i fazy ładowania nie są konieczne dla większości osób."
+  },
+  {
+    pytanie: "W hierarchii ważności elementów skutecznej diety redukcyjnej, co stanowi absolutną podstawę?",
+    odpowiedzi: [
+      "Wybieranie wyłącznie produktów 'bio' i 'eko'",
+      "Spożywanie 6 małych posiłków dziennie",
+      "Utrzymanie deficytu kalorycznego",
+      "Całkowita rezygnacja z cukru i glutenu"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Podstawowym prawem termodynamiki w kontekście odchudzania jest bilans energetyczny. Aby redukować masę ciała, należy spożywać mniej kalorii, niż organizm zużywa, niezależnie od innych czynników."
+  },
+  {
+    pytanie: "Chroniczny niedobór snu (np. spanie poniżej 6 godzin na dobę) prowadzi do zmian hormonalnych, które utrudniają odchudzanie. Jakie to zmiany?",
+    odpowiedzi: [
+      "Wzrost poziomu testosteronu i spadek kortyzolu",
+      "Wzrost poziomu greliny (hormon głodu) i spadek poziomu leptyny (hormon sytości)",
+      "Spadek poziomu insuliny i wzrost hormonu wzrostu",
+      "Wzrost poziomu estrogenów i progesteronu"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Niewystarczająca ilość snu zaburza regulację apetytu na poziomie hormonalnym, zwiększając uczucie głodu i osłabiając sygnały sytości, co sprzyja przejadaniu się."
+  },
+  {
+    pytanie: "Który z poniższych suplementów jest kluczowy dla zdrowia kości i układu odpornościowego, a jego niedobory są powszechne w naszej szerokości geograficznej?",
+    odpowiedzi: [
+      "Witamina C",
+      "Magnez",
+      "Witamina D3",
+      "Cynk"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Ze względu na ograniczoną syntezę skórną w okresie jesienno-zimowym w Polsce, suplementacja witaminą D3 jest rekomendowana dla większości populacji w celu wsparcia odporności i gospodarki wapniowo-fosforanowej."
+  },
+  {
+    pytanie: "Podczas wykonywania martwego ciągu, gdzie powinna znajdować się sztanga w początkowej fazie ruchu?",
+    odpowiedzi: [
+      "Kilka centymetrów przed stopami, aby mieć miejsce na ruch",
+      "Bezpośrednio nad stawami skokowymi",
+      "Jak najbliżej piszczeli, niemal dotykając ich",
+      "Na wysokości kolan, aby skrócić zakres ruchu"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Utrzymanie sztangi jak najbliżej osi ciała minimalizuje siły ścinające działające na kręgosłup lędźwiowy i pozwala na najbardziej efektywne i bezpieczne podniesienie ciężaru."
+  },
+  {
+    pytanie: "Czym jest 'przeciążenie metaboliczne' w kontekście budowania masy mięśniowej?",
+    odpowiedzi: [
+      "Trenowaniem do skrajnego wyczerpania energetycznego, prowadzącego do omdlenia",
+      "Spożywaniem nadmiernej ilości kalorii, prowadzącej do otłuszczenia",
+      "Wykonywaniem ćwiczeń w taki sposób, aby doprowadzić do kumulacji metabolitów (np. jonów wodorowych) w mięśniu, co jest jednym z bodźców do wzrostu",
+      "Obciążeniem organizmu zbyt dużą ilością suplementów diety"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Przeciążenie metaboliczne, obok napięcia mechanicznego, jest jednym z głównych mechanizmów hipertrofii. Osiąga się je np. przez krótsze przerwy między seriami lub większą liczbę powtórzeń."
+  },
+  {
+    pytanie: "W kontekście diety sportowca, dlaczego odpowiednia podaż węglowodanów jest kluczowa?",
+    odpowiedzi: [
+      "Ponieważ są głównym źródłem budulca dla mięśni",
+      "Ponieważ eliminują potrzebę spożywania białka",
+      "Ponieważ są głównym i najszybciej dostępnym źródłem energii (glikogen mięśniowy) dla pracujących mięśni",
+      "Ponieważ nawadniają organizm lepiej niż woda"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Węglowodany są magazynowane w mięśniach i wątrobie w formie glikogenu. Jego wysoki poziom jest niezbędny do wykonywania wysiłku o wysokiej intensywności."
+  },
+  {
+    pytanie: "Co jest bardziej wiarygodnym wskaźnikiem ryzyka chorób metabolicznych niż sam wskaźnik BMI?",
+    odpowiedzi: [
+      "Masa ciała w kilogramach",
+      "Wzrost w centymetrach",
+      "Stosunek obwodu talii do wzrostu lub obwód talii w połączeniu z procentem tkanki tłuszczowej",
+      "Wynik na wadze łazienkowej z pomiarem 'masy kostnej'"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "BMI nie rozróżnia masy mięśniowej od tłuszczowej. Obwód talii jest dobrym wskaźnikiem ilości tłuszczu trzewnego, który jest silnie powiązany z ryzykiem chorób sercowo-naczyniowych i cukrzycy typu 2."
+  },
+  {
+    pytanie: "Która z wymienionych substancji, będąca adaptogenem, jest ceniona za swoje właściwości redukujące stres i poziom kortyzolu?",
+    odpowiedzi: [
+      "Kofeina",
+      "Ashwagandha",
+      "Guarana",
+      "Tauryna"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Ashwagandha to adaptogen, który w badaniach wykazał zdolność do modulowania odpowiedzi organizmu na stres, m.in. poprzez obniżanie poziomu kortyzolu."
+  },
+  {
+    pytanie: "Dlaczego punktowe spalanie tkanki tłuszczowej (np. robienie 'brzuszków' w celu spalenia tłuszczu z brzucha) jest mitem?",
+    odpowiedzi: [
+      "Ponieważ tłuszcz można spalić tylko za pomocą tabletek",
+      "Ponieważ organizm decyduje, skąd czerpie energię z tkanki tłuszczowej w sposób systemowy, a nie lokalny",
+      "Ponieważ 'brzuszki' budują mięśnie, które ważą więcej niż tłuszcz",
+      "Ponieważ działa to tylko u profesjonalnych sportowców"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Redukcja tkanki tłuszczowej zachodzi globalnie w całym organizmie w wyniku deficytu kalorycznego. Nie można zmusić ciała do spalania tłuszczu z konkretnego, wybranego miejsca."
+  },
+  {
+    pytanie: "Jakie jest główne zadanie białka w diecie osoby aktywnej fizycznie?",
+    odpowiedzi: [
+      "Dostarczenie natychmiastowej energii do biegu",
+      "Dostarczenie aminokwasów niezbędnych do naprawy i budowy tkanek, w tym mięśni",
+      "Poprawa elastyczności stawów",
+      "Regulacja temperatury ciała podczas wysiłku"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Białka są podstawowym budulcem organizmu. Trening uszkadza włókna mięśniowe, a aminokwasy z pożywienia są wykorzystywane w procesie ich regeneracji i nadbudowy (hipertrofii)."
+  },
+  {
+    pytanie: "Który z kwasów tłuszczowych Omega-3 ma kluczowe znaczenie dla funkcji mózgu?",
+    odpowiedzi: [
+      "ALA (kwas alfa-linolenowy)",
+      "DHA (kwas dokozaheksaenowy)",
+      "EPA (kwas eikozapentaenowy)",
+      "Kwas palmitynowy"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "DHA jest głównym składnikiem strukturalnym mózgu i siatkówki oka, odgrywając kluczową rolę w rozwoju i funkcjonowaniu układu nerwowego."
+  },
+  {
+    pytanie: "Co jest głównym celem rozgrzewki przed treningiem siłowym?",
+    odpowiedzi: [
+      "Maksymalne zmęczenie mięśni, aby trening był bardziej efektywny",
+      "Zwiększenie temperatury ciała, poprawa mobilności w stawach i aktywacja układu nerwowego do nadchodzącego wysiłku",
+      "Spalenie jak największej liczby kalorii jeszcze przed główną częścią treningu",
+      "Wykonanie pełnego treningu cardio, aby poprawić wydolność"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Prawidłowa rozgrzewka przygotowuje cały organizm do wysiłku, zwiększając przepływ krwi do mięśni i 'smarowanie' w stawach, co minimalizuje ryzyko kontuzji i poprawia wydajność."
+  },
+  {
+    pytanie: "W jaki sposób trening siłowy wpływa na zdrowie kości?",
+    odpowiedzi: [
+      "Nie ma żadnego wpływu, oddziałuje tylko na mięśnie",
+      "Osłabia kości poprzez mikrourazy",
+      "Stymuluje osteoblasty (komórki kościotwórcze) do zwiększania gęstości mineralnej kości",
+      "Powoduje utratę wapnia z kości na rzecz mięśni"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Obciążenie mechaniczne generowane podczas treningu siłowego jest sygnałem dla organizmu do wzmacniania struktury kostnej, co jest kluczowe w profilaktyce osteoporozy."
+  },
+  {
+    pytanie: "Jeżeli celem jest maksymalizacja uczucia sytości w diecie o obniżonej kaloryczności, na których makroskładnikach i typach produktów należy się skupić?",
+    odpowiedzi: [
+      "Na cukrach prostych i sokach owocowych, aby szybko dostarczyć energię",
+      "Na produktach o dużej objętości i niskiej gęstości kalorycznej, bogatych w białko i błonnik (np. warzywa, chude mięso)",
+      "Wyłącznie na tłuszczach, ponieważ są najbardziej kaloryczne",
+      "Na wysoko przetworzonych przekąskach typu 'light'"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Białko jest najbardziej sycącym makroskładnikiem. Błonnik z warzyw zwiększa objętość posiłku bez dodawania wielu kalorii, co fizycznie wypełnia żołądek i spowalnia trawienie."
+  },
+    {
+    pytanie: "Które z poniższych stwierdzeń na temat snu jest prawdziwe w kontekście osiągania celów sportowych?",
+    odpowiedzi: [
+      "Faza snu REM jest kluczowa dla regeneracji fizycznej i naprawy mięśni.",
+      "Można 'nadrobić' cały zarwany tydzień, śpiąc 12 godzin w jeden dzień weekendu.",
+      "Głęboka faza snu (NREM) jest okresem, w którym następuje największe uwalnianie hormonu wzrostu, kluczowego dla regeneracji.",
+      "Krótkie drzemki w ciągu dnia całkowicie niwelują negatywne skutki chronicznego niedoboru snu w nocy."
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "To właśnie podczas głębokich faz snu (slow-wave sleep) organizm najintensywniej się regeneruje, naprawia tkanki i uwalnia hormony anaboliczne, takie jak hormon wzrostu."
   }
 ];
 
-export async function POST(request: Request) {
-  try {
-    const nowePytanie = await request.json();
-    
-    // Sprawdzenie czy mamy już zestaw na tę datę
-    const data = nowePytanie.data || nowePytanie.dataPytania;
-    const maxData = new Date();
-    maxData.setDate(maxData.getDate() + 7);
-    
-    const dataQuizu = new Date(data);
-    
-    if (dataQuizu > maxData) {
-      return NextResponse.json(
-        { blad: 'Nie można dodać pytania na więcej niż tydzień do przodu' },
-        { status: 400 }
-      );
-    }
+// Krok 2.B - Logika Budująca Quiz
+const pytaniaQuizu: DziennyZestawPytan[] = [];
 
-    // Sprawdzamy czy istnieje już zestaw na tę datę
-    const istniejacyZestaw = pytaniaQuizu.find(zestaw => zestaw.data === data);
-    
-    if (istniejacyZestaw) {
-      // Dodajemy nowe pytanie do istniejącego zestawu
-      const nowePytanieDoZestawu: PytanieQuizu = {
-        pytanie: nowePytanie.pytanie,
-        odpowiedzi: nowePytanie.odpowiedzi,
-        poprawnaOdpowiedz: nowePytanie.poprawnaOdpowiedz,
-        wyjasnienie: nowePytanie.wyjasnienie
-      };
-      
-      istniejacyZestaw.pytania.push(nowePytanieDoZestawu);
-    } else {
-      // Tworzymy nowy zestaw na tę datę
-      const nowyZestaw: DziennyZestawPytan = {
-        data: data,
-        pytania: [{
-          pytanie: nowePytanie.pytanie,
-          odpowiedzi: nowePytanie.odpowiedzi,
-          poprawnaOdpowiedz: nowePytanie.poprawnaOdpowiedz,
-          wyjasnienie: nowePytanie.wyjasnienie
-        }]
-      };
-      
-      pytaniaQuizu.push(nowyZestaw);
-    }
-    
-    return NextResponse.json({ wiadomosc: 'Pytanie zostało dodane' });
-  } catch {
-    return NextResponse.json(
-      { blad: 'Nie udało się dodać pytania' },
-      { status: 500 }
-    );
+function shuffle<T>(array: T[]): T[] {
+  let currentIndex = array.length, randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
+
+  return array;
 }
 
+const generujQuiz = () => {
+  const dzisiaj = new Date();
+  for (let i = 0; i < 30; i++) {
+    const data = new Date(dzisiaj);
+    data.setDate(dzisiaj.getDate() + i);
+    const dataString = data.toISOString().split('T')[0];
+
+    const pulaDoLosowania = [...pulaPytanZBloga];
+    const wylosowanePytania = shuffle(pulaDoLosowania).slice(0, 5);
+
+    pytaniaQuizu.push({
+      data: dataString,
+      pytania: wylosowanePytania,
+    });
+  }
+};
+
+generujQuiz();
+
+// Krok 2.B - Endpoint API
 export async function GET() {
   try {
     const dzisiaj = new Date().toISOString().split('T')[0];
     const zestawNaDzis = pytaniaQuizu.find(zestaw => zestaw.data === dzisiaj);
-    
+
     if (!zestawNaDzis || zestawNaDzis.pytania.length === 0) {
-      return NextResponse.json(
-        { blad: 'Brak pytań na dzisiaj' },
-        { status: 404 }
-      );
+      const fallbackZestaw = pytaniaQuizu[0];
+      if (!fallbackZestaw) {
+         return NextResponse.json(
+            { blad: 'Brak jakichkolwiek pytań w puli' },
+            { status: 404 }
+        );
+      }
+      return NextResponse.json(fallbackZestaw);
     }
     
     return NextResponse.json(zestawNaDzis);

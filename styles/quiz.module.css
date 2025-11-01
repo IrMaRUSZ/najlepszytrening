@@ -129,3 +129,66 @@
 .quizContainer .quizCard .explanationCard p {
   color: #000000 !important;
 }
+.imageContainer {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.quizImage {
+  max-width: 100%;
+  max-height: 280px;
+  width: auto;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* ---- Styl dla kontenera wideo (responsywny) ---- */
+.videoContainer {
+  position: relative;
+  width: 100%;
+  /* Ustawia proporcje 16:9 */
+  padding-bottom: 56.25%; 
+  height: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: #000; /* Tło na wypadek, gdyby film ładował się wolniej */
+}
+
+.videoContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.videoContainerVertical {
+  position: relative;
+  /* Ograniczamy szerokość, aby nie był za duży na desktopie i wyglądał jak telefon */
+  max-width: 300px; 
+  margin: 0 auto 1.5rem auto; /* Wyśrodkowanie i margines dolny */
+  width: 100%;
+  /* Magiczny trik dla proporcji 9:16 -> (16 / 9) * 100% */
+  padding-bottom: 177.77%; 
+  height: 0;
+  overflow: hidden;
+  border-radius: 1.25rem; /* Dopasujmy do estetyki telefonu */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #000;
+}
+
+.videoContainerVertical iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

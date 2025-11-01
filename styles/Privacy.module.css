@@ -1,0 +1,101 @@
+/* --- Główny kontener i układ --- */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem; /* Więcej przestrzeni na górze/dole, mniej po bokach */
+  color: #e0e0e0;       /* Jasnoszary tekst dla lepszego kontrastu i mniejszego zmęczenia oczu */
+  background-color: #000; /* Czarne tło */
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.content {
+  max-width: 800px; /* Optymalna szerokość dla tekstu dla najlepszej czytelności */
+  width: 100%;
+}
+
+/* --- Typografia --- */
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffc107; /* Kolor akcentu - złoty/żółty */
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.lastUpdate {
+  font-size: 0.9rem;
+  color: #757575; /* Ciemniejszy szary, mniej ważna informacja */
+  margin-bottom: 3rem;
+  display: block;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-bottom: 2px solid #333; /* Subtelna linia oddzielająca */
+  padding-bottom: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.8; /* Większy odstęp między liniami dla czytelności */
+  color: #bdbdbd; /* Przyjemny dla oka odcień szarości */
+  margin-bottom: 1rem;
+}
+
+/* --- Listy i Linki --- */
+.list {
+  padding-left: 25px;
+  line-height: 1.8;
+  color: #bdbdbd;
+}
+
+.list li {
+  margin-bottom: 1.25rem; /* Więcej przestrzeni między punktami */
+}
+
+.list li::marker {
+  color: #ffc107; /* Kolor akcentu dla punktorów */
+}
+
+/* Pogrubienia i linki w tekście */
+.content strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.content a {
+  color: #ffc107;
+  text-decoration: none;
+  border-bottom: 1px dashed #ffc107;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.content a:hover {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+/* --- Responsywność --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 2.5rem 1rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .paragraph {
+    font-size: 0.95rem;
+  }
+}
