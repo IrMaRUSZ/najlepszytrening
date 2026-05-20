@@ -136,7 +136,7 @@ Często pytacie: <em>&quot;Jak ułożysz mi bezpieczny plan bez wizyty w gabinec
           </p>
           
           <a 
-            href="https://calendly.com/maruszewskiirek/15min" /* ZMIEŃ NA SWÓJ LINK DO WIDEO ROZMOWY */
+            href="https://calendly.com/maruszewskiirek" /* ZMIEŃ NA SWÓJ LINK DO WIDEO ROZMOWY */
             target="_blank" 
             rel="noopener noreferrer"
             style={{

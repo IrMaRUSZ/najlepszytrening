@@ -58,7 +58,7 @@ export default function Navbar() {
           {/* CRO: Główny przycisk kierujący bezpośrednio do kalendarza! */}
           <li className={styles.navCta}>
             <a 
-              href="https://calendly.com/TWOJ_LINK" 
+              href="https://calendly.com/maruszewskiirek" 
               target="_blank" 
               rel="noopener noreferrer"
               onClick={closeMenu} 
