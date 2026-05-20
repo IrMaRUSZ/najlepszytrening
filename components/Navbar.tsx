@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 'use client';
 
 import Link from 'next/link';
@@ -51,27 +50,31 @@ export default function Navbar() {
 
         {/* --- Menu na duże ekrany --- */}
         <ul className={styles.menu}>
-          <li><Link href="/o-mnie">O mnie</Link></li>
-          <li><Link href="/trener-personalny-lodz">Trener</Link></li>
-          <li><Link href="/Wspolpraca-online">Współpraca-online</Link></li>
-          <li><Link href="/kontakt">Kontakt</Link></li>
-          <li><Link href="/blog">Blog</Link></li>
-          <li><Link href="/narzedzia">Narzędzia</Link></li>
-          <li><Link href="/quiz">Quiz</Link></li>
-          <li><Link href="/grywalizacja">Grywalizacja</Link></li>
-
-          {/* Dynamiczna część na końcu */}
-          {!loading && (
-            user ? (
-              <>
-                <li><Link href="/dashboard" className={styles.navButton}>Panel</Link></li>
-                <li><a onClick={handleLogout} style={{cursor: 'pointer'}} className={styles.navButtonSecondary}>Wyloguj</a></li>
-              </>
-            ) : (
-              // ZMIANA 1: Zastępujemy linki Logowanie/Rejestracja wartością null
-              null
-            )
-          )}
+          <li><Link href="/trener-personalny-lodz" onClick={closeMenu}>Treningi Łódź</Link></li>
+          <li><Link href="/Wspolpraca-online" onClick={closeMenu}>Online</Link></li>
+          <li><Link href="/o-mnie" onClick={closeMenu}>O mnie / Opinie</Link></li>
+          <li><Link href="/blog" onClick={closeMenu}>Blog</Link></li>
+          
+          {/* CRO: Główny przycisk kierujący bezpośrednio do kalendarza! */}
+          <li className={styles.navCta}>
+            <a 
+              href="https://calendly.com/TWOJ_LINK" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={closeMenu} 
+              style={{
+                background: 'var(--primary)', 
+                color: 'white', 
+                padding: '8px 16px', 
+                borderRadius: '20px', 
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                boxShadow: '0 2px 10px rgba(255, 69, 0, 0.2)'
+              }}
+            >
+              Darmowa Konsultacja
+            </a>
+          </li>
         </ul>
 
         <button className={styles.mobileButton} onClick={() => setIsOpen(!isOpen)}>
@@ -81,27 +84,39 @@ export default function Navbar() {
         {/* --- Menu mobilne --- */}
         {isOpen && (
           <div className={styles.mobileMenu}>
-            <Link href="/o-mnie" onClick={closeMenu}>O mnie</Link>
-            <Link href="/trener-personalny-lodz" onClick={closeMenu}>Trener</Link>
-            <Link href="/Wspolpraca-online" onClick={closeMenu}>Online</Link>
-            <Link href="/kontakt" onClick={closeMenu}>Kontakt</Link>
+            <Link href="/trener-personalny-lodz" onClick={closeMenu}>Treningi Łódź</Link>
+            <Link href="/Wspolpraca-online" onClick={closeMenu}>Prowadzenie Online</Link>
+            <Link href="/o-mnie" onClick={closeMenu}>O mnie / Opinie</Link>
             <Link href="/blog" onClick={closeMenu}>Blog</Link>
-            <Link href="/narzedzia" onClick={closeMenu}>Narzędzia</Link>
-            <Link href="/quiz" onClick={closeMenu}>Quiz</Link>
-            <Link href="/grywalizacja" onClick={closeMenu}>Grywalizacja</Link>
+            
+            <hr style={{width: '100%', borderColor: 'rgba(0,0,0,0.1)'}} />
+            
+            {/* CRO: Ogromny nacisk na umówienie konsultacji w widoku mobilnym */}
+            <a 
+              href="https://calendly.com/TWOJ_LINK" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              style={{
+                color: 'var(--primary)',
+                fontWeight: 'bold',
+                fontSize: '1.2rem',
+                textDecoration: 'none',
+                padding: '10px 0'
+              }}
+            >
+              Umów Darmową Konsultację
+            </a>
 
-            <hr />
+            <hr style={{width: '100%', borderColor: 'rgba(0,0,0,0.1)'}} />
 
             {!loading && (
                 user ? (
                     <>
-                        <Link href="/dashboard" onClick={closeMenu}>Panel</Link>
+                        <Link href="/dashboard" onClick={closeMenu}>Twój Panel</Link>
                         <a onClick={() => { handleLogout(); closeMenu(); }} style={{cursor: 'pointer'}}>Wyloguj</a>
                     </>
-                ) : (
-                    // ZMIANA 2: Tutaj również zastępujemy linki wartością null
-                    null
-                )
+                ) : null
             )}
           </div>
         )}

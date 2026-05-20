@@ -135,23 +135,48 @@
     margin-bottom: 2rem;
 }
 
+/* --- CRO: PRZYCISK CALENDLY W SEKCJI KROKÓW --- */
+.contactSection {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
 .ctaButton {
-    display: inline-block;
-    background: #fca311;
-    color: #000000;
-    padding: 1.2rem 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    border: none;
+    font-size: 18px;
+    color: #111; /* Ciemny tekst dla kontrastu */
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.1rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-transform: uppercase;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(252, 163, 17, 0.3);
+    background: var(--primary);
+    box-shadow: 0 0 15px rgba(252, 163, 17, 0.4);
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    max-width: 350px;
 }
 
 .ctaButton:hover {
+    box-shadow: 0 0 25px rgba(252, 163, 17, 0.6);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(252, 163, 17, 0.4);
-    background: #ff9800;
+    background: #e08e0b;
+}
+
+/* Upewnijmy się, że na telefonach guzik się nie wylewa i sekcja ma padding */
+@media (max-width: 768px) {
+    .ctaSection {
+        padding: 2rem 1rem;
+    }
+    
+    .ctaButton {
+        width: 100%;
+    }
 }
 
 .ctaButton:active {

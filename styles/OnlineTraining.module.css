@@ -106,7 +106,7 @@
   .featureIcon {
     width: 2.5rem;
     height: 2.5rem;
-    color: #3b82f6;
+    color: #fca311;
     flex-shrink: 0;
   }
   
@@ -167,7 +167,7 @@
   .stepNumber {
     width: 3rem;
     height: 3rem;
-    background: #3b82f6;
+    background: #fca311;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -227,7 +227,7 @@
   .cardIcon {
     width: 3rem;
     height: 3rem;
-    color: #3b82f6;
+    color: #fca311;
     margin-bottom: 1.5rem;
   }
   
@@ -265,7 +265,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
-    background: #3b82f6;
+    background: #fca311;
     color: white;
     font-weight: 600;
     border-radius: 0.5rem;
@@ -274,7 +274,7 @@
   }
   
   .ctaButton:hover {
-    background: #2563eb;
+    background: #fca311;
     transform: translateY(-2px);
     box-shadow: 0 10px 20px -10px rgba(59, 130, 246, 0.5);
   }
@@ -313,3 +313,81 @@
     filter: blur(100px);
     pointer-events: none;
   }
+
+  /* --- STYLE KARUZELI APLIKACJI --- */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.carouselInner {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.carouselSlide {
+  flex: 0 0 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carouselImage {
+  width: 100%;
+  height: auto;
+  max-height: 700px; /* Chroni przed zbyt wielkim formatem na ekranach PC */
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.carouselButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.carouselButton:hover {
+  background: #fca311; /* Niebieski pasujący do reszty motywu */
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carouselPrev {
+  left: 10px;
+}
+
+.carouselNext {
+  right: 10px;
+}
+
+.carouselIndicator {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}

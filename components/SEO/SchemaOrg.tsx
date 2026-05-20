@@ -2,12 +2,12 @@
 import React from 'react';
 
 export const generateSchemaMarkup = () => {
-  const businessSchema = {
+const businessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'HealthAndBeautyBusiness'], // Dodajemy kategorię zdrowotną
     '@id': 'https://www.najlepszytrening.pl',
-    name: 'Najlepszy Trening - Ireneusz Maruszewski',
-    description: 'Pierwszy krok jest najtrudniejszy - rozumiem Twoje obawy, bo sam kiedyś zaczynałem. Treningi Widzew, Dąbrowa, Centrum',
+    name: 'Najlepszy Trening - Ireneusz Maruszewski Trener Personalny i Fizjoterapeuta',
+    description: 'Połączenie fizjoterapii i treningu personalnego w Łodzi. Skutecznie pomagam zrzucić wagę, zbudować mięśnie i pozbyć się bólu pleców/stawów.',
     url: 'https://www.najlepszytrening.pl',
     telephone: '+48 737730868',
     address: {
@@ -49,15 +49,15 @@ export const generateSchemaMarkup = () => {
       'https://youtube.com/@trener_ireneusz',
       'https://facebook.com/TrenerIreneusz'
     ],
-    keywords: "trener personalny łódź, trening personalny łódź, treningi indywidualne łódź, trener personalny łódź widzew, trener personalny łódź bałuty, plan treningowy łódź",
-    hasOfferCatalog: {
+    keywords: "trener personalny łódź, fizjoterapeuta łódź, trening medyczny łódź, rehabilitacja ruchowa łódź, ból pleców trening",
+ hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Usługi treningowe',
+      name: 'Usługi treningowe i fizjoterapeutyczne',
       itemListElement: [
         {
           '@type': 'Offer',
-          name: 'Trening personalny w Łodzi',
-          description: 'Treningi personalne w centrum i wszystkich dzielnicach Łodzi. Zero oceniania, plan skrojony na miarę, zawsze jestem obok podczas treningu.',
+          name: 'Trening personalny i medyczny w Łodzi',
+          description: 'Indywidualne treningi w Łodzi prowadzone przez fizjoterapeutę. Idealne dla osób po kontuzjach lub chcących trenować bezpiecznie i bez bólu.',
           price: '150.00',
           priceCurrency: 'PLN',
           availability: 'https://schema.org/InStock'
@@ -86,7 +86,7 @@ export const generateSchemaMarkup = () => {
     '@id': 'https://www.najlepszytrening.pl#person',
     name: 'Ireneusz Maruszewski',
     jobTitle: ['Trener Personalny', 'Fizjoterapeuta'],
-    description: 'Trener personalny w Łodzi, który rozumie Twoje obawy. Sam kiedyś zaczynałem i wiem, jak przytłaczająca może być siłownia na początku. Dlatego skupiam się przede wszystkim na tym, żebyś czuł się pewnie i bezpiecznie podczas każdego treningu.',
+    description: 'Certyfikowany trener personalny i dyplomowany fizjoterapeuta z Łodzi. Specjalizuję się w treningu siłowym oraz wyprowadzaniu pacjentów z bólu narządu ruchu.',
     image: 'https://www.najlepszytrening.pl/images/Maruszewskibt.webp',
     url: 'https://www.najlepszytrening.pl',
     sameAs: [
