@@ -93,7 +93,7 @@ export default function Navbar() {
             
             {/* CRO: Ogromny nacisk na umówienie konsultacji w widoku mobilnym */}
             <a 
-              href="https://calendly.com/TWOJ_LINK" 
+              href="https://calendly.com/maruszewskiirek" 
               target="_blank" 
               rel="noopener noreferrer"
               onClick={closeMenu}
