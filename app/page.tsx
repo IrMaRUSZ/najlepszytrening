@@ -12,15 +12,25 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Ireneusz Maruszewski | Najlepszy Trening, Fizjoterapia i Prowadzenie Online',
+    absolute: 'Trener Personalny Łódź | Ireneusz Maruszewski | Fizjoterapeuta',
   },
-  description: 'Szukasz trenera personalnego i fizjoterapeuty w Łodzi? Bezpiecznie zbuduj formę, schudnij i pozbądź się bólu pod okiem specjalisty. Treningi: Dąbrowa, Widzew, Centrum.',
+  description: 'Trener personalny i fizjoterapeuta w Łodzi – Ireneusz Maruszewski. Treningi w Just Gym (Gojawiczyńska), Widzew, Centrum i online. Ponad 51 opinii ⭐. Pierwsza konsultacja 0 zł.',
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.najlepszytrening.pl',
   },
   openGraph: {
-    title: 'Trener Personalny i Fizjoterapeuta Łódź | Najlepszy Trening',
-    description: 'Połączenie fizjoterapii i treningu personalnego. Zbuduj formę i trenuj bez bólu w Łodzi.',
+    title: 'Trener Personalny Łódź | Ireneusz Maruszewski',
+    description: 'Trener personalny z wykształceniem fizjoterapeuty. Treningi w Łodzi i online. Darmowa konsultacja.',
+    url: 'https://www.najlepszytrening.pl',
+    type: 'website',
+    images: [
+      {
+        url: '/images/Maruszewskibt.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Ireneusz Maruszewski - Trener Personalny Łódź',
+      },
+    ],
   },
 };
 
@@ -40,13 +50,12 @@ export default function Home() {
         </div>
         <div className={styles.leftContent}>
           
-          <h1 className={styles.title}>
-            Trenuj mądrze. <br/>
-            Bez bólu i wymówek. <br/>
-            <span className={styles.titleSub}>
-              Trener Personalny i Fizjoterapeuta Łódź
-            </span>
-          </h1>
+<h1 className={styles.title}>
+  Trener Personalny Łódź<br/>
+  <span className={styles.titleSub}>
+    Trenuj mądrze. Bez bólu i wymówek.
+  </span>
+</h1>
           
           <p className={styles.subtitle}>
             Łączę medyczną wiedzę z efektywnym treningiem siłowym. 
