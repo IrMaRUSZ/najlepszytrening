@@ -1,11 +1,11 @@
 'use client'
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { Shield, Target, Heart, ChevronDown, Lock, CheckCircle, CalendarCheck } from 'lucide-react';
 import styles from '../../../styles/trener-personalny-lodz.module.css';
 
 const TrainerSectionClient = () => {
-  const [openQuestion, setOpenQuestion] = React.useState<number | null>(null);
+  const [openQuestion, setOpenQuestion] = useState<number | null>(null);
   
   // Referencja do sekcji kalendarza, żeby płynnie do niego scrollować
   const calendlyRef = useRef<HTMLDivElement>(null);
@@ -16,6 +16,10 @@ const TrainerSectionClient = () => {
   };
 
   const faqItems = [
+    {
+      question: "Ile kosztuje trener personalny w Łodzi?",
+      answer: "Pojedynczy trening to koszt 180 zł. Pakiet 10 treningów to 160 zł/sesję, a pakiet 20 treningów – 140 zł/sesję. Pierwsza konsultacja jest bezpłatna."
+    },
     {
       question: "Zbyt wiele nieudanych prób treningowych? Dlaczego tym razem może być inaczej?",
       answer: "Z mojego doświadczenia wynika, że większość osób porzuca treningi z trzech powodów: źle dobrany plan, brak realnych efektów i nuda. Dlatego w mojej pracy skupiam się na tym, żeby treningi były SKUTECZNE i CIEKAWE. Sam przeszedłem przez żmudne okresy bez efektów, testując różne metody na własnej skórze. Teraz wiem, co działa, a co jest tylko marnowaniem czasu. Nie stosuję uniwersalnych planów pracujemy dokładnie nad tym, co przyniesie Ci najlepsze efekty."
@@ -34,8 +38,28 @@ const TrainerSectionClient = () => {
     }
   ];
 
+  // Dynamiczne generowanie FAQ Schema na podstawie tablicy pytań (SEO)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <section className={styles.section}>
+      {/* JSON-LD Schema dla Google */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className={styles.container}>
         <header className={styles.header}>
           <h1 className={styles.title}>Trener Personalny Łódź bez ściemy, bez cudów, za to z efektami</h1>
@@ -46,7 +70,6 @@ const TrainerSectionClient = () => {
           </p>
         </header>
 
-        {/* --- UKRYWAM GŁÓWNY GRID DLA CZYTELNOŚCI - ZOSTAW SWÓJ ORYGINALNY --- */}
         <div className={styles.mainGrid}>
           <div className={styles.imageWrapper}>
             <Image src="/images/treningpersonalny.webp" alt="Trener personalny Łódź" fill className={styles.mainImage} priority />
@@ -84,13 +107,14 @@ const TrainerSectionClient = () => {
           </div>
         </div>
 
-        {/* --- SEKCJA JAK WYGLĄDA TRENING - ZOSTAW ORYGINALNĄ --- */}
+        {/* --- SEKCJA JAK WYGLĄDA TRENING --- */}
         <div className={styles.exampleTraining}>
           <h2 className={styles.sectionTitle}>Jak naprawdę wygląda trening ze mną w Łodzi</h2>
-          {/* ... (Twój kod z TimeLineContainer - zostaw go bez zmian) ... */}
+          {/* Tutaj zachowujesz swój oryginalny komponent TimeLineContainer */}
+          {/* <TimeLineContainer /> */}
         </div>
 
-{/* --- CRO: RESPONSYWNA SEKCJA CENNIKA --- */}
+        {/* --- CRO: RESPONSYWNA SEKCJA CENNIKA --- */}
         <div className={styles.pricingWrapper}>
           <h2 className={styles.sectionTitle}>Inwestycja w Twoje zdrowie</h2>
           <p className={styles.subtitle} style={{textAlign: 'center', marginBottom: '2rem'}}>
@@ -179,6 +203,27 @@ const TrainerSectionClient = () => {
           </div>
         </div>
 
+        {/* --- SEKCJE LOKALNE SEO (Przed Calendly) --- */}
+        <div style={{ margin: '4rem 0', display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', textAlign: 'center' }}>
+          
+          <section>
+            <h2 className={styles.sectionTitle} style={{ marginBottom: '1rem' }}>Treningi personalne w całej Łodzi</h2>
+            <p className={styles.subtitle} style={{ margin: '0 auto' }}>
+              Prowadzę treningi na siłowni Just Gym (Gojawiczyńska) 
+              oraz dochodzę do klientów w dzielnicach: <br />
+              <strong>Widzew, Centrum, Górna.</strong>
+            </p>
+          </section>
+
+          <address className={styles.napSection} style={{ fontStyle: 'normal', lineHeight: '1.8' }}>
+            <strong style={{ fontSize: '1.2rem', color: 'var(--foreground)' }}>Ireneusz Maruszewski – Trener Personalny Łódź</strong><br />
+            Just Gym, ul. Poli Gojawiczyńskiej 26, 93-239 Łódź<br />
+            <a href="tel:+48737730868" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 'bold' }}>+48 737 730 868</a><br />
+            <a href="mailto:maruszewskiirek@gmail.com" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 'bold' }}>maruszewskiirek@gmail.com</a>
+          </address>
+
+        </div>
+
         {/* --- CRO: OSADZONY WIDŻET CALENDLY --- */}
         <div ref={calendlyRef} className={styles.calendlyContainer}>
           <h2 style={{textAlign: 'center', fontSize: '2rem', marginBottom: '1rem', color: '#111'}}>Wybierz termin darmowej konsultacji</h2>
@@ -187,42 +232,6 @@ const TrainerSectionClient = () => {
           </p>
           
           <div className={styles.calendlyIframe}>
-            <iframe
-              src="https://calendly.com/maruszewskiirek?hide_gdpr_banner=1"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              title="Zarezerwuj darmową konsultację"
-            ></iframe>
-          </div>
-        </div>
-
-        <div className={styles.faqSection}>
-          <h2 className={styles.sectionTitle}>Pytania, które powinieneś zadać, zanim zaczniemy</h2>
-          <div className={styles.faqGrid}>
-            {faqItems.map((item, index) => (
-              <div key={index} className={styles.faqItem} onClick={() => setOpenQuestion(openQuestion === index ? null : index)}>
-                <div className={styles.faqQuestion}>
-                  <h3>{item.question}</h3>
-                  <ChevronDown className={`${styles.faqIcon} ${openQuestion === index ? styles.faqIconOpen : ''}`} />
-                </div>
-                <div className={`${styles.faqAnswer} ${openQuestion === index ? styles.faqAnswerOpen : ''}`}>
-                  <p>{item.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* --- CRO: OSADZONY WIDŻET CALENDLY --- */}
-        <div ref={calendlyRef} style={{marginTop: '5rem', padding: '2rem 0', backgroundColor: '#f0efef', borderRadius: '16px', boxShadow: '0 5px 20px rgba(0,0,0,0.05)'}}>
-          <h2 style={{textAlign: 'center', fontSize: '2rem', marginBottom: '1rem'}}>Wybierz termin darmowej konsultacji</h2>
-          <p style={{textAlign: 'center', maxWidth: '600px', margin: '0 auto 2rem', color: '#555'}}>
-            Zajmie Ci to 15 sekund. Wybierz datę w kalendarzu poniżej. Zero zobowiązań – spotkajmy się i sprawdźmy, jak mogę Ci pomóc z Twoim celem.
-          </p>
-          
-          {/* Iframe Calendly - bezpośrednie ładowanie */}
-          <div style={{ height: '700px', width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
             <iframe
               src="https://calendly.com/maruszewskiirek?hide_gdpr_banner=1"
               width="100%"

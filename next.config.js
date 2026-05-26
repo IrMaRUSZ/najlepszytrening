@@ -91,12 +91,12 @@ const nextConfig = {
       },
       {
         source: '/jadlospis-dla-sportowcow-jakie-produkty-powinny-znalezc-sie-na-talerzu/feed/',
-        destination: 'posts/jadlospis-dla-sportowcow-jakie-produkty-powinny-znalezc-sie-na-talerzu',
+        destination: '/posts/jadlospis-dla-sportowcow-jakie-produkty-powinny-znalezc-sie-na-talerzu',
         permanent: true, // 301 przekierowanie
       },
       {
         source: '/cwiczenia-na-plaski-brzuch-i-szczuple-uda-nie-daj-sobie-wcisnac-sciemy/',
-        destination: 'posts/cwiczenia-na-plaski-brzuch-i-szczuple-uda-nie-daj-sobie-wcisnac-sciemy/',
+        destination: '/posts/cwiczenia-na-plaski-brzuch-i-szczuple-uda-nie-daj-sobie-wcisnac-sciemy/',
         permanent: true, // 301 przekierowanie
       },
       {
@@ -119,7 +119,17 @@ const nextConfig = {
         destination: '/posts/trening-z-gumami-w-domu',
         permanent: true, // 301 przekierowanie
       },
-      
+      // --- NOWE PRZEKIEROWANIA DLA TRENERA W ŁODZI ---
+      {
+        source: '/posts/Trener-personalny-lodz',
+        destination: '/trener-personalny-lodz',
+        permanent: true, // 301 przekierowanie
+      },
+      {
+        source: '/posts/trener-personalny-lodz', // Zabezpieczenie na wypadek wpisania małą literą
+        destination: '/trener-personalny-lodz',
+        permanent: true, // 301 przekierowanie
+      }
     ]
   },
 }

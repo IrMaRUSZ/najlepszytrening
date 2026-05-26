@@ -11,7 +11,9 @@ import CookiePopup from '../components/CookiePopup';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Trener Personalny i Fizjoterapeuta Łódź | Ireneusz Maruszewski',
+  title: {
+    absolute: 'Ireneusz Maruszewski | Najlepszy Trening, Fizjoterapia i Prowadzenie Online',
+  },
   description: 'Szukasz trenera personalnego i fizjoterapeuty w Łodzi? Bezpiecznie zbuduj formę, schudnij i pozbądź się bólu pod okiem specjalisty. Treningi: Dąbrowa, Widzew, Centrum.',
   alternates: {
     canonical: '/',
