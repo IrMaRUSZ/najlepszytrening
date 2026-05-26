@@ -25,8 +25,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/trener-personalny-lodz`,
       lastModified: new Date().toISOString(),
       changeFrequency: 'monthly' as ChangeFrequency,
-      priority: 0.8,
+      priority: 0.9, // Zwiększyłem na 0.9, to Twoja główna strona usługowa!
     },
+    // --- NOWE STRONY SEO ---
+    {
+      url: `${baseUrl}/fizjoterapeuta-lodz`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'monthly' as ChangeFrequency,
+      priority: 0.9, // Bardzo ważna strona usługowa
+    },
+    // -----------------------
     {
       url: `${baseUrl}/Wspolpraca-online`,
       lastModified: new Date().toISOString(),

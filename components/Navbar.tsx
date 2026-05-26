@@ -51,6 +51,8 @@ export default function Navbar() {
         {/* --- Menu na duże ekrany --- */}
         <ul className={styles.menu}>
           <li><Link href="/trener-personalny-lodz" onClick={closeMenu}>Treningi Łódź</Link></li>
+          {/* NOWY LINK: Fizjoterapia */}
+          <li><Link href="/fizjoterapeuta-lodz" onClick={closeMenu}>Fizjoterapia</Link></li>
           <li><Link href="/Wspolpraca-online" onClick={closeMenu}>Online</Link></li>
           <li><Link href="/o-mnie" onClick={closeMenu}>O mnie / Opinie</Link></li>
           <li><Link href="/blog" onClick={closeMenu}>Blog</Link></li>
@@ -85,13 +87,14 @@ export default function Navbar() {
         {isOpen && (
           <div className={styles.mobileMenu}>
             <Link href="/trener-personalny-lodz" onClick={closeMenu}>Treningi Łódź</Link>
+            {/* NOWY LINK: Fizjoterapia */}
+            <Link href="/fizjoterapeuta-lodz" onClick={closeMenu}>Fizjoterapia</Link>
             <Link href="/Wspolpraca-online" onClick={closeMenu}>Prowadzenie Online</Link>
             <Link href="/o-mnie" onClick={closeMenu}>O mnie / Opinie</Link>
             <Link href="/blog" onClick={closeMenu}>Blog</Link>
             
             <hr style={{width: '100%', borderColor: 'rgba(0,0,0,0.1)'}} />
             
-            {/* CRO: Ogromny nacisk na umówienie konsultacji w widoku mobilnym */}
             <a 
               href="https://calendly.com/maruszewskiirek" 
               target="_blank" 
