@@ -3,15 +3,12 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    // USUŃ absolute z emoji — Google może go obciąć lub zignorować
-    // ZAMIAST: 'Trener Personalny Łódź 🏋️‍♂️ Darmowa Konsultacja | Najlepszy Trening'
-    absolute: 'Trener Personalny Łódź | Ireneusz Maruszewski | Darmowa Konsultacja',
+    absolute: 'Trening Personalny Łódź | Siłownia i Z Dojazdem | I. Maruszewski',
   },
-  description: "Trener personalny w Łodzi z wykształceniem fizjoterapeuty. Treningi na siłowni Just Gym (ul. Gojawiczyńskiej) i online. Ponad 50 opinii ⭐. Pierwsza konsultacja bezpłatna!",
-  // description musi zawierać: miasto, lokalizację, social proof, CTA
-  keywords: "trener personalny Łódź, Ireneusz Maruszewski trener, najlepszy trening personalny, trening z fizjoterapeutą, trener z dojazdem Łódź, efektywne treningi indywidualne",
+  description: "Skuteczny trening personalny w Łodzi (Just Gym Gojawiczyńskiej) oraz treningi z dojazdem na Widzew, Centrum, Górna. Zobacz jak wygląda współpraca i zarezerwuj termin!",
+  keywords: "trening personalny Łódź, indywidualne treningi Łódź, trener z dojazdem Łódź, trener Just Gym Łódź, ćwiczenia z fizjoterapeutą",
   openGraph: {
-    title: "Trener Personalny Łódź | Ireneusz Maruszewski | Najlepszy Trening",
+     title: "Trening Personalny Łódź | Siłownia i Z Dojazdem",
     description: "Certyfikowany trener personalny w Łodzi z doświadczeniem fizjoterapeuty. Skuteczne indywidualne plany treningowe, wsparcie dietetyczne i treningi z dojazdem. Pierwsze konsultacje gratis!",
     url: "https://www.najlepszytrening.pl/trener-personalny-lodz",
     type: "website",  

@@ -11,13 +11,13 @@ categories: ['Porady']
 
 # Ile kosztuje trener personalny w Łodzi w 2026 roku?
 
-Jeśli szukasz trenera personalnego w Łodzi, prawdopodobnie zauważyłeś już jedną rzecz: cenniki często są ukrywane, a różnice w stawkach potrafią być ogromne. Zamiast pisać „to zależy”, postanowiłem zagrać w otwarte karty. 
+Jeśli szukasz [trenera personalnego w Łodzi](/), prawdopodobnie zauważyłeś już jedną rzecz: cenniki często są ukrywane, a różnice w stawkach potrafią być ogromne. Zamiast pisać „to zależy”, postanowiłem zagrać w otwarte karty. 
 
 W tym artykule przyjrzymy się, jak wyglądają realne stawki na łódzkim rynku w 2026 roku, z czego wynikają te różnice i na czym absolutnie nie warto oszczędzać.
 
 ## Średnie stawki za trening w Łodzi
 
-Obecnie (stan na 2026 rok) cena pojedynczego treningu personalnego w Łodzi waha się w przedziale od 130 zł do nawet 300 zł  . 
+Obecnie (stan na 2026 rok) cena pojedynczego treningu personalnego w Łodzi waha się w przedziale od 130 zł do nawet 300 zł. 
 
 Możesz oczywiście znaleźć oferty za 80-100 zł, ale najczęściej wiążą się one z haczykami: brakiem faktury, treningami prowadzonymi w dwójkach lub trójkach (które tylko udają indywidualne) lub faktem, że trener dopiero zaczyna swoją drogę zawodową i "testuje" swoje metody na Tobie.
 
@@ -31,7 +31,7 @@ Dlaczego jeden trener bierze 130 zł, a inny 200 zł? Cena zależy od trzech gł
 
 ## Ukryte koszty, o których nikt nie mówi
 
-Wybierając trenera, pamiętaj o jednym ważnym detalu karnet na siłownię. 
+Wybierając trenera, pamiętaj o jednym ważnym detalu – karnet na siłownię. 
 Do ceny trenera musisz zazwyczaj doliczyć miesięczny karnet do klubu fitness (w Łodzi to koszt około 100-150 zł miesięcznie). Zawsze pytaj trenera na samym początku, czy wejście na obiekt jest wliczone w jego stawkę, czy płatne osobno na recepcji.
 
 ## Pakiety treningowe – czy to się opłaca?

@@ -37,6 +37,35 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className={styles.container}>
+      {/* Schema.org LocalBusiness z gwiazdkami */}
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "Ireneusz Maruszewski - Trener Personalny Łódź",
+      "image": "https://www.najlepszytrening.pl/images/Maruszewskibt.webp",
+      "@id": "https://www.najlepszytrening.pl",
+      "url": "https://www.najlepszytrening.pl",
+      "telephone": "+48737730868",
+      "email": "maruszewskiirek@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Poli Gojawiczyńskiej 26",
+        "addressLocality": "Łódź",
+        "postalCode": "93-239",
+        "addressCountry": "PL"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "51"
+      },
+      "priceRange": "$$"
+    })
+  }}
+/>
       <section className={styles.hero}>
         <div className={styles.imageContainer}> 
           <Image

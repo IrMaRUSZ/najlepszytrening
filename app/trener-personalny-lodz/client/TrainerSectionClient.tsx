@@ -62,7 +62,7 @@ const TrainerSectionClient = () => {
 
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.title}>Trener Personalny Łódź bez ściemy, bez cudów, za to z efektami</h1>
+          <h1 className={styles.title}>Trening Personalny Łódź bez ściemy, bez cudów, za to z efektami</h1>
           <p className={styles.subtitle}>
             Nazywam się Ireneusz Maruszewski. Od ponad 4 lat pomagam mieszkańcom Łodzi zmienić podejście do 
             treningów. Nie obiecuję rewolucji w 30 dni ani sekretnych metod. Zamiast tego daję praktyczną 
