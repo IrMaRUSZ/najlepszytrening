@@ -13,238 +13,237 @@ interface DziennyZestawPytan {
   pytania: PytanieQuizu[];
 }
 
-// Krok 2.B - Stała pulaPytanZBloga (Wersja 2.0 - Ulepszone pytania)
 const pulaPytanZBloga: PytanieQuizu[] = [
   {
-    pytanie: "W przypadku wystąpienia niespecyficznego bólu dolnego odcinka kręgosłupa, jakie działanie jest uznawane za największy błąd?",
+    pytanie: "Wyobraź sobie starszego mężczyznę (powyżej 50 r.ż.), który doznaje osteoporotycznego złamania biodra. Jakie jest statystyczne ryzyko, że umrze w ciągu zaledwie jednego roku po operacji?",
     odpowiedzi: [
-      "Wykonywanie ćwiczeń wzmacniających 'core'",
-      "Całkowite zaprzestanie aktywności fizycznej i pozostanie w łóżku",
-      "Delikatne ćwiczenia rozciągające",
-      "Konsultacja z fizjoterapeutą w celu ustalenia planu działania"
+      "Mniej niż 1%",
+      "Około 5%",
+      "10-15%",
+      "Szokujące 30-32%"
+    ],
+    poprawnaOdpowiedz: 3,
+    wyjasnienie: "Złamania z powodu kruchości kości to cichy zabójca. Z polskich danych (Glinkowski et al., 2019) wynika, że roczna śmiertelność wynosi aż 30.4% - 32.8% dla mężczyzn! Trening siłowy, chroniący układ kostny, to dosłownie inwestycja w życie."
+  },
+  {
+    pytanie: "Kto w Polsce znacznie częściej trafia do szpitala ze złamaniem osteoporotycznym – kobiety czy mężczyźni?",
+    odpowiedzi: [
+      "Mężczyźni, z powodu cięższej pracy fizycznej",
+      "Kobiety (łamią kości prawie 2,5 raza częściej)",
+      "Ryzyko jest dokładnie takie samo dla obu płci",
+      "Zależy to wyłącznie od regionu zamieszkania"
     ],
     poprawnaOdpowiedz: 1,
-    wyjasnienie: "Unikanie ruchu osłabia mięśnie stabilizujące kręgosłup i może prowadzić do przewlekłego bólu. Kluczowe jest utrzymanie lekkiej aktywności, aby wspierać regenerację."
+    wyjasnienie: "Według polskich badań stosunek złamań kobiet do mężczyzn wynosi aż 2.46. Zmiany hormonalne następujące u kobiet po menopauzie drastycznie przyspieszają utratę gęstości mineralnej kości."
   },
   {
-    pytanie: "Który z poniższych suplementów diety posiada najlepiej udowodnione działanie zarówno w kontekście zwiększania siły, jak i wspierania funkcji kognitywnych?",
+    pytanie: "Choć statystycznie to kobiety ponoszą ponad dwukrotnie wyższe ryzyko samego złamania biodra z powodu osteoporozy, kto wykazuje WYŻSZĄ śmiertelność w rok po takim urazie?",
     odpowiedzi: [
-      "L-karnityna",
-      "BCAA (aminokwasy rozgałęzione)",
-      "Monohydrat kreatyny",
-      "Tribulus terrestris"
+      "Mężczyźni",
+      "Kobiety",
+      "Osoby z niedowagą niezależnie od płci",
+      "Nie ma różnicy między płciami"
+    ],
+    poprawnaOdpowiedz: 0,
+    wyjasnienie: "Mężczyźni łamią kości rzadziej, ale statystyki śmiertelności są dla nich bardziej bezlitosne (powyżej 30% dla panów vs ok. 26-28% dla pań). Dlatego opieka pourazowa jest kluczowa w obu przypadkach."
+  },
+  {
+    pytanie: "Z wiekiem ryzyko drastycznie rośnie. Jak dramatycznie wysoka jest śmiertelność (w ciągu zaledwie 12 miesięcy) po złamaniu szyjki kości udowej u pacjentów w przedziale 80-89 lat?",
+    odpowiedzi: [
+      "Osiąga około 15%",
+      "Przekracza 30%",
+      "Wynosi przerażające ponad 50%",
+      "Wynosi 100%"
     ],
     poprawnaOdpowiedz: 2,
-    wyjasnienie: "Monohydrat kreatyny jest jednym z najlepiej przebadanych suplementów. Badania potwierdzają jego skuteczność we wspomaganiu resyntezy ATP, co przekłada się na wzrost siły i wytrzymałości, a także na poprawę funkcji poznawczych."
+    wyjasnienie: "To najbardziej wstrząsająca statystyka. W grupie 80-89 lat śmiertelność w rok po złamaniu przekracza 50% (Glinkowski et al., 2019). Mięśnie i mocne kości zbudowane za młodu na siłowni naprawdę ratują życie na starość!"
   },
   {
-    pytanie: "Jakie jest kluczowe założenie skutecznego odchudzania bez uciekania się do restrykcyjnych diet?",
+    pytanie: "Czy dzięki postępowi medycyny i suplementom, liczba osteoporotycznych złamań biodra w Polsce (w latach 2008-2015) wreszcie zaczęła maleć?",
     odpowiedzi: [
-      "Stosowanie okresowych głodówek w celu 'zresetowania' metabolizmu",
-      "Wprowadzanie małych, konsekwentnych i trwałych zmian w codziennych nawykach żywieniowych i ruchowych",
-      "Całkowite wyeliminowanie jednej grupy makroskładników, np. węglowodanów",
-      "Skupienie się wyłącznie na intensywnych treningach cardio"
+      "Tak, spadła o blisko połowę",
+      "Statystyki stoją w miejscu",
+      "Nie, liczba złamań wzrosła o 14-19%",
+      "Zniknęła całkowicie dzięki witaminie D3"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Niestety, problem drastycznie narasta! Liczba złamań wzrosła aż o 19.4% u kobiet i 14.2% u mężczyzn. Siedzący tryb życia, zła dieta i unikana aktywność oporowa zbierają ponure żniwo."
+  },
+  {
+    pytanie: "Ile wynosi średni czas pobytu pacjenta po złamaniu biodra w polskim szpitalu publicznym?",
+    odpowiedzi: [
+      "Zazwyczaj 2-3 dni",
+      "Około 11-13 dni",
+      "Równo miesiąc",
+      "Nawet pół roku"
     ],
     poprawnaOdpowiedz: 1,
-    wyjasnienie: "Długoterminowa skuteczność w redukcji masy ciała opiera się na budowaniu trwałych nawyków, a nie na krótkotrwałych, restrykcyjnych zrywach, które często kończą się efektem jo-jo."
+    wyjasnienie: "Według danych czas hospitalizacji po operacji zmniejszył się w ostatnich latach z 13.6 do 11.2 dnia, co oznacza szybszy wypis, ale przed pacjentem i jego rodziną miesiące niezwykle ciężkiej rehabilitacji domowej."
   },
   {
-    pytanie: "Co, oprócz odpowiedniej ilości snu, jest fundamentalnym elementem skutecznej regeneracji potreningowej?",
+    pytanie: "Jaki rodzaj aktywności fizycznej jest naukowo najsilniejszym bodźcem, który możemy zaaplikować w prewencji osteoporozy i złamań (tzw. budowanie gęstości kości)?",
     odpowiedzi: [
-      "Codzienne sesje w saunie",
-      "Picie napojów energetycznych w ciągu dnia",
-      "Efektywne zarządzanie stresem i poziomem energii w ciągu dnia",
-      "Stosowanie zimnych kąpieli bezpośrednio po każdym treningu"
+      "Tylko pływanie, bo odciąża stawy",
+      "Codzienne, delikatne sesje stretchingu",
+      "Trening siłowy (oporowy z obciążeniem)",
+      "Spacery w tempie rekreacyjnym"
     ],
     poprawnaOdpowiedz: 2,
-    wyjasnienie: "Regeneracja to złożony proces. Wysoki poziom chronicznego stresu (kortyzol) może hamować procesy naprawcze w organizmie, nawet przy odpowiedniej ilości snu."
+    wyjasnienie: "Zgodnie z Prawem Wolffa, obciążenie mechaniczne generowane np. podczas dźwigania ciężarów stymuluje kości do nadbudowy i utwardzenia się. Samo pływanie (brak kompresji grawitacyjnej) nie daje tak mocnego impulsu osteogennego!"
   },
   {
-    pytanie: "Która forma aktywności fizycznej najefektywniej przyczynia się do zwiększenia tzw. NEAT (spontanicznej aktywności fizycznej niezwiązanej z treningiem)?",
+    pytanie: "Wracasz do mocnych treningów po urazie. Po 4 tygodniach ból znika całkowicie, a Twój mięsień wydaje się 'jak nowy' (odzyskał ok. 80% sprawności). Na jakim etapie gojenia jest wtedy Twoje uszkodzone ścięgno?",
     odpowiedzi: [
-      "Dwugodzinny, intensywny trening siłowy raz w tygodniu",
-      "Codzienne, krótkie sesje interwałowe (HIIT)",
-      "Regularne spacery, wybieranie schodów zamiast windy i ogólna ruchliwość w ciągu dnia",
-      "Uczestnictwo w maratonie raz w roku"
+      "Również na ok. 80%",
+      "Jest już dawno zregenerowane w 100%",
+      "Dopiero na poziomie ok. 40%",
+      "Ścięgna nie ulegają mikrouszkodzeniom"
     ],
     poprawnaOdpowiedz: 2,
-    wyjasnienie: "NEAT to suma kalorii spalanych na wszystkie czynności poza zaplanowanym treningiem. Regularna, codzienna aktywność o niskiej intensywności ma największy wpływ na jego wysoki poziom."
+    wyjasnienie: "To największa pułapka treningowa! Zgodnie z modelem obciążeń tkanek Benage (2022), mięśnie regenerują się drastycznie szybciej. Brak bólu mięśniowego to absolutnie NIE JEST sygnał do bicia rekordów – ścięgno jest wciąż słabe!"
   },
   {
-    pytanie: "Jaki jest optymalny i najczęściej rekomendowany sposób dawkowania monohydratu kreatyny w celu utrzymania jej stałego, podwyższonego poziomu w mięśniach?",
+    pytanie: "Ile czasu zazwyczaj trwa ostatnia, niezwykle ważna faza regeneracji ścięgna (tzw. faza przebudowy / remodeling)?",
     odpowiedzi: [
-      "Tylko w dni treningowe, 20g przed treningiem",
-      "Cyklicznie: 4 tygodnie stosowania, 4 tygodnie przerwy",
-      "Codziennie, w dawce około 3-5 gramów, bez konieczności robienia przerw",
-      "W formie 'ładowania' – 30g dziennie przez pierwszy miesiąc"
+      "Zwykle około tygodnia",
+      "Dokładnie 14 dni i noc",
+      "Od kilku miesięcy do nawet LAT",
+      "Kończy się w sekundę po ustąpieniu opuchlizny"
     ],
     poprawnaOdpowiedz: 2,
-    wyjasnienie: "Stała, codzienna suplementacja dawką 3-5g jest wystarczająca do wysycenia mięśni kreatyną i utrzymania tego stanu. Cykle i fazy ładowania nie są konieczne dla większości osób."
+    wyjasnienie: "Proces układania nowych, silnych włókien kolagenowych w ścięgnie tak, by znów zniosło potężne obciążenie mechaniczne, to praca na długie miesiące (a często lata). Cierpliwość to klucz do braku nawrotów kontuzji."
   },
   {
-    pytanie: "W hierarchii ważności elementów skutecznej diety redukcyjnej, co stanowi absolutną podstawę?",
+    pytanie: "Każdy proces regeneracji zaczyna się tak samo. Ile średnio trwa pierwsza faza odpowiedzi organizmu na uraz (faza zapalna)?",
     odpowiedzi: [
-      "Wybieranie wyłącznie produktów 'bio' i 'eko'",
-      "Spożywanie 6 małych posiłków dziennie",
-      "Utrzymanie deficytu kalorycznego",
-      "Całkowita rezygnacja z cukru i glutenu"
+      "Od 0 do ok. 1 tygodnia",
+      "3 pełne miesiące",
+      "Zależnie od pogody – nawet do roku",
+      "Trwa zaledwie kilka minut po urazie"
+    ],
+    poprawnaOdpowiedz: 0,
+    wyjasnienie: "Zgodnie z nauką o tkankach faza zapalna zajmuje z reguły pierwszy tydzień. To czas bólu, ciepła i obrzęku. Choć jest to bolesne, to stan zapalny jest konieczny, aby rozpocząć czyszczenie tkanki i proces gojenia!"
+  },
+  {
+    pytanie: "Zgodnie z modelami gojenia uszkodzeń narządu ruchu (Benage 2022), po ilu tygodniach tkanka mięśniowa dobija do pułapu prawie 100% sprawności od kontuzji?",
+    odpowiedzi: [
+      "Po 1 tygodniu",
+      "Po 4 tygodniach",
+      "Dopiero w okolicy 12 tygodni",
+      "Tkanka mięśniowa nigdy się nie regeneruje"
     ],
     poprawnaOdpowiedz: 2,
-    wyjasnienie: "Podstawowym prawem termodynamiki w kontekście odchudzania jest bilans energetyczny. Aby redukować masę ciała, należy spożywać mniej kalorii, niż organizm zużywa, niezależnie od innych czynników."
+    wyjasnienie: "Choć odczucia 'lekkości' i braku bólu przychodzą bardzo szybko (już po 3-4 tyg), na pełną, wewnątrzkomórkową odpowiedź adaptacyjną mięśnia dającą 100% siły trzeba poczekać około 3 miesięcy (12 tygodni)."
   },
   {
-    pytanie: "Chroniczny niedobór snu (np. spanie poniżej 6 godzin na dobę) prowadzi do zmian hormonalnych, które utrudniają odchudzanie. Jakie to zmiany?",
+    pytanie: "Jesteś 12 tygodni po kontuzji. Twój mięsień zregenerował się w 100% – na ile procent sprawności do przenoszenia obciążeń wyceniane jest w tym samym czasie uszkodzone ścięgno?",
     odpowiedzi: [
-      "Wzrost poziomu testosteronu i spadek kortyzolu",
-      "Wzrost poziomu greliny (hormon głodu) i spadek poziomu leptyny (hormon sytości)",
-      "Spadek poziomu insuliny i wzrost hormonu wzrostu",
-      "Wzrost poziomu estrogenów i progesteronu"
+      "Jest wciąż na poziomie 20%",
+      "Ma dopiero ok. 75% funkcjonalności",
+      "Zrównało się z mięśniem (100%)",
+      "Zyskało nadludzką siłę rzędu 150%"
     ],
     poprawnaOdpowiedz: 1,
-    wyjasnienie: "Niewystarczająca ilość snu zaburza regulację apetytu na poziomie hormonalnym, zwiększając uczucie głodu i osłabiając sygnały sytości, co sprzyja przejadaniu się."
+    wyjasnienie: "To jest właśnie moment 'pozornego bezpieczeństwa', w którym amatorzy nagle wrzucają na sztangę życiówki i… zrywają mięsień ze ścięgna. Mięsień może podnieść ciężar, ale tkanka łącząca (na 75%) jeszcze nie!"
   },
   {
-    pytanie: "Który z poniższych suplementów jest kluczowy dla zdrowia kości i układu odpornościowego, a jego niedobory są powszechne w naszej szerokości geograficznej?",
+    pytanie: "Jaki jest podstawowy powód fizjologiczny tłumaczący drastyczną przepaść w tempie gojenia między tkanką mięśniową, a ścięgnami?",
     odpowiedzi: [
-      "Witamina C",
-      "Magnez",
-      "Witamina D3",
-      "Cynk"
-    ],
-    poprawnaOdpowiedz: 2,
-    wyjasnienie: "Ze względu na ograniczoną syntezę skórną w okresie jesienno-zimowym w Polsce, suplementacja witaminą D3 jest rekomendowana dla większości populacji w celu wsparcia odporności i gospodarki wapniowo-fosforanowej."
-  },
-  {
-    pytanie: "Podczas wykonywania martwego ciągu, gdzie powinna znajdować się sztanga w początkowej fazie ruchu?",
-    odpowiedzi: [
-      "Kilka centymetrów przed stopami, aby mieć miejsce na ruch",
-      "Bezpośrednio nad stawami skokowymi",
-      "Jak najbliżej piszczeli, niemal dotykając ich",
-      "Na wysokości kolan, aby skrócić zakres ruchu"
-    ],
-    poprawnaOdpowiedz: 2,
-    wyjasnienie: "Utrzymanie sztangi jak najbliżej osi ciała minimalizuje siły ścinające działające na kręgosłup lędźwiowy i pozwala na najbardziej efektywne i bezpieczne podniesienie ciężaru."
-  },
-  {
-    pytanie: "Czym jest 'przeciążenie metaboliczne' w kontekście budowania masy mięśniowej?",
-    odpowiedzi: [
-      "Trenowaniem do skrajnego wyczerpania energetycznego, prowadzącego do omdlenia",
-      "Spożywaniem nadmiernej ilości kalorii, prowadzącej do otłuszczenia",
-      "Wykonywaniem ćwiczeń w taki sposób, aby doprowadzić do kumulacji metabolitów (np. jonów wodorowych) w mięśniu, co jest jednym z bodźców do wzrostu",
-      "Obciążeniem organizmu zbyt dużą ilością suplementów diety"
-    ],
-    poprawnaOdpowiedz: 2,
-    wyjasnienie: "Przeciążenie metaboliczne, obok napięcia mechanicznego, jest jednym z głównych mechanizmów hipertrofii. Osiąga się je np. przez krótsze przerwy między seriami lub większą liczbę powtórzeń."
-  },
-  {
-    pytanie: "W kontekście diety sportowca, dlaczego odpowiednia podaż węglowodanów jest kluczowa?",
-    odpowiedzi: [
-      "Ponieważ są głównym źródłem budulca dla mięśni",
-      "Ponieważ eliminują potrzebę spożywania białka",
-      "Ponieważ są głównym i najszybciej dostępnym źródłem energii (glikogen mięśniowy) dla pracujących mięśni",
-      "Ponieważ nawadniają organizm lepiej niż woda"
-    ],
-    poprawnaOdpowiedz: 2,
-    wyjasnienie: "Węglowodany są magazynowane w mięśniach i wątrobie w formie glikogenu. Jego wysoki poziom jest niezbędny do wykonywania wysiłku o wysokiej intensywności."
-  },
-  {
-    pytanie: "Co jest bardziej wiarygodnym wskaźnikiem ryzyka chorób metabolicznych niż sam wskaźnik BMI?",
-    odpowiedzi: [
-      "Masa ciała w kilogramach",
-      "Wzrost w centymetrach",
-      "Stosunek obwodu talii do wzrostu lub obwód talii w połączeniu z procentem tkanki tłuszczowej",
-      "Wynik na wadze łazienkowej z pomiarem 'masy kostnej'"
-    ],
-    poprawnaOdpowiedz: 2,
-    wyjasnienie: "BMI nie rozróżnia masy mięśniowej od tłuszczowej. Obwód talii jest dobrym wskaźnikiem ilości tłuszczu trzewnego, który jest silnie powiązany z ryzykiem chorób sercowo-naczyniowych i cukrzycy typu 2."
-  },
-  {
-    pytanie: "Która z wymienionych substancji, będąca adaptogenem, jest ceniona za swoje właściwości redukujące stres i poziom kortyzolu?",
-    odpowiedzi: [
-      "Kofeina",
-      "Ashwagandha",
-      "Guarana",
-      "Tauryna"
+      "Ścięgna nie zawierają w ogóle komórek",
+      "Do ścięgien dociera dużo mniej krwi i składników odżywczych (słabe ukrwienie)",
+      "Mięśnie są bliżej skóry",
+      "Mięśnie mogą pobierać energię bezpośrednio ze słońca"
     ],
     poprawnaOdpowiedz: 1,
-    wyjasnienie: "Ashwagandha to adaptogen, który w badaniach wykazał zdolność do modulowania odpowiedzi organizmu na stres, m.in. poprzez obniżanie poziomu kortyzolu."
+    wyjasnienie: "Tkanka mięśniowa to genialna, mocno krwawiąca gąbka, która ma masę naczyń krwionośnych - dzięki temu bardzo szybko się naprawia. Ścięgna (tkanka łączna) są w znacznej mierze słabo ukrwione (avaskularne), co drastycznie hamuje ich metabolizm i naprawę."
   },
   {
-    pytanie: "Dlaczego punktowe spalanie tkanki tłuszczowej (np. robienie 'brzuszków' w celu spalenia tłuszczu z brzucha) jest mitem?",
+    pytanie: "Mając świadomość tej różnicy w gojeniu tkanek (mięśnie vs ścięgna), jak należy mądrze programować powroty na siłownię np. po dłuższym urlopie lub chorobie?",
     odpowiedzi: [
-      "Ponieważ tłuszcz można spalić tylko za pomocą tabletek",
-      "Ponieważ organizm decyduje, skąd czerpie energię z tkanki tłuszczowej w sposób systemowy, a nie lokalny",
-      "Ponieważ 'brzuszki' budują mięśnie, które ważą więcej niż tłuszcz",
-      "Ponieważ działa to tylko u profesjonalnych sportowców"
+      "Robić 1 powtórzenie maksymalne w celu testu siły",
+      "Wystartować lekko i celowo dawkować mniejsze objętości (i ciężary) stopniowo z tygodnia na tydzień",
+      "Ćwiczyć wyłącznie na maszynach pneumatycznych",
+      "Używać tylko gum oporowych przez kolejne pół roku"
     ],
     poprawnaOdpowiedz: 1,
-    wyjasnienie: "Redukcja tkanki tłuszczowej zachodzi globalnie w całym organizmie w wyniku deficytu kalorycznego. Nie można zmusić ciała do spalania tłuszczu z konkretnego, wybranego miejsca."
+    wyjasnienie: "Adaptacja (remodeling) powolnego ścięgna musi mieć szansę 'dogonić' dużo szybciej wracającą pamięć mięśniową. Złota zasada to powolne, konsekwentne (liniowe) dodawanie obciążeń, żeby nie zaskoczyć organizmu!"
   },
   {
-    pytanie: "Jakie jest główne zadanie białka w diecie osoby aktywnej fizycznie?",
+    pytanie: "'Keto to jedyna dieta, na której zgubisz brzuch' - a co na to potężna naukowa metaanaliza z 2012 roku porównująca restrykcyjne diety (Hu et al.)?",
     odpowiedzi: [
-      "Dostarczenie natychmiastowej energii do biegu",
-      "Dostarczenie aminokwasów niezbędnych do naprawy i budowy tkanek, w tym mięśni",
-      "Poprawa elastyczności stawów",
-      "Regulacja temperatury ciała podczas wysiłku"
+      "W 100% przyznaje temu rację",
+      "Udowadnia, że OBA modele diety (niskowęglowodanowa i niskotłuszczowa) odchudzają bardzo skutecznie",
+      "Wskazuje, że diety ogólnie nie prowadzą do chudnięcia",
+      "Stwierdza, że schudnąć można tylko pijąc specjalne koktajle"
     ],
     poprawnaOdpowiedz: 1,
-    wyjasnienie: "Białka są podstawowym budulcem organizmu. Trening uszkadza włókna mięśniowe, a aminokwasy z pożywienia są wykorzystywane w procesie ich regeneracji i nadbudowy (hipertrofii)."
+    wyjasnienie: "Koniec internetowych kłótni! Analizując tysiące pacjentów badacze wykazali jednoznacznie: diety niskowęglowodanowe (Low-Carb) oraz niskotłuszczowe (Low-Fat) w tym samym stopniu pomagają pacjentom skutecznie utracić kilogramy (w warunkach deficytu)."
   },
   {
-    pytanie: "Który z kwasów tłuszczowych Omega-3 ma kluczowe znaczenie dla funkcji mózgu?",
+    pytanie: "Co stanie się z Twoimi wynikami (np. ryzykiem miażdżycy, cholesterolem), jeśli skutecznie schudniesz stosując dietę o wysokiej podaży węglowodanów, ale z obciętym tłuszczem (Low-Fat)?",
     odpowiedzi: [
-      "ALA (kwas alfa-linolenowy)",
-      "DHA (kwas dokozaheksaenowy)",
-      "EPA (kwas eikozapentaenowy)",
-      "Kwas palmitynowy"
-    ],
-    poprawnaOdpowiedz: 1,
-    wyjasnienie: "DHA jest głównym składnikiem strukturalnym mózgu i siatkówki oka, odgrywając kluczową rolę w rozwoju i funkcjonowaniu układu nerwowego."
-  },
-  {
-    pytanie: "Co jest głównym celem rozgrzewki przed treningiem siłowym?",
-    odpowiedzi: [
-      "Maksymalne zmęczenie mięśni, aby trening był bardziej efektywny",
-      "Zwiększenie temperatury ciała, poprawa mobilności w stawach i aktywacja układu nerwowego do nadchodzącego wysiłku",
-      "Spalenie jak największej liczby kalorii jeszcze przed główną częścią treningu",
-      "Wykonanie pełnego treningu cardio, aby poprawić wydolność"
-    ],
-    poprawnaOdpowiedz: 1,
-    wyjasnienie: "Prawidłowa rozgrzewka przygotowuje cały organizm do wysiłku, zwiększając przepływ krwi do mięśni i 'smarowanie' w stawach, co minimalizuje ryzyko kontuzji i poprawia wydajność."
-  },
-  {
-    pytanie: "W jaki sposób trening siłowy wpływa na zdrowie kości?",
-    odpowiedzi: [
-      "Nie ma żadnego wpływu, oddziałuje tylko na mięśnie",
-      "Osłabia kości poprzez mikrourazy",
-      "Stymuluje osteoblasty (komórki kościotwórcze) do zwiększania gęstości mineralnej kości",
-      "Powoduje utratę wapnia z kości na rzecz mięśni"
+      "Zdrowie ulegnie pogorszeniu z racji nadmiaru węgli",
+      "Cukier natychmiast wywoła stan zapalny serca",
+      "Podobnie jak w Low-Carb, wyniki badań (markery zdrowia) ulegną silnej POPRAWIE",
+      "Zmieni się waga, ale markery krwi zostaną bez zmian"
     ],
     poprawnaOdpowiedz: 2,
-    wyjasnienie: "Obciążenie mechaniczne generowane podczas treningu siłowego jest sygnałem dla organizmu do wzmacniania struktury kostnej, co jest kluczowe w profilaktyce osteoporozy."
+    wyjasnienie: "Samo zrzucenie otyłości jest lekarstwem! Metaanalizy wykazują, że niezależnie od tego czy ucinałeś masło czy ryż, skuteczna redukcja wagi drastycznie zdejmuje stres metaboliczny z narządów wewnętrznych."
   },
   {
-    pytanie: "Jeżeli celem jest maksymalizacja uczucia sytości w diecie o obniżonej kaloryczności, na których makroskładnikach i typach produktów należy się skupić?",
+    pytanie: "Na Instagramie dieta 'Niskowęglowodanowa' to najczęściej reżim <50g cukru. Tymczasem w profesjonalnej metaanalizie naukowej ocenianej przez ekspertów próg dla bycia Low-Carb to...?",
     odpowiedzi: [
-      "Na cukrach prostych i sokach owocowych, aby szybko dostarczyć energię",
-      "Na produktach o dużej objętości i niskiej gęstości kalorycznej, bogatych w białko i błonnik (np. warzywa, chude mięso)",
-      "Wyłącznie na tłuszczach, ponieważ są najbardziej kaloryczne",
-      "Na wysoko przetworzonych przekąskach typu 'light'"
+      "Dokładnie 0g węglowodanów",
+      "Dieta, w której z węgli pochodzi nawet do 45% dziennej podaży energetycznej",
+      "Próg maksymalnie 10g cukru z warzyw",
+      "Brak limitu, dopóki pacjent je sałatki"
     ],
     poprawnaOdpowiedz: 1,
-    wyjasnienie: "Białko jest najbardziej sycącym makroskładnikiem. Błonnik z warzyw zwiększa objętość posiłku bez dodawania wielu kalorii, co fizycznie wypełnia żołądek i spowalnia trawienie."
+    wyjasnienie: "Zaskoczenie! W badaniach naukowych 'Low-Carb' rzadko oznacza drastyczne ketozy. Zazwyczaj to po prostu rozsądne obniżenie ich poziomu do ≤45% puli kalorii. Nie musisz rezygnować z ulubionych owoców, by dbać o profil metaboliczny!"
   },
-    {
-    pytanie: "Które z poniższych stwierdzeń na temat snu jest prawdziwe w kontekście osiągania celów sportowych?",
+  {
+    pytanie: "Co w tych samych analizach zdefiniowano jako zdrowotną dietę 'Niskotłuszczową' (Low-Fat)?",
     odpowiedzi: [
-      "Faza snu REM jest kluczowa dla regeneracji fizycznej i naprawy mięśni.",
-      "Można 'nadrobić' cały zarwany tydzień, śpiąc 12 godzin w jeden dzień weekendu.",
-      "Głęboka faza snu (NREM) jest okresem, w którym następuje największe uwalnianie hormonu wzrostu, kluczowego dla regeneracji.",
-      "Krótkie drzemki w ciągu dnia całkowicie niwelują negatywne skutki chronicznego niedoboru snu w nocy."
+      "Reżim dostarczający maksymalnie 30% dziennej energii z tłuszczu",
+      "Maksymalnie 5g tłuszczu tylko w postaci orzechów",
+      "Spożywanie wyłącznie samych białek",
+      "Picie tylko chudego mleka"
+    ],
+    poprawnaOdpowiedz: 0,
+    wyjasnienie: "Dieta zredukowana w tłuszcze to nie jest ekstremalnie suche i niesmaczne jedzenie. Próg w badaniach wynosił ≤30% energii z tłuszczu. Pozwala to na smaczny kompromis np. między chudym mięsem, znikomą ilością oliwy a większą dawką smacznych węglowodanów."
+  },
+  {
+    pytanie: "Dlaczego metaanaliza udowadniająca skuteczność obydwu modeli żywieniowych jest 'najsilniejszym orężem' dla dietetyków opartej na dowodach medycznych (EBM)?",
+    odpowiedzi: [
+      "Ponieważ brała udział w niej ogromna ilość gwiazd fitness",
+      "Ponieważ opiera się na recenzowanych Randomizowanych Badaniach Kontrolowanych (RCT) – tzw. 'złotym standardzie'",
+      "Bo sponsorował ją wielki koncern przemysłu spożywczego",
+      "Ponieważ wygrywa w ankietach popularności"
+    ],
+    poprawnaOdpowiedz: 1,
+    wyjasnienie: "Metaanaliza RCT znajduje się na samym absolutnym szczycie piramidy dowodów naukowych. Zbiera wyniki dziesiątek eksperymentów rygorystycznie kontrolujących spożycie posiłków przez ochotników, zamykając usta pojedynczym i źle sprawdzonym badaniom obserwacyjnym."
+  },
+  {
+    pytanie: "Wnioski na talerz: Skoro potężne badania sugerują, że chudniemy równie dobrze na diecie białkowo-tłuszczowej jak i węglowodanowej. Co gwarantuje w 100% Twoje efekty?",
+    odpowiedzi: [
+      "Spożywanie tabletek 'spalających' w nocy",
+      "Codzienne picie przegotowanej wody z cytryną na czczo",
+      "Skuteczne utrzymywanie umiarkowanego deficytu kalorycznego i dobór produktów tak, żeby posiłki sprawiały nam frajdę",
+      "Regularne robienie drastycznych 5-dniowych postów wodnych"
     ],
     poprawnaOdpowiedz: 2,
-    wyjasnienie: "To właśnie podczas głębokich faz snu (slow-wave sleep) organizm najintensywniej się regeneruje, naprawia tkanki i uwalnia hormony anaboliczne, takie jak hormon wzrostu."
+    wyjasnienie: "Królową i Królem odchudzania są bilans kaloryczny oraz 'adherence' (zgodność i satysfakcja z utrzymania). Zamiast wchodzić w diety, których nienawidzisz, wybierz taką strukturę posiłków, którą będziesz w stanie z uśmiechem utrzymać za 2 lata!"
+  },
+  {
+    pytanie: "'Jedząc tak dużo węgli, Twój układ sercowo-naczyniowy wysiądzie' – jak do tych słów mają się wielkie wnioski z przeglądu systematycznego opublikowanego w British Journal of Nutrition?",
+    odpowiedzi: [
+      "Niestety, jest to szczera i niepodważalna prawda",
+      "Prawda, pod warunkiem, że omijamy ziemniaki i banany",
+      "To czysty mit. Zarówno odchudzanie z ograniczeniem (LF) i z użyciem węglowodanów (LC) świetnie poprawia markery CVD",
+      "Węglowodany wywołują palpitacje przy wyższym tętnie"
+    ],
+    poprawnaOdpowiedz: 2,
+    wyjasnienie: "Twierdzenie o chorobotwórczych 'węglach' to jedno z największych kłamstw branży. Proces samej utraty tłuszczu trzewnego i poprawy wrażliwości na insulinę doskonale regeneruje układ krwionośny organizmu niezależnie od tego, jakim makroskładnikiem operujesz!"
   }
 ];
 
