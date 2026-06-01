@@ -263,11 +263,20 @@ function shuffle<T>(array: T[]): T[] {
 }
 
 const generujQuiz = () => {
-  const dzisiaj = new Date();
+  const obecnaData = new Date();
+  const obecnyRok = obecnaData.getFullYear();
+  const obecnyMiesiac = obecnaData.getMonth(); // 0 to Styczeń, 5 to Czerwiec itd.
+
+  // Pętla na 30 dni od 1. dnia obecnego miesiąca
   for (let i = 0; i < 30; i++) {
-    const data = new Date(dzisiaj);
-    data.setDate(dzisiaj.getDate() + i);
-    const dataString = data.toISOString().split('T')[0];
+    // Tworzymy datę manualnie w czasie lokalnym, zaczynając od 1. dnia: (1 + i)
+    const data = new Date(obecnyRok, obecnyMiesiac, 1 + i);
+    
+    // Bezpieczne formatowanie na stringa YYYY-MM-DD niezależnie od strefy czasowej
+    const rok = data.getFullYear();
+    const miesiac = String(data.getMonth() + 1).padStart(2, '0');
+    const dzien = String(data.getDate()).padStart(2, '0');
+    const dataString = `${rok}-${miesiac}-${dzien}`;
 
     const pulaDoLosowania = [...pulaPytanZBloga];
     const wylosowanePytania = shuffle(pulaDoLosowania).slice(0, 5);
@@ -278,6 +287,8 @@ const generujQuiz = () => {
     });
   }
 };
+
+generujQuiz();
 
 generujQuiz();
 
