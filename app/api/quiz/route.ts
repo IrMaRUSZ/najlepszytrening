@@ -1,4 +1,5 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
+export const dynamic = 'force-dynamic';
 
 interface PytanieQuizu {
   pytanie: string;
