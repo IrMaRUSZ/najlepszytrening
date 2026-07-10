@@ -53,6 +53,13 @@ const transformations = [
     duration: "10 lat",
     story: "Chciałem przedstawić przemianę mojego pierwszego podopiecznego, trochę długo to zajęło, ale popełniał wszystkie możliwe błędy. Traktował treningi bardziej jako terapię niż cel sam w sobie. Trochę się zmieniło przez ten czas."
   },
+    {
+    id: 3,
+    beforeImage: "/transformations/julkaprzed.webp",
+    afterImage: "/transformations/julkapo.webp",
+    duration: "3 miesiącach",
+    story: "-14 KG MNIEJ 🔥 Liczby nie kłamią, ale to opinia mówi najwięcej. Od 87 kg do 73 kg. To nie jest magia, to efekt konsekwentnej pracy i dobrze dobranego planu. 📉 ​Często pytacie mnie, czy da się schudnąć bez głodówek i katowania się na siłowni. Patrząc na tę przemianę – odpowiedź brzmi: TAK. Ale kluczem nie jest tylko dieta, a wsparcie i wiedza, o których wspomina w swojej opinii Julia. ​Jako trener nie jestem tylko od rozpisania serii. Jestem od tego, żebyś w chwilach zwątpienia nie odpuścił(a). Motywacja to paliwo, a ja dbam o to, by Twój bak był zawsze pełny. 💪"
+  },
 ];
 
 const testimonials = [
@@ -104,6 +111,13 @@ const testimonials = [
     image: "/opinion/Rafał.webp",
     content: "Bardzo polecam współpracę z Irkiem, zgłosiłem się do niego mając 2 cele: wrócić do sprawności po operacji wiązadeł oraz aby schudnąć. Dieta + plan treningowy pozwoliły osiągnąć jedno i drugie. Nie rzuca Ci planu, diety i mówi masz i radź sobie, tylko pomaga na każdym kroku. Modyfikuje dietę w razie potrzeb, wyjaśnia jak ćwiczyć oraz oczywiście pokazuje krok po kroku jak poprawnie je wykonywać. Nigdy nie miałem problemu aby dopasować godziny wspólnego treningu, jest bardzo elastyczny , empatyczny i otwarty. Jeszcze raz to dodam gorąco polecam",
     verificationLink: "https://maps.app.goo.gl/fidBTsYCeYWGSDJDA",
+  },
+    {
+    name: "Przemek",  
+    date: "22 Maj 2026",
+    image: "/opinion/logoprzemek.webp",
+    content: "Współpraca z Irkiem to najlepszy możliwy wybór, treningi są dopasowane indywidualnie do mnie a plan jest na bieżąco modyfikowany z uwzględnieniem aktualnych potrzeb i problemów, dzięki czemu czuję, że wszystko jest naprawdę przemyślane i kontrolowane. Irek jest osobą z ogromną wiedzą na temat treningu siłowego i na każdym treningu stara się tą wiedzę przekazać tak, żeby ćwiczenia były bezpieczne i nie doprowadziły do kontuzji. Dzięki tej współpracy polubiłem treningi na siłowni i przestały być one tylko obowiązkiem do odhaczenia. Duży plus również za świetną aplikację, która zbiera wszystkie najważniejsze rzeczy w jednym miejscu i bardzo ułatwia monitorowanie postępów. Widać pełne zaangażowanie i profesjonalne podejście. Zdecydowanie polecam!",
+    verificationLink: "https://share.google/HQwUTecbRj68Gf81z",
   },
 ];
 

@@ -1,13 +1,51 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Shield, Target, Heart, ChevronDown, Lock, CheckCircle, CalendarCheck } from 'lucide-react';
+import { Shield, Target, Heart, ChevronDown, Lock, CheckCircle, CalendarCheck, Star, Activity, ChevronLeft, ChevronRight, Phone, Mail, MapPin } from 'lucide-react';
 import styles from '../../../styles/trener-personalny-lodz.module.css';
+
 
 const TrainerSectionClient = () => {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
+
+
+  // --- LOGIKA PRZEKIEROWANIA PO REZERWACJI CALENDLY ---
+  useEffect(() => {
+    const handleCalendlyEvent = (e: MessageEvent) => {
+      // Ignorujemy wiadomości, które nie pochodzą z Calendly (bezpieczeństwo)
+      if (e.origin !== 'https://calendly.com') return;
+
+      // Debugowanie - jeśli chcesz podejrzeć w konsoli przeglądarki (F12)
+      console.log('Otrzymano sygnał z Calendly:', e.data);
+
+      if (e.data && e.data.event === 'calendly.event_scheduled') {
+        // Twarde przekierowanie przeglądarki (zawsze działa z Iframe)
+        window.location.href = '/potwierdzenie';
+      }
+    };
+
+    window.addEventListener('message', handleCalendlyEvent);
+    return () => window.removeEventListener('message', handleCalendlyEvent);
+  },[]);
   
-  // Referencja do sekcji kalendarza, żeby płynnie do niego scrollować
+  // --- LOGIKA KARUZELI ZDJĘĆ ---
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  const galleryImages = [
+    { src: "/images/treningpersonalny.webp", alt: "Ireneusz Maruszewski Trener Personalny Łódź" },
+    { src: "/images/treningpersonalny2.webp", alt: "Trening na siłowni z trenerem" }, 
+    { src: "/images/Studycase.webp", alt: "Konsultacja fizjoterapeutyczna w Łodzi" } 
+  ];
+
+  const nextImg = () => setCurrentImgIndex((prev) => (prev + 1) % galleryImages.length);
+  const prevImg = () => setCurrentImgIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+
+  useEffect(() => {
+    const timer = setInterval(nextImg, 5000);
+    return () => clearInterval(timer);
+  }, []);
+  // -----------------------------
+
   const calendlyRef = useRef<HTMLDivElement>(null);
 
   const scrollToCalendly = (e: React.MouseEvent) => {
@@ -18,27 +56,26 @@ const TrainerSectionClient = () => {
   const faqItems = [
     {
       question: "Ile kosztuje trener personalny w Łodzi?",
-      answer: "Pojedynczy trening to koszt 180 zł. Pakiet 10 treningów to 160 zł/sesję, a pakiet 20 treningów – 140 zł/sesję. Pierwsza konsultacja jest bezpłatna."
+      answer: "Pojedynczy trening to koszt 180 zł. Pakiet dziesięciu treningów to 160 zł za sesję, a pakiet dwudziestu treningów kosztuje 140 zł za sesję. Pierwsza konsultacja jest bezpłatna."
     },
     {
       question: "Zbyt wiele nieudanych prób treningowych? Dlaczego tym razem może być inaczej?",
-      answer: "Z mojego doświadczenia wynika, że większość osób porzuca treningi z trzech powodów: źle dobrany plan, brak realnych efektów i nuda. Dlatego w mojej pracy skupiam się na tym, żeby treningi były SKUTECZNE i CIEKAWE. Sam przeszedłem przez żmudne okresy bez efektów, testując różne metody na własnej skórze. Teraz wiem, co działa, a co jest tylko marnowaniem czasu. Nie stosuję uniwersalnych planów pracujemy dokładnie nad tym, co przyniesie Ci najlepsze efekty."
+      answer: "Większość osób porzuca treningi z trzech powodów: źle dobrany plan, brak realnych efektów i nuda. W mojej pracy skupiam się na tym, żeby ćwiczenia były skuteczne i angażujące. Znam to z własnego doświadczenia. Testowałem różne metody i wiem, co faktycznie działa, a co jest tylko marnowaniem czasu. Nie stosuję uniwersalnych planów. Pracujemy nad tym, co przyniesie Ci najlepsze efekty, bez reżimu zero jedynkowego."
     },
     {
-      question: "Trening ma Cię stresować czy cieszyć? Jak podchodzę do motywacji",
-      answer: "Wierzę, że trening ma być pozytywnym elementem dnia, a nie przykrym obowiązkiem. Za często spotykam się z podejściem 'no pain, no gain', które powoduje tylko to, że ludzie porzucają aktywność. W moim przypadku - kluczowa jest równowaga. Trening ma być wymagający (bez tego nie będzie efektów), ale również satysfakcjonujący. Skupiam się na małych zwycięstwach, celebruję postępy i podkreślam każdy, nawet najmniejszy sukces. Najlepszym dowodem na skuteczność takiego podejścia jest to, że ponad 80% moich podopiecznych zostaje ze mną dłużej niż rok - w branży, gdzie średnia to 3 miesiące."
+      question: "Trening ma mnie stresować czy cieszyć? Jak podchodzisz do motywacji?",
+      answer: "Wierzę, że aktywność ma być pozytywnym elementem dnia. Bardzo często spotykam się z krzywdzącym podejściem trenowania ponad siły, co kończy się frustracją. W moim przypadku kluczowa jest równowaga. Trening będzie wymagał zaangażowania, ale da Ci ogromną satysfakcję. Moi podopieczni często chwalą dobrą atmosferę i poczucie humoru na zajęciach. Skupiamy się na małych zwycięstwach i trwałej budowie zdrowych nawyków."
     },
     {
       question: "Prowadzę bardzo intensywne życie. Jak wpasować trening w napięty grafik?",
-      answer: "Sam łączę pracę trenera z innymi obowiązkami i doskonale rozumiem wyzwania związane z brakiem czasu. Dlatego oferuję elastyczny grafik treningów w różnych częściach Łodzi (Widzew, Bałuty, Centrum, Górna), również wczesnym rankiem (od 6:00) i późnym wieczorem (do 22:00). Co więcej, moje treningi są zoptymalizowane czasowo skuteczna sesja zajmuje nam 50-60 minut, a nie standardowe 90-120 minut jak u większości trenerów. Skracam do minimum zbędne przerwy i skupiam się na efektywności  bo wiem, że Twój czas jest na wagę złota."
+      answer: "Sam łączę pracę trenera z wieloma obowiązkami i doskonale rozumiem wyzwania związane z brakiem czasu. Dlatego oferuję elastyczny grafik spotkań w różnych częściach Łodzi od wczesnego ranka do późnego wieczora. Co ważne, nasze sesje są zoptymalizowane czasowo. Skuteczny trening zajmie nam około 50 do 60 minut, zamiast standardowych dwóch godzin. Szanuję Twój czas."
     },
     {
-      question: "Mam problem zdrowotny/kontuzję. Czy to dyskwalifikuje mnie z treningu?",
-      answer: "Absolutnie nie! Połączenie mojego doświadczenia jako trenera personalnego z wiedzą z fizjoterapii daje unikalne spojrzenie na trening osób z ograniczeniami ruchowymi. Współpracuję z osobami po operacjach kolan, z przepuklinami kręgosłupa czy zaawansowaną osteoporozą. Wspólnie wypracowujemy bezpieczne, ale skuteczne metody treningu. Jednym z moich ulubionych wyzwań jest pokazanie podopiecznym, że mimo ograniczeń mogą więcej niż im się wydawało  widziałem zbyt wiele przypadków, gdy lekarze zbyt pochopnie zakazywali aktywności fizycznej, pogłębiając problemy zdrowotne."
+      question: "Mam problem zdrowotny lub kontuzję. Czy mogę trenować?",
+      answer: "Zdecydowanie tak. Połączenie mojego doświadczenia trenerskiego z wiedzą z fizjoterapii daje unikalne spojrzenie na pracę z ciałem. Regularnie pomagam osobom po operacjach kolan, rekonstrukcji więzadła czy z przepuklinami kręgosłupa. Wspólnie dobierzemy bezpieczne metody, które pomogą Ci pozbyć się bólu i odzyskać pełną sprawność. Często całkowita rezygnacja z ruchu to najgorszy możliwy wybór przy dolegliwościach bólowych."
     }
   ];
 
-  // Dynamiczne generowanie FAQ Schema na podstawie tablicy pytań (SEO)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -53,8 +90,7 @@ const TrainerSectionClient = () => {
   };
 
   return (
-    <section className={styles.section}>
-      {/* JSON-LD Schema dla Google */}
+    <section className={styles.trainingSection}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -62,27 +98,76 @@ const TrainerSectionClient = () => {
 
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.title}>Trening Personalny Łódź bez ściemy, bez cudów, za to z efektami</h1>
+          <div className={styles.socialProofBadge}>
+            <div className={styles.stars}>
+              {[1, 2, 3, 4, 5].map(i => <Star key={i} size={20} fill="#fca311" color="#fca311" />)}
+            </div>
+            <span>Fizjoterapeuta i Trener. Dziesiątki udanych transformacji w Łodzi.</span>
+          </div>
+
+          <h1 className={styles.title}>Trenuj mądrze. Bez bólu i wymówek.</h1>
+          
           <p className={styles.subtitle}>
-            Nazywam się Ireneusz Maruszewski. Od ponad 4 lat pomagam mieszkańcom Łodzi zmienić podejście do 
-            treningów. Nie obiecuję rewolucji w 30 dni ani sekretnych metod. Zamiast tego daję praktyczną 
-            wiedzę, motywację dopasowaną do Ciebie i plan, który faktycznie wykonasz w swoim zabieganym życiu.
+            Nazywam się Ireneusz Maruszewski. Łączę <strong>medyczną wiedzę z efektywnym treningiem siłowym</strong>. 
+            Pomagam osobom zapracowanym oraz wracającym po kontuzjach odzyskać sprawność. 
+            Otrzymasz ode mnie praktyczną wiedzę, bezpieczny plan i wsparcie. Zrobimy formę bez restrykcyjnych diet i cudownych suplementów.
           </p>
+
+          <div className={styles.heroActions}>
+            <button onClick={scrollToCalendly} className={styles.mainCtaButton}>
+              <CalendarCheck size={20} />
+              Umów darmową diagnozę
+            </button>
+            <p className={styles.guaranteeText}>
+              <Shield size={16} /> Zero ukrytych kosztów. Brak zobowiązań po pierwszym spotkaniu.
+            </p>
+          </div>
         </header>
 
         <div className={styles.mainGrid}>
+          
+          {/* KARUZELA ZDJĘĆ */}
           <div className={styles.imageWrapper}>
-            <Image src="/images/treningpersonalny.webp" alt="Trener personalny Łódź" fill className={styles.mainImage} priority />
+            {galleryImages.map((img, index) => (
+              <Image 
+                key={index}
+                src={img.src}
+                alt={img.alt}
+                fill
+                className={`${styles.mainImage} ${index === currentImgIndex ? styles.activeImage : styles.inactiveImage}`}
+                priority={index === 0} 
+              />
+            ))}
             <div className={styles.imageOverlay} />
+            
+            <button type="button" onClick={prevImg} className={`${styles.carouselBtn} ${styles.carouselBtnLeft}`} aria-label="Poprzednie zdjęcie">
+              <ChevronLeft size={24} />
+            </button>
+            <button type="button" onClick={nextImg} className={`${styles.carouselBtn} ${styles.carouselBtnRight}`} aria-label="Następne zdjęcie">
+              <ChevronRight size={24} />
+            </button>
+            
+            <div className={styles.carouselDots}>
+              {galleryImages.map((_, idx) => (
+                <button 
+                  key={idx}
+                  type="button"
+                  onClick={() => setCurrentImgIndex(idx)}
+                  className={`${styles.dot} ${idx === currentImgIndex ? styles.activeDot : ''}`}
+                  aria-label={`Przejdź do zdjęcia numer ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
+          {/* KARTY KORZYŚCI */}
           <div className={styles.cardGrid}>
             <article className={styles.card}>
               <div className={styles.cardHeader}>
-                <div className={styles.iconWrapper}><Shield className={styles.icon} /></div>
+                <div className={styles.iconWrapper}><Activity className={styles.icon} /></div>
                 <div className={styles.cardContent}>
-                  <h2 className={styles.cardTitle}>Trenować mądrze, nie ciężej</h2>
-                  <p className={styles.cardText}>Moja filozofia treningu? Efektywność zamiast efektowności. W Łodzi pełno jest motywatorów krzyczących na siłowniach. Ja oferuję inne podejście: trening dopasowany do Twojego poziomu. Bazuję na fizjologii i nauce, nie na mitach. Efekty przychodzą, gdy trenujemy mądrze.</p>
+                  <h2 className={styles.cardTitle}>Trening łączony z fizjoterapią</h2>
+                  <p className={styles.cardText}>Koniec z obawami o kręgosłup czy stawy. Pracujemy nad sylwetką, jednocześnie pozbywając się dolegliwości bólowych z pracy siedzącej. Pełne bezpieczeństwo poparte wiedzą z anatomii.</p>
                 </div>
               </div>
             </article>
@@ -90,8 +175,8 @@ const TrainerSectionClient = () => {
               <div className={styles.cardHeader}>
                 <div className={styles.iconWrapper}><Target className={styles.icon} /></div>
                 <div className={styles.cardContent}>
-                  <h2 className={styles.cardTitle}>Trening dla zabieganych</h2>
-                  <p className={styles.cardText}>Większość moich podopiecznych w Łodzi to osoby, które mają napięty grafik. Dlatego oferuję treningi trwające 45-60 minut. Wykorzystuję protokoły treningowe optymalizujące czas, żebyś mógł efektywnie trenować nawet po pracy.</p>
+                  <h2 className={styles.cardTitle}>Rozwiązanie dla zabieganych</h2>
+                  <p className={styles.cardText}>Zamiast spędzać dwie godziny na siłowni, wykonamy intensywną pracę w około 50 minut. Plan uwzględnia Twój napięty grafik, dając maksimum efektów w najkrótszym możliwym czasie.</p>
                 </div>
               </div>
             </article>
@@ -99,95 +184,82 @@ const TrainerSectionClient = () => {
               <div className={styles.cardHeader}>
                 <div className={styles.iconWrapper}><Heart className={styles.icon} /></div>
                 <div className={styles.cardContent}>
-                  <h2 className={styles.cardTitle}>Trener i partner w procesie zmiany</h2>
-                  <p className={styles.cardText}>Sam przeszedłem przez proces transformacji. Wiem, kiedy potrzebny jest kop motywacyjny, a kiedy wsparcie. Po 4 latach pracy w Łodzi mogę powiedzieć, że często największe przeszkody są w głowie, nie w mięśniach.</p>
+                  <h2 className={styles.cardTitle}>Zdrowe podejście do diety</h2>
+                  <p className={styles.cardText}>Nie znajdziesz u mnie gotowców kopiuj wklej. Uczę jak komponować posiłki z normalnych produktów. Zachowujemy miejsce na wyjścia ze znajomymi, żeby dieta nie była powodem do frustracji.</p>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
-        {/* --- SEKCJA JAK WYGLĄDA TRENING --- */}
-        <div className={styles.exampleTraining}>
-          <h2 className={styles.sectionTitle}>Jak naprawdę wygląda trening ze mną w Łodzi</h2>
-          {/* Tutaj zachowujesz swój oryginalny komponent TimeLineContainer */}
-          {/* <TimeLineContainer /> */}
-        </div>
-
-        {/* --- CRO: RESPONSYWNA SEKCJA CENNIKA --- */}
         <div className={styles.pricingWrapper}>
           <h2 className={styles.sectionTitle}>Inwestycja w Twoje zdrowie</h2>
           <p className={styles.subtitle} style={{textAlign: 'center', marginBottom: '2rem'}}>
-            Cenię transparentność. Oto moje stawki. Jednak <strong style={{color: '#fff'}}>nie sprzedaję pakietów w ciemno</strong>. 
-            Musimy mieć pewność, że to rozwiązanie jest dla Ciebie w 100% bezpieczne i że nadajemy na tych samych falach.
+            Cenię pełną transparentność. Oto moje stawki. Jednak nie sprzedaję pakietów w ciemno. Zaczynamy zawsze od darmowej diagnozy.
           </p>
 
           <div className={styles.pricingGrid}>
-            
-            {/* Pakiet 1: Darmowa Konsultacja */}
             <div className={`${styles.pricingCard} ${styles.pricingCardPrimary}`}>
-              <div className={styles.pricingBadge}>KROK 1</div>
-              <h3 style={{fontSize: '1.5rem', marginBottom: '0.5rem', textAlign: 'center', color: '#fff'}}>Konsultacja i Diagnoza</h3>
+              <div className={styles.pricingBadge}>KROK 1 ZACZNIJ TUTAJ</div>
+              <h3 className={styles.pricingCardTitle}>Konsultacja i Diagnoza</h3>
               <div className={styles.pricingPrice}>0 zł</div>
               
               <ul className={styles.pricingList}>
                 <li className={styles.pricingListItem}>
                   <CheckCircle size={20} color="var(--primary)" /> 
-                  <span>Wywiad i ocena zdrowia</span>
+                  <span>Szczegółowy wywiad zdrowotny</span>
                 </li>
                 <li className={styles.pricingListItem}>
                   <CheckCircle size={20} color="var(--primary)" /> 
-                  <span>Sprawdzenie wzorców ruchowych</span>
+                  <span>Testy wzorców ruchowych i ocena postawy</span>
                 </li>
                 <li className={styles.pricingListItem}>
                   <CheckCircle size={20} color="var(--primary)" /> 
-                  <span>Omówienie realnych celów</span>
+                  <span>Ustalenie konkretnego planu działania</span>
                 </li>
               </ul>
 
               <button onClick={scrollToCalendly} className={styles.ctaButton} style={{width: '100%', gap: '10px'}}>
-                <CalendarCheck size={20} /> Wybierz termin
+                <CalendarCheck size={20} /> Zarezerwuj bezpłatne miejsce
               </button>
             </div>
 
-            {/* Pakiet 2: Płatne pakiety */}
             <div className={`${styles.pricingCard} ${styles.pricingCardSecondary}`}>
-              <div style={{position: 'absolute', top: '15px', right: '15px', color: '#666'}}><Lock size={24} /></div>
-              <h3 style={{fontSize: '1.5rem', marginBottom: '1.5rem', color: '#fff', paddingRight: '30px'}}>
-                Współpraca <span style={{fontSize: '1rem', fontWeight: 'normal', color: '#6b7280', display: 'block', marginTop: '5px'}}>(Dostępne po konsultacji)</span>
+              <div className={styles.lockIcon}><Lock size={24} /></div>
+              <h3 className={styles.pricingCardTitle}>
+                Stała współpraca <span className={styles.pricingSubTitle}>(Opcja po konsultacji)</span>
               </h3>
               
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', color: '#e5e7eb'}}>
+              <div className={styles.pricingRowsContainer}>
                 <div className={styles.pricingRow}>
-                  <span style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Pojedynczy trening</span>
-                  <span style={{fontWeight: 'bold', fontSize: '1.1rem', color: '#fff'}}>180 zł</span>
+                  <span className={styles.pricingName}>Pojedynczy trening</span>
+                  <span className={styles.pricingValue}>180 zł</span>
                 </div>
                 
-                <div className={styles.pricingRow}>
+                <div className={`${styles.pricingRow} ${styles.pricingRowHighlight}`}>
                   <div>
-                    <span style={{fontWeight: 'bold', fontSize: '1.1rem', display: 'block'}}>Pakiet 10 treningów</span>
-                    <span style={{fontSize: '0.9rem', color: '#9ca3af'}}>Najczęściej wybierany</span>
+                    <span className={styles.pricingName}>Pakiet dziesięciu treningów</span>
+                    <span className={styles.pricingHighlightText}>Wybiera 80 procent podopiecznych</span>
                   </div>
-                  <span style={{fontWeight: 'bold', fontSize: '1.1rem', color: '#fff'}}>160 zł / sesja</span>
+                  <span className={styles.pricingValue}>160 zł <span style={{fontSize:'0.8rem', fontWeight:'normal'}}>za sesję</span></span>
                 </div>
                 
                 <div className={styles.pricingRow}>
-                  <span style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Pakiet 20 treningów</span>
-                  <span style={{fontWeight: 'bold', fontSize: '1.1rem', color: '#fff'}}>140 zł / sesja</span>
+                  <span className={styles.pricingName}>Pakiet dwudziestu treningów</span>
+                  <span className={styles.pricingValue}>140 zł <span style={{fontSize:'0.8rem', fontWeight:'normal'}}>za sesję</span></span>
                 </div>
               </div>
 
               <div className={styles.pricingDisclaimer}>
-                <Shield size={20} style={{color: '#6b7280'}} />
-                <p style={{margin: 0}}>Ze względu na jakość usług, przyjmuję podopiecznych tylko po wcześniejszym bezpłatnym spotkaniu zapoznawczym. Zarezerwuj je obok.</p>
+                <Shield size={20} style={{flexShrink: 0}} />
+                <p>Bardzo dbam o jakość prowadzonych zajęć, dlatego mam ograniczoną liczbę miejsc. Przyjmuję podopiecznych wyłącznie po pierwszym spotkaniu zapoznawczym.</p>
               </div>
             </div>
-
           </div>
         </div>
 
         <div className={styles.faqSection}>
-          <h2 className={styles.sectionTitle}>Pytania, które powinieneś zadać, zanim zaczniemy</h2>
+          <h2 className={styles.sectionTitle}>Często zadawane pytania</h2>
           <div className={styles.faqGrid}>
             {faqItems.map((item, index) => (
               <div key={index} className={styles.faqItem} onClick={() => setOpenQuestion(openQuestion === index ? null : index)}>
@@ -203,42 +275,69 @@ const TrainerSectionClient = () => {
           </div>
         </div>
 
-        {/* --- SEKCJE LOKALNE SEO (Przed Calendly) --- */}
-        <div style={{ margin: '4rem 0', display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', textAlign: 'center' }}>
-          
-          <section>
-            <h2 className={styles.sectionTitle} style={{ marginBottom: '1rem' }}>Treningi personalne w całej Łodzi</h2>
-            <p className={styles.subtitle} style={{ margin: '0 auto' }}>
-              Prowadzę treningi na siłowni Just Gym (Gojawiczyńska) 
-              oraz dochodzę do klientów w dzielnicach: <br />
-              <strong>Widzew, Centrum, Górna.</strong>
-            </p>
-          </section>
+        <div className={styles.napContainer}>
+          <h2 className={styles.sectionTitle} style={{ marginBottom: '1rem' }}>Gdzie trenujemy?</h2>
+          <p className={styles.subtitle}>
+            Stacjonarnie pracuję z podopiecznymi na siłowni <strong>Just Gym przy ulicy Gojawiczyńskiej</strong>. 
+            Istnieje też możliwość dojazdu do kilku dzielnic Łodzi.
+          </p>
 
-          <address className={styles.napSection} style={{ fontStyle: 'normal', lineHeight: '1.8' }}>
-            <strong style={{ fontSize: '1.2rem', color: 'var(--foreground)' }}>Ireneusz Maruszewski – Trener Personalny Łódź</strong><br />
-            Just Gym, ul. Poli Gojawiczyńskiej 26, 93-239 Łódź<br />
-            <a href="tel:+48737730868" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 'bold' }}>+48 737 730 868</a><br />
-            <a href="mailto:maruszewskiirek@gmail.com" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 'bold' }}>maruszewskiirek@gmail.com</a>
+          <address className={styles.napAddress}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+              <strong style={{ fontSize: '1.2rem', color: '#fff' }}>Ireneusz Maruszewski Trener Personalny i Fizjoterapeuta</strong>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', justifyContent: 'center', color: '#9ca3af', marginTop: '1rem' }}>
+                <MapPin size={20} color="#fca311" /> 
+                <span>Just Gym, ul. Poli Gojawiczyńskiej 26, 93 239 Łódź</span>
+              </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', justifyContent: 'center' }}>
+                <Phone size={20} color="#fca311" /> 
+                <a href="tel:+48737730868" style={{ color: '#fca311', textDecoration: 'none', fontWeight: 'bold' }}>+48 737 730 868</a>
+              </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', justifyContent: 'center' }}>
+                <Mail size={20} color="#fca311" /> 
+                <a href="mailto:maruszewskiirek@gmail.com" style={{ color: '#fca311', textDecoration: 'none', fontWeight: 'bold' }}>maruszewskiirek@gmail.com</a>
+              </div>
+            </div>
           </address>
-
         </div>
 
-        {/* --- CRO: OSADZONY WIDŻET CALENDLY --- */}
         <div ref={calendlyRef} className={styles.calendlyContainer}>
-          <h2 style={{textAlign: 'center', fontSize: '2rem', marginBottom: '1rem', color: '#111'}}>Wybierz termin darmowej konsultacji</h2>
-          <p style={{textAlign: 'center', maxWidth: '600px', margin: '0 auto 2rem', color: '#555', lineHeight: '1.6'}}>
-            Zajmie Ci to 15 sekund. Wybierz datę w kalendarzu poniżej. Zero zobowiązań – spotkajmy się i sprawdźmy, jak mogę Ci pomóc z Twoim celem.
+          <h2 className={styles.calendlyTitle}>Wybierz termin darmowej diagnozy</h2>
+          <p className={styles.calendlySubtitle}>
+            To zajmie zaledwie chwilę. Wybierz datę w kalendarzu poniżej. Zero zobowiązań. Porozmawiajmy i sprawdźmy, w jaki sposób mogę Ci pomóc.
           </p>
           
-          <div className={styles.calendlyIframe}>
-            <iframe
-              src="https://calendly.com/maruszewskiirek?hide_gdpr_banner=1"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              title="Zarezerwuj darmową konsultację"
-            ></iframe>
+          {/* Memoizacja - uodparnia iframe na resetowanie przez karuzelę zdjęć */}
+{React.useMemo(() => (
+            <div className={styles.calendlyIframe}>
+              <iframe
+                src="https://calendly.com/maruszewskiirek?hide_gdpr_banner=1&embed_domain=najlepszytrening.pl&embed_type=Inline"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Zarezerwuj darmową diagnozę"
+              ></iframe>
+            </div>
+          ), [])}
+
+          {/* Fallback CRO - jeśli adblock wciąż dusi kalendarz u klienta, ten przycisk ratuje konwersję */}
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <p style={{ fontSize: '0.9rem', color: '#9ca3af', marginBottom: '1rem' }}>
+              Kalendarz ładuje się zbyt długo?
+            </p>
+            <a 
+              href="https://calendly.com/maruszewskiirek" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.mainCtaButton}
+              style={{ display: 'inline-flex', textDecoration: 'none' }}
+            >
+              <CalendarCheck size={20} />
+              Otwórz kalendarz w nowym oknie
+            </a>
           </div>
         </div>
 

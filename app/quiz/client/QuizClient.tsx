@@ -22,7 +22,13 @@ const QuizClient = () => {
   useEffect(() => {
     const pobierzZestawNaDzis = async () => {
       try {
-        const odpowiedz = await fetch('/api/quiz');
+       const odpowiedz = await fetch(`/api/quiz?t=${new Date().getTime()}`, { 
+  cache: 'no-store',
+  headers: {
+    'Pragma': 'no-cache',
+    'Cache-Control': 'no-cache'
+  }
+}); 
         if (!odpowiedz.ok) {
           const bladInfo = await odpowiedz.json();
           throw new Error(bladInfo.blad || 'Brak pytań na dzisiaj');
