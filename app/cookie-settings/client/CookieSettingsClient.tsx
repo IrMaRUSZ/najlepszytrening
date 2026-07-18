@@ -1,23 +1,18 @@
 'use client';
 import { useState, useEffect } from 'react';
 import styles from '../../../styles/CookieSettings.module.css';
+import { useAnalyticsConsent } from '@/components/analytics/AnalyticsConsentProvider';
 
 const CookieSettingsClient = () => {
-  const [preferences, setPreferences] = useState({
-    necessary: true,
-    analytics: false,
-    marketing: false,
-  });
+  const consent = useAnalyticsConsent();
+  const [preferences, setPreferences] = useState(consent.preferences);
 
   useEffect(() => {
-    const storedPreferences = localStorage.getItem('cookiePreferences');
-    if (storedPreferences) {
-      setPreferences(JSON.parse(storedPreferences));
-    }
-  }, []);
+    if (consent.isReady) setPreferences(consent.preferences);
+  }, [consent.isReady, consent.preferences]);
 
   const savePreferences = () => {
-    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+    consent.savePreferences(preferences);
     alert('Ustawienia zapisane!');
   };
 

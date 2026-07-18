@@ -3,22 +3,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Shield, Activity, HeartPulse, ChevronDown, Lock, CheckCircle, CalendarCheck, Star, ChevronLeft, ChevronRight, Phone, Mail, MapPin } from 'lucide-react';
 import styles from '../../../styles/trener-personalny-lodz.module.css';
+import CalendlyCTA from '../../../components/CalendlyCTA';
 
 const PhysioSectionClient = () => {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
   
-  // --- LOGIKA PRZEKIEROWANIA PO REZERWACJI CALENDLY ---
-  useEffect(() => {
-    const handleCalendlyEvent = (e: MessageEvent) => {
-      if (e.origin !== 'https://calendly.com') return;
-      if (e.data && e.data.event === 'calendly.event_scheduled') {
-        window.location.href = '/potwierdzenie';
-      }
-    };
-    window.addEventListener('message', handleCalendlyEvent);
-    return () => window.removeEventListener('message', handleCalendlyEvent);
-  }, []);
-
   // --- LOGIKA KARUZELI ZDJĘĆ ---
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
@@ -38,8 +27,7 @@ const PhysioSectionClient = () => {
 
   const calendlyRef = useRef<HTMLDivElement>(null);
 
-  const scrollToCalendly = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const scrollToCalendly = () => {
     calendlyRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -103,10 +91,10 @@ const PhysioSectionClient = () => {
           </p>
 
           <div className={styles.heroActions}>
-            <button onClick={scrollToCalendly} className={styles.mainCtaButton}>
+            <CalendlyCTA mode="action" onAction={scrollToCalendly} ctaSource="physio_hero" serviceType="physiotherapy_lodz" ctaLabel="Umów darmową diagnozę" className={styles.mainCtaButton}>
               <CalendarCheck size={20} />
               Umów darmową diagnozę
-            </button>
+            </CalendlyCTA>
             <p className={styles.guaranteeText}>
               <Shield size={16} /> Zero ukrytych kosztów. Brak zobowiązań po pierwszej wizycie.
             </p>
@@ -208,9 +196,9 @@ const PhysioSectionClient = () => {
                 </li>
               </ul>
 
-              <button onClick={scrollToCalendly} className={styles.ctaButton} style={{width: '100%', gap: '10px'}}>
+              <CalendlyCTA mode="action" onAction={scrollToCalendly} ctaSource="physio_pricing" serviceType="physiotherapy_lodz" ctaLabel="Umów darmową diagnozę" className={styles.ctaButton} style={{width: '100%', gap: '10px'}}>
                 <CalendarCheck size={20} /> Umów darmową diagnozę
-              </button>
+              </CalendlyCTA>
             </div>
 
             <div className={`${styles.pricingCard} ${styles.pricingCardSecondary}`}>
@@ -315,16 +303,16 @@ const PhysioSectionClient = () => {
             <p style={{ fontSize: '0.9rem', color: '#9ca3af', marginBottom: '1rem' }}>
               Kalendarz ładuje się zbyt długo?
             </p>
-            <a 
-              href="https://calendly.com/maruszewskiirek" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <CalendlyCTA
+              ctaSource="physio_fallback"
+              serviceType="physiotherapy_lodz"
+              ctaLabel="Otwórz kalendarz w nowym oknie"
               className={styles.mainCtaButton}
               style={{ display: 'inline-flex', textDecoration: 'none' }}
             >
               <CalendarCheck size={20} />
               Otwórz kalendarz w nowym oknie
-            </a>
+            </CalendlyCTA>
           </div>
         </div>
 

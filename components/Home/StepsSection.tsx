@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Calendar, Dumbbell, LineChart, MessageCircle, ArrowRight } from 'lucide-react';
 import styles from '../../styles/StepsSection.module.css';
+import CalendlyCTA from '../CalendlyCTA';
 
 const StepsSection = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -85,14 +86,14 @@ const StepsSection = () => {
                     
                     {/* CRO: CZYSTY LINK DO CALENDLY ZAMIAST PROBLEMATYCZNEGO FORMULARZA */}
                     <div className={styles.contactSection}>
-                        <a 
-                            href="https://calendly.com/maruszewskiirek" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
+                        <CalendlyCTA
+                            ctaSource="home_steps"
+                            serviceType="general"
+                            ctaLabel="ZACZNIJ DZIAŁAĆ"
                             className={styles.ctaButton}
                         >
                             ZACZNIJ DZIAŁAĆ <ArrowRight size={20} style={{marginLeft: '8px'}} />
-                        </a>
+                        </CalendlyCTA>
                     </div>
 
                     <span className={styles.guarantee}>

@@ -3,31 +3,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Shield, Target, Heart, ChevronDown, Lock, CheckCircle, CalendarCheck, Star, Activity, ChevronLeft, ChevronRight, Phone, Mail, MapPin } from 'lucide-react';
 import styles from '../../../styles/trener-personalny-lodz.module.css';
+import CalendlyCTA from '../../../components/CalendlyCTA';
 
 
 const TrainerSectionClient = () => {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
 
 
-  // --- LOGIKA PRZEKIEROWANIA PO REZERWACJI CALENDLY ---
-  useEffect(() => {
-    const handleCalendlyEvent = (e: MessageEvent) => {
-      // Ignorujemy wiadomości, które nie pochodzą z Calendly (bezpieczeństwo)
-      if (e.origin !== 'https://calendly.com') return;
-
-      // Debugowanie - jeśli chcesz podejrzeć w konsoli przeglądarki (F12)
-      console.log('Otrzymano sygnał z Calendly:', e.data);
-
-      if (e.data && e.data.event === 'calendly.event_scheduled') {
-        // Twarde przekierowanie przeglądarki (zawsze działa z Iframe)
-        window.location.href = '/potwierdzenie';
-      }
-    };
-
-    window.addEventListener('message', handleCalendlyEvent);
-    return () => window.removeEventListener('message', handleCalendlyEvent);
-  },[]);
-  
   // --- LOGIKA KARUZELI ZDJĘĆ ---
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
@@ -48,8 +30,7 @@ const TrainerSectionClient = () => {
 
   const calendlyRef = useRef<HTMLDivElement>(null);
 
-  const scrollToCalendly = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const scrollToCalendly = () => {
     calendlyRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -114,10 +95,10 @@ const TrainerSectionClient = () => {
           </p>
 
           <div className={styles.heroActions}>
-            <button onClick={scrollToCalendly} className={styles.mainCtaButton}>
+            <CalendlyCTA mode="action" onAction={scrollToCalendly} ctaSource="trainer_hero" serviceType="personal_training_lodz" ctaLabel="Umów darmową diagnozę" className={styles.mainCtaButton}>
               <CalendarCheck size={20} />
               Umów darmową diagnozę
-            </button>
+            </CalendlyCTA>
             <p className={styles.guaranteeText}>
               <Shield size={16} /> Zero ukrytych kosztów. Brak zobowiązań po pierwszym spotkaniu.
             </p>
@@ -219,9 +200,9 @@ const TrainerSectionClient = () => {
                 </li>
               </ul>
 
-              <button onClick={scrollToCalendly} className={styles.ctaButton} style={{width: '100%', gap: '10px'}}>
+              <CalendlyCTA mode="action" onAction={scrollToCalendly} ctaSource="trainer_pricing" serviceType="personal_training_lodz" ctaLabel="Zarezerwuj bezpłatne miejsce" className={styles.ctaButton} style={{width: '100%', gap: '10px'}}>
                 <CalendarCheck size={20} /> Zarezerwuj bezpłatne miejsce
-              </button>
+              </CalendlyCTA>
             </div>
 
             <div className={`${styles.pricingCard} ${styles.pricingCardSecondary}`}>
@@ -328,16 +309,16 @@ const TrainerSectionClient = () => {
             <p style={{ fontSize: '0.9rem', color: '#9ca3af', marginBottom: '1rem' }}>
               Kalendarz ładuje się zbyt długo?
             </p>
-            <a 
-              href="https://calendly.com/maruszewskiirek" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <CalendlyCTA
+              ctaSource="trainer_fallback"
+              serviceType="personal_training_lodz"
+              ctaLabel="Otwórz kalendarz w nowym oknie"
               className={styles.mainCtaButton}
               style={{ display: 'inline-flex', textDecoration: 'none' }}
             >
               <CalendarCheck size={20} />
               Otwórz kalendarz w nowym oknie
-            </a>
+            </CalendlyCTA>
           </div>
         </div>
 

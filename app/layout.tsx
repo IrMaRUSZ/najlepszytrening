@@ -3,9 +3,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
 import GoogleAnalytics from '../components/SEO/GoogleAnalytics'
-import Script from 'next/script'
 import CookiePopup from '@/components/CookiePopup'
 import generateSchemaMarkup from '../components/SEO/SchemaOrg'
+import { AnalyticsConsentProvider } from '@/components/analytics/AnalyticsConsentProvider'
+import CalendlyEventListener from '@/components/analytics/CalendlyEventListener'
 
 const inter = Inter({ subsets: ['latin'] })
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
@@ -49,22 +50,16 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png" />
         <link rel="icon" href="/icon/favicon.ico" />
-        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){ dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
-          `}
-        </Script>
         {generateSchemaMarkup()}
       </head>
       <body className={inter.className}>
-        <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
-        <Navbar />
-        <CookiePopup />
-        {children}
+        <AnalyticsConsentProvider>
+          <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
+          <CalendlyEventListener />
+          <Navbar />
+          <CookiePopup />
+          {children}
+        </AnalyticsConsentProvider>
       </body>
     </html>
   );

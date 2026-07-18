@@ -1,14 +1,13 @@
 // app/page.tsx
 import Image from 'next/image'
-import Link from 'next/link'
-import { Instagram, Youtube, CalendarCheck, MapPin, Smartphone, Star, Clock, Shield } from 'lucide-react'
+import { Instagram, Youtube, CalendarCheck, MapPin, Star, ClipboardCheck, ShieldCheck } from 'lucide-react'
 import styles from '../styles/Home.module.css'
 import { TrustBuildingSection } from '../components/Home/TrustBuildingSection';
 import InitialHook from '../components/Home/InitialHook';
 import StepSection from '../components/Home/StepsSection';
 import BlogPage from './blog/page'
-import CookiePopup from '../components/CookiePopup';
 import { Metadata } from 'next';
+import CalendlyCTA from '../components/CalendlyCTA';
 
 export const metadata: Metadata = {
   title: {
@@ -92,65 +91,50 @@ export default function Home() {
           </div>
 
           <h1 className={styles.title}>
-            Boli Cię kręgosłup<br/>
-            <span className={styles.titleSub}>
-              od siedzenia przy biurku?
-            </span>
+            Trening personalny w Łodzi prowadzony przez fizjoterapeutę
           </h1>
           
           <p className={styles.subtitle}>
-            Jako fizjoterapeuta i trener wiem dlaczego boli oraz wiem jak to naprawić. 
-            Pracuję z programistami, lekarzami i managerami. Pomagam odzyskać sprawne ciało 
-            bez spędzania połowy życia na siłowni.
+            Pomagam poprawić sylwetkę, bezpiecznie rozpocząć trening i wrócić do aktywności
+            {' '}po kontuzji także osobom z bólem, ograniczeniami ruchowymi lub obawą przed siłownią.
+            Najpierw poznaję Twój problem, potem tworzę rozwiązanie dopasowane do Ciebie.
           </p>
 
           {/* Nowe karty atutów (spójne ze screenem nr 2) */}
           <div className={styles.uspGrid}>
             <div className={styles.uspCard}>
-              <Clock className={styles.uspIcon} size={24} />
+              <ClipboardCheck className={styles.uspIcon} size={24} />
               <p className={styles.uspText}>
-                <strong>Krótkie treningi.</strong> Od 45 do 60 minut intensywnej pracy. Zero marnowania czasu.
+                <strong>Analiza problemu.</strong> Rozmawiamy o Twoim celu, możliwościach i dotychczasowych trudnościach.
               </p>
             </div>
             <div className={styles.uspCard}>
-              <Shield className={styles.uspIcon} size={24} />
+              <ShieldCheck className={styles.uspIcon} size={24} />
               <p className={styles.uspText}>
-                <strong>Fizjoterapeutyczne podejście.</strong> Główny nacisk kładziemy na zniwelowanie bólu.
+                <strong>Indywidualny i bezpieczny plan.</strong> Ćwiczenia dobieram do Twojego celu, sprawności i ograniczeń.
               </p>
             </div>
             <div className={styles.uspCard}>
               <MapPin className={styles.uspIcon} size={24} />
               <p className={styles.uspText}>
-                <strong>Trenuj tam gdzie Ci wygodnie.</strong> Widzew, Centrum, Just Gym lub prowadzenie online.
+                <strong>Stała opieka i kontrola.</strong> Wyjaśniam ćwiczenia, monitoruję postępy i modyfikuję plan.
               </p>
             </div>
           </div>
 
-          <div className={styles.splitFunnel}>
-            <Link href="/trener-personalny-lodz" className={`${styles.funnelBtn} ${styles.funnelBtnPrimary}`}>
-              <MapPin size={20} />
-              Współpraca w Łodzi
-            </Link>
-            
-            <Link href="/Wspolpraca-online" className={`${styles.funnelBtn} ${styles.funnelBtnSecondary}`}>
-              <Smartphone size={20} />
-              Prowadzenie Online
-            </Link>
-          </div>
-
           <div className={styles.calendlyLinkContainer}>
             <p className={styles.calendlyHint}>
-              Nie wiesz co wybrać? Zacznijmy od darmowej diagnozy.
+              Bez zobowiązań podczas rozmowy poznam Twój cel i odpowiem na pytania.
             </p>
-            <a 
-              href="https://calendly.com/maruszewskiirek" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.calendlyLink}
+            <CalendlyCTA
+              ctaSource="home_hero"
+              serviceType="general"
+              ctaLabel="Umów bezpłatną konsultację online"
+              className={`${styles.funnelBtn} ${styles.funnelBtnPrimary} ${styles.calendlyCta}`}
             >
-              <CalendarCheck size={28} className={styles.calendlyIcon} />
-              <span className={styles.calendlyText}>Wybierz termin darmowej konsultacji</span>
-            </a>
+              <CalendarCheck size={22} className={styles.calendlyIcon} />
+              <span>Umów bezpłatną konsultację online</span>
+            </CalendlyCTA>
           </div>
 
           <div className={styles.socialLinks}>
@@ -174,7 +158,6 @@ export default function Home() {
         </div>
         <BlogPage />
       </section>
-      <CookiePopup />
     </main>
   )
 }

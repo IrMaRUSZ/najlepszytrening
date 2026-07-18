@@ -7,6 +7,7 @@ import { supabase } from '../lib/supabaseClient';
 import { User } from '@supabase/supabase-js';
 import styles from '../styles/Navbar.module.css';
 import { Menu, X } from 'lucide-react';
+import CalendlyCTA from './CalendlyCTA';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +60,10 @@ export default function Navbar() {
           
           {/* CRO: Główny przycisk kierujący bezpośrednio do kalendarza! */}
           <li className={styles.navCta}>
-            <a 
-              href="https://calendly.com/maruszewskiirek" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <CalendlyCTA
+              ctaSource="navbar_desktop"
+              serviceType="general"
+              ctaLabel="Darmowa Konsultacja"
               onClick={closeMenu} 
               style={{
                 background: 'var(--primary)', 
@@ -75,7 +76,7 @@ export default function Navbar() {
               }}
             >
               Darmowa Konsultacja
-            </a>
+            </CalendlyCTA>
           </li>
         </ul>
 
@@ -95,10 +96,10 @@ export default function Navbar() {
             
             <hr style={{width: '100%', borderColor: 'rgba(0,0,0,0.1)'}} />
             
-            <a 
-              href="https://calendly.com/maruszewskiirek" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <CalendlyCTA
+              ctaSource="navbar_mobile"
+              serviceType="general"
+              ctaLabel="Umów Darmową Konsultację"
               onClick={closeMenu}
               style={{
                 color: 'var(--primary)',
@@ -109,7 +110,7 @@ export default function Navbar() {
               }}
             >
               Umów Darmową Konsultację
-            </a>
+            </CalendlyCTA>
 
             <hr style={{width: '100%', borderColor: 'rgba(0,0,0,0.1)'}} />
 

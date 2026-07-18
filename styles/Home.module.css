@@ -91,7 +91,7 @@
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: clamp(2.6rem, 4vw, 3.5rem);
   font-weight: 800;
   line-height: 1.1;
   color: #FFFFFF;
@@ -171,30 +171,14 @@
   color: #9ca3af;
 }
 
-.calendlyLink {
-  display: flex; /* Zmienione na flex dla precyzji */
-  align-items: flex-start; /* Gwarantuje wyrównanie ikony do pierwszej linijki */
-  gap: 0.75rem;
-  color: var(--primary);
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-  max-width: fit-content;
+.calendlyCta {
+  width: fit-content;
+  min-width: 0;
+  flex: none;
 }
 
 .calendlyIcon {
-  flex-shrink: 0; /* Blokada przed ściśnięciem ikony na małym ekranie */
-  margin-top: 2px; /* Delikatne opuszczenie w dół by ładnie licowało ze środkiem liter */
-}
-
-.calendlyText {
-  text-decoration: underline;
-  text-underline-offset: 4px; /* Odsunięcie podkreślenia na czysto */
-}
-
-.calendlyLink:hover {
-  opacity: 0.8;
+  flex-shrink: 0;
 }
 
 /* --- IMAGE & SOCIALS --- */
@@ -312,8 +296,10 @@
     text-align: center;
   }
 
-  .calendlyLink {
-    text-align: left;
+  .calendlyCta {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
   }
 
   .imageContainer {

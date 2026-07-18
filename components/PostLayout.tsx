@@ -7,6 +7,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Clock, Calendar, ArrowRight, MapPin } from 'lucide-react';
+import CalendlyCTA from './CalendlyCTA';
 import { Components } from 'react-markdown';
 import styles from '../styles/PostLayout.module.css';
 
@@ -162,6 +163,20 @@ const PostLayout: React.FC<PostLayoutProps> = ({
       }
 
       if (!href) return <>{children}</>;
+
+      if (href.startsWith('https://calendly.com/')) {
+        return (
+          <CalendlyCTA
+            href={href}
+            ctaSource="blog_article"
+            serviceType="content"
+            ctaLabel={typeof children === 'string' ? children : 'Link do konsultacji Calendly'}
+            className={styles.link}
+          >
+            {children}
+          </CalendlyCTA>
+        );
+      }
 
       // Dodajemy atrybut rel dla linków zewnętrznych
       if (href.startsWith('http')) {

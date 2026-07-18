@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MessageCircle, BarChart2, Video, ChevronLeft, ChevronRight, CalendarCheck, ShieldCheck } from 'lucide-react';
 import styles from '../../../styles/OnlineTraining.module.css';
+import CalendlyCTA from '../../../components/CalendlyCTA';
 
 const appImages = Array.from({ length: 20 }, (_, i) => `/images/Apka${i + 1}.webp`);
 
@@ -135,10 +136,10 @@ Często pytacie: <em>&quot;Jak ułożysz mi bezpieczny plan bez wizyty w gabinec
             Zarezerwuj 15 minut w moim kalendarzu. Pokażę Ci, jak aplikacja wygląda od środka i sprawdzimy, czy to rozwiązanie pasuje do Twojego stylu życia. Zero presji na sprzedaż.
           </p>
           
-          <a 
-            href="https://calendly.com/maruszewskiirek" /* ZMIEŃ NA SWÓJ LINK DO WIDEO ROZMOWY */
-            target="_blank" 
-            rel="noopener noreferrer"
+          <CalendlyCTA
+            ctaSource="online_final"
+            serviceType="online"
+            ctaLabel="Wybierz termin rozmowy wideo"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.8rem',
               backgroundColor: 'var(--primary)', 
@@ -150,7 +151,7 @@ Często pytacie: <em>&quot;Jak ułożysz mi bezpieczny plan bez wizyty w gabinec
             }}>
             <CalendarCheck size={24} />
             Wybierz termin rozmowy wideo
-          </a>
+          </CalendlyCTA>
         </div>
 
       </div>

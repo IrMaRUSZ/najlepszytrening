@@ -90,9 +90,89 @@
   
   /* Opinie */
   .testimonialsContainer {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+  }
+
+  .resultsIntro {
+    max-width: 720px;
+    margin: -2.5rem auto 3rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .resultsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .resultCard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 1.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(252, 163, 17, 0.2);
+    border-radius: 20px;
+    transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  }
+
+  .resultCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(252, 163, 17, 0.5);
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  .resultIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.25rem;
+    color: #111;
+    background: linear-gradient(135deg, #fca311, #ffbd4a);
+    border-radius: 14px;
+  }
+
+  .resultIcon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .resultTitle {
+    min-height: 2.8em;
+    margin: 0 0 1rem;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .resultQuote {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .resultFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .resultFooter strong {
+    color: #fff;
+    font-size: 1rem;
   }
   
   .testimonialSlider {
@@ -244,6 +324,20 @@
       padding: 0;
       margin-top: 1.5rem;
     }
+
+    .resultsIntro {
+      margin: -1.5rem auto 2rem;
+      font-size: 1rem;
+    }
+
+    .resultsGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .resultCard {
+      padding: 1.4rem;
+    }
   
     .testimonialCard {
       padding: 1.5rem;
@@ -274,6 +368,19 @@
   
     .imageWrapper {
       aspect-ratio: 4/5;
+    }
+
+    .resultsGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .resultCard {
+      padding: 1.25rem;
+    }
+
+    .resultTitle {
+      min-height: 0;
+      font-size: 1.1rem;
     }
   
     .testimonialCard {
@@ -386,7 +493,7 @@
     width: 100%;
   }
   
-  .expandButton {
+.expandButton {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -394,7 +501,8 @@
     background: none;
     border: none;
     padding: 0.5rem 1rem;
-    margin-top: 0.5rem;
+    align-self: flex-start;
+    margin: 1rem 0 1.25rem;
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -403,6 +511,8 @@
   .expandButton:hover {
     opacity: 0.8;
     gap: 0.75rem;
+    transform: none;
+    box-shadow: none;
   }
   
   .testimonialContent {

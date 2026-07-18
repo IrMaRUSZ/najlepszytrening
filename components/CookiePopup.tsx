@@ -2,60 +2,26 @@
 
 import { useState, useEffect } from 'react';
 import styles from '../styles/CookiePopup.module.css';
-
-// Definiujemy typ dla funkcji callback
-type CookieConsentCallback = (isAccepted: boolean) => void;
-
-// Definiujemy interfejs dla window
-declare global {
-  interface Window {
-    handleCookieConsent?: CookieConsentCallback;
-  }
-}
+import { useAnalyticsConsent } from './analytics/AnalyticsConsentProvider';
 
 // Dodajemy props do komponentu dla większej elastyczności
 interface CookiePopupProps {
   delay?: number; // czas opóźnienia w ms
-  onConsent?: CookieConsentCallback; // callback dla nadrzędnego komponentu
 }
 
-const CookiePopup = ({ delay = 1000, onConsent }: CookiePopupProps) => {
+const CookiePopup = ({ delay = 1000 }: CookiePopupProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { isReady, hasDecision, savePreferences } = useAnalyticsConsent();
 
   useEffect(() => {
-    // Sprawdzamy czy zgoda już istnieje
-    const checkConsent = () => {
-      try {
-        const consent = localStorage.getItem('cookieConsent');
-        if (!consent) {
-          setTimeout(() => setIsVisible(true), delay);
-        }
-      } catch (error) {
-        // Obsługa błędu gdy localStorage jest niedostępny
-        console.warn('Nie można uzyskać dostępu do localStorage:', error);
-        setIsVisible(true);
-      }
-    };
-
-    checkConsent();
-  }, [delay]);
+    if (!isReady || hasDecision) return;
+    const timeoutId = window.setTimeout(() => setIsVisible(true), delay);
+    return () => window.clearTimeout(timeoutId);
+  }, [delay, hasDecision, isReady]);
 
   const handleConsent = (isAccepted: boolean) => {
-    try {
-      localStorage.setItem('cookieConsent', isAccepted ? 'granted' : 'denied');
-      setIsVisible(false);
-
-      // Wywołujemy oba callbacki
-      if (window.handleCookieConsent) {
-        window.handleCookieConsent(isAccepted);
-      }
-      
-      if (onConsent) {
-        onConsent(isAccepted);
-      }
-    } catch (error) {
-      console.warn('Nie można zapisać zgody w localStorage:', error);
-    }
+    savePreferences({ necessary: true, analytics: isAccepted, marketing: false });
+    setIsVisible(false);
   };
 
   if (!isVisible) return null;
