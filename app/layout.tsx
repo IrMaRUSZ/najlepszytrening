@@ -7,6 +7,7 @@ import CookiePopup from '@/components/CookiePopup'
 import generateSchemaMarkup from '../components/SEO/SchemaOrg'
 import { AnalyticsConsentProvider } from '@/components/analytics/AnalyticsConsentProvider'
 import CalendlyEventListener from '@/components/analytics/CalendlyEventListener'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
@@ -59,6 +60,7 @@ export default function RootLayout({
           <Navbar />
           <CookiePopup />
           {children}
+          <Footer />
         </AnalyticsConsentProvider>
       </body>
     </html>

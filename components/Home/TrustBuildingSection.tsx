@@ -63,8 +63,8 @@ const transformations = [
   },
     {
     id: 3,
-    beforeImage: "/transformations/julkaprzed.webp",
-    afterImage: "/transformations/julkapo.webp",
+    beforeImage: "/transformations/JulkaPrzed.webp",
+    afterImage: "/transformations/JulkaPo.webp",
     duration: "3 miesiącach",
     story: "-14 KG MNIEJ 🔥 Liczby nie kłamią, ale to opinia mówi najwięcej. Od 87 kg do 73 kg. To nie jest magia, to efekt konsekwentnej pracy i dobrze dobranego planu. 📉 ​Często pytacie mnie, czy da się schudnąć bez głodówek i katowania się na siłowni. Patrząc na tę przemianę – odpowiedź brzmi: TAK. Ale kluczem nie jest tylko dieta, a wsparcie i wiedza, o których wspomina w swojej opinii Julia. ​Jako trener nie jestem tylko od rozpisania serii. Jestem od tego, żebyś w chwilach zwątpienia nie odpuścił(a). Motywacja to paliwo, a ja dbam o to, by Twój bak był zawsze pełny. 💪"
   },
