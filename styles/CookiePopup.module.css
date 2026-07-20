@@ -1,22 +1,43 @@
 /* styles/CookiePopup.module.css */
-.cookiePopup {
+.cookieOverlay {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
+  }
+
+  .cookiePopup {
     background-color: #1a1a1a;
     color: white;
-    padding: 20px;
+    padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 90%;
-    width: 400px;
+    border: 1px solid rgba(252, 163, 17, 0.35);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+    width: min(100%, 520px);
     text-align: center;
     font-size: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
+  }
+
+  .cookiePopup h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .cookiePopup p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
   
   .cookieText {
@@ -28,13 +49,15 @@
   .privacyLink {
     color: #f4a431;
     text-decoration: underline;
+    text-underline-offset: 3px;
   }
   
   .buttonContainer {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
+    margin-top: 0.5rem;
   }
   
   .button {
@@ -46,6 +69,16 @@
     font-size: 14px;
     transition: all 0.2s ease;
     width: 100%;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+
+  .button:focus-visible,
+  .privacyLink:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
   }
   
   .acceptButton {
@@ -75,9 +108,12 @@
   /* Responsywność */
   @media (max-width: 480px) {
     .cookiePopup {
-      width: 90%;
-      padding: 16px;
+      padding: 1.5rem 1rem;
       font-size: 12px;
+    }
+
+    .cookiePopup h2 {
+      font-size: 1.3rem;
     }
   
     .button {
@@ -85,4 +121,3 @@
       padding: 8px 14px;
     }
   }
-  
