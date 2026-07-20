@@ -100,6 +100,21 @@ export default function Home() {
             Najpierw poznaję Twój problem, potem tworzę rozwiązanie dopasowane do Ciebie.
           </p>
 
+          <div className={styles.calendlyLinkContainer}>
+            <CalendlyCTA
+              ctaSource="home_hero"
+              serviceType="general"
+              ctaLabel="Umów bezpłatną konsultację online"
+              className={`${styles.funnelBtn} ${styles.funnelBtnPrimary} ${styles.calendlyCta}`}
+            >
+              <CalendarCheck size={22} className={styles.calendlyIcon} />
+              <span>Umów bezpłatną konsultację online</span>
+            </CalendlyCTA>
+            <p className={styles.calendlyHint}>
+              15 minut online · bez zobowiązań · poznaję Twój cel i odpowiadam na pytania
+            </p>
+          </div>
+
           {/* Nowe karty atutów (spójne ze screenem nr 2) */}
           <div className={styles.uspGrid}>
             <div className={styles.uspCard}>
@@ -122,21 +137,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={styles.calendlyLinkContainer}>
-            <p className={styles.calendlyHint}>
-              Bez zobowiązań podczas rozmowy poznam Twój cel i odpowiem na pytania.
-            </p>
-            <CalendlyCTA
-              ctaSource="home_hero"
-              serviceType="general"
-              ctaLabel="Umów bezpłatną konsultację online"
-              className={`${styles.funnelBtn} ${styles.funnelBtnPrimary} ${styles.calendlyCta}`}
-            >
-              <CalendarCheck size={22} className={styles.calendlyIcon} />
-              <span>Umów bezpłatną konsultację online</span>
-            </CalendlyCTA>
-          </div>
-
           <div className={styles.socialLinks}>
             <a href="https://instagram.com/trener_ireneusz" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               <Instagram size={24} />
@@ -145,6 +145,48 @@ export default function Home() {
               <Youtube size={24} />
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.quickProofSection} aria-labelledby="quick-proof-title">
+        <div className={styles.quickProofHeader}>
+          <span className={styles.quickProofEyebrow}>Prawdziwe historie podopiecznych</span>
+          <h2 id="quick-proof-title">Bezpieczny proces dopasowany do człowieka, nie do schematu</h2>
+        </div>
+        <div className={styles.quickProofGrid}>
+          <article className={styles.quickProofCard}>
+            <span className={styles.quickProofLabel}>Powrót po ACL</span>
+            <blockquote>
+              „Trafiłam do niego z polecenia, 4 miesięce po rekonstrukcji więzadła krzyżowego przedniego, szukając pomocy w bezpiecznym odbudowaniu mięśni i przezwyciężeniu strachu przed pełnym obciążaniem operowanej nogi.”
+            </blockquote>
+            <strong>Basia</strong>
+          </article>
+          <article className={styles.quickProofCard}>
+            <span className={styles.quickProofLabel}>Trening mimo ograniczeń</span>
+            <blockquote>
+              „Ma dużą wiedzę, potrafi ułożyć taki plan treningu, który bez problemu można wykonywać i realnie poprawia siłę.”
+            </blockquote>
+            <strong>Paweł, podopieczny poruszający się na wózku</strong>
+          </article>
+          <article className={styles.quickProofCard}>
+            <span className={styles.quickProofLabel}>Trening, który nie jest obowiązkiem</span>
+            <blockquote>
+              „Dzięki tej współpracy polubiłem treningi na siłowni i przestały być one tylko obowiązkiem do odhaczenia.”
+            </blockquote>
+            <strong>Przemek</strong>
+          </article>
+        </div>
+        <div className={styles.quickProofAction}>
+          <p>Nie musisz wiedzieć, od czego zacząć. Opowiedz mi o swoim celu.</p>
+          <CalendlyCTA
+            ctaSource="home_quick_proof"
+            serviceType="general"
+            ctaLabel="Umów bezpłatną konsultację online"
+            className={`${styles.funnelBtn} ${styles.funnelBtnPrimary} ${styles.quickProofButton}`}
+          >
+            <CalendarCheck size={22} />
+            <span>Umów bezpłatną konsultację online</span>
+          </CalendlyCTA>
         </div>
       </section>
       
