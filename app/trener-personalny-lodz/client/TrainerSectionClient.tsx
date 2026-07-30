@@ -1,22 +1,117 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Shield, Target, Heart, ChevronDown, Lock, CheckCircle, CalendarCheck, Star, Activity, ChevronLeft, ChevronRight, Phone, Mail, MapPin } from 'lucide-react';
+import { Shield, Target, Heart, ChevronDown, Lock, CheckCircle, CalendarCheck, Star, Activity, ChevronLeft, ChevronRight, ArrowRight, ArrowDown, Wrench, Dumbbell, Accessibility, ExternalLink, X, Phone, Mail, MapPin } from 'lucide-react';
 import styles from '../../../styles/trener-personalny-lodz.module.css';
 import CalendlyCTA from '../../../components/CalendlyCTA';
+
+const heroSocialProof = {
+  googleRating: '5,0',
+  googleReviewCount: 50,
+  googleReviewsUrl: 'https://www.google.com/maps/place/Ireneusz+Maruszewski+%E2%80%93+Trener+Personalny+%C5%81%C3%B3d%C5%BA/@51.7327166,19.5010375,18z/data=!4m16!1m9!3m8!1s0x471a337c1b414b41:0xb6987fee59c8c83!2zSXJlbmV1c3ogTWFydXN6ZXdza2kg4oCTIFRyZW5lciBQZXJzb25hbG55IMWBw7Nkxbo!8m2!3d51.731175!4d19.505388!9m1!1b1!16s%2Fg%2F11tc7nd_ph!3m5!1s0x471a337c1b414b41:0xb6987fee59c8c83!8m2!3d51.731175!4d19.505388!16s%2Fg%2F11tc7nd_ph?authuser=2&entry=ttu&g_ep=EgoyMDI2MDcyNy4wIKXMDSoASAFQAw%3D%3D',
+  clientAvatars: [
+    { src: '/opinion/Ania.webp', alt: 'Podopieczna Ireneusza' },
+    { src: '/opinion/Rafał.webp', alt: 'Podopieczny Ireneusza' },
+    { src: '/opinion/logoprzemek.webp', alt: 'Podopieczny Ireneusza' },
+    { src: '/images/Magda.webp', alt: 'Magda, podopieczna Ireneusza' },
+  ],
+};
+
+const heroReviewGroups = [
+  {
+    id: 'weight-loss',
+    label: 'Chcę schudnąć',
+    description: 'Redukcja i powrót do formy',
+    icon: ArrowDown,
+    reviews: [
+      {
+        author: 'Rafał',
+        quote: 'Zgłosiłem się mając dwa cele: wrócić do sprawności po operacji wiązadeł oraz schudnąć. Dieta i plan treningowy pozwoliły osiągnąć jedno i drugie.',
+        url: 'https://maps.app.goo.gl/4sujfwUdpr4UtMYN7',
+      },
+      {
+        author: 'Filip',
+        quote: 'Wróciłem do sportu i aktywnego trybu życia, zrzucając nadmierne kilogramy i odnajdując na nowo zapał do codziennej aktywności.',
+        url: 'https://maps.app.goo.gl/8DV6L6CLzWsi5FFp7',
+      },
+    ],
+  },
+  {
+    id: 'after-injury',
+    label: 'Wracam po kontuzji',
+    description: 'Bezpieczny powrót do treningu',
+    icon: Wrench,
+    reviews: [
+      {
+        author: 'Barbara',
+        quote: 'Po rekonstrukcji ACL szukałam pomocy w bezpiecznym odbudowaniu mięśni i przezwyciężeniu strachu przed pełnym obciążaniem operowanej nogi.',
+        url: 'https://maps.app.goo.gl/hyrZTbc11JCa6QWj7',
+      },
+      {
+        author: 'Patryk',
+        quote: 'Dzięki Irkowi odzyskałem sprawność ruchową i motywację do ćwiczeń. Zweryfikował, co mogę, a czego nie, i dobrał wymagający, ale możliwy trening.',
+        url: 'https://maps.app.goo.gl/ckLQNs2SdcQ2cyfW9',
+      },
+    ],
+  },
+  {
+    id: 'gym-start',
+    label: 'Zaczynam na siłowni',
+    description: 'Pewność i regularność',
+    icon: Dumbbell,
+    reviews: [
+      {
+        author: 'Przemek',
+        quote: 'Dzięki tej współpracy polubiłem treningi na siłowni i przestały być one tylko obowiązkiem do odhaczenia.',
+        url: 'https://maps.app.goo.gl/AFjUKMTAV9NHvgDC8',
+      },
+      {
+        author: 'Wiola',
+        quote: 'Dzięki niemu zrozumiałam, jak pracują moje mięśnie i na co zwracać uwagę przy treningach. Z każdym spotkaniem dowiaduję się więcej.',
+        url: 'https://maps.app.goo.gl/Xhq6K3H8jS8FKqvz5',
+      },
+    ],
+  },
+  {
+    id: 'limitations',
+    label: 'Mam ograniczenia',
+    description: 'Plan dopasowany do możliwości',
+    icon: Accessibility,
+    reviews: [
+      {
+        author: 'Paweł',
+        quote: 'Jest jedyną osobą, którą spotkałem, która odważyła się poprowadzić trening na siłowni dla osoby na wózku.',
+        url: 'https://maps.app.goo.gl/bauLs8KN9H8hMPyi8',
+      },
+      {
+        author: 'Joanna',
+        quote: 'Treningi uwzględniają stan organizmu i urazy. Do tego ogrom wiedzy, uważność na klienta, motywacja, zaangażowanie i empatia.',
+        url: 'https://maps.app.goo.gl/a9A8uBGB1zEmBwVz7',
+      },
+    ],
+  },
+] as const;
 
 
 const TrainerSectionClient = () => {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
+  const [activeReviewGroupId, setActiveReviewGroupId] = useState<string | null>(null);
+  const activeReviewGroup = heroReviewGroups.find((group) => group.id === activeReviewGroupId);
 
 
   // --- LOGIKA KARUZELI ZDJĘĆ ---
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
-
   const galleryImages = [
     { src: "/images/treningpersonalny.webp", alt: "Ireneusz Maruszewski Trener Personalny Łódź" },
     { src: "/images/treningpersonalny2.webp", alt: "Trening na siłowni z trenerem" }, 
-    { src: "/images/Studycase.webp", alt: "Konsultacja fizjoterapeutyczna w Łodzi" } 
+    { src: "/images/Studycase.webp", alt: "Konsultacja fizjoterapeutyczna w Łodzi" } ,
+    { src: "/images/Magda.webp", alt: "Rezultaty" } ,
+    { src: "/transformations/Dawidprzed.webp", alt: "Dawid przed przemianą" },
+    { src: "/transformations/Dawidpo.webp", alt: "Dawid po przemianie" },
+    { src: "/transformations/japrzed.webp", alt: "Ireneusz przed przemianą" },
+    { src: "/transformations/japo.webp", alt: "Ireneusz po przemianie" },
+    { src: "/transformations/JulkaPrzed.webp", alt: "Julia przed przemianą" },
+    { src: "/transformations/JulkaPo.webp", alt: "Julia po przemianie" },
   ];
 
   const nextImg = () => setCurrentImgIndex((prev) => (prev + 1) % galleryImages.length);
@@ -26,6 +121,7 @@ const TrainerSectionClient = () => {
     const timer = setInterval(nextImg, 5000);
     return () => clearInterval(timer);
   }, []);
+
   // -----------------------------
 
   const calendlyRef = useRef<HTMLDivElement>(null);
@@ -78,6 +174,188 @@ const TrainerSectionClient = () => {
       />
 
       <div className={styles.container}>
+        <header className={styles.croHero}>
+          <div className={styles.heroCopy}>
+
+            <p className={styles.eyebrow}>TRENER PERSONALNY · FIZJOTERAPEUTA · ŁÓDŹ</p>
+            <h1 className={styles.heroTitle}>
+              Fizjoterapeuta na sali treningowej. <span>Nie tylko przy leżance.</span>
+            </h1>
+
+            <p className={styles.differenceStatement}>
+              Nie prowadzę przypadkowych treningów. <strong>Najpierw sprawdzam, jak pracuje Twoje ciało.</strong>
+            </p>
+            <p className={styles.heroSubtitle}>
+              Dopiero wtedy dobieram ćwiczenia do Twojego celu, możliwości i ograniczeń niezależnie
+              od tego, czy chcesz schudnąć, zacząć ćwiczyć, czy wrócić po kontuzji.
+            </p>
+
+            <div className={styles.earlyHeroCta}>
+              <CalendlyCTA
+                mode="action"
+                onAction={scrollToCalendly}
+                ctaSource="trainer_hero_early"
+                serviceType="personal_training_lodz"
+                ctaLabel="Umów darmową diagnozę"
+                className={styles.heroCta}
+              >
+                📅 15 minut rozmowy.
+                <ArrowRight size={20} aria-hidden="true" />
+              </CalendlyCTA>
+              <p>15 minut · bez zobowiązań · sprawdzimy, czy mogę Ci pomóc</p>
+            </div>
+
+            <a
+              href={heroSocialProof.googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialProof}
+              aria-label="Zobacz opinie podopiecznych w Google Maps"
+            >
+              <div className={styles.avatarStack} aria-label="Podopieczni Ireneusza">
+                {heroSocialProof.clientAvatars.map((avatar) => (
+                  <Image
+                    key={avatar.src}
+                    src={avatar.src}
+                    alt={avatar.alt}
+                    width={44}
+                    height={44}
+                    sizes="(max-width: 640px) 38px, 44px"
+                    className={styles.avatar}
+                  />
+                ))}
+              </div>
+              <div className={styles.socialProofCopy}>
+                <div className={styles.ratingLine} aria-label="Pięć gwiazdek, opinie Google">
+                  <span className={styles.heroStars}>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} size={16} fill="currentColor" aria-hidden="true" />
+                    ))}
+                  </span>
+                  <strong>{heroSocialProof.googleRating} w Google</strong>
+                  <ExternalLink size={14} aria-hidden="true" />
+                </div>
+                <span className={styles.proofCaption}>
+                  {heroSocialProof.googleReviewCount} opinii · zobacz prawdziwe historie podopiecznych
+                </span>
+              </div>
+            </a>
+
+            <div className={styles.proofDetails}>
+              <dl className={styles.proofNumbers} aria-label="Doświadczenie Ireneusza">
+                <div>
+                  <dt>1500+</dt>
+                  <dd>przeprowadzonych treningów</dd>
+                </div>
+                <div>
+                  <dt>5 lat</dt>
+                  <dd>doświadczenia</dd>
+                </div>
+              </dl>
+
+              <p className={styles.reviewPickerLabel}>Zobacz opinie osób z podobnym celem:</p>
+              <div className={styles.reviewPicker}>
+                {heroReviewGroups.map((group) => {
+                  const Icon = group.icon;
+                  const isActive = activeReviewGroupId === group.id;
+                  return (
+                    <button
+                      key={group.id}
+                      type="button"
+                      className={`${styles.reviewPickerButton} ${isActive ? styles.reviewPickerButtonActive : ''}`}
+                      onClick={() => setActiveReviewGroupId(isActive ? null : group.id)}
+                      aria-expanded={isActive}
+                      aria-controls="hero-matched-reviews"
+                    >
+                      <Icon size={18} aria-hidden="true" />
+                      <span>
+                        <strong>{group.label}</strong>
+                        <small>{group.description}</small>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {activeReviewGroup && (
+                <div id="hero-matched-reviews" className={styles.matchedReviews} aria-live="polite">
+                  <div className={styles.matchedReviewsHeader}>
+                    <div>
+                      <span>Opinie podopiecznych</span>
+                      <strong>{activeReviewGroup.label}</strong>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setActiveReviewGroupId(null)}
+                      className={styles.matchedReviewsClose}
+                      aria-label="Zamknij opinie"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+                  <div className={styles.matchedReviewsList}>
+                    {activeReviewGroup.reviews.map((review) => (
+                      <article key={`${activeReviewGroup.id}-${review.author}`} className={styles.matchedReview}>
+                        <div className={styles.matchedReviewStars} aria-label="Ocena 5 na 5">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star key={star} size={13} fill="currentColor" aria-hidden="true" />
+                          ))}
+                        </div>
+                        <blockquote>„{review.quote}”</blockquote>
+                        <a href={review.url} target="_blank" rel="noopener noreferrer">
+                          {review.author} · zobacz w Google <ExternalLink size={12} />
+                        </a>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className={styles.croHeroActions}>
+              <CalendlyCTA
+                mode="action"
+                onAction={scrollToCalendly}
+                ctaSource="trainer_hero"
+                serviceType="personal_training_lodz"
+                ctaLabel="Umów darmową diagnozę"
+                className={styles.heroCta}
+              >
+                Umów darmową diagnozę
+                <ArrowRight size={20} aria-hidden="true" />
+              </CalendlyCTA>
+            </div>
+
+          </div>
+
+          <div className={styles.heroVisual}>
+            <div className={styles.heroImageFrame}>
+              <Image
+                src="/images/Maruszewski.webp"
+                alt="Ireneusz Maruszewski, trener personalny i fizjoterapeuta w Łodzi"
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 46vw"
+                className={styles.heroImage}
+              />
+              <div className={styles.heroImageShade} />
+            </div>
+            <div className={styles.mobileHeroActions}>
+              <CalendlyCTA
+                mode="action"
+                onAction={scrollToCalendly}
+                ctaSource="trainer_hero_mobile"
+                serviceType="personal_training_lodz"
+                ctaLabel="Umów darmową diagnozę"
+                className={styles.heroCta}
+              >
+                Umów darmową diagnozę
+                <ArrowRight size={20} aria-hidden="true" />
+              </CalendlyCTA>
+            </div>
+          </div>
+        </header>
+
         <header className={styles.header}>
           <div className={styles.socialProofBadge}>
             <div className={styles.stars}>
