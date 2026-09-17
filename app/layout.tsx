@@ -12,7 +12,7 @@ import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
-const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || '';
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || 'yjmy8m1lpk';
 
 // Podstawowe metadane, które będą dziedziczone ale mogą być nadpisane
 export const metadata: Metadata = {
