@@ -21,12 +21,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as ChangeFrequency,
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/trener-personalny-lodz`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: 'monthly' as ChangeFrequency,
-      priority: 0.9, // Zwiększyłem na 0.9, to Twoja główna strona usługowa!
-    },
     // --- NOWE STRONY SEO ---
     {
       url: `${baseUrl}/fizjoterapeuta-lodz`,
@@ -103,7 +97,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  const blogPosts: MetadataRoute.Sitemap = posts.map((post) => ({
+  const blogPosts: MetadataRoute.Sitemap = posts
+    .filter(post => post.slug.toLowerCase() !== 'trener-personalny-lodz')
+    .map((post) => ({
     url: `${baseUrl}/posts/${post.slug}`,
     lastModified: post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
     changeFrequency: 'monthly' as ChangeFrequency,

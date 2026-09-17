@@ -27,7 +27,7 @@ const OnlineTrainingClient = () => {
     <section className={styles.section}>
       <div className={styles.container}>
         <header className={styles.header}>
-          <h2 className={styles.title}>Trenuj na własnych zasadach w mojej autorskiej aplikacji</h2>
+          <h1 className={styles.title}>Trenuj na własnych zasadach w mojej autorskiej aplikacji</h1>
           <p className={styles.subtitle}>
             Koniec z arkuszami w Excelu i gubiącymi się wiadomościami. Jako jeden z nielicznych trenerów oferuję prowadzenie online na mojej własnej, dedykowanej platformie treningowej z analizą wideo.
           </p>

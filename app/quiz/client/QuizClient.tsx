@@ -154,7 +154,7 @@ const QuizClient = () => {
       <div className={styles.quizCard}>
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', color: 'rgb(31, 41, 55)', fontSize: '0.9rem' }}>
-            <span>Quiz dzienny</span>
+            <h1 style={{ fontSize: 'inherit', fontWeight: 'normal', margin: 0 }}>Quiz dzienny</h1>
             <span>{new Date().toLocaleDateString('pl-PL')}</span>
           </div>
           

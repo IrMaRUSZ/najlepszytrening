@@ -2,7 +2,9 @@ import { Metadata } from 'next';
 import OnlineTrainingClient from './client/OnlineTrainingClient';
 
 export const metadata: Metadata = {
-  title: "Współpraca Online z Trenerem | Autorska Aplikacja",
+  title: {
+    absolute: "Współpraca Online z Trenerem | Autorska Aplikacja"
+  },
   description: "Zdalny trening personalny wykorzystujący moją zaawansowaną, autorską aplikację. Analiza techniki wideo, atlas 3D, automatyczne wykresy progresu siłowego i stały kontakt.",
   keywords: "trening online, trener personalny online, autorska aplikacja treningowa, wsparcie treningowe, prowadzenie online, maruszew aplikacja",
   openGraph: {

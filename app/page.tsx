@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import { TrustBuildingSection } from '../components/Home/TrustBuildingSection';
 import InitialHook from '../components/Home/InitialHook';
 import StepSection from '../components/Home/StepsSection';
+import { FAQSection } from '../components/Home/FAQSection';
 import BlogPage from './blog/page'
 import { Metadata } from 'next';
 import CalendlyCTA from '../components/CalendlyCTA';
@@ -39,29 +40,46 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SportsActivityLocation",
-            "name": "Ireneusz Maruszewski, Trener Personalny Łódź",
-            "image": "https://www.najlepszytrening.pl/images/Maruszewskibt.webp",
-            "@id": "https://www.najlepszytrening.pl",
-            "url": "https://www.najlepszytrening.pl",
-            "telephone": "+48737730868",
-            "email": "maruszewskiirek@gmail.com",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "ul. Poli Gojawiczyńskiej 26",
-              "addressLocality": "Łódź",
-              "postalCode": "93-239",
-              "addressCountry": "PL"
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": ["HealthAndBeautyBusiness", "SportsActivityLocation"],
+              "name": "Ireneusz Maruszewski – Trener Personalny Łódź",
+              "image": "https://www.najlepszytrening.pl/images/Maruszewskibt.webp",
+              "@id": "https://www.najlepszytrening.pl",
+              "url": "https://www.najlepszytrening.pl",
+              "telephone": "+48737730868",
+              "email": "maruszewskiirek@gmail.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "ul. Poli Gojawiczyńskiej 26",
+                "addressLocality": "Łódź",
+                "postalCode": "93-239",
+                "addressCountry": "PL"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 51.731175,
+                "longitude": 19.505388
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "51"
+              },
+              "priceRange": "$$"
             },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "reviewCount": "51"
-            },
-            "priceRange": "$$"
-          })
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Ireneusz Maruszewski",
+              "jobTitle": "Fizjoterapeuta i Trener Personalny",
+              "url": "https://www.najlepszytrening.pl/o-mnie",
+              "worksFor": {
+                "@id": "https://www.najlepszytrening.pl"
+              }
+            }
+          ])
         }}
       />
       
@@ -193,6 +211,7 @@ export default function Home() {
       <InitialHook />
       <TrustBuildingSection />
       <StepSection/>
+      <FAQSection />
       
       <section className={styles.blogSection}>
         <div className={styles.blogHeader}>

@@ -33,7 +33,9 @@ export async function generateMetadata({ params }: PageProps) {
   const canonicalUrl = `https://www.najlepszytrening.pl/posts/${resolvedParams.slug}`;
 
   return {
-    title: `${post.title} | Blog Trenera Personalnego Łódź`,
+    title: {
+      absolute: `${post.title} | Blog Trenera Personalnego`
+    },
     description: post.excerpt || `${post.title} - przeczytaj artykuł na blogu Najlepszytrening. Profesjonalne porady treningowe i dietetyczne.`,
     openGraph: {
       title: post.title,

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
-    url: 'https://www.najlepszytrening.pl/polityka-cookies',
+    url: 'https://www.najlepszytrening.pl/cookie-settings',
     title: 'Polityka cookies – Jak używamy plików cookie?',
     description: 'Poznaj zasady korzystania z plików cookies na naszej stronie. Dowiedz się, jakie dane są gromadzone i jak możesz kontrolować ich wykorzystanie.',
     siteName: 'Najlepszy Trening',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://www.najlepszytrening.pl/polityka-cookies'
+    canonical: 'https://www.najlepszytrening.pl/cookie-settings'
   }
 };
 

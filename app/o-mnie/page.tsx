@@ -6,7 +6,9 @@ import ContactForm from '@/components/ContactForm';
 
 export async function generateMetadata() {
   return {
-    title: "Ireneusz Maruszewski Trener i Fizjoterapeuta Łódź | Najlepszy Trening",
+    title: {
+      absolute: "Ireneusz Maruszewski - Trener i Fizjoterapeuta Łódź"
+    },
     description: "Ból pleców i brak energii po pracy? Jako fizjoterapeuta i trener w Łodzi pomagam zapracowanym odzyskać sprawność. Poznaj moje doświadczenie.",
     keywords: "Ireneusz Maruszewski, profil trenera, kwalifikacje fizjoterapeuty, doświadczenie trenera fitness, ekspert fitness Łódź, historia trenera, metody treningowe",
     openGraph: {
@@ -100,9 +102,9 @@ const AboutSection = () => {
         </div>
         
         <div className={styles.textContent}>
-          <h2 className={`${styles.title} ${styles.animateUp}`}>
+          <h1 className={`${styles.title} ${styles.animateUp}`}>
             Trener i Fizjoterapeuta dla zapracowanych
-          </h2>
+          </h1>
           
           <div className={`${styles.textBlock} ${styles.animateUp}`}>
             <p className={styles.description}>
