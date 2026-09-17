@@ -45,9 +45,9 @@ Dlaczego trenerzy (w tym ja) tak bardzo preferują pakiety? Nie chodzi tylko o f
 
 Jako certyfikowany trener personalny i fizjoterapeuta pracujący w Łodzi (Just Gym przy ul. Gojawiczyńskiej), cenię pełną przejrzystość. Oto moje stawki na 2026 rok:
 
-*   **Pojedynczy trening / Konsultacja fizjoterapeutyczna:** 180 zł
-*   **Pakiet 10 treningów:** 1600 zł (160 zł za sesję – to najczęściej wybierana opcja na start)
-*   **Pakiet 20 treningów:** 2800 zł (140 zł za sesję)
+*   **Pojedynczy trening / Konsultacja fizjoterapeutyczna:** 220 zł
+*   **Pakiet 10 treningów:** 1800 zł (180 zł za sesję – to najczęściej wybierana opcja na start)
+*   **Pakiet 20 treningów:** 3200 zł (160 zł za sesję)
 
 *Uwaga: Do powyższych kwot należy doliczyć aktywny karnet do klubu Just Gym lub kartę sportową*
 

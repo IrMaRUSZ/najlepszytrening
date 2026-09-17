@@ -7,10 +7,12 @@ import CookiePopup from '@/components/CookiePopup'
 import generateSchemaMarkup from '../components/SEO/SchemaOrg'
 import { AnalyticsConsentProvider } from '@/components/analytics/AnalyticsConsentProvider'
 import CalendlyEventListener from '@/components/analytics/CalendlyEventListener'
+import MicrosoftClarity from '@/components/analytics/MicrosoftClarity'
 import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || '';
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || '';
 
 // Podstawowe metadane, które będą dziedziczone ale mogą być nadpisane
 export const metadata: Metadata = {
@@ -56,6 +58,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AnalyticsConsentProvider>
           <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
+          <MicrosoftClarity clarityId={CLARITY_ID} />
           <CalendlyEventListener />
           <Navbar />
           <CookiePopup />

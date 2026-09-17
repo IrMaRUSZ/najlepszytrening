@@ -1,6 +1,7 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Shield, Target, Heart, ChevronDown, Lock, CheckCircle, CalendarCheck, Star, Activity, ChevronLeft, ChevronRight, ArrowRight, ArrowDown, Wrench, Dumbbell, Accessibility, ExternalLink, X, Phone, Mail, MapPin } from 'lucide-react';
 import styles from '../../../styles/trener-personalny-lodz.module.css';
 import CalendlyCTA from '../../../components/CalendlyCTA';
@@ -133,7 +134,7 @@ const TrainerSectionClient = () => {
   const faqItems = [
     {
       question: "Ile kosztuje trener personalny w Łodzi?",
-      answer: "Pojedynczy trening to koszt 180 zł. Pakiet dziesięciu treningów to 160 zł za sesję, a pakiet dwudziestu treningów kosztuje 140 zł za sesję. Pierwsza konsultacja jest bezpłatna."
+      answer: "Pojedynczy trening to koszt 220 zł. Pakiet dziesięciu treningów to 180 zł za sesję, a pakiet dwudziestu treningów kosztuje 160 zł za sesję. Pierwsza konsultacja jest bezpłatna."
     },
     {
       question: "Zbyt wiele nieudanych prób treningowych? Dlaczego tym razem może być inaczej?",
@@ -177,13 +178,13 @@ const TrainerSectionClient = () => {
         <header className={styles.croHero}>
           <div className={styles.heroCopy}>
 
-            <p className={styles.eyebrow}>TRENER PERSONALNY · FIZJOTERAPEUTA · ŁÓDŹ</p>
+            <p className={styles.eyebrow}>TRENER PERSONALNY I FIZJOTERAPEUTA</p>
             <h1 className={styles.heroTitle}>
-              Fizjoterapeuta na sali treningowej. <span>Nie tylko przy leżance.</span>
+              Trener personalny Łódź <span>Just Gym i dojazd</span>
             </h1>
 
             <p className={styles.differenceStatement}>
-              Nie prowadzę przypadkowych treningów. <strong>Najpierw sprawdzam, jak pracuje Twoje ciało.</strong>
+              Fizjoterapeuta na sali treningowej. <strong>Najpierw sprawdzam, jak pracuje Twoje ciało.</strong>
             </p>
             <p className={styles.heroSubtitle}>
               Dopiero wtedy dobieram ćwiczenia do Twojego celu, możliwości i ograniczeń niezależnie
@@ -367,7 +368,7 @@ const TrainerSectionClient = () => {
           <h1 className={styles.title}>Trenuj mądrze. Bez bólu i wymówek.</h1>
           
           <p className={styles.subtitle}>
-            Nazywam się Ireneusz Maruszewski. Łączę <strong>medyczną wiedzę z efektywnym treningiem siłowym</strong>. 
+            Nazywam się Ireneusz Maruszewski. Łączę <strong>medyczną wiedzę z efektywnym treningiem siłowym</strong> pracując jako <Link href="/" style={{ textDecoration: 'underline', color: 'inherit' }} title="Trener personalny Łódź">trener personalny w Łodzi</Link>. 
             Pomagam osobom zapracowanym oraz wracającym po kontuzjach odzyskać sprawność. 
             Otrzymasz ode mnie praktyczną wiedzę, bezpieczny plan i wsparcie. Zrobimy formę bez restrykcyjnych diet i cudownych suplementów.
           </p>
@@ -492,7 +493,7 @@ const TrainerSectionClient = () => {
               <div className={styles.pricingRowsContainer}>
                 <div className={styles.pricingRow}>
                   <span className={styles.pricingName}>Pojedynczy trening</span>
-                  <span className={styles.pricingValue}>180 zł</span>
+                  <span className={styles.pricingValue}>220 zł</span>
                 </div>
                 
                 <div className={`${styles.pricingRow} ${styles.pricingRowHighlight}`}>
@@ -500,12 +501,12 @@ const TrainerSectionClient = () => {
                     <span className={styles.pricingName}>Pakiet dziesięciu treningów</span>
                     <span className={styles.pricingHighlightText}>Wybiera 80 procent podopiecznych</span>
                   </div>
-                  <span className={styles.pricingValue}>160 zł <span style={{fontSize:'0.8rem', fontWeight:'normal'}}>za sesję</span></span>
+                  <span className={styles.pricingValue}>180 zł <span style={{fontSize:'0.8rem', fontWeight:'normal'}}>za sesję</span></span>
                 </div>
                 
                 <div className={styles.pricingRow}>
                   <span className={styles.pricingName}>Pakiet dwudziestu treningów</span>
-                  <span className={styles.pricingValue}>140 zł <span style={{fontSize:'0.8rem', fontWeight:'normal'}}>za sesję</span></span>
+                  <span className={styles.pricingValue}>160 zł <span style={{fontSize:'0.8rem', fontWeight:'normal'}}>za sesję</span></span>
                 </div>
               </div>
 
